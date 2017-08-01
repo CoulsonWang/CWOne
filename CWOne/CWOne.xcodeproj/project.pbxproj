@@ -18,6 +18,8 @@
 		B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A521F3079CA004E64D9 /* ONEAllController.m */; };
 		B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A551F3079DA004E64D9 /* ONEMeController.m */; };
 		B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A561F3079DA004E64D9 /* ONEMeController.xib */; };
+		B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A5A1F307DE8004E64D9 /* UIColor+CWQuickCreate.m */; };
+		B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A5D1F308059004E64D9 /* UIImage+CWColorAndStretch.m */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -66,6 +68,10 @@
 		B90C3A541F3079DA004E64D9 /* ONEMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEMeController.h; sourceTree = "<group>"; };
 		B90C3A551F3079DA004E64D9 /* ONEMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEMeController.m; sourceTree = "<group>"; };
 		B90C3A561F3079DA004E64D9 /* ONEMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEMeController.xib; sourceTree = "<group>"; };
+		B90C3A591F307DE8004E64D9 /* UIColor+CWQuickCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CWQuickCreate.h"; sourceTree = "<group>"; };
+		B90C3A5A1F307DE8004E64D9 /* UIColor+CWQuickCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CWQuickCreate.m"; sourceTree = "<group>"; };
+		B90C3A5C1F308059004E64D9 /* UIImage+CWColorAndStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CWColorAndStretch.h"; sourceTree = "<group>"; };
+		B90C3A5D1F308059004E64D9 /* UIImage+CWColorAndStretch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CWColorAndStretch.m"; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -390,6 +396,10 @@
 			children = (
 				B90C3A3C1F306B8E004E64D9 /* NSString+CWTranslate.h */,
 				B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */,
+				B90C3A591F307DE8004E64D9 /* UIColor+CWQuickCreate.h */,
+				B90C3A5A1F307DE8004E64D9 /* UIColor+CWQuickCreate.m */,
+				B90C3A5C1F308059004E64D9 /* UIImage+CWColorAndStretch.h */,
+				B90C3A5D1F308059004E64D9 /* UIImage+CWColorAndStretch.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -725,8 +735,10 @@
 				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
+				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
+				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

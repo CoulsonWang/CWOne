@@ -7,6 +7,9 @@
 //
 
 #import "ONEMainTabBarController.h"
+#import "UIImage+CWColorAndStretch.h"
+
+#define kUITabBarHeight 49.0
 
 @interface ONEMainTabBarController ()
 
@@ -20,16 +23,17 @@
     [self setUpTabBar];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)setUpTabBar {
     
+    // 设置tabBar背景色
+    UIImage *backgroundImage = [UIImage imageWithColor:[UIColor colorWithWhite:254/255.0 alpha:1.0] size:CGSizeMake(CWScreenW, kUITabBarHeight)];
+    [self.tabBar setBackgroundImage:backgroundImage];
+    
+    
     //调整tabBar中图片的位置
     for (UIViewController *vc in self.viewControllers) {
-        vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        vc.tabBarItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
     }
 }
 

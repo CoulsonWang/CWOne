@@ -12,4 +12,6 @@
 #define CWScreenW [UIScreen mainScreen].bounds.size.width
 #define CWScreenH [UIScreen mainScreen].bounds.size.height
 
+#import "UIColor+CWQuickCreate.h"
+
 #endif /* CWOne_PrefixHeader_pch */
