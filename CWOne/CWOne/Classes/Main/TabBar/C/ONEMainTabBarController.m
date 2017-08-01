@@ -28,7 +28,7 @@
     
     // 设置tabBar背景色
     UIImage *backgroundImage = [UIImage imageWithColor:[UIColor colorWithWhite:254/255.0 alpha:1.0] size:CGSizeMake(CWScreenW, kUITabBarHeight)];
-    [self.tabBar setBackgroundImage:backgroundImage];
+    [self.tabBar insertSubview:[[UIImageView alloc] initWithImage:backgroundImage] atIndex:0];
     
     
     //调整tabBar中图片的位置
