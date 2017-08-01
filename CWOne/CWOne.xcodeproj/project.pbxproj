@@ -10,10 +10,10 @@
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
-		B9321EFD1F3059410052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EF51F3059410052752B /* AppDelegate.m */; };
 		B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF71F3059410052752B /* LaunchScreen.storyboard */; };
 		B9321EFF1F3059410052752B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF91F3059410052752B /* Main.storyboard */; };
 		B9321F011F3059410052752B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EFC1F3059410052752B /* main.m */; };
+		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +42,12 @@
 		B9321EE01F3058CA0052752B /* CWOneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321EE41F3058CA0052752B /* CWOneUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWOneUITests.m; sourceTree = "<group>"; };
 		B9321EE61F3058CA0052752B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9321EF41F3059410052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B9321EF51F3059410052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B9321EF81F3059410052752B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9321EFA1F3059410052752B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9321EFB1F3059410052752B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,18 +126,14 @@
 		B9321EF21F3059410052752B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B9321EF31F3059410052752B /* System */,
+				B9321F0F1F305AD70052752B /* ALL */,
+				B9321F131F305AD70052752B /* Main */,
+				B9321F171F305AD70052752B /* ME */,
+				B9321F1B1F305AD70052752B /* ONE */,
+				B9321F1F1F305AD70052752B /* Other */,
+				B9321F241F305AD70052752B /* System */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		B9321EF31F3059410052752B /* System */ = {
-			isa = PBXGroup;
-			children = (
-				B9321EF41F3059410052752B /* AppDelegate.h */,
-				B9321EF51F3059410052752B /* AppDelegate.m */,
-			);
-			path = System;
 			sourceTree = "<group>";
 		};
 		B9321EF61F3059410052752B /* SupportFiles */ = {
@@ -149,6 +145,178 @@
 				B9321EFC1F3059410052752B /* main.m */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		B9321F0F1F305AD70052752B /* ALL */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F101F305AD70052752B /* C */,
+				B9321F111F305AD70052752B /* M */,
+				B9321F121F305AD70052752B /* V */,
+			);
+			path = ALL;
+			sourceTree = "<group>";
+		};
+		B9321F101F305AD70052752B /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B9321F111F305AD70052752B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B9321F121F305AD70052752B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		B9321F131F305AD70052752B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F141F305AD70052752B /* C */,
+				B9321F151F305AD70052752B /* M */,
+				B9321F161F305AD70052752B /* V */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B9321F141F305AD70052752B /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B9321F151F305AD70052752B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B9321F161F305AD70052752B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		B9321F171F305AD70052752B /* ME */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F181F305AD70052752B /* C */,
+				B9321F191F305AD70052752B /* M */,
+				B9321F1A1F305AD70052752B /* V */,
+			);
+			path = ME;
+			sourceTree = "<group>";
+		};
+		B9321F181F305AD70052752B /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B9321F191F305AD70052752B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B9321F1A1F305AD70052752B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		B9321F1B1F305AD70052752B /* ONE */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F1C1F305AD70052752B /* C */,
+				B9321F1D1F305AD70052752B /* M */,
+				B9321F1E1F305AD70052752B /* V */,
+			);
+			path = ONE;
+			sourceTree = "<group>";
+		};
+		B9321F1C1F305AD70052752B /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B9321F1D1F305AD70052752B /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B9321F1E1F305AD70052752B /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		B9321F1F1F305AD70052752B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F201F305AD70052752B /* Category */,
+				B9321F211F305AD70052752B /* Const */,
+				B9321F221F305AD70052752B /* Lib */,
+				B9321F231F305AD70052752B /* Tool */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		B9321F201F305AD70052752B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B9321F211F305AD70052752B /* Const */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		B9321F221F305AD70052752B /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		B9321F231F305AD70052752B /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		B9321F241F305AD70052752B /* System */ = {
+			isa = PBXGroup;
+			children = (
+				B9321F251F305AD70052752B /* AppDelegate.h */,
+				B9321F261F305AD70052752B /* AppDelegate.m */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,8 +452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
-				B9321EFD1F3059410052752B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
