@@ -25,7 +25,7 @@
 		B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */; };
 		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
 		B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */; };
-		B90C3A731F30BBBB004E64D9 /* ONEAuthorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */; };
+		B90C3A731F30BBBB004E64D9 /* ONEUserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A721F30BBBB004E64D9 /* ONEUserItem.m */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -33,6 +33,9 @@
 		B9321EFF1F3059410052752B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF91F3059410052752B /* Main.storyboard */; };
 		B9321F011F3059410052752B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EFC1F3059410052752B /* main.m */; };
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
+		B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FE51F30C18A009025FD /* ONEHomeCell.m */; };
+		B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */; };
+		B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +90,8 @@
 		B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONENetworkTool.m; sourceTree = "<group>"; };
 		B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeItem.h; sourceTree = "<group>"; };
 		B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeItem.m; sourceTree = "<group>"; };
-		B90C3A711F30BBBB004E64D9 /* ONEAuthorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorItem.h; sourceTree = "<group>"; };
-		B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorItem.m; sourceTree = "<group>"; };
+		B90C3A711F30BBBB004E64D9 /* ONEUserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEUserItem.h; sourceTree = "<group>"; };
+		B90C3A721F30BBBB004E64D9 /* ONEUserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEUserItem.m; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +106,11 @@
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B9A73FE41F30C18A009025FD /* ONEHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCell.h; sourceTree = "<group>"; };
+		B9A73FE51F30C18A009025FD /* ONEHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCell.m; sourceTree = "<group>"; };
+		B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCell.xib; sourceTree = "<group>"; };
+		B9A73FE91F30CD85009025FD /* ONEHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeViewModel.h; sourceTree = "<group>"; };
+		B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeViewModel.m; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,8 +432,10 @@
 			children = (
 				B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */,
 				B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */,
-				B90C3A711F30BBBB004E64D9 /* ONEAuthorItem.h */,
-				B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */,
+				B9A73FE91F30CD85009025FD /* ONEHomeViewModel.h */,
+				B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */,
+				B90C3A711F30BBBB004E64D9 /* ONEUserItem.h */,
+				B90C3A721F30BBBB004E64D9 /* ONEUserItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -433,6 +443,9 @@
 		B9321F1E1F305AD70052752B /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B9A73FE41F30C18A009025FD /* ONEHomeCell.h */,
+				B9A73FE51F30C18A009025FD /* ONEHomeCell.m */,
+				B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -626,6 +639,7 @@
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
+				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
@@ -794,6 +808,7 @@
 				B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */,
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
+				B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */,
 				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
 				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
@@ -801,8 +816,9 @@
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
-				B90C3A731F30BBBB004E64D9 /* ONEAuthorItem.m in Sources */,
+				B90C3A731F30BBBB004E64D9 /* ONEUserItem.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
+				B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,

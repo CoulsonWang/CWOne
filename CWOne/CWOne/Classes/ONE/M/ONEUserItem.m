@@ -6,12 +6,12 @@
 //  Copyright © 2017年 Coulson_Wang. All rights reserved.
 //
 
-#import "ONEAuthorItem.h"
+#import "ONEUserItem.h"
 
-@implementation ONEAuthorItem
+@implementation ONEUserItem
 
-+ (instancetype)authorItemWithDict:(NSDictionary *)dict {
-    ONEAuthorItem *item = [[ONEAuthorItem alloc] init];
++ (instancetype)userItemWithDict:(NSDictionary *)dict {
+    ONEUserItem *item = [[ONEUserItem alloc] init];
     [item setValuesForKeysWithDictionary:dict];
     return item;
 }

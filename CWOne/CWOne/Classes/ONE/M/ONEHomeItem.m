@@ -7,7 +7,7 @@
 //
 
 #import "ONEHomeItem.h"
-#import "ONEAuthorItem.h"
+#import "ONEUserItem.h"
 
 @implementation ONEHomeItem
 
@@ -19,12 +19,16 @@
     
     // 处理作者数据
     NSDictionary *authorDict = dict[@"author"];
-    [item setValue:[ONEAuthorItem authorItemWithDict:authorDict] forKeyPath:@"authorItem"];
+    [item setValue:[ONEUserItem userItemWithDict:authorDict] forKeyPath:@"authorItem"];
     
     // 处理显示标题数据
     NSArray *tagList = dict[@"tag_list"];
     NSString *title = tagList.firstObject[@"title"];
     [item setValue:title forKeyPath:@"tag_title"];
+    
+    // 处理回答者名称
+    NSDictionary *answererDict = dict[@"answerer"];
+    [item setValue:[ONEUserItem userItemWithDict:answererDict] forKeyPath:@"answererItem"];
     
     return item;
 }

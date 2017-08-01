@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class ONEAuthorItem;
+@class ONEUserItem;
 
 @interface ONEHomeItem : NSObject
 
@@ -39,7 +39,7 @@
 
 @property (strong, nonatomic) NSString *last_update_date;
 
-@property (strong, nonatomic) ONEAuthorItem *authorItem;
+@property (strong, nonatomic) ONEUserItem *authorItem;
 
 @property (strong, nonatomic) NSString *pic_info;
 
@@ -48,6 +48,8 @@
 @property (strong, nonatomic) NSString *share_url;
 
 @property (strong, nonatomic) NSString *tag_title;
+
+@property (strong, nonatomic) ONEUserItem *answererItem;
 
 
 // 音乐cell的属性

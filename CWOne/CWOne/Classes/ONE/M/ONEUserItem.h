@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ONEAuthorItem : NSObject
+@interface ONEUserItem : NSObject
 
 // 快速构造方法
-+ (instancetype)authorItemWithDict:(NSDictionary *)dict;
++ (instancetype)userItemWithDict:(NSDictionary *)dict;
 
 // 原始属性
 
-// 作者名称
+// 用户名称
 @property (strong, nonatomic) NSString *user_name;
 
 // 描述
