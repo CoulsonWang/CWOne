@@ -17,6 +17,34 @@
     // 赋值原始数据
     [item setValuesForKeysWithDictionary:dict];
     
+    // 处理类型
+    switch (item.category.integerValue) {
+        case 0:
+            item.type = ONEHomeItemTypeSmallNote;
+            break;
+        case 1:
+            item.type = ONEHomeItemTypeEssay;
+            break;
+        case 2:
+            item.type = ONEHomeItemTypeSerial;
+            break;
+        case 3:
+            item.type = ONEHomeItemTypeQuestion;
+            break;
+        case 4:
+            item.type = ONEHomeItemTypeMusic;
+            break;
+        case 5:
+            item.type = ONEHomeItemTypeMovie;
+            break;
+        case 8:
+            item.type = ONEHomeItemTypeRadio;
+            break;
+        default:
+            item.type = ONEHomeItemTypeUnknown;
+            break;
+    }
+    
     // 处理作者数据
     NSDictionary *authorDict = dict[@"author"];
     [item setValue:[ONEUserItem userItemWithDict:authorDict] forKeyPath:@"authorItem"];

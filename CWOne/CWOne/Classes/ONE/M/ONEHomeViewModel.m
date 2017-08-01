@@ -27,13 +27,13 @@
     if (homeItem.tag_title != nil) {
         styleStr = homeItem.tag_title;
     } else {
-        styleStr = [self getCategoryTitleWithNumber:homeItem.category.integerValue];
+        styleStr = [self getCategoryTitleWithType:homeItem.type];
     }
     self.categoryTitle = [NSString stringWithFormat:@"- %@ -",styleStr];
     
     // 处理作者名
     NSString *authorStr;
-    if (homeItem.answererItem != nil) {
+    if (homeItem.type == ONEHomeItemTypeQuestion) {
         authorStr = homeItem.answererItem.user_name;
     } else {
         authorStr = [NSString stringWithFormat:@"文/ %@",homeItem.authorItem.user_name];
@@ -43,21 +43,21 @@
 
 
 #pragma mark - 工具方法
-- (NSString *)getCategoryTitleWithNumber:(NSInteger)num {
-    switch (num) {
-        case 0:
+- (NSString *)getCategoryTitleWithType:(ONEHomeItemType)type {
+    switch (type) {
+        case ONEHomeItemTypeSmallNote:
             return @"小记";
-        case 1:
+        case ONEHomeItemTypeEssay:
             return @"阅读";
-        case 2:
+        case ONEHomeItemTypeSerial:
             return @"连载";
-        case 3:
+        case ONEHomeItemTypeQuestion:
             return @"问答";
-        case 4:
+        case ONEHomeItemTypeMusic:
             return @"音乐";
-        case 5:
+        case ONEHomeItemTypeMovie:
             return @"影视";
-        case 8:
+        case ONEHomeItemTypeRadio:
             return @"电台";
             
         default:

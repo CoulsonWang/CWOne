@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    ONEHomeItemTypeSmallNote,
+    ONEHomeItemTypeEssay,
+    ONEHomeItemTypeSerial,
+    ONEHomeItemTypeQuestion,
+    ONEHomeItemTypeMusic,
+    ONEHomeItemTypeMovie,
+    ONEHomeItemTypeRadio,
+    ONEHomeItemTypeUnknown,
+} ONEHomeItemType;
+
 @class ONEUserItem;
 
 @interface ONEHomeItem : NSObject
@@ -15,7 +26,7 @@
 // 快速构造方法
 + (instancetype)homeItemWithDict:(NSDictionary *)dict;
 
-// 原始属性
+/* *********************************** 原始属性 *********************************** */
 
 @property (strong, nonatomic) NSString *item_id;
 
@@ -39,18 +50,11 @@
 
 @property (strong, nonatomic) NSString *last_update_date;
 
-@property (strong, nonatomic) ONEUserItem *authorItem;
-
 @property (strong, nonatomic) NSString *pic_info;
 
 @property (strong, nonatomic) NSString *words_info;
 
 @property (strong, nonatomic) NSString *share_url;
-
-@property (strong, nonatomic) NSString *tag_title;
-
-@property (strong, nonatomic) ONEUserItem *answererItem;
-
 
 // 音乐cell的属性
 @property (strong, nonatomic) NSString *music_name;
@@ -60,5 +64,16 @@
 @property (strong, nonatomic) NSString *audio_album;
 
 @property (strong, nonatomic) NSString *cover;
+
+
+/* *********************************** 自定义属性 *********************************** */
+
+@property (strong, nonatomic) ONEUserItem *authorItem;
+
+@property (strong, nonatomic) ONEUserItem *answererItem;
+
+@property (strong, nonatomic) NSString *tag_title;
+
+@property (assign, nonatomic) ONEHomeItemType type;
 
 @end
