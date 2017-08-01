@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CA1E15E6511676B4268D543 /* libPods-CWOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */; };
+		96469C48D61426A2834B3F99 /* libPods-CWOneTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0873E175AD65EDFFF9C13BF9 /* libPods-CWOneTests.a */; };
+		A88E8621F07288D54C66EDE4 /* libPods-CWOneUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 178CB81C74BD020AFB33A200 /* libPods-CWOneUITests.a */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -34,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		078DDCA7394F783113F4166F /* Pods-CWOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.debug.xcconfig"; sourceTree = "<group>"; };
+		0873E175AD65EDFFF9C13BF9 /* libPods-CWOneTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOneTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		178CB81C74BD020AFB33A200 /* libPods-CWOneUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOneUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5446C785477CA0C07E568670 /* Pods-CWOneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FDD682A7EC1D5E1AA02DB50 /* Pods-CWOneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneTests/Pods-CWOneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A8C8EA9F5DBA5D5DFE7A9B82 /* Pods-CWOneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneTests/Pods-CWOneTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +57,9 @@
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
+		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA1E15E6511676B4268D543 /* libPods-CWOne.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96469C48D61426A2834B3F99 /* libPods-CWOneTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +83,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88E8621F07288D54C66EDE4 /* libPods-CWOneUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4624EEE2A2DE04121A38E099 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */,
+				0873E175AD65EDFFF9C13BF9 /* libPods-CWOneTests.a */,
+				178CB81C74BD020AFB33A200 /* libPods-CWOneUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9321EB31F3058CA0052752B = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +107,8 @@
 				B9321ED81F3058CA0052752B /* CWOneTests */,
 				B9321EE31F3058CA0052752B /* CWOneUITests */,
 				B9321EBD1F3058CA0052752B /* Products */,
+				F7AD2679919B3393C7018D5A /* Pods */,
+				4624EEE2A2DE04121A38E099 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +346,19 @@
 			path = System;
 			sourceTree = "<group>";
 		};
+		F7AD2679919B3393C7018D5A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				078DDCA7394F783113F4166F /* Pods-CWOne.debug.xcconfig */,
+				C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */,
+				6FDD682A7EC1D5E1AA02DB50 /* Pods-CWOneTests.debug.xcconfig */,
+				A8C8EA9F5DBA5D5DFE7A9B82 /* Pods-CWOneTests.release.xcconfig */,
+				5446C785477CA0C07E568670 /* Pods-CWOneUITests.debug.xcconfig */,
+				CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,9 +366,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9321EE91F3058CA0052752B /* Build configuration list for PBXNativeTarget "CWOne" */;
 			buildPhases = (
+				CB3D8DF20CD7F9D2FF2D3160 /* [CP] Check Pods Manifest.lock */,
 				B9321EB81F3058CA0052752B /* Sources */,
 				B9321EB91F3058CA0052752B /* Frameworks */,
 				B9321EBA1F3058CA0052752B /* Resources */,
+				0DA43B607E1E8BE96E53ECD8 /* [CP] Embed Pods Frameworks */,
+				42DF178E2C319B13E2A2E457 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,9 +386,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9321EEC1F3058CA0052752B /* Build configuration list for PBXNativeTarget "CWOneTests" */;
 			buildPhases = (
+				39BE7D95124DD2AC2243D0D7 /* [CP] Check Pods Manifest.lock */,
 				B9321ED11F3058CA0052752B /* Sources */,
 				B9321ED21F3058CA0052752B /* Frameworks */,
 				B9321ED31F3058CA0052752B /* Resources */,
+				0A21F83EECC5BD2143EC8408 /* [CP] Embed Pods Frameworks */,
+				22E017D19E54E30AF7D2B613 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -361,9 +407,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9321EEF1F3058CA0052752B /* Build configuration list for PBXNativeTarget "CWOneUITests" */;
 			buildPhases = (
+				5390CFD4BDF5C9867F326EFC /* [CP] Check Pods Manifest.lock */,
 				B9321EDC1F3058CA0052752B /* Sources */,
 				B9321EDD1F3058CA0052752B /* Frameworks */,
 				B9321EDE1F3058CA0052752B /* Resources */,
+				464901F4457B8289817B4F29 /* [CP] Embed Pods Frameworks */,
+				3138BED35DD94E869C1CA847 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -446,6 +495,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A21F83EECC5BD2143EC8408 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOneTests/Pods-CWOneTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0DA43B607E1E8BE96E53ECD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOne/Pods-CWOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22E017D19E54E30AF7D2B613 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOneTests/Pods-CWOneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3138BED35DD94E869C1CA847 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39BE7D95124DD2AC2243D0D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		42DF178E2C319B13E2A2E457 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOne/Pods-CWOne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		464901F4457B8289817B4F29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5390CFD4BDF5C9867F326EFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CB3D8DF20CD7F9D2FF2D3160 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B9321EB81F3058CA0052752B /* Sources */ = {
@@ -600,9 +787,11 @@
 		};
 		B9321EEA1F3058CA0052752B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 078DDCA7394F783113F4166F /* Pods-CWOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,9 +800,11 @@
 		};
 		B9321EEB1F3058CA0052752B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -622,6 +813,7 @@
 		};
 		B9321EED1F3058CA0052752B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FDD682A7EC1D5E1AA02DB50 /* Pods-CWOneTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CWOneTests/Info.plist;
@@ -634,6 +826,7 @@
 		};
 		B9321EEE1F3058CA0052752B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8C8EA9F5DBA5D5DFE7A9B82 /* Pods-CWOneTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CWOneTests/Info.plist;
@@ -646,6 +839,7 @@
 		};
 		B9321EF01F3058CA0052752B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5446C785477CA0C07E568670 /* Pods-CWOneUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CWOneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -657,6 +851,7 @@
 		};
 		B9321EF11F3058CA0052752B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CWOneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
