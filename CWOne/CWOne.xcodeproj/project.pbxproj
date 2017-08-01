@@ -880,6 +880,7 @@
 				B9321EEB1F3058CA0052752B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B9321EEC1F3058CA0052752B /* Build configuration list for PBXNativeTarget "CWOneTests" */ = {
 			isa = XCConfigurationList;
@@ -888,6 +889,7 @@
 				B9321EEE1F3058CA0052752B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B9321EEF1F3058CA0052752B /* Build configuration list for PBXNativeTarget "CWOneUITests" */ = {
 			isa = XCConfigurationList;
@@ -896,6 +898,7 @@
 				B9321EF11F3058CA0052752B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
