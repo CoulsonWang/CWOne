@@ -23,6 +23,8 @@
 		B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A641F30831C004E64D9 /* ONEHomeNavigationController.m */; };
 		B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */; };
 		B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */; };
+		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
+		B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -80,6 +82,10 @@
 		B90C3A661F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeNavigationBarTitleView.h; sourceTree = "<group>"; };
 		B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeNavigationBarTitleView.m; sourceTree = "<group>"; };
 		B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeNavigationBarTitleView.xib; sourceTree = "<group>"; };
+		B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONENetworkTool.h; sourceTree = "<group>"; };
+		B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONENetworkTool.m; sourceTree = "<group>"; };
+		B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeItem.h; sourceTree = "<group>"; };
+		B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeItem.m; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,6 +419,8 @@
 		B9321F1D1F305AD70052752B /* M */ = {
 			isa = PBXGroup;
 			children = (
+				B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */,
+				B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -466,6 +474,8 @@
 		B9321F231F305AD70052752B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */,
+				B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -780,10 +790,12 @@
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
+				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
+				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,

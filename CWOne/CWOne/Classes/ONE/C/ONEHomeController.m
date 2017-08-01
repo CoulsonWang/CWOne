@@ -8,8 +8,12 @@
 
 #import "ONEHomeController.h"
 #import "ONEHomeNavigationBarTitleView.h"
+#import "ONENetworkTool.h"
+#import "ONEHomeItem.h"
 
 @interface ONEHomeController ()
+
+@property (strong, nonatomic) NSArray *homeItems;
 
 @end
 
@@ -20,13 +24,10 @@
     
     [self setUpNavigationBarItem];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadData];
 }
 
+#pragma mark - 设置UI控件属性
 - (void)setUpNavigationBarItem {
     self.navigationItem.titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
     
@@ -37,9 +38,25 @@
     [searchButton sizeToFit];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
-    
 }
 
+#pragma mark - 私有工具方法
+- (void)loadData {
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
+        
+        NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dict in contentList) {
+            ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
+            [tempArray addObject:item];
+        }
+        self.homeItems = tempArray;
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 
 #pragma mark - 事件响应
 - (void)searchButtonDidClick {

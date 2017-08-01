@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 
+@property (assign, nonatomic, getter=isUnfold) BOOL unfold;
+
 @end
 
 @implementation ONEHomeNavigationBarTitleView
@@ -27,6 +29,20 @@
 }
 
 - (IBAction)titleButtonClick:(UIButton *)sender {
+    
+    self.unfold = !self.isUnfold;
+    
+    if(self.unfold) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(radian(-179.9));
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(0);
+        }];
+    }
+    
+    
 }
 
 @end

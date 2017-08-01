@@ -19,8 +19,9 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0r-OP-jfV">
                     <rect key="frame" x="0.0" y="0.0" width="260" height="44"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="2017  /  08  /  01">
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="2"/>
+                    <state key="normal" title="2017    /    08    /    01">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
