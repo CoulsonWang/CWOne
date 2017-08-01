@@ -1,38 +1,43 @@
 //
-//  CWOneTests.m
-//  CWOneTests
+//  ONELaunchController.m
+//  CWOne
 //
 //  Created by Coulson_Wang on 2017/8/1.
 //  Copyright © 2017年 Coulson_Wang. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import "ONELaunchController.h"
 #import "NSString+CWTranslate.h"
+#import "ONEMainTabBarController.h"
 
-@interface CWOneTests : XCTestCase
+@interface ONELaunchController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
-@implementation CWOneTests
+@implementation ONELaunchController
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample {
-    NSString *str = [self getCurrentDateString];
-    NSLog(@"%@",str);
-    XCTAssert([str isEqualToString:@"地球历二〇一七年八月一日"],@"错误");
+#pragma mark - view的生命周期
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.timeLabel.text = [self getCurrentDateString];
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    sleep(1.5);
+    
+    [self changeRootContoller];
+}
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+
+#pragma mark - 私有方法
 - (NSString *)getCurrentDateString {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     
@@ -63,6 +68,11 @@
     
     NSString *str = [NSString stringWithFormat:@"地球历%@年%@月%@日",yearStr,monStr,dayStr];
     return str;
+}
+
+- (void)changeRootContoller {
+    ONEMainTabBarController *tabBarVC = [[ONEMainTabBarController alloc] init];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
 }
 
 @end

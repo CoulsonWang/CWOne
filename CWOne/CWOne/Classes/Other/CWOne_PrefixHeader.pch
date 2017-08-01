@@ -1,0 +1,15 @@
+//
+//  CWOne_PrefixHeader.pch
+//  CWOne
+//
+//  Created by Coulson_Wang on 2017/8/1.
+//  Copyright © 2017年 Coulson_Wang. All rights reserved.
+//
+
+#ifndef CWOne_PrefixHeader_pch
+#define CWOne_PrefixHeader_pch
+
+#define CWScreenW [UIScreen mainScreen].bounds.size.width
+#define CWScreenH [UIScreen mainScreen].bounds.size.height
+
+#endif /* CWOne_PrefixHeader_pch */
