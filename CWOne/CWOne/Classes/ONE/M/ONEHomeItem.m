@@ -7,12 +7,25 @@
 //
 
 #import "ONEHomeItem.h"
+#import "ONEAuthorItem.h"
 
 @implementation ONEHomeItem
 
 + (instancetype)homeItemWithDict:(NSDictionary *)dict {
     ONEHomeItem *item = [[ONEHomeItem alloc] init];
+    
+    // 赋值原始数据
     [item setValuesForKeysWithDictionary:dict];
+    
+    // 处理作者数据
+    NSDictionary *authorDict = dict[@"author"];
+    [item setValue:[ONEAuthorItem authorItemWithDict:authorDict] forKeyPath:@"authorItem"];
+    
+    // 处理显示标题数据
+    NSArray *tagList = dict[@"tag_list"];
+    NSString *title = tagList.firstObject[@"title"];
+    [item setValue:title forKeyPath:@"tag_title"];
+    
     return item;
 }
 

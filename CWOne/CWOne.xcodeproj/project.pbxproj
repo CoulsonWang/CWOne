@@ -25,6 +25,7 @@
 		B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */; };
 		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
 		B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */; };
+		B90C3A731F30BBBB004E64D9 /* ONEAuthorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -86,6 +87,8 @@
 		B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONENetworkTool.m; sourceTree = "<group>"; };
 		B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeItem.h; sourceTree = "<group>"; };
 		B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeItem.m; sourceTree = "<group>"; };
+		B90C3A711F30BBBB004E64D9 /* ONEAuthorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorItem.h; sourceTree = "<group>"; };
+		B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorItem.m; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +424,8 @@
 			children = (
 				B90C3A6E1F309C61004E64D9 /* ONEHomeItem.h */,
 				B90C3A6F1F309C61004E64D9 /* ONEHomeItem.m */,
+				B90C3A711F30BBBB004E64D9 /* ONEAuthorItem.h */,
+				B90C3A721F30BBBB004E64D9 /* ONEAuthorItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -796,6 +801,7 @@
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
+				B90C3A731F30BBBB004E64D9 /* ONEAuthorItem.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
