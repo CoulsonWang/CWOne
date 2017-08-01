@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
+@property (weak, nonatomic) IBOutlet UIButton *backToTodayButton;
 
 @property (assign, nonatomic, getter=isUnfold) BOOL unfold;
 
@@ -43,6 +44,8 @@
     }
     
     
+}
+- (IBAction)searchButtonClick:(UIButton *)sender {
 }
 
 @end

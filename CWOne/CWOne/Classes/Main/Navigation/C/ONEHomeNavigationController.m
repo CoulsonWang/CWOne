@@ -8,6 +8,7 @@
 
 #import "ONEHomeNavigationController.h"
 #import "UIImage+CWColorAndStretch.h"
+#import "ONEHomeNavigationBarTitleView.h"
 
 @interface ONEHomeNavigationController ()
 
@@ -20,7 +21,9 @@
     
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:254/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
-    
+    ONEHomeNavigationBarTitleView *titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
+    titleView.frame = CGRectMake(0, -20, CWScreenW, 64);
+    [self.navigationBar addSubview:titleView];
 }
 
 - (void)didReceiveMemoryWarning {

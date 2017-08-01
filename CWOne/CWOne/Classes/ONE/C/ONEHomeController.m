@@ -26,8 +26,6 @@ static NSString *const cellID = @"OneHomeCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUpNavigationBarItem];
-    
     [self loadData];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:cellID];
@@ -36,17 +34,7 @@ static NSString *const cellID = @"OneHomeCellID";
 }
 
 #pragma mark - 设置UI控件属性
-- (void)setUpNavigationBarItem {
-    self.navigationItem.titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
-    
-    UIButton *searchButton = [[UIButton alloc] init];
-    [searchButton setImage:[UIImage imageNamed:@"search_gray"] forState:UIControlStateNormal];
-    [searchButton setImage:[UIImage imageNamed:@"search_dark"] forState:UIControlStateHighlighted];
-    [searchButton addTarget:self action:@selector(searchButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
-    [searchButton sizeToFit];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
-}
+
 
 #pragma mark - 私有工具方法
 - (void)loadData {
@@ -67,9 +55,7 @@ static NSString *const cellID = @"OneHomeCellID";
 }
 
 #pragma mark - 事件响应
-- (void)searchButtonDidClick {
-    NSLog(@"点击了右侧搜索按钮");
-}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
