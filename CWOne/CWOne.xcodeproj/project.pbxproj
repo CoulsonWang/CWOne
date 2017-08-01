@@ -14,6 +14,10 @@
 		B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */; };
 		B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */; };
 		B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A4C1F3072A9004E64D9 /* ONEMainTabBarController.m */; };
+		B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */; };
+		B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A521F3079CA004E64D9 /* ONEAllController.m */; };
+		B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A551F3079DA004E64D9 /* ONEMeController.m */; };
+		B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A561F3079DA004E64D9 /* ONEMeController.xib */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -55,6 +59,13 @@
 		B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CWTranslate.m"; sourceTree = "<group>"; };
 		B90C3A4B1F3072A9004E64D9 /* ONEMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEMainTabBarController.h; sourceTree = "<group>"; };
 		B90C3A4C1F3072A9004E64D9 /* ONEMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEMainTabBarController.m; sourceTree = "<group>"; };
+		B90C3A4E1F3079B5004E64D9 /* ONEHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeController.h; sourceTree = "<group>"; };
+		B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeController.m; sourceTree = "<group>"; };
+		B90C3A511F3079CA004E64D9 /* ONEAllController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllController.h; sourceTree = "<group>"; };
+		B90C3A521F3079CA004E64D9 /* ONEAllController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllController.m; sourceTree = "<group>"; };
+		B90C3A541F3079DA004E64D9 /* ONEMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEMeController.h; sourceTree = "<group>"; };
+		B90C3A551F3079DA004E64D9 /* ONEMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEMeController.m; sourceTree = "<group>"; };
+		B90C3A561F3079DA004E64D9 /* ONEMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEMeController.xib; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +286,8 @@
 		B9321F101F305AD70052752B /* C */ = {
 			isa = PBXGroup;
 			children = (
+				B90C3A511F3079CA004E64D9 /* ONEAllController.h */,
+				B90C3A521F3079CA004E64D9 /* ONEAllController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -306,6 +319,9 @@
 		B9321F181F305AD70052752B /* C */ = {
 			isa = PBXGroup;
 			children = (
+				B90C3A541F3079DA004E64D9 /* ONEMeController.h */,
+				B90C3A551F3079DA004E64D9 /* ONEMeController.m */,
+				B90C3A561F3079DA004E64D9 /* ONEMeController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -337,6 +353,8 @@
 		B9321F1C1F305AD70052752B /* C */ = {
 			isa = PBXGroup;
 			children = (
+				B90C3A4E1F3079B5004E64D9 /* ONEHomeController.h */,
+				B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -535,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -702,7 +721,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
+				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
+				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
+				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,

@@ -1,30 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g3w-31-hgv">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Home Controller-->
+        <scene sceneID="FgG-db-8gW">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="s20-1n-qzo" customClass="ONEHomeController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Kd-EI-IFS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="s20-1n-qzo" id="dHV-oO-gAS"/>
+                            <outlet property="delegate" destination="s20-1n-qzo" id="pcC-X3-6Gt"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="homeUnselectedV4" selectedImage="homeSelectedV4" id="2cY-H1-gfH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJ0-VM-886" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-165" y="-802"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="vRb-zI-azJ">
+            <objects>
+                <tabBarController id="g3w-31-hgv" customClass="ONEMainTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="PkX-II-uQG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="s20-1n-qzo" kind="relationship" relationship="viewControllers" id="aKu-yA-8G9"/>
+                        <segue destination="h0G-tf-Qj0" kind="relationship" relationship="viewControllers" id="dKp-ap-j2b"/>
+                        <segue destination="yc4-5d-nO1" kind="relationship" relationship="viewControllers" id="Acn-Wm-1Of"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rB8-nn-t4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009" y="-157"/>
+        </scene>
+        <!--All Controller-->
+        <scene sceneID="Glh-xk-2vq">
+            <objects>
+                <tableViewController id="h0G-tf-Qj0" customClass="ONEAllController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="VrQ-ep-riT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="h0G-tf-Qj0" id="cAl-4J-Hfm"/>
+                            <outlet property="delegate" destination="h0G-tf-Qj0" id="F90-0z-n4G"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="allUnselectedV4" selectedImage="allSelectedV4" id="Bq7-fg-guc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lev-69-f2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165" y="-157"/>
+        </scene>
+        <!--Me Controller-->
+        <scene sceneID="ZJm-MP-CSv">
+            <objects>
+                <viewController id="yc4-5d-nO1" customClass="ONEMeController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLH-EI-1kx"/>
+                        <viewControllerLayoutGuide type="bottom" id="shZ-RL-OtW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tna-hy-WDY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="meUnselectedV4" selectedImage="meSelectedV4" id="1Rx-af-zMO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aM7-BR-Tcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165" y="647"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="allSelectedV4" width="40" height="40"/>
+        <image name="allUnselectedV4" width="40" height="40"/>
+        <image name="homeSelectedV4" width="40" height="40"/>
+        <image name="homeUnselectedV4" width="40" height="40"/>
+        <image name="meSelectedV4" width="40" height="40"/>
+        <image name="meUnselectedV4" width="40" height="40"/>
+    </resources>
 </document>

@@ -71,7 +71,8 @@
 }
 
 - (void)changeRootContoller {
-    ONEMainTabBarController *tabBarVC = [[ONEMainTabBarController alloc] init];
+    ONEMainTabBarController *tabBarVC = [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;
+    
     [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
 }
 
