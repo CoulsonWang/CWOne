@@ -38,6 +38,19 @@
     [super awakeFromNib];
 }
 
+- (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
+    _weatherItem = weatherItem;
+    
+    NSDateComponents *components = [self getComponentsByDateString:weatherItem.date];
+    
+    NSString *title = [NSString stringWithFormat:@"%ld    /    %02zd    /    %02zd",components.year,components.month,components.day];
+    [self.titleButton setTitle:title forState:UIControlStateNormal];
+    
+    NSString *weatherStr = [NSString stringWithFormat:@"%@     %@     %@°C",weatherItem.city_name,weatherItem.climate,weatherItem.temperature];
+    self.weatherLabel.text = weatherStr;
+}
+
+#pragma mark - 事件响应
 - (IBAction)titleButtonClick:(UIButton *)sender {
     
     self.unfold = !self.isUnfold;
@@ -53,16 +66,11 @@
     }
 }
 
-- (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
-    _weatherItem = weatherItem;
+- (IBAction)searchButtonClick:(UIButton *)sender {
     
-    NSDateComponents *components = [self getComponentsByDateString:weatherItem.date];
-    
-    NSString *title = [NSString stringWithFormat:@"%ld    /    %02zd    /    %02zd",components.year,components.month,components.day];
-    [self.titleButton setTitle:title forState:UIControlStateNormal];
 }
 
-
+#pragma mark - 对外方法
 - (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset {
     // 修改搜索按钮的alpha
     self.searchButton.alpha = (1+offset/ONEScrollOffsetLimit);
@@ -84,9 +92,11 @@
     self.backToTodayButton.centerY = backCenterY;
 }
 
-- (IBAction)searchButtonClick:(UIButton *)sender {
-    
+- (void)enableTheTitleButton:(BOOL)isEnable {
+    self.titleButton.enabled = isEnable;
 }
+
+
 
 #pragma mark - 私有方法
 - (NSDateComponents *)getComponentsByDateString:(NSString *)dateString {

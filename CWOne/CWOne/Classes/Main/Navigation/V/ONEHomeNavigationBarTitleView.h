@@ -18,4 +18,6 @@
 
 - (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset;
 
+- (void)enableTheTitleButton:(BOOL)isEnable;
+
 @end
