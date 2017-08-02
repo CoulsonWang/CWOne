@@ -30,8 +30,11 @@ static ONENetworkTool *_instance;
         requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/channel/one/%@/0",date];
     }
     
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
     
-    [[AFHTTPSessionManager manager] GET:requestURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         // 进度
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if (success) {

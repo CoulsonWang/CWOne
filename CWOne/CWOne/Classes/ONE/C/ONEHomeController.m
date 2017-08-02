@@ -7,11 +7,11 @@
 //
 
 #import "ONEHomeController.h"
-#import "ONEHomeNavigationBarTitleView.h"
 #import "ONENetworkTool.h"
 #import "ONEHomeItem.h"
 #import "ONEHomeCell.h"
 #import "ONEHomeViewModel.h"
+#import "ONEMainTabBarController.h"
 
 static NSString *const cellID = @"OneHomeCellID";
 
@@ -23,10 +23,17 @@ static NSString *const cellID = @"OneHomeCellID";
 
 @implementation ONEHomeController
 
+#pragma mark - 懒加载
+- (NSArray *)homeItems {
+    if (!_homeItems) {
+        ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        _homeItems = tabBarVC.homeItems;
+    }
+    return _homeItems;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     self.tableView.estimatedRowHeight = 200;
