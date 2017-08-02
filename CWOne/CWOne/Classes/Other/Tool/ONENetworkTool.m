@@ -34,12 +34,32 @@ static ONENetworkTool *_instance;
     [[AFHTTPSessionManager manager] GET:requestURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         // 进度
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        NSDictionary *dataDict = responseObject[@"data"];
-        success(dataDict);
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
+        if (failure) {
+            failure(error);
+        }
     }];
 }
 
+- (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *))failure {
+    
+    NSDictionary *parameters = @{};
+    
+    [[AFHTTPSessionManager manager] POST:@"" parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            success();
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
 
 @end

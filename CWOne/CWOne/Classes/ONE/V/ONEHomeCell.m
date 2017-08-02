@@ -10,6 +10,7 @@
 #import "ONEHomeViewModel.h"
 #import "ONEHomeItem.h"
 #import <UIImageView+WebCache.h>
+#import "ONELikeView.h"
 
 #define kSideMargin 25.0
 #define kRatio 0.6
@@ -21,8 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image_View;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
+@property (weak, nonatomic) IBOutlet ONELikeView *likeView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
@@ -39,6 +39,8 @@
     self.imageViewRightMarginConstraint.constant = kSideMargin;
     self.imageViewHeightConstraint.constant = (CWScreenW - 2 * kSideMargin) * kRatio;
     [self.contentView layoutIfNeeded];
+    
+    self.likeView = [ONELikeView likeView];
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
@@ -55,14 +57,21 @@
             weakSelf.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
         }
     }];
+    
+    self.summaryLabel.text = viewModel.homeItem.forward;
+    self.timeLabel.text = viewModel.timeStr;
+    self.likeView.viewModel = viewModel;
+    
 }
 
 
 
+#pragma mark - 事件响应
 
-- (IBAction)likeButtonClick:(UIButton *)sender {
-}
 - (IBAction)shareButtonClick:(UIButton *)sender {
 }
+
+#pragma mark - 私有方法
+
 
 @end

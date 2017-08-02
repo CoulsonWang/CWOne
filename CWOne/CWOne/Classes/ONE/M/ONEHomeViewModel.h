@@ -22,6 +22,10 @@
 // 顶部显示的类型文本
 @property (strong, nonatomic) NSString *categoryTitle;
 
+// 作者标签文本
 @property (strong, nonatomic) NSString *authorString;
+
+// 时间文本
+@property (strong, nonatomic) NSString *timeStr;
 
 @end

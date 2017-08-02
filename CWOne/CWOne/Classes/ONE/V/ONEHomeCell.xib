@@ -66,35 +66,14 @@
                             <action selector="shareButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rji-mc-83c"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgj-eB-hnC" userLabel="点赞相关">
-                        <rect key="frame" x="311" y="366.33333333333331" width="60" height="30"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh2-I0-HAY" userLabel="点赞按钮">
-                                <rect key="frame" x="0.0" y="8" width="60" height="22"/>
-                                <state key="normal" image="like_gray_mini"/>
-                                <state key="selected" image="liked_red_mini"/>
-                                <connections>
-                                    <action selector="likeButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H2N-Hj-VJN"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-8l-iIR" userLabel="点赞数">
-                                <rect key="frame" x="37" y="3" width="26" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgj-eB-hnC" userLabel="点赞控件">
+                        <rect key="frame" x="311" y="374.33333333333331" width="60" height="22"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dh2-I0-HAY" firstAttribute="leading" secondItem="Bgj-eB-hnC" secondAttribute="leading" id="9vE-OQ-xBZ"/>
-                            <constraint firstAttribute="trailing" secondItem="Dh2-I0-HAY" secondAttribute="trailing" id="Bq5-oe-Xcl"/>
-                            <constraint firstAttribute="bottom" secondItem="Og7-8l-iIR" secondAttribute="bottom" constant="15" id="Mpw-jc-CHx"/>
-                            <constraint firstAttribute="bottom" secondItem="Dh2-I0-HAY" secondAttribute="bottom" id="NJS-1f-41j"/>
                             <constraint firstAttribute="width" constant="60" id="aMa-nG-UxD"/>
-                            <constraint firstItem="Og7-8l-iIR" firstAttribute="leading" secondItem="Bgj-eB-hnC" secondAttribute="leading" constant="37" id="kou-1Y-ufG"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0st-cx-YOq" userLabel="预览文本">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0st-cx-YOq" userLabel="预览文本">
                         <rect key="frame" x="15" y="269" width="384" height="71"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,7 +100,7 @@
                     <constraint firstAttribute="bottom" secondItem="Jop-Hz-Fqm" secondAttribute="bottom" constant="10" id="lSM-3H-s8X"/>
                     <constraint firstItem="nnZ-QB-mKa" firstAttribute="top" secondItem="rAY-Aq-MgZ" secondAttribute="bottom" constant="15" id="u7x-aE-okS"/>
                     <constraint firstItem="IbH-77-0dc" firstAttribute="leading" secondItem="CE8-dj-LFj" secondAttribute="leading" id="x9P-kV-NHM"/>
-                    <constraint firstItem="Bgj-eB-hnC" firstAttribute="height" secondItem="kh8-Lf-hWV" secondAttribute="height" constant="8" id="z1l-wP-wiF"/>
+                    <constraint firstItem="Bgj-eB-hnC" firstAttribute="height" secondItem="kh8-Lf-hWV" secondAttribute="height" id="z1l-wP-wiF"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -132,8 +111,7 @@
                 <outlet property="imageViewLeftMarginConstraint" destination="IZY-Dl-KEa" id="D6t-Ox-PE8"/>
                 <outlet property="imageViewRightMarginConstraint" destination="HKs-Oy-Ngf" id="itZ-jz-acg"/>
                 <outlet property="image_View" destination="CE8-dj-LFj" id="dea-X5-aNN"/>
-                <outlet property="likeButton" destination="Dh2-I0-HAY" id="gaS-up-16e"/>
-                <outlet property="likeCountLabel" destination="Og7-8l-iIR" id="oKd-ka-2mY"/>
+                <outlet property="likeView" destination="Bgj-eB-hnC" id="TUT-gC-3Pe"/>
                 <outlet property="summaryLabel" destination="0st-cx-YOq" id="IGS-7D-YhL"/>
                 <outlet property="timeLabel" destination="Jop-Hz-Fqm" id="ZAP-Ki-hmO"/>
                 <outlet property="titleLabel" destination="nnZ-QB-mKa" id="n99-Th-2N8"/>
@@ -142,8 +120,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="like_gray_mini" width="16" height="16"/>
-        <image name="liked_red_mini" width="16" height="16"/>
         <image name="share_gray_mini" width="16" height="16"/>
     </resources>
 </document>

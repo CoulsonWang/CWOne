@@ -48,8 +48,6 @@ typedef enum : NSUInteger {
 
 @property (strong, nonatomic) NSString *post_date;
 
-@property (strong, nonatomic) NSString *last_update_date;
-
 @property (strong, nonatomic) NSString *pic_info;
 
 @property (strong, nonatomic) NSString *words_info;
@@ -75,5 +73,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSString *tag_title;
 
 @property (assign, nonatomic) ONEHomeItemType type;
+
+@property (assign, nonatomic, getter=isLike) BOOL like;
 
 @end

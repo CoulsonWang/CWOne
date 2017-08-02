@@ -36,6 +36,8 @@
 		B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FE51F30C18A009025FD /* ONEHomeCell.m */; };
 		B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */; };
 		B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */; };
+		B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FED1F31A5D7009025FD /* ONELikeView.m */; };
+		B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,9 @@
 		B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCell.xib; sourceTree = "<group>"; };
 		B9A73FE91F30CD85009025FD /* ONEHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeViewModel.h; sourceTree = "<group>"; };
 		B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeViewModel.m; sourceTree = "<group>"; };
+		B9A73FEC1F31A5D7009025FD /* ONELikeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELikeView.h; sourceTree = "<group>"; };
+		B9A73FED1F31A5D7009025FD /* ONELikeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELikeView.m; sourceTree = "<group>"; };
+		B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELikeView.xib; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -446,6 +451,9 @@
 				B9A73FE41F30C18A009025FD /* ONEHomeCell.h */,
 				B9A73FE51F30C18A009025FD /* ONEHomeCell.m */,
 				B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */,
+				B9A73FEC1F31A5D7009025FD /* ONELikeView.h */,
+				B9A73FED1F31A5D7009025FD /* ONELikeView.m */,
+				B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -597,6 +605,7 @@
 				TargetAttributes = {
 					B9321EBB1F3058CA0052752B = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 76G5YKQF73;
 						ProvisioningStyle = Automatic;
 					};
 					B9321ED41F3058CA0052752B = {
@@ -638,6 +647,7 @@
 			files = (
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
+				B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -813,6 +823,7 @@
 				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
+				B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
@@ -971,6 +982,7 @@
 			baseConfigurationReference = 078DDCA7394F783113F4166F /* Pods-CWOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76G5YKQF73;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CWOne/Classes/Other/CWOne_PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
@@ -986,6 +998,7 @@
 			baseConfigurationReference = C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76G5YKQF73;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CWOne/Classes/Other/CWOne_PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
