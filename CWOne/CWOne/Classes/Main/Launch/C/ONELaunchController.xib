@@ -5,11 +5,13 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONELaunchController">
             <connections>
+                <outlet property="imageView" destination="3kY-bQ-n4O" id="Wls-pi-QOf"/>
                 <outlet property="timeLabel" destination="PSJ-BJ-WUf" id="cFB-j3-8vG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchViewLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QjB-ya-c1c">
-                    <rect key="frame" x="145" y="100" width="125" height="56"/>
+                    <rect key="frame" x="145" y="120" width="125" height="56"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-BJ-WUf">
                     <rect key="frame" x="363" y="699" width="35" height="21"/>
@@ -28,12 +30,21 @@
                     <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-bQ-n4O">
+                    <rect key="frame" x="57" y="176" width="300" height="351.66666666666663"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3kY-bQ-n4O" secondAttribute="height" multiplier="251:295" id="Ot7-bi-J3L"/>
+                        <constraint firstAttribute="width" constant="300" id="cTF-cj-wFC"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="PSJ-BJ-WUf" secondAttribute="bottom" constant="16" id="3GZ-rD-2hc"/>
                 <constraint firstItem="QjB-ya-c1c" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5vF-0N-GC4"/>
-                <constraint firstItem="QjB-ya-c1c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="FoI-eM-dWo"/>
+                <constraint firstItem="QjB-ya-c1c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="FoI-eM-dWo"/>
+                <constraint firstItem="3kY-bQ-n4O" firstAttribute="top" secondItem="QjB-ya-c1c" secondAttribute="bottom" id="aTg-Pc-GaZ"/>
+                <constraint firstItem="3kY-bQ-n4O" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cfi-Is-ILc"/>
                 <constraint firstAttribute="trailing" secondItem="PSJ-BJ-WUf" secondAttribute="trailing" constant="16" id="dyv-xV-2Fl"/>
             </constraints>
         </view>

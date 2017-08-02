@@ -26,43 +26,19 @@
 }
 
 - (void)testExample {
-    NSString *str = [self getCurrentDateString];
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"EEE";
+    
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    
     NSLog(@"%@",str);
-    XCTAssert([str isEqualToString:@"地球历二〇一七年八月一日"],@"错误");
+    
+    XCTAssert([str isEqualToString:@"Wed"],@"错误");
     
 }
 
 
-- (NSString *)getCurrentDateString {
-    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    
-    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
-    
-    NSInteger year = components.year;
-    NSMutableString *yearStr = [NSMutableString string];
-    [yearStr appendString:[NSString chineseNumberWithNumber:year/1000]];
-    [yearStr appendString:[NSString chineseNumberWithNumber:(year%1000)/100]];
-    [yearStr appendString:[NSString chineseNumberWithNumber:(year%100)/10]];
-    [yearStr appendString:[NSString chineseNumberWithNumber:year%10]];
-    
-    
-    NSInteger month = components.month;
-    NSMutableString *monStr = [NSMutableString string];
-    if (month>=10) {
-        [monStr appendString:[NSString chineseNumberWithNumber:month/10]];
-    }
-    [monStr appendString:[NSString chineseNumberWithNumber:month%10]];
-    
-    
-    NSInteger day = components.day;
-    NSMutableString *dayStr = [NSMutableString string];
-    if (day>=10) {
-        [dayStr appendString:[NSString chineseNumberWithNumber:day/10]];
-    }
-    [dayStr appendString:[NSString chineseNumberWithNumber:day%10]];
-    
-    NSString *str = [NSString stringWithFormat:@"地球历%@年%@月%@日",yearStr,monStr,dayStr];
-    return str;
-}
 
 @end

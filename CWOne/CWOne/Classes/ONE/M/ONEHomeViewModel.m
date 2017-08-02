@@ -36,7 +36,7 @@
     if (homeItem.type == ONEHomeItemTypeQuestion) {
         authorStr = homeItem.answererItem.user_name;
     } else {
-        authorStr = [NSString stringWithFormat:@"文/ %@",homeItem.authorItem.user_name];
+        authorStr = [NSString stringWithFormat:@"文 / %@",homeItem.authorItem.user_name];
     }
     self.authorString = authorStr;
     

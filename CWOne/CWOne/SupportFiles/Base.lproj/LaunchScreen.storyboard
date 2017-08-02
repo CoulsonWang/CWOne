@@ -21,12 +21,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchViewLogo" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-gA-Tea">
-                                <rect key="frame" x="145" y="100" width="125" height="56"/>
+                                <rect key="frame" x="145" y="120" width="125" height="56"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SHq-gA-Tea" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="ruJ-Nl-5ef"/>
+                            <constraint firstItem="SHq-gA-Tea" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="120" id="ruJ-Nl-5ef"/>
                             <constraint firstItem="SHq-gA-Tea" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zyY-5K-c8o"/>
                         </constraints>
                     </view>

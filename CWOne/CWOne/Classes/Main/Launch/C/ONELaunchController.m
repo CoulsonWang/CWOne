@@ -13,6 +13,7 @@
 @interface ONELaunchController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -24,10 +25,12 @@
     
     self.timeLabel.text = [self getCurrentDateString];
     
+    self.imageView.image = [self getWeekdayImage];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    sleep(1.5);
+    sleep(2.0);
     
     [self changeRootContoller];
 }
@@ -68,6 +71,16 @@
     
     NSString *str = [NSString stringWithFormat:@"地球历%@年%@月%@日",yearStr,monStr,dayStr];
     return str;
+}
+
+- (UIImage *)getWeekdayImage {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"EEE";
+    
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    
+    return [UIImage imageNamed:str];
 }
 
 - (void)changeRootContoller {
