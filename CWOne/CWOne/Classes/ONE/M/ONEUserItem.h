@@ -21,5 +21,8 @@
 // 描述
 @property (strong, nonatomic) NSString *desc;
 
+// 用户头像
+@property (strong, nonatomic) NSString *web_url;
+
 
 @end

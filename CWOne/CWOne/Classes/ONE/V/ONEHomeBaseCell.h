@@ -11,7 +11,7 @@
 
 @class ONEHomeViewModel;
 
-@interface ONEHomeBaseCell : UITableViewCell
+@interface  ONEHomeBaseCell: UITableViewCell
 
 @property (strong, nonatomic) ONEHomeViewModel *viewModel;
 

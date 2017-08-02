@@ -44,6 +44,8 @@
 		B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */; };
 		B9A73FFE1F31F190009025FD /* ONEHomeSmallNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */; };
 		B9A740011F31F2ED009025FD /* ONEHomeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */; };
+		B9A740041F32195D009025FD /* ONEHomeRadioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740031F32195D009025FD /* ONEHomeRadioCell.m */; };
+		B9A740061F32197A009025FD /* ONEHomeRadioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A740051F32197A009025FD /* ONEHomeRadioCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +135,9 @@
 		B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeSmallNoteCell.xib; sourceTree = "<group>"; };
 		B9A73FFF1F31F2ED009025FD /* ONEHomeBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeBaseCell.h; sourceTree = "<group>"; };
 		B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeBaseCell.m; sourceTree = "<group>"; };
+		B9A740021F32195D009025FD /* ONEHomeRadioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeRadioCell.h; sourceTree = "<group>"; };
+		B9A740031F32195D009025FD /* ONEHomeRadioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeRadioCell.m; sourceTree = "<group>"; };
+		B9A740051F32197A009025FD /* ONEHomeRadioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeRadioCell.xib; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -475,6 +480,9 @@
 				B9A73FFA1F31F190009025FD /* ONEHomeSmallNoteCell.h */,
 				B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */,
 				B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */,
+				B9A740021F32195D009025FD /* ONEHomeRadioCell.h */,
+				B9A740031F32195D009025FD /* ONEHomeRadioCell.m */,
+				B9A740051F32197A009025FD /* ONEHomeRadioCell.xib */,
 				B9A73FEC1F31A5D7009025FD /* ONELikeView.h */,
 				B9A73FED1F31A5D7009025FD /* ONELikeView.m */,
 				B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */,
@@ -680,6 +688,7 @@
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
+				B9A740061F32197A009025FD /* ONEHomeRadioCell.xib in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 			);
@@ -867,6 +876,7 @@
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
+				B9A740041F32195D009025FD /* ONEHomeRadioCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

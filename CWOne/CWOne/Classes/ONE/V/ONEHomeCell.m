@@ -63,10 +63,9 @@
     self.authorLabel.text = viewModel.authorString;
     
     NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
-    __weak typeof(self) weakSelf = self;
     [self.image_View sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"center_diary_placeholder"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         if (error) {
-            weakSelf.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
+            self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
         }
     }];
     

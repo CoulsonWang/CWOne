@@ -16,6 +16,7 @@
 #import <MJRefresh.h>
 #import "ONEHomeCell.h"
 #import "ONEHomeSmallNoteCell.h"
+#import "ONEHomeRadioCell.h"
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeSmallNoteCellID = @"OneHomeSmallNoteCellID";
@@ -48,6 +49,8 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 - (void)setUpTableView {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeSmallNoteCell class]) bundle:nil] forCellReuseIdentifier:OneHomeSmallNoteCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeRadioCell class]) bundle:nil] forCellReuseIdentifier:OneHomeRadioCellID];
+    
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
