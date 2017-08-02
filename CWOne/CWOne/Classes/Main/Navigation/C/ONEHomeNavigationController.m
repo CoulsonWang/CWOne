@@ -11,6 +11,7 @@
 #import "ONEHomeNavigationBarTitleView.h"
 #import "ONEHomeWeatherItem.h"
 #import "ONEMainTabBarController.h"
+#import <objc/message.h>
 
 @interface ONEHomeNavigationController ()
 
@@ -35,7 +36,6 @@
     titleView.weatherItem = self.weatherItem;
     [self.navigationBar addSubview:titleView];
     
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +43,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateTitleViewWithOffset:(CGFloat)offset {
+    // 修改状态栏的透明度
+    [self changeAlphaOfStatusBar:(1+offset/ONEScrollOffsetLimit)];
 
+}
+
+- (void)changeAlphaOfStatusBar:(CGFloat)alpha {
+    UIApplication *app = [UIApplication sharedApplication];
+    // 通过KVC拿到statusBar
+    UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+    statusBar.alpha = alpha;
+}
 
 
 @end

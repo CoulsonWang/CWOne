@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSString+CWTranslate.h"
+#import <objc/message.h>
 
 @interface CWOneTests : XCTestCase
 
@@ -28,14 +29,15 @@
 - (void)testExample {
     
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"EEE";
+    unsigned int num;
+    Ivar *ivars = class_copyIvarList([UIApplication class], &num);
+    for (int i=0; i < num; i++) {
+        Ivar var = ivars[i];
+        NSString *key = [NSString stringWithUTF8String:ivar_getName(var)];
+        NSLog(@"%@",key);
+    }
     
-    NSString *str = [formatter stringFromDate:[NSDate date]];
-    
-    NSLog(@"%@",str);
-    
-    XCTAssert([str isEqualToString:@"Wed"],@"错误");
+    XCTAssert(1,@"错误");
     
 }
 

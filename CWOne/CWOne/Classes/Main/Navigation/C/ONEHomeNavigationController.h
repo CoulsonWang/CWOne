@@ -10,4 +10,6 @@
 
 @interface ONEHomeNavigationController : UINavigationController
 
+- (void)updateTitleViewWithOffset:(CGFloat)offset;
+
 @end

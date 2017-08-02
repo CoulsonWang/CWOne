@@ -12,6 +12,7 @@
 #import "ONEHomeCell.h"
 #import "ONEHomeViewModel.h"
 #import "ONEMainTabBarController.h"
+#import "ONEHomeNavigationController.h"
 #import <MJRefresh.h>
 
 static NSString *const cellID = @"OneHomeCellID";
@@ -98,6 +99,17 @@ static NSString *const cellID = @"OneHomeCellID";
     cell.viewModel = viewModel;
     
     return cell;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    // 超过一定距离时才更新
+    if (offsetY <= 0) {
+        // 通知NavigationController更新视图
+        ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
+        [navVC updateTitleViewWithOffset:offsetY];
+    }
     
 }
 
