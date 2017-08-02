@@ -9,12 +9,20 @@
 #import "ONEHomeNavigationBarTitleView.h"
 #import "ONEHomeWeatherItem.h"
 
+#define kMaxTitleY 20.0
+#define kMinTitleY 0.0
+#define kBackBtnCenterYOffset 10.0
+#define kMaxBackBtnCenterY kNavigationBarHeight * 0.5 + kBackBtnCenterYOffset
+#define kMinBackBtnCenterY kNavigationBarHeight * 0.5
+
 @interface ONEHomeNavigationBarTitleView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (weak, nonatomic) IBOutlet UIButton *backToTodayButton;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
 
 @property (assign, nonatomic, getter=isUnfold) BOOL unfold;
 
@@ -55,7 +63,29 @@
 }
 
 
+- (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset {
+    // 修改搜索按钮的alpha
+    self.searchButton.alpha = (1+offset/ONEScrollOffsetLimit);
+    // 修改箭头的alpha
+    self.arrowImageView.alpha = (1+offset/ONEScrollOffsetLimit);
+    // 修改天气标签的alpha
+    self.weatherLabel.alpha = -offset/ONEScrollOffsetLimit;
+    
+    
+    // 修改title的frame
+    CGFloat titleY = kMaxTitleY*(1+offset/ONEScrollOffsetLimit);
+    titleY = titleY < kMinTitleY ? kMinTitleY : titleY;
+    titleY = titleY > kMaxTitleY ? kMaxTitleY : titleY;
+    self.titleButton.y = titleY;
+    // 修改返回标签的frame
+    CGFloat backCenterY = kMinBackBtnCenterY + kBackBtnCenterYOffset*(1+offset/ONEScrollOffsetLimit);
+    backCenterY = backCenterY < kMinBackBtnCenterY ? kMinBackBtnCenterY : backCenterY;
+    backCenterY = backCenterY > kMaxBackBtnCenterY ? kMaxBackBtnCenterY : backCenterY;
+    self.backToTodayButton.centerY = backCenterY;
+}
+
 - (IBAction)searchButtonClick:(UIButton *)sender {
+    
 }
 
 #pragma mark - 私有方法

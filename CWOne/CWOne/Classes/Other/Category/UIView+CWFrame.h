@@ -15,4 +15,7 @@
 @property CGFloat width;
 @property CGFloat height;
 
+@property CGFloat centerX;
+@property CGFloat centerY;
+
 @end

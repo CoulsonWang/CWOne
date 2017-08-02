@@ -12,4 +12,7 @@
 
 - (void)updateTitleViewWithOffset:(CGFloat)offset;
 
+// 确定title的状态
+- (void)confirmTitlViewWithOffset:(CGFloat)offset;
+
 @end

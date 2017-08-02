@@ -104,13 +104,15 @@ static NSString *const cellID = @"OneHomeCellID";
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
-    // 超过一定距离时才更新
-    if (offsetY <= 0) {
-        // 通知NavigationController更新视图
-        ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
-        [navVC updateTitleViewWithOffset:offsetY];
-    }
-    
+    // 通知NavigationController更新视图
+    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
+    [navVC updateTitleViewWithOffset:offsetY];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
+    [navVC confirmTitlViewWithOffset:offsetY];
 }
 
 @end

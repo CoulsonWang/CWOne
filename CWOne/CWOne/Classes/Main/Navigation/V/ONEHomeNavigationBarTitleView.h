@@ -12,8 +12,10 @@
 
 @interface ONEHomeNavigationBarTitleView : UIView
 
+@property (strong, nonatomic) ONEHomeWeatherItem *weatherItem;
+
 + (instancetype)homeNavTitleView;
 
-@property (strong, nonatomic) ONEHomeWeatherItem *weatherItem;
+- (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset;
 
 @end

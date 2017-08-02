@@ -15,6 +15,8 @@
 
 @interface ONEHomeNavigationController ()
 
+@property (weak, nonatomic) ONEHomeNavigationBarTitleView *titleView;
+
 - (ONEHomeWeatherItem *)weatherItem;
 
 @end
@@ -32,10 +34,10 @@
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:254/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
     ONEHomeNavigationBarTitleView *titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
-    titleView.frame = CGRectMake(0, -20, CWScreenW, 64);
+    titleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
     titleView.weatherItem = self.weatherItem;
     [self.navigationBar addSubview:titleView];
-    
+    self.titleView = titleView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +49,18 @@
     // 修改状态栏的透明度
     [self changeAlphaOfStatusBar:(1+offset/ONEScrollOffsetLimit)];
 
+    // 让titleView更新
+    [self.titleView updateSubFrameAndAlphaWithOffset:offset];
+}
+
+- (void)confirmTitlViewWithOffset:(CGFloat)offset {
+    if (-offset >= ONEScrollOffsetLimit * 0.5) {
+        [self changeAlphaOfStatusBar:0];
+        [self.titleView updateSubFrameAndAlphaWithOffset:-ONEScrollOffsetLimit];
+    } else {
+        [self changeAlphaOfStatusBar:1];
+        [self.titleView updateSubFrameAndAlphaWithOffset:0];
+    }
 }
 
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
@@ -55,6 +69,7 @@
     UIView *statusBar = [app valueForKeyPath:@"statusBar"];
     statusBar.alpha = alpha;
 }
+
 
 
 @end
