@@ -12,6 +12,7 @@
 #define CWScreenW [UIScreen mainScreen].bounds.size.width
 #define CWScreenH [UIScreen mainScreen].bounds.size.height
 #define radian(angle) M_PI * angle / 180.0
+#define ONEBackgroundColor [UIColor colorWithWhite:238/255.0 alpha:1.0]
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"

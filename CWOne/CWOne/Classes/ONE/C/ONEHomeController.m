@@ -12,6 +12,7 @@
 #import "ONEHomeCell.h"
 #import "ONEHomeViewModel.h"
 #import "ONEMainTabBarController.h"
+#import <MJRefresh.h>
 
 static NSString *const cellID = @"OneHomeCellID";
 
@@ -35,19 +36,54 @@ static NSString *const cellID = @"OneHomeCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpTableView];
+}
+
+#pragma mark - 设置UI控件属性
+- (void)setUpTableView {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = ONEBackgroundColor;
+    
+    // 设置下拉刷新控件
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadHomeData)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.backgroundColor = ONEBackgroundColor;
+    self.tableView.mj_header = header;
+    
+    // 设置尾部footer
+    UIButton *footerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    footerButton.height = 200;
+    [footerButton setImage:[UIImage imageNamed:@"feedsBottomPlaceHolder"] forState:UIControlStateNormal];
+    [footerButton addTarget:self action:@selector(footerButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView.tableFooterView = footerButton;
 }
 
-#pragma mark - 设置UI控件属性
-
-
 #pragma mark - 私有工具方法
-
+- (void)reloadHomeData {
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
+        NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dict in contentList) {
+            ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
+            [tempArray addObject:item];
+        }
+        self.homeItems = tempArray;
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        NSLog(@"%@",error);
+    }];
+}
 
 #pragma mark - 事件响应
+- (void)footerButtonClick {
+    // 切换到上一天
+}
 
 
 #pragma mark - UITableViewDataSource

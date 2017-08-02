@@ -40,6 +40,7 @@
 		B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
+		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
 		B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeWeatherItem.m; sourceTree = "<group>"; };
+		B9A73FF71F31CF57009025FD /* ONEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEConst.h; sourceTree = "<group>"; };
+		B9A73FF81F31CF57009025FD /* ONEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEConst.m; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -496,6 +499,8 @@
 		B9321F211F305AD70052752B /* Const */ = {
 			isa = PBXGroup;
 			children = (
+				B9A73FF71F31CF57009025FD /* ONEConst.h */,
+				B9A73FF81F31CF57009025FD /* ONEConst.m */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -845,6 +850,7 @@
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
+				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

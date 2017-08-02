@@ -81,6 +81,7 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"EEE";
+    formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     
     NSString *str = [formatter stringFromDate:[NSDate date]];
     
