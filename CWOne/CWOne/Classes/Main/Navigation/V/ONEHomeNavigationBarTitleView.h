@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeWeatherItem;
+
 @interface ONEHomeNavigationBarTitleView : UIView
 
 + (instancetype)homeNavTitleView;
+
+@property (strong, nonatomic) ONEHomeWeatherItem *weatherItem;
 
 @end

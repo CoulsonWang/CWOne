@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeItem;
+
+@class ONEHomeWeatherItem;
+
 @interface ONEMainTabBarController : UITabBarController
+
+@property (strong, nonatomic) NSArray<ONEHomeItem *> *homeItems;
+
+@property (strong, nonatomic) ONEHomeWeatherItem *weatherItem;
 
 @end

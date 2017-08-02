@@ -26,7 +26,7 @@ static NSString *const cellID = @"OneHomeCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadData];
+    
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     self.tableView.estimatedRowHeight = 200;
@@ -38,22 +38,7 @@ static NSString *const cellID = @"OneHomeCellID";
 
 
 #pragma mark - 私有工具方法
-- (void)loadData {
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
-        
-        NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
-        NSMutableArray *tempArray = [NSMutableArray array];
-        for (NSDictionary *dict in contentList) {
-            ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
-            [tempArray addObject:item];
-        }
-        self.homeItems = tempArray;
-        [self.tableView reloadData];
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-}
+
 
 #pragma mark - 事件响应
 

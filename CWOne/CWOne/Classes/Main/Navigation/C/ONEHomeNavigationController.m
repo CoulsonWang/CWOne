@@ -9,12 +9,21 @@
 #import "ONEHomeNavigationController.h"
 #import "UIImage+CWColorAndStretch.h"
 #import "ONEHomeNavigationBarTitleView.h"
+#import "ONEHomeWeatherItem.h"
+#import "ONEMainTabBarController.h"
 
 @interface ONEHomeNavigationController ()
+
+- (ONEHomeWeatherItem *)weatherItem;
 
 @end
 
 @implementation ONEHomeNavigationController
+
+- (ONEHomeWeatherItem *)weatherItem {
+    ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)self.parentViewController;
+    return tabBarVC.weatherItem;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +32,10 @@
     
     ONEHomeNavigationBarTitleView *titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
     titleView.frame = CGRectMake(0, -20, CWScreenW, 64);
+    titleView.weatherItem = self.weatherItem;
     [self.navigationBar addSubview:titleView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

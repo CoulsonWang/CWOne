@@ -39,6 +39,7 @@
 		B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FED1F31A5D7009025FD /* ONELikeView.m */; };
 		B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
+		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELikeView.xib; sourceTree = "<group>"; };
 		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
+		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
+		B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeWeatherItem.m; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 		B90C3A611F3082F9004E64D9 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */,
+				B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -821,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */,
+				B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */,
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */,

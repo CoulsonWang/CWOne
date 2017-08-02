@@ -9,6 +9,9 @@
 #import "ONELaunchController.h"
 #import "NSString+CWTranslate.h"
 #import "ONEMainTabBarController.h"
+#import "ONENetworkTool.h"
+#import "ONEHomeItem.h"
+#import "ONEHomeWeatherItem.h"
 
 @interface ONELaunchController ()
 
@@ -30,9 +33,10 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    sleep(2.0);
+    sleep(1.0);
     
-    [self changeRootContoller];
+    // 加载网络数据，加载完毕后切换控制器
+    [self loadData];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -83,8 +87,32 @@
     return [UIImage imageNamed:str];
 }
 
-- (void)changeRootContoller {
+- (void)loadData {
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
+        
+        NSDictionary * weatherDict = dataDict[@"weather"];
+        ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];
+        
+        NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
+        NSMutableArray<ONEHomeItem *> *tempArray = [NSMutableArray array];
+        for (NSDictionary *dict in contentList) {
+            ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
+            [tempArray addObject:item];
+        }
+        
+        [self changeRootContollerWith:tempArray weatherItem:weatherItem];
+        
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)changeRootContollerWith:(NSArray *)homeItems weatherItem:(ONEHomeWeatherItem *)weatherItem {
     ONEMainTabBarController *tabBarVC = [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;
+    
+    tabBarVC.homeItems = homeItems;
+    tabBarVC.weatherItem = weatherItem;
     
     [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
 }
