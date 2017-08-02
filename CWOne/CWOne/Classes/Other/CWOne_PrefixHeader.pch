@@ -14,5 +14,6 @@
 #define radian(angle) M_PI * angle / 180.0
 
 #import "UIColor+CWQuickCreate.h"
+#import "UIView+CWFrame.h"
 
 #endif /* CWOne_PrefixHeader_pch */

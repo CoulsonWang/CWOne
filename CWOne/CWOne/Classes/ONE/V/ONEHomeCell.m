@@ -11,6 +11,7 @@
 #import "ONEHomeItem.h"
 #import <UIImageView+WebCache.h>
 #import "ONELikeView.h"
+#import <Masonry.h>
 
 #define kSideMargin 25.0
 #define kRatio 0.6
@@ -22,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image_View;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
-@property (weak, nonatomic) IBOutlet ONELikeView *likeView;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) ONELikeView *likeView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
@@ -40,7 +42,17 @@
     self.imageViewHeightConstraint.constant = (CWScreenW - 2 * kSideMargin) * kRatio;
     [self.contentView layoutIfNeeded];
     
-    self.likeView = [ONELikeView likeView];
+    // 添加点赞控件
+    ONELikeView *likeView = [ONELikeView likeView];
+    [self.contentView addSubview:likeView];
+    [likeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.shareButton.mas_left).with.offset(-4);
+        make.centerY.equalTo(self.shareButton);
+        make.height.equalTo(@28);
+        make.width.equalTo(@60);
+    }];
+    self.likeView = likeView;
+    
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {

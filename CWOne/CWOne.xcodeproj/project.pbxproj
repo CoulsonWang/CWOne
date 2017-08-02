@@ -38,6 +38,7 @@
 		B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */; };
 		B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FED1F31A5D7009025FD /* ONELikeView.m */; };
 		B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */; };
+		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,8 @@
 		B9A73FEC1F31A5D7009025FD /* ONELikeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELikeView.h; sourceTree = "<group>"; };
 		B9A73FED1F31A5D7009025FD /* ONELikeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELikeView.m; sourceTree = "<group>"; };
 		B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELikeView.xib; sourceTree = "<group>"; };
+		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
+		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -326,9 +329,9 @@
 			isa = PBXGroup;
 			children = (
 				B90C3A311F305FA8004E64D9 /* Main */,
+				B9321F1B1F305AD70052752B /* ONE */,
 				B9321F0F1F305AD70052752B /* ALL */,
 				B9321F171F305AD70052752B /* ME */,
-				B9321F1B1F305AD70052752B /* ONE */,
 				B9321F1F1F305AD70052752B /* Other */,
 				B9321F241F305AD70052752B /* System */,
 			);
@@ -473,6 +476,8 @@
 		B9321F201F305AD70052752B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */,
+				B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */,
 				B90C3A3C1F306B8E004E64D9 /* NSString+CWTranslate.h */,
 				B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */,
 				B90C3A591F307DE8004E64D9 /* UIColor+CWQuickCreate.h */,
@@ -822,6 +827,7 @@
 				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
 				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
+				B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
 				B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
