@@ -54,6 +54,8 @@ typedef enum : NSUInteger {
 
 @property (strong, nonatomic) NSString *share_url;
 
+@property (strong, nonatomic) NSString *volume;
+
 // 音乐cell的属性
 @property (strong, nonatomic) NSString *music_name;
 

@@ -45,6 +45,13 @@
         make.width.equalTo(@60);
     }];
     self.likeView = likeView;
+    
+    // 给播放按钮绘制圆形背景
+    UIImage *circleImage = [self getCircleImageViewWithRadius:16 lineWidth:1.5];
+    UIImageView *circleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+    circleView.contentMode = UIViewContentModeCenter;
+    circleView.image = circleImage;
+    [self.playButtonView insertSubview:circleView atIndex:0];
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
@@ -64,9 +71,23 @@
     self.authorNameLabel.text = viewModel.homeItem.authorItem.user_name;
     self.titleLabel.text = viewModel.homeItem.title;
     self.likeView.viewModel = viewModel;
+    self.volumeLabel.text = viewModel.homeItem.volume;
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
+    self.playButton.selected = !self.playButton.isSelected;
+}
+
+- (UIImage *)getCircleImageViewWithRadius:(CGFloat)radius lineWidth:(CGFloat)lineWidth{
+    CGFloat rect = radius * 2+ lineWidth * 2;
+    UIGraphicsBeginImageContext(CGSizeMake(rect, rect));
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(lineWidth, lineWidth, radius * 2, radius * 2)];
+    [[UIColor whiteColor] setStroke];
+    path.lineWidth = lineWidth;
+    [path stroke];
+    UIImage *circle = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return circle;
 }
 
 @end
