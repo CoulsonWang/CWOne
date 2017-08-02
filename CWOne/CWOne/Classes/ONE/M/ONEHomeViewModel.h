@@ -28,4 +28,7 @@
 // 时间文本
 @property (strong, nonatomic) NSString *timeStr;
 
+// 小记下方的文本
+@property (strong, nonatomic) NSString *subTitle;
+
 @end

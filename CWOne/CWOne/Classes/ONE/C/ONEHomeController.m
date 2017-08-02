@@ -9,13 +9,17 @@
 #import "ONEHomeController.h"
 #import "ONENetworkTool.h"
 #import "ONEHomeItem.h"
-#import "ONEHomeCell.h"
+#import "ONEHomeBaseCell.h"
 #import "ONEHomeViewModel.h"
 #import "ONEMainTabBarController.h"
 #import "ONEHomeNavigationController.h"
 #import <MJRefresh.h>
+#import "ONEHomeCell.h"
+#import "ONEHomeSmallNoteCell.h"
 
-static NSString *const cellID = @"OneHomeCellID";
+static NSString *const OneHomeCellID = @"OneHomeCellID";
+static NSString *const OneHomeSmallNoteCellID = @"OneHomeSmallNoteCellID";
+static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @interface ONEHomeController ()
 
@@ -42,7 +46,8 @@ static NSString *const cellID = @"OneHomeCellID";
 
 #pragma mark - 设置UI控件属性
 - (void)setUpTableView {
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeSmallNoteCell class]) bundle:nil] forCellReuseIdentifier:OneHomeSmallNoteCellID];
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -93,12 +98,35 @@ static NSString *const cellID = @"OneHomeCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ONEHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    ONEHomeViewModel *viewModel = [ONEHomeViewModel viewModelWithItem:self.homeItems[indexPath.row]];
-    cell.viewModel = viewModel;
+    
+    // 取到模型
+    ONEHomeItem *item = self.homeItems[indexPath.row];
+    
+    NSString *reuseIdentifier;
+    // 根据模型类型创建对应的cell
+    switch (item.type) {
+        case ONEHomeItemTypeSmallNote:
+        {
+            reuseIdentifier = OneHomeSmallNoteCellID;
+        }
+            break;
+        case ONEHomeItemTypeRadio:
+        {
+            reuseIdentifier = OneHomeRadioCellID;
+        }
+            break;
+        default:
+        {
+            reuseIdentifier = OneHomeCellID;
+        }
+            break;
+    }
+    ONEHomeBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.viewModel = [ONEHomeViewModel viewModelWithItem:item];
     
     return cell;
+    
 }
 
 #pragma mark - UIScrollViewDelegate

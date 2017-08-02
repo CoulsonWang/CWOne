@@ -56,7 +56,7 @@
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
-    _viewModel = viewModel;
+    [super setViewModel:viewModel];
     
     self.categoryLabel.text = viewModel.categoryTitle;
     self.titleLabel.text = viewModel.homeItem.title;

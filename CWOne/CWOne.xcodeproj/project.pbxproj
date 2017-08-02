@@ -41,6 +41,9 @@
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
+		B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */; };
+		B9A73FFE1F31F190009025FD /* ONEHomeSmallNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */; };
+		B9A740011F31F2ED009025FD /* ONEHomeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,11 @@
 		B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeWeatherItem.m; sourceTree = "<group>"; };
 		B9A73FF71F31CF57009025FD /* ONEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEConst.h; sourceTree = "<group>"; };
 		B9A73FF81F31CF57009025FD /* ONEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEConst.m; sourceTree = "<group>"; };
+		B9A73FFA1F31F190009025FD /* ONEHomeSmallNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeSmallNoteCell.h; sourceTree = "<group>"; };
+		B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeSmallNoteCell.m; sourceTree = "<group>"; };
+		B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeSmallNoteCell.xib; sourceTree = "<group>"; };
+		B9A73FFF1F31F2ED009025FD /* ONEHomeBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeBaseCell.h; sourceTree = "<group>"; };
+		B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeBaseCell.m; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -459,9 +467,14 @@
 		B9321F1E1F305AD70052752B /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B9A73FFF1F31F2ED009025FD /* ONEHomeBaseCell.h */,
+				B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */,
 				B9A73FE41F30C18A009025FD /* ONEHomeCell.h */,
 				B9A73FE51F30C18A009025FD /* ONEHomeCell.m */,
 				B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */,
+				B9A73FFA1F31F190009025FD /* ONEHomeSmallNoteCell.h */,
+				B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */,
+				B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */,
 				B9A73FEC1F31A5D7009025FD /* ONELikeView.h */,
 				B9A73FED1F31A5D7009025FD /* ONELikeView.m */,
 				B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */,
@@ -663,6 +676,7 @@
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */,
+				B9A73FFE1F31F190009025FD /* ONEHomeSmallNoteCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -847,7 +861,9 @@
 				B90C3A731F30BBBB004E64D9 /* ONEUserItem.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */,
+				B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
+				B9A740011F31F2ED009025FD /* ONEHomeBaseCell.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,

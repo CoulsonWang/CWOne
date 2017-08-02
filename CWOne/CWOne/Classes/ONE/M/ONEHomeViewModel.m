@@ -42,6 +42,9 @@
     
     // 处理时间标签
     self.timeStr = [self getDateStrWithDate:homeItem.post_date];
+    
+    // 处理小记下方的文本
+    self.subTitle = [NSString stringWithFormat:@"%@ | %@",homeItem.title,homeItem.pic_info];
 }
 
 

@@ -6,12 +6,9 @@
 //  Copyright © 2017年 Coulson_Wang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ONEHomeBaseCell.h"
 
-@class ONEHomeViewModel;
 
-@interface ONEHomeCell : UITableViewCell
-
-@property (strong, nonatomic) ONEHomeViewModel *viewModel;
+@interface ONEHomeCell : ONEHomeBaseCell
 
 @end
