@@ -68,12 +68,6 @@
     circleView.image = circleImage;
     [self.playButtonView insertSubview:circleView atIndex:0];
     
-    // 添加高度约束
-    CGFloat height = CWScreenW * kRatio;
-    [self.coverView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(height));
-    }];
-    [self.contentView layoutIfNeeded];
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {

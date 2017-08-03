@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *movieSubTitleHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelTopConstraint;
 
 @end
 
@@ -90,6 +91,7 @@
     
     NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
     UIImage *placeHolder = [UIImage imageNamed:@"center_diary_placeholder"];
+    self.contentLabelTopConstraint.constant = 10.0;
     
     // 影视相关属性
     BOOL isMoview = (viewModel.homeItem.type == ONEHomeItemTypeMovie);
@@ -118,7 +120,7 @@
         self.musicInfoLabel.text = viewModel.musicInfoStr;
         [self.musicCoverImageView sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:nil];
         self.audioPlatformImageView.image = viewModel.musicPlatformImage;
-        
+        self.contentLabelTopConstraint.constant = 50.0;
     }
     
     
@@ -130,9 +132,6 @@
             }
         }];
     }
-    
-    
-    
     
     [self.contentView layoutIfNeeded];
 }
