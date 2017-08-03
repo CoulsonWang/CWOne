@@ -35,9 +35,9 @@
 }
 
 - (void)setWidth:(CGFloat)width {
-    CGRect bounds = self.bounds;
-    CGRect newBounds = CGRectMake(bounds.origin.x, bounds.origin.y, width, bounds.size.height);
-    self.bounds = newBounds;
+    CGRect frame = self.frame;
+    CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y, width, frame.size.height);
+    self.frame = newFrame;
 }
 
 - (CGFloat)height {
@@ -45,9 +45,9 @@
 }
 
 - (void)setHeight:(CGFloat)height {
-    CGRect bounds = self.bounds;
-    CGRect newBounds = CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.width, height);
-    self.bounds = newBounds;
+    CGRect frame = self.frame;
+    CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, height);
+    self.frame = newFrame;
 }
 
 - (CGFloat)centerX {

@@ -33,6 +33,12 @@
 - (ONEHomeCatalogueView *)catalogueView {
     if (!_catalogueView) {
         ONEHomeCatalogueView *catelogueView = [[ONEHomeCatalogueView alloc] init];
+        __weak typeof(self) weakSelf = self;
+        catelogueView.updateFrame = ^{
+            weakSelf.catalogueView.height = weakSelf.catalogueView.catalogueHeight;
+            weakSelf.headerViewHeight = CGRectGetMaxY(weakSelf.catalogueView.frame);
+            weakSelf.height = weakSelf.headerViewHeight;
+        };
         [self addSubview:catelogueView];
         _catalogueView = catelogueView;
     }

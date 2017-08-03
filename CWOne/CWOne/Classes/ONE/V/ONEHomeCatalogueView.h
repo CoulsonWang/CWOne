@@ -10,10 +10,13 @@
 
 @class ONEHomeMenuItem;
 
+
 @interface ONEHomeCatalogueView : UIView
 
 @property (strong, nonatomic) ONEHomeMenuItem *menuItem;
 
 @property (assign, nonatomic) CGFloat catalogueHeight;
+
+@property (copy, nonatomic) void (^updateFrame)();
 
 @end

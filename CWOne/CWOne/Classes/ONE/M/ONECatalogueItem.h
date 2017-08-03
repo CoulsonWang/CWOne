@@ -18,4 +18,10 @@
 
 @property (strong, nonatomic) NSString *title;
 
+@property (strong, nonatomic) NSDictionary *tag;
+
+
+// 自定义属性
+@property (strong, nonatomic) NSString *categoryString;
+
 @end

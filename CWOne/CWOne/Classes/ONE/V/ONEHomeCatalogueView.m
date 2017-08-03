@@ -9,13 +9,17 @@
 #import "ONEHomeCatalogueView.h"
 #import "ONEHomeMenuItem.h"
 #import "ONECatalogueItem.h"
+#import "ONEHomeCatalogueCell.h"
+
+static NSString *const cellID = @"ONEHomeCatelogueCellID";
 
 #define kTitleButtonHeight 40.0
 #define kTitleButtonLabelWidth 100.0
 #define kSeperateViewHeight 6.0
-#define kCatalogueViewOriginHeight kTitleButtonHeight + kSeperateViewHeight
+#define kCatalogueViewCurrentHeight CGRectGetMaxY(self.seperateView.frame)
+#define kListViewBottomMargin 15.0
 
-@interface ONEHomeCatalogueView ()
+@interface ONEHomeCatalogueView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) UIButton *titleButton;
 
@@ -37,6 +41,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         [self arrowView];
+        [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCatalogueCell class]) bundle:nil] forCellReuseIdentifier:cellID];
         
     }
     return self;
@@ -71,7 +76,8 @@
 
 - (UIView *)seperateView {
     if (!_seperateView) {
-        UIView *seperateView = [[UIView alloc] initWithFrame:CGRectMake(0, self.catalogueHeight - kSeperateViewHeight, CWScreenW, kSeperateViewHeight)];
+        UIView *seperateView = [[UIView alloc] init];
+        seperateView.frame = CGRectMake(0, 0, CWScreenW, kSeperateViewHeight);
         seperateView.backgroundColor = ONEBackgroundColor;
         [self addSubview:seperateView];
         _seperateView = seperateView;
@@ -79,15 +85,28 @@
     return _seperateView;
 }
 
+- (UITableView *)listView {
+    if (!_listView) {
+        UITableView *listView = [[UITableView alloc] init];
+        listView.frame = CGRectMake(0, kTitleButtonHeight, CWScreenW, 0);
+        listView.delegate = self;
+        listView.dataSource = self;
+        listView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        listView.rowHeight = 70;
+        [self addSubview:listView];
+        _listView = listView;
+    }
+    return _listView;
+}
+
 - (void)setMenuItem:(ONEHomeMenuItem *)menuItem {
     _menuItem = menuItem;
     
     self.cataLogueItems = menuItem.catelogueItems;
     
-    self.catalogueHeight = kCatalogueViewOriginHeight;
-    
     [self.titleButton setTitle:menuItem.titleString forState:UIControlStateNormal];
-    [self seperateView];
+    
+    [self updateSubviewsFrame:NO];
 }
 
 #pragma mark - 事件响应
@@ -95,6 +114,8 @@
     sender.selected = !sender.isSelected;
     [self changeArrowViewOrientationToUp:sender.isSelected];
     // 展开或收起
+    [self updateSubviewsFrame:sender.isSelected];
+    
 }
 
 // 箭头方向变化
@@ -102,6 +123,26 @@
 
     self.arrowView.transform = isUp ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformMakeRotation(0);
     
+}
+
+- (void)updateSubviewsFrame:(BOOL)isUnfold {
+    self.listView.height = isUnfold ? (self.listView.rowHeight * self.cataLogueItems.count + kListViewBottomMargin) : 0;
+    self.seperateView.y = CGRectGetMaxY(self.listView.frame);
+    self.catalogueHeight = CGRectGetMaxY(self.seperateView.frame);
+    self.updateFrame();
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.cataLogueItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ONEHomeCatalogueCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    cell.item = self.cataLogueItems[indexPath.row];
+    
+    return cell;
 }
 
 @end

@@ -33,6 +33,8 @@
 		B9321EFF1F3059410052752B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF91F3059410052752B /* Main.storyboard */; };
 		B9321F011F3059410052752B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EFC1F3059410052752B /* main.m */; };
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
+		B93A7D661F3375F100FF86E9 /* ONEHomeCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */; };
+		B93A7D671F3375F100FF86E9 /* ONEHomeCatalogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */; };
 		B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */; };
 		B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */; };
 		B95633CC1F335AB700049FB8 /* ONECatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */; };
@@ -124,6 +126,9 @@
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B93A7D631F3375F100FF86E9 /* ONEHomeCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueCell.h; sourceTree = "<group>"; };
+		B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCatalogueCell.m; sourceTree = "<group>"; };
+		B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCatalogueCell.xib; sourceTree = "<group>"; };
 		B95633C41F33532300049FB8 /* ONEHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeHeaderView.h; sourceTree = "<group>"; };
 		B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeHeaderView.m; sourceTree = "<group>"; };
 		B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueView.h; sourceTree = "<group>"; };
@@ -518,6 +523,9 @@
 				B9A73FFC1F31F190009025FD /* ONEHomeHeadContentView.xib */,
 				B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */,
 				B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */,
+				B93A7D631F3375F100FF86E9 /* ONEHomeCatalogueCell.h */,
+				B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */,
+				B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -727,6 +735,7 @@
 				B9A73FFE1F31F190009025FD /* ONEHomeHeadContentView.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
+				B93A7D671F3375F100FF86E9 /* ONEHomeCatalogueCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
 				B9A7400B1F322816009025FD /* ONEHomeRadioCell.xib in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
@@ -895,6 +904,7 @@
 			files = (
 				B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */,
 				B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */,
+				B93A7D661F3375F100FF86E9 /* ONEHomeCatalogueCell.m in Sources */,
 				B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */,
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
