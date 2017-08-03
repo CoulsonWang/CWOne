@@ -15,16 +15,20 @@
 #import "ONEHomeNavigationController.h"
 #import <MJRefresh.h>
 #import "ONEHomeCell.h"
-#import "ONEHomeSmallNoteCell.h"
 #import "ONEHomeRadioCell.h"
+#import "ONEHomeHeaderView.h"
+#import "ONEHomeMenuItem.h"
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
-static NSString *const OneHomeSmallNoteCellID = @"OneHomeSmallNoteCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @interface ONEHomeController ()
 
 @property (strong, nonatomic) NSArray *homeItems;
+
+@property (strong, nonatomic) ONEHomeMenuItem *menuItem;
+
+@property (weak, nonatomic) ONEHomeHeaderView *headerView;
 
 @end
 
@@ -39,6 +43,14 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     return _homeItems;
 }
 
+- (ONEHomeMenuItem *)menuItem {
+    if (!_menuItem) {
+        ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        _menuItem = tabBarVC.menuItem;
+    }
+    return _menuItem;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,7 +60,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 #pragma mark - 设置UI控件属性
 - (void)setUpTableView {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeSmallNoteCell class]) bundle:nil] forCellReuseIdentifier:OneHomeSmallNoteCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeRadioCell class]) bundle:nil] forCellReuseIdentifier:OneHomeRadioCellID];
     
     self.tableView.estimatedRowHeight = 200;
@@ -68,11 +79,19 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [footerButton setImage:[UIImage imageNamed:@"feedsBottomPlaceHolder"] forState:UIControlStateNormal];
     [footerButton addTarget:self action:@selector(footerButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableFooterView = footerButton;
+    
+    // 设置顶部view
+    ONEHomeHeaderView *headerView = [ONEHomeHeaderView homeHeaderViewWithHeaderViewModel:[ONEHomeViewModel viewModelWithItem:self.homeItems.firstObject] menuItem:self.menuItem];
+    self.tableView.tableHeaderView = headerView;
+    self.headerView = headerView;
 }
 
 #pragma mark - 私有工具方法
 - (void)reloadHomeData {
     [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
+        NSDictionary *menuDict = dataDict[@"menu"];
+        ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
+        
         NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
         NSMutableArray *tempArray = [NSMutableArray array];
         for (NSDictionary *dict in contentList) {
@@ -80,9 +99,14 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
             [tempArray addObject:item];
         }
         self.homeItems = tempArray;
+        self.menuItem = menuItem;
+        // 刷新tableView数据
         [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
+        // 刷新headerView数据
+        self.headerView.menuItem = menuItem;
+        self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
         
+        [self.tableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         NSLog(@"%@",error);
@@ -97,23 +121,18 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homeItems.count;
+    return self.homeItems.count - 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     // 取到模型
-    ONEHomeItem *item = self.homeItems[indexPath.row];
+    ONEHomeItem *item = self.homeItems[indexPath.row + 1];
     
     NSString *reuseIdentifier;
     // 根据模型类型创建对应的cell
     switch (item.type) {
-        case ONEHomeItemTypeSmallNote:
-        {
-            reuseIdentifier = OneHomeSmallNoteCellID;
-        }
-            break;
         case ONEHomeItemTypeRadio:
         {
             reuseIdentifier = OneHomeRadioCellID;

@@ -13,6 +13,7 @@
 #import "ONEHomeItem.h"
 #import "ONEHomeWeatherItem.h"
 #import "ONERadioTool.h"
+#import "ONEHomeMenuItem.h"
 
 @interface ONELaunchController ()
 
@@ -96,8 +97,11 @@
 //    NSString *date = @"2017-08-02";
     [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
         
-        NSDictionary * weatherDict = dataDict[@"weather"];
+        NSDictionary *weatherDict = dataDict[@"weather"];
         ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];
+        
+        NSDictionary *menuDict = dataDict[@"menu"];
+        ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
         
         NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
         NSMutableArray<ONEHomeItem *> *tempArray = [NSMutableArray array];
@@ -106,17 +110,18 @@
             [tempArray addObject:item];
         }
         
-        [self changeRootContollerWith:tempArray weatherItem:weatherItem];
+        [self changeRootContollerWith:tempArray weatherItem:weatherItem menuItem:menuItem];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
 }
 
-- (void)changeRootContollerWith:(NSArray *)homeItems weatherItem:(ONEHomeWeatherItem *)weatherItem {
+- (void)changeRootContollerWith:(NSArray *)homeItems weatherItem:(ONEHomeWeatherItem *)weatherItem menuItem:(ONEHomeMenuItem *)menuItem {
     ONEMainTabBarController *tabBarVC = [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;
     
     tabBarVC.homeItems = homeItems;
     tabBarVC.weatherItem = weatherItem;
+    tabBarVC.menuItem = menuItem;
     
     [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
 }

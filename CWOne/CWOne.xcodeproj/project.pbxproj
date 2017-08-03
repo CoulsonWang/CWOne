@@ -33,6 +33,10 @@
 		B9321EFF1F3059410052752B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF91F3059410052752B /* Main.storyboard */; };
 		B9321F011F3059410052752B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EFC1F3059410052752B /* main.m */; };
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
+		B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */; };
+		B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */; };
+		B95633CC1F335AB700049FB8 /* ONECatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */; };
+		B95633CF1F335CAD00049FB8 /* ONEHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633CE1F335CAD00049FB8 /* ONEHomeMenuItem.m */; };
 		B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FE51F30C18A009025FD /* ONEHomeCell.m */; };
 		B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */; };
 		B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */; };
@@ -41,8 +45,8 @@
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
-		B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */; };
-		B9A73FFE1F31F190009025FD /* ONEHomeSmallNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */; };
+		B9A73FFD1F31F190009025FD /* ONEHomeHeadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FFB1F31F190009025FD /* ONEHomeHeadContentView.m */; };
+		B9A73FFE1F31F190009025FD /* ONEHomeHeadContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A73FFC1F31F190009025FD /* ONEHomeHeadContentView.xib */; };
 		B9A740011F31F2ED009025FD /* ONEHomeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */; };
 		B9A7400A1F322816009025FD /* ONEHomeRadioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740081F322816009025FD /* ONEHomeRadioCell.m */; };
 		B9A7400B1F322816009025FD /* ONEHomeRadioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A740091F322816009025FD /* ONEHomeRadioCell.xib */; };
@@ -120,6 +124,14 @@
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B95633C41F33532300049FB8 /* ONEHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeHeaderView.h; sourceTree = "<group>"; };
+		B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeHeaderView.m; sourceTree = "<group>"; };
+		B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueView.h; sourceTree = "<group>"; };
+		B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCatalogueView.m; sourceTree = "<group>"; };
+		B95633CA1F335AB700049FB8 /* ONECatalogueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECatalogueItem.h; sourceTree = "<group>"; };
+		B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONECatalogueItem.m; sourceTree = "<group>"; };
+		B95633CD1F335CAD00049FB8 /* ONEHomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeMenuItem.h; sourceTree = "<group>"; };
+		B95633CE1F335CAD00049FB8 /* ONEHomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeMenuItem.m; sourceTree = "<group>"; };
 		B9A73FE41F30C18A009025FD /* ONEHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCell.h; sourceTree = "<group>"; };
 		B9A73FE51F30C18A009025FD /* ONEHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCell.m; sourceTree = "<group>"; };
 		B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCell.xib; sourceTree = "<group>"; };
@@ -134,9 +146,9 @@
 		B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeWeatherItem.m; sourceTree = "<group>"; };
 		B9A73FF71F31CF57009025FD /* ONEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEConst.h; sourceTree = "<group>"; };
 		B9A73FF81F31CF57009025FD /* ONEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEConst.m; sourceTree = "<group>"; };
-		B9A73FFA1F31F190009025FD /* ONEHomeSmallNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeSmallNoteCell.h; sourceTree = "<group>"; };
-		B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeSmallNoteCell.m; sourceTree = "<group>"; };
-		B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeSmallNoteCell.xib; sourceTree = "<group>"; };
+		B9A73FFA1F31F190009025FD /* ONEHomeHeadContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeHeadContentView.h; sourceTree = "<group>"; };
+		B9A73FFB1F31F190009025FD /* ONEHomeHeadContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeHeadContentView.m; sourceTree = "<group>"; };
+		B9A73FFC1F31F190009025FD /* ONEHomeHeadContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeHeadContentView.xib; sourceTree = "<group>"; };
 		B9A73FFF1F31F2ED009025FD /* ONEHomeBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeBaseCell.h; sourceTree = "<group>"; };
 		B9A740001F31F2ED009025FD /* ONEHomeBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeBaseCell.m; sourceTree = "<group>"; };
 		B9A740071F322816009025FD /* ONEHomeRadioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeRadioCell.h; sourceTree = "<group>"; };
@@ -477,6 +489,10 @@
 				B9A73FEA1F30CD85009025FD /* ONEHomeViewModel.m */,
 				B90C3A711F30BBBB004E64D9 /* ONEUserItem.h */,
 				B90C3A721F30BBBB004E64D9 /* ONEUserItem.m */,
+				B95633CA1F335AB700049FB8 /* ONECatalogueItem.h */,
+				B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */,
+				B95633CD1F335CAD00049FB8 /* ONEHomeMenuItem.h */,
+				B95633CE1F335CAD00049FB8 /* ONEHomeMenuItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -489,15 +505,19 @@
 				B9A73FE41F30C18A009025FD /* ONEHomeCell.h */,
 				B9A73FE51F30C18A009025FD /* ONEHomeCell.m */,
 				B9A73FE61F30C18A009025FD /* ONEHomeCell.xib */,
-				B9A73FFA1F31F190009025FD /* ONEHomeSmallNoteCell.h */,
-				B9A73FFB1F31F190009025FD /* ONEHomeSmallNoteCell.m */,
-				B9A73FFC1F31F190009025FD /* ONEHomeSmallNoteCell.xib */,
 				B9A740071F322816009025FD /* ONEHomeRadioCell.h */,
 				B9A740081F322816009025FD /* ONEHomeRadioCell.m */,
 				B9A740091F322816009025FD /* ONEHomeRadioCell.xib */,
 				B9A73FEC1F31A5D7009025FD /* ONELikeView.h */,
 				B9A73FED1F31A5D7009025FD /* ONELikeView.m */,
 				B9A73FEF1F31A5EF009025FD /* ONELikeView.xib */,
+				B95633C41F33532300049FB8 /* ONEHomeHeaderView.h */,
+				B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */,
+				B9A73FFA1F31F190009025FD /* ONEHomeHeadContentView.h */,
+				B9A73FFB1F31F190009025FD /* ONEHomeHeadContentView.m */,
+				B9A73FFC1F31F190009025FD /* ONEHomeHeadContentView.xib */,
+				B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */,
+				B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -704,7 +724,7 @@
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B9A73FF01F31A5EF009025FD /* ONELikeView.xib in Resources */,
-				B9A73FFE1F31F190009025FD /* ONEHomeSmallNoteCell.xib in Resources */,
+				B9A73FFE1F31F190009025FD /* ONEHomeHeadContentView.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9A73FE81F30C18A009025FD /* ONEHomeCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -873,6 +893,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */,
 				B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */,
 				B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */,
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
@@ -892,15 +913,18 @@
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
+				B95633CC1F335AB700049FB8 /* ONECatalogueItem.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
-				B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */,
+				B9A73FFD1F31F190009025FD /* ONEHomeHeadContentView.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B9A740011F31F2ED009025FD /* ONEHomeBaseCell.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
+				B95633CF1F335CAD00049FB8 /* ONEHomeMenuItem.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9A7400A1F322816009025FD /* ONEHomeRadioCell.m in Sources */,
+				B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
