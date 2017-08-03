@@ -12,7 +12,10 @@
 #import <UIImageView+WebCache.h>
 #import "ONELikeView.h"
 #import <Masonry.h>
+#import <SVProgressHUD.h>
 #import "UILabel+CWLineSpacing.h"
+#import "ONERadioTool.h"
+#import "CALayer+CWAnimation.h"
 
 #define kSideMargin 25.0
 #define kRatio 0.6
@@ -42,8 +45,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelBottomConstraint;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelTopConstraint;
+
+// 临时属性
+@property (strong, nonatomic) CABasicAnimation *animation;
 
 @end
 
@@ -142,11 +147,64 @@
 
 
 #pragma mark - 事件响应
+- (IBAction)musicPlayButtonClick:(UIButton *)sender {
+    
+    if (!sender.isSelected) {
+        // 播放音乐
+        NSString *musicUrlStr = self.viewModel.musicUrl;
+        if ([musicUrlStr isEqualToString:@"xiami"]) {
+            // 提示无法播放
+            [SVProgressHUD showErrorWithStatus:@"抱歉,因授权原因,无法播放虾米提供的音乐"];
+        } else {
+            __weak typeof(self) weakSelf = self;
+            [[ONERadioTool sharedInstance] playMusicWithUrlString:musicUrlStr completion:^{
+                weakSelf.musicPlayButton.selected = NO;
+                [weakSelf removeAnimationOnMusicCoverView];
+            }];
+            sender.selected = !sender.isSelected;
+            // 开始旋转动画
+            [self resumeAnimationOnMusicCoverView];
+        }
+    } else {
+        sender.selected = !sender.isSelected;
+        // 暂停音乐
+        [[ONERadioTool sharedInstance] pauseCurrentMusic];
+        // 停止旋转动画
+        [self pauseAnimationOnMusicCoverView];
+    }
+}
 
 - (IBAction)shareButtonClick:(UIButton *)sender {
 }
 
 #pragma mark - 私有方法
+- (void)addAnimationForMusicCoverView {
+    [self.musicCoverImageView.layer removeAllAnimations];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = 0;
+    animation.toValue = @(M_PI * 2);
+    animation.duration = 30.0;
+    animation.repeatCount = MAXFLOAT;
+    animation.removedOnCompletion = NO;
+    
+    [self.musicCoverImageView.layer addAnimation:animation forKey:@"rotation"];
+}
 
+- (void)removeAnimationOnMusicCoverView {
+    [self.musicCoverImageView.layer removeAllAnimations];
+    self.animation = nil;
+}
+
+- (void)pauseAnimationOnMusicCoverView {
+    [self.musicCoverImageView.layer pauseAnimate];
+}
+
+- (void)resumeAnimationOnMusicCoverView {
+    if (!self.animation) {
+        [self addAnimationForMusicCoverView];
+    } else {
+        [self.musicCoverImageView.layer resumeAnimate];
+    }
+}
 
 @end

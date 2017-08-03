@@ -58,6 +58,7 @@
         self.musicPlatformImage = [UIImage imageNamed:@"ONEAndXiamiMusicCopyright"];
     }
     
+    self.musicUrl = (homeItem.audio_platform == 2) ? homeItem.audio_url : @"xiami";
 }
 
 

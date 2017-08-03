@@ -49,6 +49,7 @@
 		B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740101F32EE4B009025FD /* ONERadioTool.m */; };
 		B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740131F32EF19009025FD /* ONERadioItem.m */; };
 		B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */; };
+		B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,8 @@
 		B9A740131F32EF19009025FD /* ONERadioItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONERadioItem.m; sourceTree = "<group>"; };
 		B9A740181F3334B7009025FD /* UILabel+CWLineSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CWLineSpacing.h"; sourceTree = "<group>"; };
 		B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CWLineSpacing.m"; sourceTree = "<group>"; };
+		B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CWAnimation.h"; sourceTree = "<group>"; };
+		B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CWAnimation.m"; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				B90C3A5D1F308059004E64D9 /* UIImage+CWColorAndStretch.m */,
 				B9A740181F3334B7009025FD /* UILabel+CWLineSpacing.h */,
 				B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */,
+				B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */,
+				B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				B90C3A731F30BBBB004E64D9 /* ONEUserItem.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B9A73FEB1F30CD85009025FD /* ONEHomeViewModel.m in Sources */,
+				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
 				B9A73FFD1F31F190009025FD /* ONEHomeSmallNoteCell.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,

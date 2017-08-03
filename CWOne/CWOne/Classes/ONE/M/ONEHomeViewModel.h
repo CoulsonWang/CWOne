@@ -40,4 +40,7 @@
 // 音乐cell平台标志图片
 @property (strong, nonatomic) UIImage *musicPlatformImage;
 
+// 音乐cell中的音乐url
+@property (strong, nonatomic) NSString *musicUrl;
+
 @end

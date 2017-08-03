@@ -112,6 +112,9 @@
                         </constraints>
                         <state key="normal" image="audioPlayIcon"/>
                         <state key="selected" image="audioPauseIcon"/>
+                        <connections>
+                            <action selector="musicPlayButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H7s-vr-1Tz"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXw-jp-fwh" userLabel="音乐信息">
                         <rect key="frame" x="25" y="367.33333333333331" width="33" height="15"/>
