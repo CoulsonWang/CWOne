@@ -12,6 +12,7 @@
 #import "ONENetworkTool.h"
 #import "ONEHomeItem.h"
 #import "ONEHomeWeatherItem.h"
+#import "ONERadioTool.h"
 
 @interface ONELaunchController ()
 
@@ -33,10 +34,13 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    sleep(1.0);
     
-    // 加载网络数据，加载完毕后切换控制器
-    [self loadData];
+    // 加载电台数据，完毕后加载首页数据
+    [[ONERadioTool sharedInstance] loadRadioDataCompletion:^{
+        // 加载网络数据，加载完毕后切换控制器
+        [self loadData];
+    }];
+    
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -102,8 +106,6 @@
         }
         
         [self changeRootContollerWith:tempArray weatherItem:weatherItem];
-        
-        
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];

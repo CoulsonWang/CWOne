@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="ONEHomeRadioCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="ONEHomeRadioCell">
             <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="264.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="264.66666666666669"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vfd-jz-iSI">
@@ -84,6 +84,15 @@
                             <constraint firstItem="uTw-Vl-Pub" firstAttribute="centerY" secondItem="iQO-uk-0CO" secondAttribute="centerY" id="mT8-Az-jfh"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I0-h6-5mg">
+                        <rect key="frame" x="188.66666666666663" y="192" width="37.333333333333343" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voice_gray" translatesAutoresizingMaskIntoConstraints="NO" id="zLJ-72-RzW" userLabel="播放状态图片">
+                        <rect key="frame" x="25" y="231" width="20" height="20"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="iQO-uk-0CO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2Wc-sx-1MJ"/>
@@ -95,7 +104,11 @@
                     <constraint firstItem="0ZB-sV-Fm9" firstAttribute="leading" secondItem="iQO-uk-0CO" secondAttribute="trailing" constant="8" id="Nn8-6q-qIt"/>
                     <constraint firstItem="eY4-vH-2vP" firstAttribute="centerY" secondItem="rjp-nQ-IDJ" secondAttribute="centerY" id="Uy0-hu-0vc"/>
                     <constraint firstItem="A4q-s3-rF2" firstAttribute="top" secondItem="iQO-uk-0CO" secondAttribute="top" id="XAu-Ts-OPC"/>
+                    <constraint firstItem="zLJ-72-RzW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="a2i-br-p4a"/>
+                    <constraint firstItem="JY5-9u-IOS" firstAttribute="centerY" secondItem="zLJ-72-RzW" secondAttribute="centerY" priority="990" id="avu-2g-Wlr"/>
+                    <constraint firstItem="fLf-Ma-gUw" firstAttribute="top" secondItem="5I0-h6-5mg" secondAttribute="bottom" constant="8" id="bcc-Yd-KpQ"/>
                     <constraint firstAttribute="trailing" secondItem="vfd-jz-iSI" secondAttribute="trailing" id="dif-pC-LeM"/>
+                    <constraint firstAttribute="bottom" secondItem="zLJ-72-RzW" secondAttribute="bottom" constant="13.67" id="e9Y-RY-JL8"/>
                     <constraint firstItem="vfd-jz-iSI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fMB-dO-Kmw"/>
                     <constraint firstAttribute="trailing" secondItem="JY5-9u-IOS" secondAttribute="trailing" constant="15" id="gTs-eL-W0i"/>
                     <constraint firstAttribute="bottom" secondItem="vfd-jz-iSI" secondAttribute="bottom" id="hgS-9P-9t4"/>
@@ -105,6 +118,8 @@
                     <constraint firstItem="vfd-jz-iSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tIg-ix-SRJ"/>
                     <constraint firstAttribute="trailing" secondItem="fLf-Ma-gUw" secondAttribute="trailing" id="txM-sz-6Ow"/>
                     <constraint firstItem="JY5-9u-IOS" firstAttribute="centerY" secondItem="rjp-nQ-IDJ" secondAttribute="centerY" id="u2e-io-nAY"/>
+                    <constraint firstItem="zLJ-72-RzW" firstAttribute="top" secondItem="fLf-Ma-gUw" secondAttribute="bottom" priority="999" constant="12.67" id="un3-6c-TAU"/>
+                    <constraint firstItem="5I0-h6-5mg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="uvF-mP-bqD"/>
                     <constraint firstItem="rjp-nQ-IDJ" firstAttribute="top" secondItem="fLf-Ma-gUw" secondAttribute="bottom" constant="8" id="ylB-0q-fGz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -112,10 +127,13 @@
                 <outlet property="authorIconView" destination="rjp-nQ-IDJ" id="nt8-oE-heV"/>
                 <outlet property="authorNameLabel" destination="eY4-vH-2vP" id="9O9-3e-Uen"/>
                 <outlet property="coverView" destination="vfd-jz-iSI" id="ogm-y6-meE"/>
+                <outlet property="logoImageView" destination="5eO-JR-Ein" id="SFb-wF-v1x"/>
                 <outlet property="playButton" destination="uTw-Vl-Pub" id="PaK-YS-WuM"/>
                 <outlet property="playButtonView" destination="iQO-uk-0CO" id="iIK-PE-uhQ"/>
                 <outlet property="shareButton" destination="JY5-9u-IOS" id="5v6-gb-6w6"/>
                 <outlet property="titleLabel" destination="0ZB-sV-Fm9" id="8zk-4j-i37"/>
+                <outlet property="unActivePlayStatusView" destination="zLJ-72-RzW" id="PmR-pb-KhQ"/>
+                <outlet property="unActiveTitleLabel" destination="5I0-h6-5mg" id="qTZ-U8-tBy"/>
                 <outlet property="volumeLabel" destination="A4q-s3-rF2" id="INa-VY-UDw"/>
             </connections>
             <point key="canvasLocation" x="26" y="86.5"/>
@@ -126,5 +144,6 @@
         <image name="audioPlayIcon" width="16" height="16"/>
         <image name="logo_FM_white" width="30" height="35"/>
         <image name="share_gray_mini" width="16" height="16"/>
+        <image name="voice_gray" width="20" height="20"/>
     </resources>
 </document>

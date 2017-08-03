@@ -65,4 +65,20 @@ static ONENetworkTool *_instance;
     }];
 }
 
+- (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = @"http://v3.wufazhuce.com:8000/api/radio/active";
+    NSDictionary *parameters = @{};
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end

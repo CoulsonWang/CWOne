@@ -18,4 +18,7 @@
 // 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
+// 获取当前电台状态数据
+- (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
 @end
