@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="449" id="KGk-i7-Jjw" customClass="ONEHomeCell">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="449"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="784" id="KGk-i7-Jjw" customClass="ONEHomeCell">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="448.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="783.66666666666663"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAY-Aq-MgZ" userLabel="类型">
@@ -48,7 +48,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jop-Hz-Fqm" userLabel="时间">
-                        <rect key="frame" x="15.000000000000004" y="413.66666666666669" width="35.333333333333343" height="17"/>
+                        <rect key="frame" x="15.000000000000004" y="748.66666666666663" width="35.333333333333343" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="wxJ-Wn-E7M"/>
                         </constraints>
@@ -57,20 +57,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kh8-Lf-hWV" userLabel="分享按钮">
-                        <rect key="frame" x="383" y="411.66666666666669" width="16" height="22"/>
+                        <rect key="frame" x="383" y="746.66666666666663" width="16" height="22"/>
                         <state key="normal" image="share_gray_mini"/>
                         <connections>
                             <action selector="shareButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rji-mc-83c"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0st-cx-YOq" userLabel="预览文本">
-                        <rect key="frame" x="15" y="271" width="384" height="107"/>
+                        <rect key="frame" x="15" y="271" width="384" height="442"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJJ-ap-nL5" userLabel="分割">
-                        <rect key="frame" x="0.0" y="442.66666666666669" width="414" height="6"/>
+                        <rect key="frame" x="0.0" y="777.66666666666663" width="414" height="6"/>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="6" id="oZY-06-Luu"/>
@@ -113,7 +113,7 @@
                 <outlet property="timeLabel" destination="Jop-Hz-Fqm" id="ZAP-Ki-hmO"/>
                 <outlet property="titleLabel" destination="nnZ-QB-mKa" id="n99-Th-2N8"/>
             </connections>
-            <point key="canvasLocation" x="-89" y="120.5"/>
+            <point key="canvasLocation" x="-89" y="288"/>
         </tableViewCell>
     </objects>
     <resources>

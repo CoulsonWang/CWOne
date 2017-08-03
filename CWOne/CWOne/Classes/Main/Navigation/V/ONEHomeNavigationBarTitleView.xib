@@ -30,15 +30,6 @@
                         <action selector="titleButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="EF4-k1-5z3"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="War-eg-Jcj">
-                    <rect key="frame" x="366" y="27" width="40" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="search_gray"/>
-                    <state key="highlighted" image="search_dark"/>
-                    <connections>
-                        <action selector="searchButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="PmF-Dh-gGm"/>
-                    </connections>
-                </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-UK-MKx">
                     <rect key="frame" x="15" y="27" width="43" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -51,6 +42,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="War-eg-Jcj">
+                    <rect key="frame" x="374" y="27" width="40" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="search_gray"/>
+                    <state key="highlighted" image="search_dark"/>
+                    <connections>
+                        <action selector="searchButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="PmF-Dh-gGm"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>

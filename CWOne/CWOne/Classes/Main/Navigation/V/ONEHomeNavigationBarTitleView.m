@@ -36,6 +36,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.titleButton.frame = CGRectMake(0, kMaxTitleY, CWScreenW, kNavigationBarHeight - 20.0);
+    self.weatherLabel.centerX = CWScreenW * 0.5;
+    self.searchButton.x = CWScreenW - self.searchButton.width;
 }
 
 - (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
