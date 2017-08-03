@@ -14,8 +14,14 @@
 
 + (instancetype)menuItemWithDict:(NSDictionary *)dict;
 
+
+// 原始属性
 @property (strong, nonatomic) NSString *vol;
 
 @property (strong, nonatomic) NSArray<ONECatalogueItem *> *catelogueItems;
+
+
+// 自定义属性
+@property (strong, nonatomic) NSString *titleString;
 
 @end

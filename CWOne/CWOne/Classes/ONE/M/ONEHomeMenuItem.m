@@ -22,6 +22,10 @@
         [tempArr addObject:catalogueItem];
     }
     item.catelogueItems = tempArr;
+    
+    
+    item.titleString = [NSString stringWithFormat:@"一个  VOL.%@",item.vol];
+    
     return item;
 }
 
