@@ -47,6 +47,17 @@
     self.subTitle = [NSString stringWithFormat:@"%@ | %@",homeItem.title,homeItem.pic_info];
     
     self.moviewSubTitle = [NSString stringWithFormat:@"————《%@》 ",homeItem.subtitle];
+    
+    self.musicInfoStr = [NSString stringWithFormat:@"%@ · %@ | %@",homeItem.music_name,homeItem.audio_author,homeItem.audio_album];
+    
+    if (homeItem.audio_platform == 1) {
+        self.musicPlatformImage = [UIImage imageNamed:@"ONEXiamiMusicCopyright"];
+    } else if (homeItem.audio_platform == 2) {
+        self.musicPlatformImage = [UIImage imageNamed:@"ONEMusicCopyright"];
+    } else {
+        self.musicPlatformImage = [UIImage imageNamed:@"ONEAndXiamiMusicCopyright"];
+    }
+    
 }
 
 

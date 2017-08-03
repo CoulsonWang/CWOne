@@ -21,13 +21,22 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *image_View;
-@property (weak, nonatomic) IBOutlet UIImageView *centerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) ONELikeView *likeView;
+// 影视cell用到的标签
+@property (weak, nonatomic) IBOutlet UIImageView *centerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+// 音乐cell用到的标签
+@property (weak, nonatomic) IBOutlet UIImageView *musicBackgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *musicCoverImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *audioPlatformImageView;
+@property (weak, nonatomic) IBOutlet UIButton *musicPlayButton;
+@property (weak, nonatomic) IBOutlet UILabel *musicInfoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *musicTagImageView;
 
+// 约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightMarginConstraint;
@@ -56,24 +65,37 @@
     }];
     self.likeView = likeView;
     
+    // 音乐封面变为圆形
+    self.musicCoverImageView.layer.cornerRadius = self.imageViewHeightConstraint.constant * 0.5;
+    self.musicCoverImageView.layer.masksToBounds = YES;
+    
+    // 播放按钮变圆形
+    self.musicPlayButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
+    self.musicPlayButton.layer.cornerRadius = self.musicPlayButton.width * 0.5;
+    self.musicPlayButton.layer.masksToBounds = YES;
+    
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
     [super setViewModel:viewModel];
     
-    BOOL isMoview = (viewModel.homeItem.type == ONEHomeItemTypeMovie);
-    
-    self.centerImageView.hidden = !isMoview;
-    self.subTitleLabel.hidden = !isMoview;
-    self.movieSubTitleHeightConstraint.constant = isMoview ? 20 : 0;
-    [self.contentView layoutIfNeeded];
-    
+    // 通用属性
     self.categoryLabel.text = viewModel.categoryTitle;
     self.titleLabel.text = viewModel.homeItem.title;
     self.authorLabel.text = viewModel.authorString;
+    self.subTitleLabel.text = viewModel.moviewSubTitle;
+    self.summaryLabel.text = viewModel.homeItem.forward;
+    self.timeLabel.text = viewModel.timeStr;
+    self.likeView.viewModel = viewModel;
     
     NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
     UIImage *placeHolder = [UIImage imageNamed:@"center_diary_placeholder"];
+    
+    // 影视相关属性
+    BOOL isMoview = (viewModel.homeItem.type == ONEHomeItemTypeMovie);
+    self.centerImageView.hidden = !isMoview;
+    self.subTitleLabel.hidden = !isMoview;
+    self.movieSubTitleHeightConstraint.constant = isMoview ? 20 : 0;
     if (isMoview) {
         self.image_View.image = [UIImage imageNamed:@"video_feed_background"];
         [self.centerImageView sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -81,7 +103,27 @@
                 self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
             }
         }];
-    } else {
+    }
+    
+    // 音乐相关属性
+    BOOL isMusic = (viewModel.homeItem.type == ONEHomeItemTypeMusic);
+    self.image_View.hidden = isMusic;
+    self.musicBackgroundView.hidden = !isMusic;
+    self.musicInfoLabel.hidden = !isMusic;
+    self.musicCoverImageView.hidden = !isMusic;
+    self.musicPlayButton.hidden = !isMusic;
+    self.audioPlatformImageView.hidden = !isMusic;
+    self.musicTagImageView.hidden = !isMusic;
+    if (isMusic) {
+        self.musicInfoLabel.text = viewModel.musicInfoStr;
+        [self.musicCoverImageView sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:nil];
+        self.audioPlatformImageView.image = viewModel.musicPlatformImage;
+        
+    }
+    
+    
+    
+    if (!isMoview && !isMusic) {
         [self.image_View sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             if (error) {
                 self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
@@ -90,11 +132,9 @@
     }
     
     
-    self.subTitleLabel.text = viewModel.moviewSubTitle;
-    self.summaryLabel.text = viewModel.homeItem.forward;
-    self.timeLabel.text = viewModel.timeStr;
-    self.likeView.viewModel = viewModel;
     
+    
+    [self.contentView layoutIfNeeded];
 }
 
 

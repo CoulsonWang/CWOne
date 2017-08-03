@@ -71,6 +71,7 @@ typedef enum : NSUInteger {
 
 @property (strong, nonatomic) NSString *cover;
 
+@property (assign, nonatomic) NSInteger audio_platform;
 
 /* *********************************** 自定义属性 *********************************** */
 

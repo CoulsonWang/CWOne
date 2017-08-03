@@ -34,4 +34,10 @@
 // 影视下方的副标题
 @property (strong, nonatomic) NSString *moviewSubTitle;
 
+// 音乐cell下方的文本
+@property (strong, nonatomic) NSString *musicInfoStr;
+
+// 音乐cell平台标志图片
+@property (strong, nonatomic) UIImage *musicPlatformImage;
+
 @end
