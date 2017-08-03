@@ -31,4 +31,7 @@
 // 小记下方的文本
 @property (strong, nonatomic) NSString *subTitle;
 
+// 影视下方的副标题
+@property (strong, nonatomic) NSString *moviewSubTitle;
+
 @end

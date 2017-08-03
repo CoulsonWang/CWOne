@@ -93,8 +93,8 @@
 }
 
 - (void)loadData {
-    NSString *date = @"2017-08-02";
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:date success:^(NSDictionary *dataDict) {
+//    NSString *date = @"2017-08-02";
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
         
         NSDictionary * weatherDict = dataDict[@"weather"];
         ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];

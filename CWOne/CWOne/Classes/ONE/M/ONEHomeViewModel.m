@@ -45,6 +45,8 @@
     
     // 处理小记下方的文本
     self.subTitle = [NSString stringWithFormat:@"%@ | %@",homeItem.title,homeItem.pic_info];
+    
+    self.moviewSubTitle = [NSString stringWithFormat:@"————《%@》 ",homeItem.subtitle];
 }
 
 

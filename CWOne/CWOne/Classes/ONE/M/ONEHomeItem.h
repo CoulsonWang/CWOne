@@ -39,6 +39,8 @@ typedef enum : NSUInteger {
 // 标题
 @property (strong, nonatomic) NSString *title;
 
+@property (strong, nonatomic) NSString *subtitle;
+
 // 预览文本
 @property (strong, nonatomic) NSString *forward;
 

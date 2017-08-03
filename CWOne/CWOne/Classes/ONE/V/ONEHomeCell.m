@@ -21,14 +21,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *image_View;
+@property (weak, nonatomic) IBOutlet UIImageView *centerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) ONELikeView *likeView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightMarginConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *movieSubTitleHeightConstraint;
 
 @end
 
@@ -58,17 +61,36 @@
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
     [super setViewModel:viewModel];
     
+    BOOL isMoview = (viewModel.homeItem.type == ONEHomeItemTypeMovie);
+    
+    self.centerImageView.hidden = !isMoview;
+    self.subTitleLabel.hidden = !isMoview;
+    self.movieSubTitleHeightConstraint.constant = isMoview ? 20 : 0;
+    [self.contentView layoutIfNeeded];
+    
     self.categoryLabel.text = viewModel.categoryTitle;
     self.titleLabel.text = viewModel.homeItem.title;
     self.authorLabel.text = viewModel.authorString;
     
     NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
-    [self.image_View sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"center_diary_placeholder"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        if (error) {
-            self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
-        }
-    }];
+    UIImage *placeHolder = [UIImage imageNamed:@"center_diary_placeholder"];
+    if (isMoview) {
+        self.image_View.image = [UIImage imageNamed:@"video_feed_background"];
+        [self.centerImageView sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (error) {
+                self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
+            }
+        }];
+    } else {
+        [self.image_View sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (error) {
+                self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
+            }
+        }];
+    }
     
+    
+    self.subTitleLabel.text = viewModel.moviewSubTitle;
     self.summaryLabel.text = viewModel.homeItem.forward;
     self.timeLabel.text = viewModel.timeStr;
     self.likeView.viewModel = viewModel;

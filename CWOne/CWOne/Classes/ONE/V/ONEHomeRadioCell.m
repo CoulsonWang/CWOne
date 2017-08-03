@@ -16,6 +16,8 @@
 #import "ONERadioTool.h"
 #import "ONERadioItem.h"
 
+#define kRatio 44.0/69.0
+
 @interface ONEHomeRadioCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *coverView;
 @property (weak, nonatomic) IBOutlet UIView *playButtonView;
@@ -65,6 +67,13 @@
     circleView.contentMode = UIViewContentModeCenter;
     circleView.image = circleImage;
     [self.playButtonView insertSubview:circleView atIndex:0];
+    
+    // 添加高度约束
+    CGFloat height = CWScreenW * kRatio;
+    [self.coverView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(height));
+    }];
+    [self.contentView layoutIfNeeded];
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
@@ -99,6 +108,7 @@
     self.unActiveTitleLabel.text = viewModel.homeItem.title;
     self.likeView.viewModel = viewModel;
     self.volumeLabel.text = viewModel.homeItem.volume;
+    
 }
 
 
