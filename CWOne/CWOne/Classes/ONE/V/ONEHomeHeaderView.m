@@ -37,7 +37,9 @@
         catelogueView.updateFrame = ^{
             weakSelf.catalogueView.height = weakSelf.catalogueView.catalogueHeight;
             weakSelf.headerViewHeight = CGRectGetMaxY(weakSelf.catalogueView.frame);
-            weakSelf.height = weakSelf.headerViewHeight;
+            if (weakSelf.reload) {
+                weakSelf.reload();
+            }  
         };
         [self addSubview:catelogueView];
         _catalogueView = catelogueView;

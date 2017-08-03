@@ -21,4 +21,6 @@
 
 @property (assign, nonatomic) CGFloat headerViewHeight;
 
+@property (copy, nonatomic) void(^reload)();
+
 @end
