@@ -99,6 +99,8 @@
     self.volumeLabel.text = viewModel.homeItem.volume;
 }
 
+
+// 事件响应
 - (IBAction)playButtonClick:(UIButton *)sender {
     self.playButton.selected = !self.playButton.isSelected;
 }
@@ -107,13 +109,16 @@
     if (self.unActivePlayStatusView.isAnimating) {
         [self.unActivePlayStatusView stopAnimating];
         // 停止播放音乐
+        [[ONERadioTool sharedInstance] stopCurrentMusic];
     } else {
         [self.unActivePlayStatusView startAnimating];
-        // 开始播放音乐
+        // 开始播放默认音乐
+        [[ONERadioTool sharedInstance] playDefaultMusicWithMusicUrls:self.viewModel.homeItem.default_audios];
     }
     
 }
 
+#pragma mark - 私有工具方法
 - (UIImage *)getCircleImageViewWithRadius:(CGFloat)radius lineWidth:(CGFloat)lineWidth{
     CGFloat rect = radius * 2+ lineWidth * 2;
     UIGraphicsBeginImageContext(CGSizeMake(rect, rect));

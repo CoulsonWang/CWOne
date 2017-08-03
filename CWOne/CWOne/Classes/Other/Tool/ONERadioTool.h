@@ -18,4 +18,8 @@
 
 - (void)loadRadioDataCompletion:(void (^)())completion;
 
+- (void)playDefaultMusicWithMusicUrls:(NSArray *)musicUrls;
+
+- (void)stopCurrentMusic;
+
 @end
