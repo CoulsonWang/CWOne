@@ -68,7 +68,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0st-cx-YOq" userLabel="预览文本">
-                        <rect key="frame" x="25" y="367.33333333333331" width="364" height="98.333333333333371"/>
+                        <rect key="frame" x="25" y="367.33333333333326" width="364" height="117.66666666666669"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIh-1I-o4s" userLabel="副标题">
-                        <rect key="frame" x="353.66666666666674" y="475.66666666666669" width="35.333333333333314" height="20"/>
+                        <rect key="frame" x="353.66666666666674" y="495" width="35.333333333333314" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="1Sn-gX-w9P"/>
                         </constraints>
@@ -142,8 +142,8 @@
                     <constraint firstItem="4Di-eR-cRE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="HbP-ST-8aD"/>
                     <constraint firstItem="CE8-dj-LFj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="IZY-Dl-KEa"/>
                     <constraint firstItem="nJJ-ap-nL5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JcB-pU-Tb8"/>
-                    <constraint firstItem="Jop-Hz-Fqm" firstAttribute="top" secondItem="iIh-1I-o4s" secondAttribute="bottom" constant="25" id="K07-rv-3xY"/>
-                    <constraint firstItem="Jop-Hz-Fqm" firstAttribute="top" secondItem="0st-cx-YOq" secondAttribute="bottom" priority="900" constant="35.670000000000002" id="LfO-KC-wb6"/>
+                    <constraint firstItem="Jop-Hz-Fqm" firstAttribute="top" secondItem="iIh-1I-o4s" secondAttribute="bottom" priority="900" constant="25" id="K07-rv-3xY"/>
+                    <constraint firstItem="Jop-Hz-Fqm" firstAttribute="top" secondItem="0st-cx-YOq" secondAttribute="bottom" constant="35" id="LfO-KC-wb6"/>
                     <constraint firstItem="IbH-77-0dc" firstAttribute="top" secondItem="nnZ-QB-mKa" secondAttribute="bottom" constant="15" id="OWN-3O-Vrr"/>
                     <constraint firstItem="QwU-i0-UlB" firstAttribute="centerY" secondItem="4Di-eR-cRE" secondAttribute="centerY" id="Prr-Wc-riB"/>
                     <constraint firstItem="nnZ-QB-mKa" firstAttribute="leading" secondItem="CE8-dj-LFj" secondAttribute="leading" id="Qmz-xq-jLk"/>
@@ -177,12 +177,12 @@
                 <outlet property="authorLabel" destination="IbH-77-0dc" id="GfU-CW-n5w"/>
                 <outlet property="categoryLabel" destination="rAY-Aq-MgZ" id="A7G-lA-e2Q"/>
                 <outlet property="centerImageView" destination="mat-rt-r9i" id="dug-iI-aM2"/>
+                <outlet property="contentLabelBottomConstraint" destination="LfO-KC-wb6" id="b5S-sr-Et5"/>
                 <outlet property="contentLabelTopConstraint" destination="1ZH-Th-qb6" id="Fk4-eZ-Kcc"/>
                 <outlet property="imageViewHeightConstraint" destination="hdw-4B-ADy" id="fNC-UH-n7f"/>
                 <outlet property="imageViewLeftMarginConstraint" destination="IZY-Dl-KEa" id="D6t-Ox-PE8"/>
                 <outlet property="imageViewRightMarginConstraint" destination="HKs-Oy-Ngf" id="itZ-jz-acg"/>
                 <outlet property="image_View" destination="CE8-dj-LFj" id="dea-X5-aNN"/>
-                <outlet property="movieSubTitleHeightConstraint" destination="1Sn-gX-w9P" id="hsf-lS-Ybo"/>
                 <outlet property="musicBackgroundView" destination="SYR-a1-H3t" id="txc-Ob-Q7r"/>
                 <outlet property="musicCoverImageView" destination="4Di-eR-cRE" id="TQF-jj-7if"/>
                 <outlet property="musicInfoLabel" destination="JXw-jp-fwh" id="OBB-Uo-d4v"/>

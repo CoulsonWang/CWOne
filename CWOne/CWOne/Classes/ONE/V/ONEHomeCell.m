@@ -12,6 +12,7 @@
 #import <UIImageView+WebCache.h>
 #import "ONELikeView.h"
 #import <Masonry.h>
+#import "UILabel+CWLineSpacing.h"
 
 #define kSideMargin 25.0
 #define kRatio 0.6
@@ -40,7 +41,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftMarginConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightMarginConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *movieSubTitleHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelBottomConstraint;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelTopConstraint;
 
 @end
@@ -85,21 +87,22 @@
     self.titleLabel.text = viewModel.homeItem.title;
     self.authorLabel.text = viewModel.authorString;
     self.subTitleLabel.text = viewModel.moviewSubTitle;
-    self.summaryLabel.text = viewModel.homeItem.forward;
+    [self.summaryLabel setText:viewModel.homeItem.forward lineSpacing:8.0];
     self.timeLabel.text = viewModel.timeStr;
     self.likeView.viewModel = viewModel;
     
     NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
     UIImage *placeHolder = [UIImage imageNamed:@"center_diary_placeholder"];
     self.contentLabelTopConstraint.constant = 10.0;
+    self.contentLabelBottomConstraint.constant = 35.0;
     
     // 影视相关属性
     BOOL isMoview = (viewModel.homeItem.type == ONEHomeItemTypeMovie);
     self.centerImageView.hidden = !isMoview;
     self.subTitleLabel.hidden = !isMoview;
-    self.movieSubTitleHeightConstraint.constant = isMoview ? 20 : 0;
     if (isMoview) {
         self.image_View.image = [UIImage imageNamed:@"video_feed_background"];
+        self.contentLabelBottomConstraint.constant = 55.0;
         [self.centerImageView sd_setImageWithURL:imgUrl placeholderImage:placeHolder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             if (error) {
                 self.image_View.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];

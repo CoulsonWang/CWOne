@@ -13,6 +13,7 @@
 #import "ONEHomeViewModel.h"
 #import "ONEHomeItem.h"
 #import "ONEMainTabBarController.h"
+#import "UILabel+CWLineSpacing.h"
 
 @interface ONEHomeSmallNoteCell ()
 
@@ -49,7 +50,7 @@
     [super setViewModel:viewModel];
     
     self.subTitleLabel.text = viewModel.subTitle;
-    self.contentLabel.text = viewModel.homeItem.forward;
+    [self.contentLabel setText:viewModel.homeItem.forward lineSpacing:8.0];
     self.imageInfoLabel.text = viewModel.homeItem.words_info;
     self.likeView.viewModel = viewModel;
     [self setCoverViewImage:viewModel.homeItem.img_url];
