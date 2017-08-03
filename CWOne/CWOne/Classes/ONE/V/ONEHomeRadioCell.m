@@ -72,6 +72,8 @@
     
     // 获取当前电台是否活跃
     BOOL isActive = [ONERadioTool sharedInstance].radioItem.isActive;
+    // 如果该cell对应的不是今天，代表电台必然有数据
+    isActive = [self isHomeItemBelongToToday:viewModel.homeItem] ? isActive : YES;
     
     // 确定控件是否隐藏
     self.logoImageView.hidden = !isActive;
@@ -100,20 +102,32 @@
 }
 
 
-// 事件响应
+#pragma mark - 事件响应
 - (IBAction)playButtonClick:(UIButton *)sender {
-    self.playButton.selected = !self.playButton.isSelected;
+    sender.selected = !sender.isSelected;
+    
+    if (sender.isSelected) {
+        __weak typeof(self) weakSelf = self;
+        [[ONERadioTool sharedInstance] playMusicWithUrlString:self.viewModel.homeItem.audio_url completion:^{
+            weakSelf.playButton.selected = NO;
+        }];
+    } else {
+        [[ONERadioTool sharedInstance] pauseCurrentMusic];
+    }
 }
 
 - (void)unActivePlayViewClick {
     if (self.unActivePlayStatusView.isAnimating) {
         [self.unActivePlayStatusView stopAnimating];
         // 停止播放音乐
-        [[ONERadioTool sharedInstance] stopCurrentMusic];
+        [[ONERadioTool sharedInstance] pauseCurrentMusic];
     } else {
         [self.unActivePlayStatusView startAnimating];
         // 开始播放默认音乐
-        [[ONERadioTool sharedInstance] playDefaultMusicWithMusicUrls:self.viewModel.homeItem.default_audios];
+        __weak typeof(self) weakSelf = self;
+        [[ONERadioTool sharedInstance] playRandomDefaultMusicWithMusicUrls:self.viewModel.homeItem.default_audios completion:^{
+            [weakSelf.unActivePlayStatusView stopAnimating];
+        }];
     }
     
 }
@@ -129,6 +143,18 @@
     UIImage *circle = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return circle;
+}
+// 判断item是否是今天的
+- (BOOL)isHomeItemBelongToToday:(ONEHomeItem *)homeItem {
+    NSString *post = homeItem.post_date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *postDate = [formatter dateFromString:post];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    
+    NSString *postStr = [formatter stringFromDate:postDate];
+    NSString *todayStr = [formatter stringFromDate:[NSDate date]];
+    return [postStr isEqualToString:todayStr];
 }
 
 @end
