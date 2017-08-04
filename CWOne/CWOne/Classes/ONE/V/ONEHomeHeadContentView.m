@@ -9,11 +9,14 @@
 #import "ONEHomeHeadContentView.h"
 #import "ONELikeView.h"
 #import <Masonry.h>
-#import <SDWebImageManager.h>
+#import <UIImageView+WebCache.h>
 #import "ONEHomeViewModel.h"
 #import "ONEHomeItem.h"
 #import "ONEMainTabBarController.h"
 #import "UILabel+CWLineSpacing.h"
+
+#define kRatioOfHorizontal 207/311.0
+#define kRatioOfVertical 338/311.0
 
 @interface ONEHomeHeadContentView ()
 
@@ -60,27 +63,23 @@
     [self.contentLabel setText:viewModel.homeItem.forward lineSpacing:8.0];
     self.imageInfoLabel.text = viewModel.homeItem.words_info;
     self.likeView.viewModel = viewModel;
-    [self setCoverViewImage:viewModel.homeItem.img_url];
+    
+    CGFloat ratio = (viewModel.homeItem.orientation.integerValue == 0) ? kRatioOfHorizontal : kRatioOfVertical;
+    self.coverViewHeightConstraint.constant = CWScreenW * ratio;
+    [self layoutIfNeeded];
+    
+    NSURL *imgUrl = [NSURL URLWithString:viewModel.homeItem.img_url];
+    [self.coverView sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"center_diary_placeholder"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if (error) {
+            self.coverView.image = [UIImage imageNamed:@"networkingErrorPlaceholderIcon"];
+        }
+    }];
     
     self.headContentViewHeight = CGRectGetMaxY(self.seperateView.frame);
 }
 
 #pragma mark - 私有方法
-- (void)setCoverViewImage:(NSString *)imageUrl {
-    // 先通过SDWebImage在缓存中查找是否有缓存图片，如果有则不再下载，若没有，则同步下载，更新约束
-    UIImage *cacheImg = [[SDWebImageManager sharedManager].imageCache imageFromCacheForKey:imageUrl];
-    UIImage *image;
-    if (cacheImg != nil) {
-        image = cacheImg;
-    } else {
-        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
-        image = [UIImage imageWithData:imgData];
-    }
-    CGFloat height = image.size.height /image.size.width * CWScreenW;
-    self.coverViewHeightConstraint.constant = height;
-    [self layoutIfNeeded];
-    self.coverView.image = image;
-}
+
 
 - (IBAction)smallNoteButtonClick:(UIButton *)sender {
 }

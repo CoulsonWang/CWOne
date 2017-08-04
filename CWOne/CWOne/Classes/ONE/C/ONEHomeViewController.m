@@ -133,6 +133,7 @@ typedef enum : NSUInteger {
     scrollV.delegate = self;
 }
 
+#pragma mark - 私有工具方法
 // 确定哪个控制器需要移动
 - (ONEHomeTableViewController *)getTheControllerNeedToMoveWithDirection:(ONESrollDiretion)direction {
     if (self.currentVC == self.middleVC) {
@@ -177,24 +178,27 @@ typedef enum : NSUInteger {
         }
     }
 }
+
+- (void)singleMoveWithDirection:(ONESrollDiretion)direction toIndex:(NSInteger)index{
+    ONEHomeTableViewController *moveVC = [self getTheControllerNeedToMoveWithDirection:direction];
+    NSInteger newIndex = (direction == ONESrollDiretionRight) ? index + 1 : index - 1;
+    moveVC.dateStr = [[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:newIndex];
+    moveVC.tableView.x = newIndex * CWScreenW;
+    self.lastIndex = index;
+    [self updateCurrentVCWithDirection:direction];
+}
+
+#pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
     NSInteger index = offsetX / CWScreenW;
     
+    // 仅移动了一页时的处理
     if (index == _lastIndex + 1) {
-        ONEHomeTableViewController *moveVC = [self getTheControllerNeedToMoveWithDirection:ONESrollDiretionRight];
-        moveVC.dateStr = [[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:(index + 1)];
-        moveVC.tableView.x = (index + 1) * CWScreenW;
-        self.lastIndex += 1;
-        [self updateCurrentVCWithDirection:ONESrollDiretionRight];
-        
+        [self singleMoveWithDirection:ONESrollDiretionRight toIndex:index];
     } else if (index == _lastIndex - 1) {
         if (index == 0) { return; }
-        ONEHomeTableViewController *moveVC = [self getTheControllerNeedToMoveWithDirection:ONESrollDiretionLeft];
-        moveVC.dateStr = [[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:(index - 1)];
-        moveVC.tableView.x = (index - 1) * CWScreenW;
-        self.lastIndex -= 1;
-        [self updateCurrentVCWithDirection:ONESrollDiretionLeft];
+        [self singleMoveWithDirection:ONESrollDiretionLeft toIndex:index];
     } else if (index == _lastIndex) {
         return;
     }
