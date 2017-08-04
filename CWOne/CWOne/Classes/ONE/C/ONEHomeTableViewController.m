@@ -36,12 +36,16 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 - (void)setDateStr:(NSString *)dateStr {
     _dateStr = dateStr;
-    [self reloadDataWithCompletion:^{
-        self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
-        [self updateTitleViewWithOffsetY:self.tableView.contentOffset.y confirm:YES];
-    }];
+    [self reloadDataWithCompletion:nil];
+    self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
 }
-
+#pragma mark - 对外公有方法
+- (void)setDateStr:(NSString *)dateStr withCompletion:(void (^)())completion {
+    _dateStr = dateStr;
+    
+    [self reloadDataWithCompletion:completion];
+    self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
+}
 #pragma mark - 懒加载
 
 - (void)viewDidLoad {
@@ -93,11 +97,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.tableView.tableHeaderView = headerView;
     self.headerView = headerView;
 }
-#pragma mark - 对外共有方法
-- (void)setDateStr:(NSString *)dateStr withCompletion:(void (^)())completion {
-    _dateStr = dateStr;
-    [self reloadDataWithCompletion:completion];
-}
+
 
 #pragma mark - 私有工具方法
 // 刷新数据
@@ -112,10 +112,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         self.menuItem = tabBarVc.menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
         self.headerView.menuItem = tabBarVc.menuItem;
-        [self refreshTableView];
         if (completion) {
             completion();
         }
+        [self refreshTableView];
         return;
     }
     
@@ -133,10 +133,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         self.menuItem = menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
         self.headerView.menuItem = menuItem;
-        [self refreshTableView];
         if (completion) {
             completion();
         }
+        [self refreshTableView];
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         NSLog(@"%@",error);
@@ -152,6 +152,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 #pragma mark - 事件响应
 - (void)footerButtonClick {
     // 切换到上一天
+    if ([self.delegate respondsToSelector:@selector(homeTableViewFooterButtonClick:)]) {
+        [self.delegate homeTableViewFooterButtonClick:self];
+    }
 }
 
 

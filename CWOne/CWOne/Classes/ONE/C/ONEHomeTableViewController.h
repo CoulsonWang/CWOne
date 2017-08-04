@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeTableViewController;
+
+@protocol ONEHomeTableViewControllerDelegate <NSObject>
+
+- (void)homeTableViewFooterButtonClick:(ONEHomeTableViewController *)homeTableViewController;
+
+@end
+
 @interface ONEHomeTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *dateStr;
 
+@property (weak, nonatomic) id<ONEHomeTableViewControllerDelegate> delegate;
+
 - (void)setDateStr:(NSString *)dateStr withCompletion:(void (^)())completion;
+
+
 
 @end

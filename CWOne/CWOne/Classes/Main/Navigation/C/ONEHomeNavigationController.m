@@ -40,12 +40,9 @@
     self.titleView = titleView;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)updateTitleViewWithOffset:(CGFloat)offset {
+    
     // 修改状态栏的透明度
     [self changeAlphaOfStatusBar:(offset/ONEScrollOffsetLimit)];
 
@@ -54,6 +51,7 @@
 }
 
 - (void)confirmTitlViewWithOffset:(CGFloat)offset {
+    
     if (offset >= ONEScrollOffsetLimit * 0.5) {
         [self changeAlphaOfStatusBar:1];
         [self.titleView updateSubFrameAndAlphaWithOffset:ONEScrollOffsetLimit];

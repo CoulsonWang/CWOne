@@ -9,13 +9,17 @@
 #import "ONEHomeViewController.h"
 #import "ONEHomeTableViewController.h"
 #import "ONEDateTool.h"
+#import "ONEMainTabBarController.h"
+#import "ONEHomeNavigationController.h"
+
+#define kChangePageAnimateDuration 0.3
 
 typedef enum : NSUInteger {
     ONESrollDiretionLeft,
     ONESrollDiretionRight,
 } ONESrollDiretion;
 
-@interface ONEHomeViewController () <UIScrollViewDelegate>
+@interface ONEHomeViewController () <UIScrollViewDelegate, ONEHomeTableViewControllerDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 
@@ -46,6 +50,7 @@ typedef enum : NSUInteger {
 - (ONEHomeTableViewController *)leftVC {
     if (!_leftVC) {
         ONEHomeTableViewController *leftTableVC = [[ONEHomeTableViewController alloc] init];
+        leftTableVC.delegate = self;
         self.leftVC = leftTableVC;
         [self addChildViewController:leftTableVC];
         _leftVC = leftTableVC;
@@ -64,6 +69,7 @@ typedef enum : NSUInteger {
 - (ONEHomeTableViewController *)middleVC {
     if (!_middleVC) {
         ONEHomeTableViewController *middleTableVC = [[ONEHomeTableViewController alloc] init];
+        middleTableVC.delegate = self;
         self.middleVC = middleTableVC;
         [self addChildViewController:middleTableVC];
         _middleVC = middleTableVC;
@@ -82,6 +88,7 @@ typedef enum : NSUInteger {
 - (ONEHomeTableViewController *)rightVC {
     if (!_rightVC) {
         ONEHomeTableViewController *rightTableVC = [[ONEHomeTableViewController alloc] init];
+        rightTableVC.delegate = self;
         self.rightVC = rightTableVC;
         [self addChildViewController:rightTableVC];
         _rightVC = rightTableVC;
@@ -188,6 +195,11 @@ typedef enum : NSUInteger {
     [self updateCurrentVCWithDirection:direction];
 }
 
+- (void)refreshTitleViewWithOffset:(CGFloat)offset {
+    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
+    [navVC confirmTitlViewWithOffset:0];
+}
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -198,8 +210,9 @@ typedef enum : NSUInteger {
     if (index == _lastIndex + 1) {
         [self singleMoveWithDirection:ONESrollDiretionRight toIndex:index];
     } else if (index == _lastIndex - 1) {
-        if (index == 0) { return; }
-        [self singleMoveWithDirection:ONESrollDiretionLeft toIndex:index];
+        if (index != 0) {
+            [self singleMoveWithDirection:ONESrollDiretionLeft toIndex:index];
+        }
     } else if (index == _lastIndex) {
         return;
     } else {
@@ -218,8 +231,19 @@ typedef enum : NSUInteger {
         self.lastIndex = index;
         self.currentVC = self.middleVC;
     }
+    [self refreshTitleViewWithOffset:self.currentVC.tableView.contentOffset.y];
 
 }
 
+#pragma mark - ONEHomeTableViewControllerDelegate
+- (void)homeTableViewFooterButtonClick:(ONEHomeTableViewController *)homeTableViewController {
+    CGFloat currentOffsetX = self.scrollView.contentOffset.x;
+    [UIView animateWithDuration:kChangePageAnimateDuration animations:^{
+        self.scrollView.contentOffset = CGPointMake(currentOffsetX + CWScreenW, 0);
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
+    
+}
 
 @end
