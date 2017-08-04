@@ -47,21 +47,21 @@
 
 - (void)updateTitleViewWithOffset:(CGFloat)offset {
     // 修改状态栏的透明度
-    [self changeAlphaOfStatusBar:(1+offset/ONEScrollOffsetLimit)];
+    [self changeAlphaOfStatusBar:(offset/ONEScrollOffsetLimit)];
 
     // 让titleView更新
     [self.titleView updateSubFrameAndAlphaWithOffset:offset];
 }
 
 - (void)confirmTitlViewWithOffset:(CGFloat)offset {
-    if (-offset >= ONEScrollOffsetLimit * 0.5) {
-        [self changeAlphaOfStatusBar:0];
-        [self.titleView updateSubFrameAndAlphaWithOffset:-ONEScrollOffsetLimit];
-        [self.titleView enableTheTitleButton:NO];
-    } else {
+    if (offset >= ONEScrollOffsetLimit * 0.5) {
         [self changeAlphaOfStatusBar:1];
-        [self.titleView updateSubFrameAndAlphaWithOffset:0];
+        [self.titleView updateSubFrameAndAlphaWithOffset:ONEScrollOffsetLimit];
         [self.titleView enableTheTitleButton:YES];
+    } else {
+        [self changeAlphaOfStatusBar:0];
+        [self.titleView updateSubFrameAndAlphaWithOffset:0];
+        [self.titleView enableTheTitleButton:NO];
     }
 }
 

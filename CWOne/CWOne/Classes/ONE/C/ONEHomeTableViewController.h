@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ONEHomeController : UITableViewController
+@interface ONEHomeTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSString *date;
 
 @end

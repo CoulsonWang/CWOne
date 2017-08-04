@@ -77,20 +77,20 @@
 #pragma mark - 对外方法
 - (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset {
     // 修改搜索按钮的alpha
-    self.searchButton.alpha = (1+offset/ONEScrollOffsetLimit);
+    self.searchButton.alpha = (offset/ONEScrollOffsetLimit);
     // 修改箭头的alpha
-    self.arrowImageView.alpha = (1+offset/ONEScrollOffsetLimit);
+    self.arrowImageView.alpha = (offset/ONEScrollOffsetLimit);
     // 修改天气标签的alpha
-    self.weatherLabel.alpha = -offset/ONEScrollOffsetLimit;
+    self.weatherLabel.alpha = 1-offset/ONEScrollOffsetLimit;
     
     
     // 修改title的frame
-    CGFloat titleY = kMaxTitleY*(1+offset/ONEScrollOffsetLimit);
+    CGFloat titleY = kMinTitleY + kMaxTitleY * (offset/ONEScrollOffsetLimit);
     titleY = titleY < kMinTitleY ? kMinTitleY : titleY;
     titleY = titleY > kMaxTitleY ? kMaxTitleY : titleY;
     self.titleButton.y = titleY;
     // 修改返回标签的frame
-    CGFloat backCenterY = kMinBackBtnCenterY + kBackBtnCenterYOffset*(1+offset/ONEScrollOffsetLimit);
+    CGFloat backCenterY = kMinBackBtnCenterY + kBackBtnCenterYOffset * (offset/ONEScrollOffsetLimit);
     backCenterY = backCenterY < kMinBackBtnCenterY ? kMinBackBtnCenterY : backCenterY;
     backCenterY = backCenterY > kMaxBackBtnCenterY ? kMaxBackBtnCenterY : backCenterY;
     self.backToTodayButton.centerY = backCenterY;

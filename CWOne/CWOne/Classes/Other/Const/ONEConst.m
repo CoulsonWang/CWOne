@@ -9,4 +9,4 @@
 #import "ONEConst.h"
 
 
-CGFloat const ONEScrollOffsetLimit = 64.0;
+CGFloat const ONEScrollOffsetLimit = 120.0;

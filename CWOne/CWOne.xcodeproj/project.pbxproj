@@ -14,7 +14,7 @@
 		B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */; };
 		B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */; };
 		B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A4C1F3072A9004E64D9 /* ONEMainTabBarController.m */; };
-		B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */; };
+		B90C3A501F3079B5004E64D9 /* ONEHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A4F1F3079B5004E64D9 /* ONEHomeTableViewController.m */; };
 		B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A521F3079CA004E64D9 /* ONEAllController.m */; };
 		B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A551F3079DA004E64D9 /* ONEMeController.m */; };
 		B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A561F3079DA004E64D9 /* ONEMeController.xib */; };
@@ -35,6 +35,7 @@
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
 		B93A7D661F3375F100FF86E9 /* ONEHomeCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */; };
 		B93A7D671F3375F100FF86E9 /* ONEHomeCatalogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */; };
+		B93A7D6A1F3451FE00FF86E9 /* ONEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */; };
 		B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */; };
 		B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */; };
 		B95633CC1F335AB700049FB8 /* ONECatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */; };
@@ -90,8 +91,8 @@
 		B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CWTranslate.m"; sourceTree = "<group>"; };
 		B90C3A4B1F3072A9004E64D9 /* ONEMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEMainTabBarController.h; sourceTree = "<group>"; };
 		B90C3A4C1F3072A9004E64D9 /* ONEMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEMainTabBarController.m; sourceTree = "<group>"; };
-		B90C3A4E1F3079B5004E64D9 /* ONEHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeController.h; sourceTree = "<group>"; };
-		B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeController.m; sourceTree = "<group>"; };
+		B90C3A4E1F3079B5004E64D9 /* ONEHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeTableViewController.h; sourceTree = "<group>"; };
+		B90C3A4F1F3079B5004E64D9 /* ONEHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeTableViewController.m; sourceTree = "<group>"; };
 		B90C3A511F3079CA004E64D9 /* ONEAllController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllController.h; sourceTree = "<group>"; };
 		B90C3A521F3079CA004E64D9 /* ONEAllController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllController.m; sourceTree = "<group>"; };
 		B90C3A541F3079DA004E64D9 /* ONEMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEMeController.h; sourceTree = "<group>"; };
@@ -129,6 +130,8 @@
 		B93A7D631F3375F100FF86E9 /* ONEHomeCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueCell.h; sourceTree = "<group>"; };
 		B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCatalogueCell.m; sourceTree = "<group>"; };
 		B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCatalogueCell.xib; sourceTree = "<group>"; };
+		B93A7D681F3451FE00FF86E9 /* ONEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeViewController.h; sourceTree = "<group>"; };
+		B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeViewController.m; sourceTree = "<group>"; };
 		B95633C41F33532300049FB8 /* ONEHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeHeaderView.h; sourceTree = "<group>"; };
 		B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeHeaderView.m; sourceTree = "<group>"; };
 		B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueView.h; sourceTree = "<group>"; };
@@ -479,8 +482,10 @@
 		B9321F1C1F305AD70052752B /* C */ = {
 			isa = PBXGroup;
 			children = (
-				B90C3A4E1F3079B5004E64D9 /* ONEHomeController.h */,
-				B90C3A4F1F3079B5004E64D9 /* ONEHomeController.m */,
+				B93A7D681F3451FE00FF86E9 /* ONEHomeViewController.h */,
+				B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */,
+				B90C3A4E1F3079B5004E64D9 /* ONEHomeTableViewController.h */,
+				B90C3A4F1F3079B5004E64D9 /* ONEHomeTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -910,7 +915,7 @@
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B9A73FE71F30C18A009025FD /* ONEHomeCell.m in Sources */,
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,
-				B90C3A501F3079B5004E64D9 /* ONEHomeController.m in Sources */,
+				B90C3A501F3079B5004E64D9 /* ONEHomeTableViewController.m in Sources */,
 				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */,
@@ -932,6 +937,7 @@
 				B9321F011F3059410052752B /* main.m in Sources */,
 				B95633CF1F335CAD00049FB8 /* ONEHomeMenuItem.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
+				B93A7D6A1F3451FE00FF86E9 /* ONEHomeViewController.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9A7400A1F322816009025FD /* ONEHomeRadioCell.m in Sources */,
 				B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */,

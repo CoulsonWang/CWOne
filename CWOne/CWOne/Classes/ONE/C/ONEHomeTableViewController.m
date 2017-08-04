@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Coulson_Wang. All rights reserved.
 //
 
-#import "ONEHomeController.h"
+#import "ONEHomeTableViewController.h"
 #import "ONENetworkTool.h"
 #import "ONEHomeItem.h"
 #import "ONEHomeBaseCell.h"
@@ -22,7 +22,7 @@
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
-@interface ONEHomeController ()
+@interface ONEHomeTableViewController ()
 
 @property (strong, nonatomic) NSArray *homeItems;
 
@@ -32,29 +32,23 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @end
 
-@implementation ONEHomeController
+@implementation ONEHomeTableViewController
+
+-(void)setDate:(NSString *)date {
+    _date = date;
+    [self loadDataWithCompletion:nil];
+}
 
 #pragma mark - 懒加载
-- (NSArray *)homeItems {
-    if (!_homeItems) {
-        ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-        _homeItems = tabBarVC.homeItems;
-    }
-    return _homeItems;
-}
-
-- (ONEHomeMenuItem *)menuItem {
-    if (!_menuItem) {
-        ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-        _menuItem = tabBarVC.menuItem;
-    }
-    return _menuItem;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUpTableView];
+    [self loadDataWithCompletion:^{
+        [self setUpOtherSubViews];
+        [self updateTitleViewWithOffsetY:self.tableView.contentOffset.y confirm:YES];
+    }];
 }
 
 #pragma mark - 设置UI控件属性
@@ -66,33 +60,54 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = ONEBackgroundColor;
-    
+}
+
+- (void)setUpOtherSubViews {
     // 设置下拉刷新控件
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadHomeData)];
+    __weak typeof(self) weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadDataWithCompletion:nil];
+    }];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.backgroundColor = ONEBackgroundColor;
     self.tableView.mj_header = header;
     
     // 设置尾部footer
     UIButton *footerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    footerButton.height = 200;
+    footerButton.height = 300;
     [footerButton setImage:[UIImage imageNamed:@"feedsBottomPlaceHolder"] forState:UIControlStateNormal];
     [footerButton addTarget:self action:@selector(footerButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableFooterView = footerButton;
     
     // 设置顶部view
     ONEHomeHeaderView *headerView = [ONEHomeHeaderView homeHeaderViewWithHeaderViewModel:[ONEHomeViewModel viewModelWithItem:self.homeItems.firstObject] menuItem:self.menuItem];
-    __weak typeof(self) weakSelf = self;
     headerView.reload = ^{
         [weakSelf.tableView reloadData];
     };
     self.tableView.tableHeaderView = headerView;
     self.headerView = headerView;
+
 }
 
 #pragma mark - 私有工具方法
-- (void)reloadHomeData {
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
+- (void)loadDataWithCompletion:(void (^)())completion {
+    
+    // 如果是今天，不需要再从网络获取，直接获取缓存好的数据
+    if (self.date == nil) {
+        ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        self.homeItems = tabBarVc.homeItems;
+        self.menuItem = tabBarVc.menuItem;
+        [self.tableView reloadData];
+        self.headerView.menuItem = tabBarVc.menuItem;
+        self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
+        [self.tableView.mj_header endRefreshing];
+        if (completion) {
+            completion();
+        }
+        return;
+    }
+    
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:self.date success:^(NSDictionary *dataDict) {
         NSDictionary *menuDict = dataDict[@"menu"];
         ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
         
@@ -109,13 +124,17 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         // 刷新headerView数据
         self.headerView.menuItem = menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
-        
         [self.tableView.mj_header endRefreshing];
+        if (completion) {
+            completion();
+        }
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         NSLog(@"%@",error);
     }];
+    
 }
+
 
 #pragma mark - 事件响应
 - (void)footerButtonClick {
@@ -157,16 +176,23 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    // 通知NavigationController更新视图
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
-    [navVC updateTitleViewWithOffset:offsetY];
+    [self updateTitleViewWithOffsetY:scrollView.contentOffset.y confirm:NO];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.parentViewController;
-    [navVC confirmTitlViewWithOffset:offsetY];
+    [self updateTitleViewWithOffsetY:scrollView.contentOffset.y confirm:YES];
+}
+
+// 通知NavigationController更新视图
+- (void)updateTitleViewWithOffsetY:(CGFloat)offsetY confirm:(BOOL)isConfirm;{
+    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
+    if (isConfirm) {
+        [navVC confirmTitlViewWithOffset:offsetY];
+    } else {
+        [navVC updateTitleViewWithOffset:offsetY];
+    }
+    
 }
 
 @end

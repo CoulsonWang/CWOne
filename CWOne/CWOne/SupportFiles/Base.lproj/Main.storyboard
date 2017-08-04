@@ -8,25 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Controller-->
-        <scene sceneID="FgG-db-8gW">
-            <objects>
-                <tableViewController id="s20-1n-qzo" customClass="ONEHomeController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Kd-EI-IFS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="s20-1n-qzo" id="dHV-oO-gAS"/>
-                            <outlet property="delegate" destination="s20-1n-qzo" id="pcC-X3-6Gt"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="RdM-a3-NJd"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pJ0-VM-886" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="742.02898550724649" y="-802.17391304347836"/>
-        </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="vRb-zI-azJ">
             <objects>
@@ -96,12 +77,31 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="s20-1n-qzo" kind="relationship" relationship="rootViewController" id="N3N-ET-qvL"/>
+                        <segue destination="FN9-BG-QMs" kind="relationship" relationship="rootViewController" id="1jU-gK-Ibx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ba7-l5-iGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-165.21739130434784" y="-802.17391304347836"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="tBT-Qq-xSx">
+            <objects>
+                <viewController id="FN9-BG-QMs" customClass="ONEHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yor-Qn-8kp"/>
+                        <viewControllerLayoutGuide type="bottom" id="hX0-QO-t76"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jHd-zL-c5x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9qr-eZ-wuh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5C-fL-u0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="-802"/>
         </scene>
     </scenes>
     <resources>
