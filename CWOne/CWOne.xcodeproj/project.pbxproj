@@ -36,6 +36,8 @@
 		B93A7D661F3375F100FF86E9 /* ONEHomeCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */; };
 		B93A7D671F3375F100FF86E9 /* ONEHomeCatalogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */; };
 		B93A7D6A1F3451FE00FF86E9 /* ONEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */; };
+		B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */; };
+		B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */; };
 		B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */; };
 		B95633C91F33561000049FB8 /* ONEHomeCatalogueView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633C81F33561000049FB8 /* ONEHomeCatalogueView.m */; };
 		B95633CC1F335AB700049FB8 /* ONECatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95633CB1F335AB700049FB8 /* ONECatalogueItem.m */; };
@@ -132,6 +134,10 @@
 		B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCatalogueCell.xib; sourceTree = "<group>"; };
 		B93A7D681F3451FE00FF86E9 /* ONEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeViewController.h; sourceTree = "<group>"; };
 		B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeViewController.m; sourceTree = "<group>"; };
+		B93A7D6B1F347A6A00FF86E9 /* ONEDateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDateTool.h; sourceTree = "<group>"; };
+		B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDateTool.m; sourceTree = "<group>"; };
+		B93A7D6E1F347C8700FF86E9 /* NSString+ONEComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ONEComponents.h"; sourceTree = "<group>"; };
+		B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ONEComponents.m"; sourceTree = "<group>"; };
 		B95633C41F33532300049FB8 /* ONEHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeHeaderView.h; sourceTree = "<group>"; };
 		B95633C51F33532300049FB8 /* ONEHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeHeaderView.m; sourceTree = "<group>"; };
 		B95633C71F33561000049FB8 /* ONEHomeCatalogueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueView.h; sourceTree = "<group>"; };
@@ -562,6 +568,8 @@
 				B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */,
 				B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */,
 				B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */,
+				B93A7D6E1F347C8700FF86E9 /* NSString+ONEComponents.h */,
+				B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -591,6 +599,8 @@
 				B9A740101F32EE4B009025FD /* ONERadioTool.m */,
 				B9A740121F32EF19009025FD /* ONERadioItem.h */,
 				B9A740131F32EF19009025FD /* ONERadioItem.m */,
+				B93A7D6B1F347A6A00FF86E9 /* ONEDateTool.h */,
+				B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -917,6 +927,7 @@
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,
 				B90C3A501F3079B5004E64D9 /* ONEHomeTableViewController.m in Sources */,
 				B90C3A701F309C61004E64D9 /* ONEHomeItem.m in Sources */,
+				B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
@@ -938,6 +949,7 @@
 				B95633CF1F335CAD00049FB8 /* ONEHomeMenuItem.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
 				B93A7D6A1F3451FE00FF86E9 /* ONEHomeViewController.m in Sources */,
+				B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9A7400A1F322816009025FD /* ONEHomeRadioCell.m in Sources */,
 				B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */,

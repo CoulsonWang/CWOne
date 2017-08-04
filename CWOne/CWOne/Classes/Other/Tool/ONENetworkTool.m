@@ -39,7 +39,13 @@ static ONENetworkTool *_instance;
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if (success) {
             NSDictionary *dataDict = responseObject[@"data"];
-            success(dataDict);
+            if (dataDict) {
+                success(dataDict);
+            } else {
+                NSError *error = [NSError errorWithDomain:@"请求的日期有误" code:250 userInfo:nil];
+                failure(error);
+            }
+            
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {

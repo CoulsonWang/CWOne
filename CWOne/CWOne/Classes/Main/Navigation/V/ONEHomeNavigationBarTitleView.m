@@ -8,6 +8,7 @@
 
 #import "ONEHomeNavigationBarTitleView.h"
 #import "ONEHomeWeatherItem.h"
+#import "NSString+ONEComponents.h"
 
 #define kMaxTitleY 20.0
 #define kMinTitleY 0.0
@@ -45,7 +46,7 @@
 - (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
     _weatherItem = weatherItem;
     
-    NSDateComponents *components = [self getComponentsByDateString:weatherItem.date];
+    NSDateComponents *components = [weatherItem.date getComponents];
     
     NSString *title = [NSString stringWithFormat:@"%ld    /    %02zd    /    %02zd",components.year,components.month,components.day];
     [self.titleButton setTitle:title forState:UIControlStateNormal];
@@ -102,14 +103,6 @@
 
 
 
-#pragma mark - 私有方法
-- (NSDateComponents *)getComponentsByDateString:(NSString *)dateString {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd";
-    NSDate *date = [formatter dateFromString:dateString];
-    
-    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    return [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];
-}
+
 
 @end

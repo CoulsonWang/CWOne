@@ -34,9 +34,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @implementation ONEHomeTableViewController
 
--(void)setDate:(NSString *)date {
-    _date = date;
-    [self loadDataWithCompletion:nil];
+- (void)setDateStr:(NSString *)dateStr {
+    _dateStr = dateStr;
+    [self reloadData];
 }
 
 #pragma mark - 懒加载
@@ -44,29 +44,28 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUpTableView];
-    [self loadDataWithCompletion:^{
-        [self setUpOtherSubViews];
-        [self updateTitleViewWithOffsetY:self.tableView.contentOffset.y confirm:YES];
-    }];
+    [self setUpOnce];
+    
+    [self reloadData];
 }
 
 #pragma mark - 设置UI控件属性
-- (void)setUpTableView {
+- (void)setUpOnce {
+    // 初始化TableView
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeRadioCell class]) bundle:nil] forCellReuseIdentifier:OneHomeRadioCellID];
     
-    self.tableView.estimatedRowHeight = 200;
+    self.tableView.estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = ONEBackgroundColor;
-}
-
-- (void)setUpOtherSubViews {
+    self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, kTabBarHeight, 0);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     // 设置下拉刷新控件
     __weak typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadDataWithCompletion:nil];
+        [weakSelf reloadData];
     }];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.backgroundColor = ONEBackgroundColor;
@@ -74,41 +73,42 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     
     // 设置尾部footer
     UIButton *footerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    footerButton.height = 300;
+    footerButton.height = 200;
     [footerButton setImage:[UIImage imageNamed:@"feedsBottomPlaceHolder"] forState:UIControlStateNormal];
     [footerButton addTarget:self action:@selector(footerButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableFooterView = footerButton;
-    
+
+}
+
+- (void)setUpHeaderView {
     // 设置顶部view
     ONEHomeHeaderView *headerView = [ONEHomeHeaderView homeHeaderViewWithHeaderViewModel:[ONEHomeViewModel viewModelWithItem:self.homeItems.firstObject] menuItem:self.menuItem];
+    __weak typeof(self) weakSelf = self;
     headerView.reload = ^{
         [weakSelf.tableView reloadData];
     };
     self.tableView.tableHeaderView = headerView;
     self.headerView = headerView;
-
 }
 
 #pragma mark - 私有工具方法
-- (void)loadDataWithCompletion:(void (^)())completion {
-    
+// 刷新数据
+- (void)reloadData {
+    if (self.dateStr == nil) {
+        return;
+    }
     // 如果是今天，不需要再从网络获取，直接获取缓存好的数据
-    if (self.date == nil) {
+    if ([self.dateStr isEqualToString:kCurrentDateString]) {
         ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
         self.homeItems = tabBarVc.homeItems;
         self.menuItem = tabBarVc.menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
         self.headerView.menuItem = tabBarVc.menuItem;
-        
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-        if (completion) {
-            completion();
-        }
+        [self refreshTableView];
         return;
     }
     
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:self.date success:^(NSDictionary *dataDict) {
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:self.dateStr success:^(NSDictionary *dataDict) {
         NSDictionary *menuDict = dataDict[@"menu"];
         ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
         
@@ -122,17 +122,18 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         self.menuItem = menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
         self.headerView.menuItem = menuItem;
-        
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-        if (completion) {
-            completion();
-        }
+        [self refreshTableView];
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         NSLog(@"%@",error);
     }];
-    
+}
+
+- (void)refreshTableView {
+    [self setUpHeaderView];
+    [self.tableView reloadData];
+    self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
+    [self.tableView.mj_header endRefreshing];
 }
 
 #pragma mark - 事件响应

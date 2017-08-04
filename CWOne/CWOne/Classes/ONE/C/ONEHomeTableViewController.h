@@ -10,6 +10,6 @@
 
 @interface ONEHomeTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSString *dateStr;
 
 @end
