@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSString *dateStr;
 
+- (void)setDateStr:(NSString *)dateStr withCompletion:(void (^)())completion;
+
 @end

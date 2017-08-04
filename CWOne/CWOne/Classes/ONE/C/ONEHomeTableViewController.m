@@ -36,7 +36,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 - (void)setDateStr:(NSString *)dateStr {
     _dateStr = dateStr;
-    [self reloadData];
+    [self reloadDataWithCompletion:^{
+        self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
+        [self updateTitleViewWithOffsetY:self.tableView.contentOffset.y confirm:YES];
+    }];
 }
 
 #pragma mark - 懒加载
@@ -46,7 +49,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     
     [self setUpOnce];
     
-    [self reloadData];
+    [self reloadDataWithCompletion:nil];
 }
 
 #pragma mark - 设置UI控件属性
@@ -65,7 +68,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     // 设置下拉刷新控件
     __weak typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf reloadData];
+        [weakSelf reloadDataWithCompletion:nil];
     }];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.backgroundColor = ONEBackgroundColor;
@@ -90,10 +93,15 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.tableView.tableHeaderView = headerView;
     self.headerView = headerView;
 }
+#pragma mark - 对外共有方法
+- (void)setDateStr:(NSString *)dateStr withCompletion:(void (^)())completion {
+    _dateStr = dateStr;
+    [self reloadDataWithCompletion:completion];
+}
 
 #pragma mark - 私有工具方法
 // 刷新数据
-- (void)reloadData {
+- (void)reloadDataWithCompletion:(void(^)())completion{
     if (self.dateStr == nil) {
         return;
     }
@@ -105,6 +113,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
         self.headerView.menuItem = tabBarVc.menuItem;
         [self refreshTableView];
+        if (completion) {
+            completion();
+        }
         return;
     }
     
@@ -123,6 +134,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
         self.headerView.menuItem = menuItem;
         [self refreshTableView];
+        if (completion) {
+            completion();
+        }
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         NSLog(@"%@",error);
@@ -130,10 +144,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 }
 
 - (void)refreshTableView {
+    [self.tableView.mj_header endRefreshing];
     [self setUpHeaderView];
     [self.tableView reloadData];
-    self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
-    [self.tableView.mj_header endRefreshing];
 }
 
 #pragma mark - 事件响应

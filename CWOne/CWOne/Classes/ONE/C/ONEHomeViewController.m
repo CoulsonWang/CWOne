@@ -188,6 +188,7 @@ typedef enum : NSUInteger {
     [self updateCurrentVCWithDirection:direction];
 }
 
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
@@ -201,6 +202,21 @@ typedef enum : NSUInteger {
         [self singleMoveWithDirection:ONESrollDiretionLeft toIndex:index];
     } else if (index == _lastIndex) {
         return;
+    } else {
+        // 移动了大于一页时的处理,更新三个tableView的位置和数据
+        [self.middleVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index] withCompletion:^{
+            self.middleTableView.x = index * CWScreenW;
+        }];
+        [self.rightVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index + 1] withCompletion:^{
+            self.rightTableView.x = (index + 1) * CWScreenW;
+        }];
+        if (index != 0) {
+            [self.leftVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index - 1] withCompletion:^{
+                self.leftTableView.x = (index - 1) * CWScreenW;
+            }];
+        }
+        self.lastIndex = index;
+        self.currentVC = self.middleVC;
     }
 
 }
