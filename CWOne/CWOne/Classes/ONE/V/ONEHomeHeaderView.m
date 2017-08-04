@@ -34,12 +34,23 @@
     if (!_catalogueView) {
         ONEHomeCatalogueView *catelogueView = [[ONEHomeCatalogueView alloc] init];
         __weak typeof(self) weakSelf = self;
-        catelogueView.updateFrame = ^{
-            weakSelf.catalogueView.height = weakSelf.catalogueView.catalogueHeight;
-            weakSelf.headerViewHeight = CGRectGetMaxY(weakSelf.catalogueView.frame);
-            if (weakSelf.reload) {
-                weakSelf.reload();
-            }  
+        catelogueView.updateFrame = ^(BOOL reloadAfterAnimate) {
+            if (reloadAfterAnimate) {
+                [UIView animateWithDuration:kCatalogueAnimationDuration animations:^{
+                    weakSelf.height = CGRectGetMaxY(weakSelf.catalogueView.frame);
+                } completion:^(BOOL finished) {
+                    if (weakSelf.reload) {
+                        weakSelf.reload();
+                    }
+                }];
+            } else {
+                [UIView animateWithDuration:kCatalogueAnimationDuration animations:^{
+                    weakSelf.height = CGRectGetMaxY(weakSelf.catalogueView.frame);
+                }];
+                if (weakSelf.reload) {
+                    weakSelf.reload();
+                }
+            }
         };
         [self addSubview:catelogueView];
         _catalogueView = catelogueView;

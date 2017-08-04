@@ -155,6 +155,7 @@
         if ([musicUrlStr isEqualToString:@"xiami"]) {
             // 提示无法播放
             [SVProgressHUD showErrorWithStatus:@"抱歉,因授权原因,无法播放虾米提供的音乐"];
+            [SVProgressHUD dismissWithDelay:2.5];
         } else {
             __weak typeof(self) weakSelf = self;
             [[ONERadioTool sharedInstance] playMusicWithUrlString:musicUrlStr completion:^{

@@ -31,6 +31,8 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
 
 @property (weak, nonatomic) UIView *seperateView;
 
+@property (assign, nonatomic, getter=isUnfold) BOOL unfold;
+
 @end
 
 @implementation ONEHomeCatalogueView
@@ -42,6 +44,7 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
         self.backgroundColor = [UIColor whiteColor];
         [self arrowView];
         [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCatalogueCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+        self.clipsToBounds = YES;
         
     }
     return self;
@@ -106,16 +109,20 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
     
     [self.titleButton setTitle:menuItem.titleString forState:UIControlStateNormal];
     
-    [self updateSubviewsFrame:NO];
+    self.listView.height = self.listView.rowHeight * self.cataLogueItems.count + kListViewBottomMargin;
+    
+    [self updateSubviewsFrame:self.isUnfold animated:NO];
 }
+
 
 #pragma mark - 事件响应
 - (void)titleButtonClick:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     [self changeArrowViewOrientationToUp:sender.isSelected];
     // 展开或收起
-    [self updateSubviewsFrame:sender.isSelected];
+    [self updateSubviewsFrame:sender.isSelected animated:YES];
     
+    self.unfold = sender.isSelected;
 }
 
 // 箭头方向变化
@@ -125,11 +132,14 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
     
 }
 
-- (void)updateSubviewsFrame:(BOOL)isUnfold {
-    self.listView.height = isUnfold ? (self.listView.rowHeight * self.cataLogueItems.count + kListViewBottomMargin) : 0;
-    self.seperateView.y = CGRectGetMaxY(self.listView.frame);
-    self.catalogueHeight = CGRectGetMaxY(self.seperateView.frame);
-    self.updateFrame();
+- (void)updateSubviewsFrame:(BOOL)isUnfold animated:(BOOL)animated{
+    CGFloat duration = animated ? kCatalogueAnimationDuration : 0.0;
+    [UIView animateWithDuration:duration animations:^{
+        self.seperateView.y = isUnfold ? CGRectGetMaxY(self.listView.frame) : kTitleButtonHeight;
+        self.height = CGRectGetMaxY(self.seperateView.frame);
+    }];
+    self.catalogueHeight = self.height;
+    self.updateFrame(isUnfold);
 }
 
 #pragma mark - UITableViewDataSource

@@ -84,7 +84,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     ONEHomeHeaderView *headerView = [ONEHomeHeaderView homeHeaderViewWithHeaderViewModel:[ONEHomeViewModel viewModelWithItem:self.homeItems.firstObject] menuItem:self.menuItem];
     __weak typeof(self) weakSelf = self;
     headerView.reload = ^{
-        weakSelf.headerView.height = weakSelf.headerView.headerViewHeight;
         [weakSelf.tableView reloadData];
     };
     self.tableView.tableHeaderView = headerView;

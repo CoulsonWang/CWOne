@@ -34,6 +34,7 @@
 
 + (instancetype)headContentView {
     ONEHomeHeadContentView *headContentView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
+    headContentView.width = CWScreenW;
     return headContentView;
 }
 

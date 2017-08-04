@@ -17,6 +17,7 @@
 
 @property (assign, nonatomic) CGFloat catalogueHeight;
 
-@property (copy, nonatomic) void (^updateFrame)();
+@property (copy, nonatomic) void (^updateFrame)(BOOL reloadAfterAnimate);
+
 
 @end

@@ -14,6 +14,7 @@
 #define radian(angle) M_PI * angle / 180.0
 #define ONEBackgroundColor [UIColor colorWithWhite:238/255.0 alpha:1.0]
 #define kNavigationBarHeight 64.0
+#define kCatalogueAnimationDuration 0.3
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"
