@@ -97,9 +97,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
         self.homeItems = tabBarVc.homeItems;
         self.menuItem = tabBarVc.menuItem;
-        [self.tableView reloadData];
-        self.headerView.menuItem = tabBarVc.menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
+        self.headerView.menuItem = tabBarVc.menuItem;
+        
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         if (completion) {
             completion();
@@ -119,11 +120,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         }
         self.homeItems = tempArray;
         self.menuItem = menuItem;
-        // 刷新tableView数据
-        [self.tableView reloadData];
-        // 刷新headerView数据
-        self.headerView.menuItem = menuItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
+        self.headerView.menuItem = menuItem;
+        
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         if (completion) {
             completion();
@@ -134,7 +134,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     }];
     
 }
-
 
 #pragma mark - 事件响应
 - (void)footerButtonClick {

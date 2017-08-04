@@ -24,6 +24,7 @@
 - (ONEHomeHeadContentView *)headContentView {
     if (!_headContentView) {
         ONEHomeHeadContentView *headContentView = [ONEHomeHeadContentView headContentView];
+        headContentView.frame = CGRectMake(0, 0, CWScreenW, 0);
         [self addSubview:headContentView];
         _headContentView = headContentView;
     }
@@ -33,6 +34,7 @@
 - (ONEHomeCatalogueView *)catalogueView {
     if (!_catalogueView) {
         ONEHomeCatalogueView *catelogueView = [[ONEHomeCatalogueView alloc] init];
+        catelogueView.frame = CGRectMake(0, 0, CWScreenW, 0);
         __weak typeof(self) weakSelf = self;
         catelogueView.updateFrame = ^(BOOL reloadAfterAnimate) {
             if (reloadAfterAnimate) {
@@ -44,12 +46,12 @@
                     }
                 }];
             } else {
-                [UIView animateWithDuration:kCatalogueAnimationDuration animations:^{
-                    weakSelf.height = CGRectGetMaxY(weakSelf.catalogueView.frame);
-                }];
                 if (weakSelf.reload) {
                     weakSelf.reload();
                 }
+                [UIView animateWithDuration:kCatalogueAnimationDuration animations:^{
+                    weakSelf.height = CGRectGetMaxY(weakSelf.catalogueView.frame);
+                }];
             }
         };
         [self addSubview:catelogueView];
@@ -74,7 +76,9 @@
     
     self.headContentView.viewModel = viewModel;
     CGFloat headContentViewHeight = self.headContentView.headContentViewHeight;
-    self.headContentView.frame = CGRectMake(0, 0, CWScreenW, headContentViewHeight);
+    self.headContentView.height = headContentViewHeight;
+    self.catalogueView.y = headContentViewHeight;
+    [self updateHeight];
 }
 
 - (void)setMenuItem:(ONEHomeMenuItem *)menuItem {
@@ -82,9 +86,13 @@
     
     self.catalogueView.menuItem = menuItem;
     CGFloat catalogueViewHeight = self.catalogueView.catalogueHeight;
-    self.catalogueView.frame = CGRectMake(0, self.headContentView.height, CWScreenW, catalogueViewHeight);
-    
+    self.catalogueView.height = catalogueViewHeight;
+    [self updateHeight];
+}
+
+- (void)updateHeight {
     self.headerViewHeight = CGRectGetMaxY(self.catalogueView.frame);
+    self.height = _headerViewHeight;
 }
 
 @end

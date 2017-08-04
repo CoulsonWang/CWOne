@@ -112,6 +112,8 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
     self.listView.height = self.listView.rowHeight * self.cataLogueItems.count + kListViewBottomMargin;
     
     [self updateSubviewsFrame:self.isUnfold animated:NO];
+    
+    [self.listView reloadData];
 }
 
 

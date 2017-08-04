@@ -21,7 +21,7 @@
 }
 
 - (CGFloat)y {
-    return self.frame.origin.x;
+    return self.frame.origin.y;
 }
 
 - (void)setY:(CGFloat)y {
