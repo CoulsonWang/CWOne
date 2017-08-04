@@ -24,9 +24,12 @@ static ONEDateTool *_instance;
 }
 
 - (NSString *)currentDateString {
-    ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    NSString *dateStr = tabBarVc.weatherItem.date;
-    return dateStr;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *currentDate = [formatter dateFromString:self.dateOriginStr];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSString *currentDateString = [formatter stringFromDate:currentDate];
+    return currentDateString;
 }
 
 - (NSString *)getDateStringFromCurrentDateWihtDateInterval:(NSInteger)dateInterval {

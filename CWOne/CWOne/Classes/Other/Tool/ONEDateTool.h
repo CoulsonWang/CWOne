@@ -10,6 +10,8 @@
 
 @interface ONEDateTool : NSObject
 
+@property (strong, nonatomic) NSString *dateOriginStr;
+
 @property (strong, nonatomic, readonly) NSString *currentDateString;
 
 + (instancetype)sharedInstance;

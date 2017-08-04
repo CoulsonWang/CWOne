@@ -14,6 +14,7 @@
 #import "ONEHomeWeatherItem.h"
 #import "ONERadioTool.h"
 #import "ONEHomeMenuItem.h"
+#import "ONEDateTool.h"
 
 @interface ONELaunchController ()
 
@@ -94,7 +95,6 @@
 }
 
 - (void)loadData {
-//    NSString *date = @"2017-08-02";
     [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
         
         NSDictionary *weatherDict = dataDict[@"weather"];
@@ -102,6 +102,9 @@
         
         NSDictionary *menuDict = dataDict[@"menu"];
         ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
+        
+        NSString *dateOriginStr = dataDict[@"date"];
+        [ONEDateTool sharedInstance].dateOriginStr = dateOriginStr;
         
         NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
         NSMutableArray<ONEHomeItem *> *tempArray = [NSMutableArray array];

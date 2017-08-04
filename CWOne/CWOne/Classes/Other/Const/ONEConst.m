@@ -10,3 +10,5 @@
 
 
 CGFloat const ONEScrollOffsetLimit = 120.0;
+
+NSString *const ONETitleViewBackToTodayButtonClickNotifcation = @"ONETitleViewBackToTodayButtonClickNotifcation";

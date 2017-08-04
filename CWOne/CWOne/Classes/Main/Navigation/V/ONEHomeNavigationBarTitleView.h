@@ -20,4 +20,6 @@
 
 - (void)enableTheTitleButton:(BOOL)isEnable;
 
+- (void)updateBackButtonVisible:(BOOL)isHidden;
+
 @end

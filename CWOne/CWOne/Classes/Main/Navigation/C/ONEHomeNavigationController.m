@@ -41,6 +41,7 @@
 }
 
 
+#pragma mark - 对外公有方法
 - (void)updateTitleViewWithOffset:(CGFloat)offset {
     
     // 修改状态栏的透明度
@@ -63,6 +64,11 @@
     }
 }
 
+- (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden {
+    [self.titleView updateBackButtonVisible:isHidden];
+}
+
+#pragma mark - 私有方法
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
     UIApplication *app = [UIApplication sharedApplication];
     // 通过KVC拿到statusBar

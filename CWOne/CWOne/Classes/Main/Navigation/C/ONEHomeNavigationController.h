@@ -15,4 +15,6 @@
 // 确定title的状态
 - (void)confirmTitlViewWithOffset:(CGFloat)offset;
 
+- (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden;
+
 @end

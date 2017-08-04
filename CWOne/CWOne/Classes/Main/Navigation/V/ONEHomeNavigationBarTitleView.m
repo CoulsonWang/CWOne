@@ -74,6 +74,10 @@
 - (IBAction)searchButtonClick:(UIButton *)sender {
     
 }
+- (IBAction)backToTodayButtonClick:(UIButton *)sender {
+    // 发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewBackToTodayButtonClickNotifcation object:nil userInfo:nil];
+}
 
 #pragma mark - 对外方法
 - (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset {
@@ -101,6 +105,9 @@
     self.titleButton.enabled = isEnable;
 }
 
+- (void)updateBackButtonVisible:(BOOL)isHidden {
+    self.backToTodayButton.hidden = isHidden;
+}
 
 
 

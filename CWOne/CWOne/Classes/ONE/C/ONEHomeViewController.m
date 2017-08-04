@@ -13,6 +13,7 @@
 #import "ONEHomeNavigationController.h"
 
 #define kChangePageAnimateDuration 0.3
+#define kBackToTodatAnimateDuration 0.4
 
 typedef enum : NSUInteger {
     ONESrollDiretionLeft,
@@ -105,25 +106,25 @@ typedef enum : NSUInteger {
     return _rightTableView;
 }
 
+
+#pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUpScrollView];
     
+    [self setUpTableViews];
+    
+    [self setUpNotification];
+    
+    // 初始参数
     self.lastIndex = 0;
     self.currentVC = self.middleVC;
-    
-    self.leftTableView.x = CWScreenW * 2;
-    
-    self.middleTableView.x = 0;
-    self.middleVC.dateStr = kCurrentDateString;
-    
-    self.rightTableView.x = CWScreenW;
-    self.rightVC.dateStr = [[ONEDateTool sharedInstance] yesterdayDateStr];
-    
 }
 
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - 初始化控件
 - (void)setUpScrollView {
@@ -138,6 +139,29 @@ typedef enum : NSUInteger {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     scrollV.delegate = self;
+}
+
+- (void)setUpTableViews {
+    self.leftTableView.x = CWScreenW * 2;
+    
+    self.middleTableView.x = 0;
+    self.middleVC.dateStr = kCurrentDateString;
+    
+    self.rightTableView.x = CWScreenW;
+    self.rightVC.dateStr = [[ONEDateTool sharedInstance] yesterdayDateStr];
+}
+
+- (void)setUpNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewBackToTodayButtonClick) name:ONETitleViewBackToTodayButtonClickNotifcation object:nil];
+}
+
+#pragma mark - 事件响应
+- (void)titleViewBackToTodayButtonClick {
+    [UIView animateWithDuration:kBackToTodatAnimateDuration animations:^{
+        self.scrollView.contentOffset = CGPointZero;
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
 }
 
 #pragma mark - 私有工具方法
@@ -186,6 +210,7 @@ typedef enum : NSUInteger {
     }
 }
 
+// 移动一页
 - (void)singleMoveWithDirection:(ONESrollDiretion)direction toIndex:(NSInteger)index{
     ONEHomeTableViewController *moveVC = [self getTheControllerNeedToMoveWithDirection:direction];
     NSInteger newIndex = (direction == ONESrollDiretionRight) ? index + 1 : index - 1;
@@ -195,10 +220,17 @@ typedef enum : NSUInteger {
     [self updateCurrentVCWithDirection:direction];
 }
 
+// 更新navigationBar的状态
 - (void)refreshTitleViewWithOffset:(CGFloat)offset {
     ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
     [navVC confirmTitlViewWithOffset:0];
+}
+// 更新navigationBar上返回按钮的可视性
+- (void)updateNavBarBackButtonVisible:(BOOL)isHidden {
+    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
+    [navVC updateTitleViewBackToTodayButtonVisible:isHidden];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -232,7 +264,9 @@ typedef enum : NSUInteger {
         self.currentVC = self.middleVC;
     }
     [self refreshTitleViewWithOffset:self.currentVC.tableView.contentOffset.y];
-
+    
+    BOOL backButtonIsHidden = (index <= 1);
+    [self updateNavBarBackButtonVisible:backButtonIsHidden];
 }
 
 #pragma mark - ONEHomeTableViewControllerDelegate
