@@ -68,6 +68,10 @@
     [self.titleView updateBackButtonVisible:isHidden];
 }
 
+- (void)updateTitleViewDateStringWithDateString:(NSString *)dateString {
+    [self.titleView updateDateStringWithDateString:dateString];
+}
+
 #pragma mark - 私有方法
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
     UIApplication *app = [UIApplication sharedApplication];

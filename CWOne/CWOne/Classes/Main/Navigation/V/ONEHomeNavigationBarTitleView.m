@@ -9,6 +9,7 @@
 #import "ONEHomeNavigationBarTitleView.h"
 #import "ONEHomeWeatherItem.h"
 #import "NSString+ONEComponents.h"
+#import "ONEHomeNavigationBarTitleTextView.h"
 
 #define kMaxTitleY 20.0
 #define kMinTitleY 0.0
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backToTodayButton;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
+@property (weak, nonatomic) ONEHomeNavigationBarTitleTextView *textView;
 
 @property (assign, nonatomic, getter=isUnfold) BOOL unfold;
 
@@ -41,15 +43,19 @@
     self.titleButton.frame = CGRectMake(0, kMaxTitleY, CWScreenW, kNavigationBarHeight - 20.0);
     self.weatherLabel.centerX = CWScreenW * 0.5;
     self.searchButton.x = CWScreenW - self.searchButton.width;
+    
+    
+    // 添加标题控件
+    ONEHomeNavigationBarTitleTextView *textView = [[ONEHomeNavigationBarTitleTextView alloc] init];
+    textView.frame = CGRectMake(0, kMaxTitleY, CWScreenW, kNavigationBarHeight - kMaxTitleY);
+    [self addSubview:textView];
+    self.textView = textView;
 }
 
 - (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
     _weatherItem = weatherItem;
     
-    NSDateComponents *components = [weatherItem.date getComponents];
-    
-    NSString *title = [NSString stringWithFormat:@"%ld    /    %02zd    /    %02zd",components.year,components.month,components.day];
-    [self.titleButton setTitle:title forState:UIControlStateNormal];
+    self.textView.dateString = weatherItem.date;
     
     NSString *weatherStr = [NSString stringWithFormat:@"%@     %@     %@°C",weatherItem.city_name,weatherItem.climate,weatherItem.temperature];
     self.weatherLabel.text = weatherStr;
@@ -93,7 +99,7 @@
     CGFloat titleY = kMinTitleY + kMaxTitleY * (offset/ONEScrollOffsetLimit);
     titleY = titleY < kMinTitleY ? kMinTitleY : titleY;
     titleY = titleY > kMaxTitleY ? kMaxTitleY : titleY;
-    self.titleButton.y = titleY;
+    self.textView.y = titleY;
     // 修改返回标签的frame
     CGFloat backCenterY = kMinBackBtnCenterY + kBackBtnCenterYOffset * (offset/ONEScrollOffsetLimit);
     backCenterY = backCenterY < kMinBackBtnCenterY ? kMinBackBtnCenterY : backCenterY;
@@ -109,7 +115,9 @@
     self.backToTodayButton.hidden = isHidden;
 }
 
-
+- (void)updateDateStringWithDateString:(NSString *)dateString {
+    self.textView.dateString = dateString;
+}
 
 
 @end

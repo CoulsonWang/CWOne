@@ -233,6 +233,13 @@ typedef enum : NSUInteger {
     [navVC updateTitleViewBackToTodayButtonVisible:isHidden];
 }
 
+// 更新navigationBar上的日期文本
+- (void)updateNavBarDateTextWithDateString:(NSString *)dateString {
+    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
+    [navVC updateTitleViewDateStringWithDateString:dateString];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
@@ -267,6 +274,7 @@ typedef enum : NSUInteger {
     
     BOOL backButtonIsHidden = (index <= 1);
     [self updateNavBarBackButtonVisible:backButtonIsHidden];
+    [self updateNavBarDateTextWithDateString:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index]];
 }
 
 #pragma mark - ONEHomeTableViewControllerDelegate

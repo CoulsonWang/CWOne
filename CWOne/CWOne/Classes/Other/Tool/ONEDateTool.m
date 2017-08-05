@@ -33,11 +33,15 @@ static ONEDateTool *_instance;
 }
 
 - (NSString *)getDateStringFromCurrentDateWihtDateInterval:(NSInteger)dateInterval {
+    NSDate *newDate = [self getDateFromCurrentDateWithDateInterval:dateInterval];
+    return [NSString getDateStringWithDate:newDate];
+}
+
+- (NSDate *)getDateFromCurrentDateWithDateInterval:(NSInteger)dateInterval {
     NSDate *currentDate = [self.currentDateString getDate];
-    
     NSTimeInterval intervalInSeconds = dateInterval * 24.0 * 60 * 60;
     NSDate *newDate = [currentDate dateByAddingTimeInterval:-intervalInSeconds];
-    return [NSString getDateStringWithDate:newDate];
+    return newDate;
 }
 
 - (NSString *)yesterdayDateStr {

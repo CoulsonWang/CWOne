@@ -20,4 +20,6 @@
 
 - (NSString *)getDateStringFromCurrentDateWihtDateInterval:(NSInteger)dateInterval;
 
+- (NSDate *)getDateFromCurrentDateWithDateInterval:(NSInteger)dateInterval;
+
 @end

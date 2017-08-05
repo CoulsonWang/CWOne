@@ -29,6 +29,11 @@
     return [formatter stringFromDate:date];
 }
 
-
+- (BOOL)isLaterThanAnotherDateString:(NSString *)dateString {
+    NSDate *thisDate = [self getDate];
+    NSDate *compareDate = [dateString getDate];
+    NSTimeInterval interval = [thisDate timeIntervalSinceDate:compareDate];
+    return interval > 0;
+}
 
 @end

@@ -33,6 +33,7 @@
 		B9321EFF1F3059410052752B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9321EF91F3059410052752B /* Main.storyboard */; };
 		B9321F011F3059410052752B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EFC1F3059410052752B /* main.m */; };
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
+		B9376A491F36113600B31349 /* CWCalendarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9376A481F36113600B31349 /* CWCalendarLabel.m */; };
 		B93A7D661F3375F100FF86E9 /* ONEHomeCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */; };
 		B93A7D671F3375F100FF86E9 /* ONEHomeCatalogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */; };
 		B93A7D6A1F3451FE00FF86E9 /* ONEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D691F3451FE00FF86E9 /* ONEHomeViewController.m */; };
@@ -59,6 +60,7 @@
 		B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740131F32EF19009025FD /* ONERadioItem.m */; };
 		B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */; };
 		B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */; };
+		B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D6BBFE1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,8 @@
 		B9321EFC1F3059410052752B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9321F251F305AD70052752B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9321F261F305AD70052752B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B9376A471F36113600B31349 /* CWCalendarLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCalendarLabel.h; sourceTree = "<group>"; };
+		B9376A481F36113600B31349 /* CWCalendarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCalendarLabel.m; sourceTree = "<group>"; };
 		B93A7D631F3375F100FF86E9 /* ONEHomeCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeCatalogueCell.h; sourceTree = "<group>"; };
 		B93A7D641F3375F100FF86E9 /* ONEHomeCatalogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeCatalogueCell.m; sourceTree = "<group>"; };
 		B93A7D651F3375F100FF86E9 /* ONEHomeCatalogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeCatalogueCell.xib; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CWLineSpacing.m"; sourceTree = "<group>"; };
 		B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CWAnimation.h"; sourceTree = "<group>"; };
 		B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CWAnimation.m"; sourceTree = "<group>"; };
+		B9D6BBFD1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeNavigationBarTitleTextView.h; sourceTree = "<group>"; };
+		B9D6BBFE1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeNavigationBarTitleTextView.m; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +336,8 @@
 				B90C3A661F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.h */,
 				B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */,
 				B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */,
+				B9D6BBFD1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.h */,
+				B9D6BBFE1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -586,6 +594,7 @@
 		B9321F221F305AD70052752B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B9376A461F36113600B31349 /* CWCalendarLabel */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -612,6 +621,15 @@
 				B9321F261F305AD70052752B /* AppDelegate.m */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		B9376A461F36113600B31349 /* CWCalendarLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B9376A471F36113600B31349 /* CWCalendarLabel.h */,
+				B9376A481F36113600B31349 /* CWCalendarLabel.m */,
+			);
+			path = CWCalendarLabel;
 			sourceTree = "<group>";
 		};
 		F7AD2679919B3393C7018D5A /* Pods */ = {
@@ -931,6 +949,7 @@
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
+				B9376A491F36113600B31349 /* CWCalendarLabel.m in Sources */,
 				B9A73FEE1F31A5D7009025FD /* ONELikeView.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
@@ -953,6 +972,7 @@
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9A7400A1F322816009025FD /* ONEHomeRadioCell.m in Sources */,
 				B95633C61F33532300049FB8 /* ONEHomeHeaderView.m in Sources */,
+				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

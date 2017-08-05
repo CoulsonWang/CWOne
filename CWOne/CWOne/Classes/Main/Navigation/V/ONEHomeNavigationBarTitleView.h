@@ -22,4 +22,6 @@
 
 - (void)updateBackButtonVisible:(BOOL)isHidden;
 
+- (void)updateDateStringWithDateString:(NSString *)dateString;
+
 @end

@@ -17,4 +17,6 @@
 
 - (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden;
 
+- (void)updateTitleViewDateStringWithDateString:(NSString *)dateString;
+
 @end

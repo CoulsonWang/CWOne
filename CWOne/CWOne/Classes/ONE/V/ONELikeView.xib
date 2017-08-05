@@ -11,29 +11,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ONELikeView">
-            <rect key="frame" x="0.0" y="0.0" width="60" height="28"/>
+            <rect key="frame" x="0.0" y="0.0" width="61" height="28"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrU-09-35g" userLabel="点赞按钮">
-                    <rect key="frame" x="0.0" y="0.0" width="60" height="28"/>
+                    <rect key="frame" x="0.0" y="0.0" width="61" height="28"/>
                     <state key="normal" image="like_gray_mini"/>
                     <state key="selected" image="liked_red_mini"/>
                     <connections>
                         <action selector="likeButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mai-h5-mdy"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVW-zM-yNt" userLabel="较小数">
-                    <rect key="frame" x="37" y="0.0" width="22.5" height="11"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVW-zM-yNt" userLabel="较小数" customClass="CWCalendarLabel">
+                    <rect key="frame" x="36" y="0.0" width="25" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bM-aC-Ech" userLabel="较大数">
-                    <rect key="frame" x="37" y="10" width="22.5" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                    <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -47,11 +40,10 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="lastNumberLabel" destination="sVW-zM-yNt" id="HyU-kL-Igq"/>
                 <outlet property="likeButton" destination="hrU-09-35g" id="3bW-Xf-GeY"/>
-                <outlet property="nextNumberLabel" destination="8bM-aC-Ech" id="Rw5-0X-lcc"/>
+                <outlet property="likeCountLabel" destination="sVW-zM-yNt" id="Kpd-Je-FIu"/>
             </connections>
-            <point key="canvasLocation" x="-24" y="315"/>
+            <point key="canvasLocation" x="-23.5" y="315"/>
         </view>
     </objects>
     <resources>

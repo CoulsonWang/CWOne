@@ -16,4 +16,6 @@
 
 + (instancetype)getDateStringWithDate:(NSDate *)date;
 
+- (BOOL)isLaterThanAnotherDateString:(NSString *)dateString;
+
 @end
