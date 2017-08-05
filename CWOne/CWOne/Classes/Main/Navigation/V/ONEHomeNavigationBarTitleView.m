@@ -48,7 +48,7 @@
     // 添加标题控件
     ONEHomeNavigationBarTitleTextView *textView = [[ONEHomeNavigationBarTitleTextView alloc] init];
     textView.frame = CGRectMake(0, kMaxTitleY, CWScreenW, kNavigationBarHeight - kMaxTitleY);
-    [self addSubview:textView];
+    [self insertSubview:textView atIndex:0];
     self.textView = textView;
 }
 
