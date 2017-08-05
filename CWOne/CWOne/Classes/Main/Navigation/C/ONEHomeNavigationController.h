@@ -19,4 +19,6 @@
 
 - (void)updateTitleViewDateStringWithDateString:(NSString *)dateString;
 
+- (void)hideCustomTitleView;
+
 @end

@@ -18,13 +18,14 @@
 #import "ONEHomeRadioCell.h"
 #import "ONEHomeHeaderView.h"
 #import "ONEHomeMenuItem.h"
+#import "ONEDetailViewController.h"
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @interface ONEHomeTableViewController ()
 
-@property (strong, nonatomic) NSArray *homeItems;
+@property (strong, nonatomic) NSArray<ONEHomeItem *> *homeItems;
 
 @property (strong, nonatomic) ONEHomeMenuItem *menuItem;
 
@@ -188,6 +189,13 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     
     return cell;
     
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+    
+    [self.navigationController showViewController:detailVC sender:nil];
 }
 
 #pragma mark - UIScrollViewDelegate

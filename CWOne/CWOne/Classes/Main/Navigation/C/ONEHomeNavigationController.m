@@ -72,6 +72,10 @@
     [self.titleView updateDateStringWithDateString:dateString];
 }
 
+- (void)hideCustomTitleView {
+    self.titleView.hidden = YES;
+}
+
 #pragma mark - 私有方法
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
     UIApplication *app = [UIApplication sharedApplication];
