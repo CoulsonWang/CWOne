@@ -77,6 +77,7 @@
     if ([label isKindOfClass:[CWCalendarLabel class]]) {
         CWCalendarLabel *calendarLabel = (CWCalendarLabel *)label;
         calendarLabel.animateDuration = 0.35;
+        calendarLabel.enableWhenSame = NO;
     }
 }
 

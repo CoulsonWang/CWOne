@@ -12,14 +12,17 @@
 #import "ONEHomeItem.h"
 #import "CWCalendarLabel.h"
 
-#define kLabelWidth 22.0
-#define kLabelHeight 11.0
 #define kAnimateDuration 0.4
+
+#define kLikeCountLabelWidth 25.0
+#define kLikeCountLabelHeight 11.0
+
 
 @interface ONELikeView ()
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet CWCalendarLabel *likeCountLabel;
+@property (weak, nonatomic) CWCalendarLabel *likeCountLabel;
 
+@property (assign, nonatomic) BOOL isLikeWhenLoad;
 
 @end
 
@@ -32,6 +35,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    // 添加点赞数label
+    CWCalendarLabel *likeCountLabel = [[CWCalendarLabel alloc] init];
+    likeCountLabel.frame = CGRectMake(self.width - kLikeCountLabelWidth, 0, kLikeCountLabelWidth, kLikeCountLabelHeight);
+    likeCountLabel.font = [UIFont systemFontOfSize:8.0];
+    likeCountLabel.textColor = [UIColor colorWithWhite:169/255.0 alpha:1.0];
+    likeCountLabel.animateDuration = 0.35;
+    [self addSubview:likeCountLabel];
+    self.likeCountLabel = likeCountLabel;
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
@@ -40,7 +51,9 @@
     self.likeButton.selected = viewModel.homeItem.isLike;
     
     self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",viewModel.homeItem.like_count];
-
+    
+    self.isLikeWhenLoad = viewModel.homeItem.isLike;
+    
 }
 
 
@@ -52,7 +65,13 @@
     
     // 播放动画，更新点赞数字
     CWCalendarLabelScrollDirection direction = sender.isSelected ? CWCalendarLabelScrollToTop : CWCalendarLabelScrollToBottom;
-    NSInteger newCount = (direction == CWCalendarLabelScrollToTop) ? self.likeCountLabel.text.integerValue + 1 : self.likeCountLabel.text.integerValue - 1;
+    
+    NSInteger newCount;
+    if (self.isLikeWhenLoad) {
+        newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count : self.viewModel.homeItem.like_count - 1;
+    } else {
+        newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count + 1 : self.viewModel.homeItem.like_count;
+    }
     NSString *newCountStr = [NSString stringWithFormat:@"%ld",newCount];
     [self.likeCountLabel showNextText:newCountStr withDirection:direction];
     
