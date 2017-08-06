@@ -9,6 +9,7 @@
 #import "ONEDetailViewController.h"
 #import "ONEDetailTableViewController.h"
 #import "ONEHomeNavigationController.h"
+#import "UIImage+Render.h"
 
 @interface ONEDetailViewController ()
 
@@ -30,11 +31,9 @@
     
     // 先显示一个加载视图。数据加载完成后，再显示tableview
     
-    // 隐藏自定义的titleView
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
-    [navVC hideCustomTitleView];
     
     // 设置NavBar
+    [self setUpNavigationBar];
     
     // 添加子控制器
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
@@ -47,4 +46,19 @@
     // 添加自定义的底部工具条
 }
 
+#pragma mark - 设置UI
+- (void)setUpNavigationBar {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"collect_gray"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
+}
+
+#pragma mark - 事件响应
+- (void)navigationBarBackButtonClick {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)navigationBarCollectButtonClick {
+    NSLog(@"收藏");
+}
 @end

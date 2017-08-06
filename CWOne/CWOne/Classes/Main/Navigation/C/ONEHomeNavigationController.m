@@ -74,6 +74,12 @@
 
 - (void)hideCustomTitleView {
     self.titleView.hidden = YES;
+    [self changeAlphaOfStatusBar:1.0];
+}
+
+- (void)showCustomTitleViewWithOffset:(CGFloat)offset {
+    self.titleView.hidden = NO;
+    [self confirmTitlViewWithOffset:offset];
 }
 
 #pragma mark - 私有方法
