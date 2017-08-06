@@ -9,8 +9,7 @@
 #import "ONEHomeViewController.h"
 #import "ONEHomeTableViewController.h"
 #import "ONEDateTool.h"
-#import "ONEMainTabBarController.h"
-#import "ONEHomeNavigationController.h"
+#import "ONENavigationBarTool.h"
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
@@ -125,14 +124,13 @@ typedef enum : NSUInteger {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
-    [navVC showCustomTitleView];
+    [[ONENavigationBarTool sharedInstance] showCustomTitleView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
-    [navVC hideCustomTitleView];
+    
+    [[ONENavigationBarTool sharedInstance] hideCustomTitleView];
 }
 
 - (void)dealloc {
@@ -235,22 +233,16 @@ typedef enum : NSUInteger {
 
 // 更新navigationBar的状态
 - (void)refreshTitleViewWithOffset:(CGFloat)offset {
-    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
-    [navVC confirmTitlViewWithOffset:0];
+    [[ONENavigationBarTool sharedInstance] confirmTitlViewWithOffset:offset];
 }
 // 更新navigationBar上返回按钮的可视性
 - (void)updateNavBarBackButtonVisible:(BOOL)isHidden {
-    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
-    [navVC updateTitleViewBackToTodayButtonVisible:isHidden];
+    [[ONENavigationBarTool sharedInstance] updateTitleViewBackToTodayButtonVisible:isHidden];
 }
 
 // 更新navigationBar上的日期文本
 - (void)updateNavBarDateTextWithDateString:(NSString *)dateString {
-    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
-    [navVC updateTitleViewDateStringWithDateString:dateString];
+    [[ONENavigationBarTool sharedInstance] updateTitleViewDateStringWithDateString:dateString];
 }
 
 #pragma mark - UIScrollViewDelegate

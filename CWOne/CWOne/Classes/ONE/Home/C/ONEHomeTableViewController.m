@@ -11,8 +11,8 @@
 #import "ONEHomeItem.h"
 #import "ONEHomeBaseCell.h"
 #import "ONEHomeViewModel.h"
+#import "ONENavigationBarTool.h"
 #import "ONEMainTabBarController.h"
-#import "ONEHomeNavigationController.h"
 #import <MJRefresh.h>
 #import "ONEHomeCell.h"
 #import "ONEHomeRadioCell.h"
@@ -197,6 +197,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
     
+    ONEHomeItem *item = self.homeItems[indexPath.row + 1];
+    detailVC.homeItem = item;
+    
     [self.navigationController showViewController:detailVC sender:nil];
 }
 
@@ -211,12 +214,11 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 // 通知NavigationController更新视图
 - (void)updateTitleViewWithOffsetY:(CGFloat)offsetY confirm:(BOOL)isConfirm;{
-    ONEMainTabBarController *tabVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ONEHomeNavigationController *navVC = tabVC.viewControllers.firstObject;
+    
     if (isConfirm) {
-        [navVC confirmTitlViewWithOffset:offsetY];
+        [[ONENavigationBarTool sharedInstance] confirmTitlViewWithOffset:offsetY];
     } else {
-        [navVC updateTitleViewWithOffset:offsetY];
+        [[ONENavigationBarTool sharedInstance] updateTitleViewWithOffset:offsetY];
     }
     
 }

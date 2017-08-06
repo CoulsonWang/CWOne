@@ -11,6 +11,7 @@
 #import "ONEHomeNavigationController.h"
 #import "UIImage+Render.h"
 #import "ONEDetailBottomToolView.h"
+#import "ONEHomeItem.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 
@@ -42,6 +43,7 @@
     
     // 添加子控制器
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
+    detailTableVC.itemId = self.homeItem.item_id;
     [self addChildViewController:detailTableVC];
     
     // 添加tableView

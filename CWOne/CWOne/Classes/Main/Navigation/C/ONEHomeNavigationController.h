@@ -10,17 +10,5 @@
 
 @interface ONEHomeNavigationController : UINavigationController
 
-- (void)updateTitleViewWithOffset:(CGFloat)offset;
-
-// 确定title的状态
-- (void)confirmTitlViewWithOffset:(CGFloat)offset;
-
-- (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden;
-
-- (void)updateTitleViewDateStringWithDateString:(NSString *)dateString;
-
-- (void)hideCustomTitleView;
-
-- (void)showCustomTitleView;
 
 @end

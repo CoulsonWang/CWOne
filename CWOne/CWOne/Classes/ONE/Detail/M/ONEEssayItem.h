@@ -22,6 +22,9 @@
 /// 评论数
 @property (strong, nonatomic) NSString *commentnum;
 
+/// 另一个标题
+@property (strong, nonatomic) NSString *tagTitle;
+
 + (instancetype)essayItemWithDict:(NSDictionary *)dict;
 
 @end

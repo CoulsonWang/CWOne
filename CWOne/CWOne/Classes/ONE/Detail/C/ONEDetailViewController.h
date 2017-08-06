@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeItem;
+
 @interface ONEDetailViewController : UIViewController
+
+@property (strong, nonatomic) ONEHomeItem *homeItem;
 
 @end

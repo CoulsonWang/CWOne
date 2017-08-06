@@ -15,6 +15,10 @@
     
     [item setValuesForKeysWithDictionary:dict];
     
+    NSArray *tag_list = dict[@"tag_list"];
+    NSDictionary *tag = tag_list.firstObject;
+    item.tagTitle = tag[@"title"];
+    
     return item;
 }
 
