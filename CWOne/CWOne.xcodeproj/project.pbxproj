@@ -36,6 +36,8 @@
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
+		B973FC321F3703AC00161989 /* ONEDetailBottomToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC311F3703AC00161989 /* ONEDetailBottomToolView.m */; };
+		B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B973FC331F3703B600161989 /* ONEDetailBottomToolView.xib */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
@@ -140,6 +142,9 @@
 		B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailTableViewController.m; sourceTree = "<group>"; };
 		B973FC2D1F36FBAF00161989 /* UIImage+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Render.h"; sourceTree = "<group>"; };
 		B973FC2E1F36FBAF00161989 /* UIImage+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Render.m"; sourceTree = "<group>"; };
+		B973FC301F3703AC00161989 /* ONEDetailBottomToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailBottomToolView.h; sourceTree = "<group>"; };
+		B973FC311F3703AC00161989 /* ONEDetailBottomToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailBottomToolView.m; sourceTree = "<group>"; };
+		B973FC331F3703B600161989 /* ONEDetailBottomToolView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailBottomToolView.xib; sourceTree = "<group>"; };
 		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
@@ -617,6 +622,9 @@
 		B9B828D41F361A0F008BB163 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B973FC301F3703AC00161989 /* ONEDetailBottomToolView.h */,
+				B973FC311F3703AC00161989 /* ONEDetailBottomToolView.m */,
+				B973FC331F3703B600161989 /* ONEDetailBottomToolView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -820,6 +828,7 @@
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B9B829051F361A0F008BB163 /* ONEHomeCatalogueCell.xib in Resources */,
+				B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */,
 				B9B8290F1F361A0F008BB163 /* ONELikeView.xib in Resources */,
 				B9B829081F361A0F008BB163 /* ONEHomeCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
@@ -1031,6 +1040,7 @@
 				B9B8290B1F361A0F008BB163 /* ONEHomeHeaderView.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
+				B973FC321F3703AC00161989 /* ONEDetailBottomToolView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

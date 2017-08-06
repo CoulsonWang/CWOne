@@ -10,8 +10,13 @@
 #import "ONEDetailTableViewController.h"
 #import "ONEHomeNavigationController.h"
 #import "UIImage+Render.h"
+#import "ONEDetailBottomToolView.h"
+
+#define kBottomToolViewHeight kTabBarHeight
 
 @interface ONEDetailViewController ()
+
+@property (weak, nonatomic) ONEDetailBottomToolView *toolView;
 
 @end
 
@@ -44,6 +49,10 @@
     [self.view addSubview:detailTableVC.view];
     
     // 添加自定义的底部工具条
+    ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
+    toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
+    [self.view addSubview:toolView];
+    self.toolView = toolView;
 }
 
 #pragma mark - 设置UI
@@ -51,6 +60,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"collect_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
+    
+    // 设置控制器标题
 }
 
 #pragma mark - 事件响应

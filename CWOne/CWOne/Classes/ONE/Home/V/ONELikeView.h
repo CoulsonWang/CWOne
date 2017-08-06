@@ -14,6 +14,10 @@
 
 + (instancetype)likeView;
 
++ (instancetype)likeViewWithLargeImage;
+
 @property (strong, nonatomic) ONEHomeViewModel *viewModel;
+
+- (void)changeButtonImageToLargeOne;
 
 @end

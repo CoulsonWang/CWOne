@@ -32,6 +32,17 @@
     return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
 }
 
++ (instancetype)likeViewWithLargeImage {
+    ONELikeView *likeView = [ONELikeView likeView];
+    [likeView changeButtonImageToLargeOne];
+    return likeView;
+}
+
+- (void)changeButtonImageToLargeOne {
+    [self.likeButton setImage:[UIImage imageNamed:@"like_gray"] forState:UIControlStateNormal];
+    [self.likeButton setImage:[UIImage imageNamed:@"liked_red"] forState:UIControlStateSelected];
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
