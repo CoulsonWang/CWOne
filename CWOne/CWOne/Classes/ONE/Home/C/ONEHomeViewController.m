@@ -122,6 +122,19 @@ typedef enum : NSUInteger {
     self.currentVC = self.middleVC;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
+    [navVC showCustomTitleView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
+    [navVC hideCustomTitleView];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

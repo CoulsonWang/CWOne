@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) ONEHomeNavigationBarTitleView *titleView;
 
+@property (assign, nonatomic) CGFloat tempStatusBarAlpha;
+
 - (ONEHomeWeatherItem *)weatherItem;
 
 @end
@@ -74,12 +76,13 @@
 
 - (void)hideCustomTitleView {
     self.titleView.hidden = YES;
+    [self saveTempAlpha];
     [self changeAlphaOfStatusBar:1.0];
 }
 
-- (void)showCustomTitleViewWithOffset:(CGFloat)offset {
+- (void)showCustomTitleView {
     self.titleView.hidden = NO;
-    [self confirmTitlViewWithOffset:offset];
+    [self changeAlphaOfStatusBar:self.tempStatusBarAlpha];
 }
 
 #pragma mark - 私有方法
@@ -90,6 +93,11 @@
     statusBar.alpha = alpha;
 }
 
-
+- (void)saveTempAlpha {
+    UIApplication *app = [UIApplication sharedApplication];
+    // 通过KVC拿到statusBar
+    UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+    self.tempStatusBarAlpha = statusBar.alpha;
+}
 
 @end

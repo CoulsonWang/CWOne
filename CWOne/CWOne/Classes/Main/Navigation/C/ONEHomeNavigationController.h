@@ -21,6 +21,6 @@
 
 - (void)hideCustomTitleView;
 
-- (void)showCustomTitleViewWithOffset:(CGFloat)offset;
+- (void)showCustomTitleView;
 
 @end

@@ -57,18 +57,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [self reloadDataWithCompletion:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
-    [navVC showCustomTitleViewWithOffset:self.tableView.contentOffset.y];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    ONEHomeNavigationController *navVC = (ONEHomeNavigationController *)self.navigationController;
-    [navVC hideCustomTitleView];
-}
 
 #pragma mark - 设置UI控件属性
 - (void)setUpOnce {
