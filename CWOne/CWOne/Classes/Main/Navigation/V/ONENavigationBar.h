@@ -30,4 +30,10 @@
 /// 将背景色图片移到最后层
 - (void)moveBackgroundImageToBack;
 
+/// 隐藏整个条，只显示20的高度
+- (void)hideNavigationBar;
+
+/// 恢复为原大小
+- (void)resumeNavigationBar;
+
 @end

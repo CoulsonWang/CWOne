@@ -8,6 +8,7 @@
 
 #import "ONEDetailTableViewController.h"
 #import "ONENetworkTool.h"
+#import "ONENavigationBarTool.h"
 #import "ONEEssayItem.h"
 #import "ONECommentItem.h"
 #import "ONEDetailCommentCell.h"
@@ -71,6 +72,11 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+}
+
 #pragma mark - 初始化UI
 
 #pragma mark - 私有工具方法
@@ -124,9 +130,9 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     // 改变NavBar的高度
     if (scrollView.contentOffset.y - self.lastOffsetY > 0) {
         // 隐藏
-        self.navigationController.navigationBar.alpha = 0.0;
+        [[ONENavigationBarTool sharedInstance] hideNavigationBar];
     } else {
-        self.navigationController.navigationBar.alpha = 1.0;
+        [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
     }
     // 修改标题
 }

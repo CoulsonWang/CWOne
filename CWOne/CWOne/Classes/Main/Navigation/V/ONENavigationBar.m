@@ -10,10 +10,11 @@
 #import "ONEMainTabBarController.h"
 #import "ONEHomeNavigationBarTitleView.h"
 #import "UIImage+CWColorAndStretch.h"
+#import <objc/message.h>
 
 @interface ONENavigationBar ()
 
-@property (weak, nonatomic) UIImageView *navBarBackgroundView;
+@property (weak, nonatomic) UIView *navBarBackgroundView;
 
 @property (weak, nonatomic) ONEHomeNavigationBarTitleView *homeTitleView;
 
@@ -35,11 +36,14 @@
 
 - (void)setUpBackgroundView {
     // 设置navBar背景色
-    UIImage *backgroundImage = [UIImage imageWithColor:[UIColor colorWithWhite:254/255.0 alpha:1.0] size:CGSizeMake(CWScreenW, kNavigationBarHeight)];
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, CWScreenW, kNavigationBarHeight)];
-    backgroundImageView.image = backgroundImage;
-    [self insertSubview:backgroundImageView atIndex:0];
-    self.navBarBackgroundView = backgroundImageView;
+    UIView *backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, CWScreenW, kNavigationBarHeight)];
+    backgroundView.backgroundColor = [UIColor colorWithWhite:254/255.0 alpha:1.0];
+    UIImage *underlineImage = [UIImage imageWithColor:[UIColor colorWithWhite:239/255.0 alpha:1.0]];
+    UIImageView *underlineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, CWScreenW, 0.5)];
+    underlineImageView.image = underlineImage;
+    [backgroundView addSubview:underlineImageView];
+    [self setValue:backgroundView forKeyPath:@"_customBackgroundView"];
+    self.navBarBackgroundView = backgroundView;
 }
 
 - (void)setUpHomeTitleView {
@@ -95,6 +99,17 @@
 
 - (void)moveBackgroundImageToBack {
     [self sendSubviewToBack:self.navBarBackgroundView];
+}
+
+- (void)hideNavigationBar {
+    self.y = -44;
+    self.navBarBackgroundView.y = 20;
+    
+}
+
+- (void)resumeNavigationBar {
+    self.y = 20;
+    self.navBarBackgroundView.y = 0;
 }
 
 #pragma mark - 私有方法

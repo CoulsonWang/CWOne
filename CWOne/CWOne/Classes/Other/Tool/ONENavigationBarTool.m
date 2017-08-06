@@ -70,4 +70,12 @@ static ONENavigationBarTool *_instance;
     [self.homeNavigationBar moveBackgroundImageToBack];
 }
 
+- (void)hideNavigationBar {
+    [self.homeNavigationBar hideNavigationBar];
+}
+
+- (void)resumeNavigationBar {
+    [self.homeNavigationBar resumeNavigationBar];
+}
+
 @end
