@@ -45,6 +45,8 @@
 		B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740131F32EF19009025FD /* ONERadioItem.m */; };
 		B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */; };
 		B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */; };
+		B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822531F37399D002F6961 /* ONEEssayItem.m */; };
+		B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822561F373E93002F6961 /* ONECommentItem.m */; };
 		B9B828FC1F361A0F008BB163 /* ONEHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B828D81F361A0F008BB163 /* ONEHomeTableViewController.m */; };
 		B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B828DA1F361A0F008BB163 /* ONEHomeViewController.m */; };
 		B9B828FE1F361A0F008BB163 /* ONECatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B828DD1F361A0F008BB163 /* ONECatalogueItem.m */; };
@@ -159,6 +161,10 @@
 		B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CWLineSpacing.m"; sourceTree = "<group>"; };
 		B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CWAnimation.h"; sourceTree = "<group>"; };
 		B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CWAnimation.m"; sourceTree = "<group>"; };
+		B9B822521F37399D002F6961 /* ONEEssayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEEssayItem.h; sourceTree = "<group>"; };
+		B9B822531F37399D002F6961 /* ONEEssayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEEssayItem.m; sourceTree = "<group>"; };
+		B9B822551F373E93002F6961 /* ONECommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECommentItem.h; sourceTree = "<group>"; };
+		B9B822561F373E93002F6961 /* ONECommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONECommentItem.m; sourceTree = "<group>"; };
 		B9B828D71F361A0F008BB163 /* ONEHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeTableViewController.h; sourceTree = "<group>"; };
 		B9B828D81F361A0F008BB163 /* ONEHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeTableViewController.m; sourceTree = "<group>"; };
 		B9B828D91F361A0F008BB163 /* ONEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeViewController.h; sourceTree = "<group>"; };
@@ -615,6 +621,10 @@
 		B9B828D31F361A0F008BB163 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				B9B822521F37399D002F6961 /* ONEEssayItem.h */,
+				B9B822531F37399D002F6961 /* ONEEssayItem.m */,
+				B9B822551F373E93002F6961 /* ONECommentItem.h */,
+				B9B822561F373E93002F6961 /* ONECommentItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1022,10 +1032,12 @@
 				B9B829061F361A0F008BB163 /* ONEHomeCatalogueView.m in Sources */,
 				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
+				B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */,
 				B9B8290C1F361A0F008BB163 /* ONEHomeRadioCell.m in Sources */,
 				B9B829041F361A0F008BB163 /* ONEHomeCatalogueCell.m in Sources */,
 				B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
+				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,

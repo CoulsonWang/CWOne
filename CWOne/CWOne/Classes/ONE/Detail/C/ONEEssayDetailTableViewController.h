@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ONEDetailTableViewController : UITableViewController
-
-
-@property (strong, nonatomic) NSString *itemId;
+@interface ONEEssayDetailTableViewController : UITableViewController
 
 @end
