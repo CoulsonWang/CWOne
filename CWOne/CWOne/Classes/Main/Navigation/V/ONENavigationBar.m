@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) UIImageView *navBarBackgroundView;
 
-@property (strong, nonatomic) ONEHomeNavigationBarTitleView *titleView;
+@property (weak, nonatomic) ONEHomeNavigationBarTitleView *homeTitleView;
 
 @property (assign, nonatomic) CGFloat tempStatusBarAlpha;
 
@@ -43,12 +43,12 @@
 }
 
 - (void)setUpHomeTitleView {
-    ONEHomeNavigationBarTitleView *titleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
-    titleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
+    ONEHomeNavigationBarTitleView *homeTitleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
+    homeTitleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
     ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    titleView.weatherItem = tabBarVC.weatherItem;
-    [self addSubview:titleView];
-    self.titleView = titleView;
+    homeTitleView.weatherItem = tabBarVC.weatherItem;
+    [self addSubview:homeTitleView];
+    self.homeTitleView = homeTitleView;
 }
 
 #pragma mark - 对外公有方法
@@ -58,39 +58,43 @@
     [self changeAlphaOfStatusBar:(offset/ONEScrollOffsetLimit)];
     
     // 让titleView更新
-    [self.titleView updateSubFrameAndAlphaWithOffset:offset];
+    [self.homeTitleView updateSubFrameAndAlphaWithOffset:offset];
 }
 
 - (void)confirmTitlViewWithOffset:(CGFloat)offset {
     
     if (offset >= ONEScrollOffsetLimit * 0.5) {
         [self changeAlphaOfStatusBar:1];
-        [self.titleView updateSubFrameAndAlphaWithOffset:ONEScrollOffsetLimit];
-        [self.titleView enableTheTitleButton:YES];
+        [self.homeTitleView updateSubFrameAndAlphaWithOffset:ONEScrollOffsetLimit];
+        [self.homeTitleView enableTheTitleButton:YES];
     } else {
         [self changeAlphaOfStatusBar:0];
-        [self.titleView updateSubFrameAndAlphaWithOffset:0];
-        [self.titleView enableTheTitleButton:NO];
+        [self.homeTitleView updateSubFrameAndAlphaWithOffset:0];
+        [self.homeTitleView enableTheTitleButton:NO];
     }
 }
 
 - (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden {
-    [self.titleView updateBackButtonVisible:isHidden];
+    [self.homeTitleView updateBackButtonVisible:isHidden];
 }
 
 - (void)updateTitleViewDateStringWithDateString:(NSString *)dateString {
-    [self.titleView updateDateStringWithDateString:dateString];
+    [self.homeTitleView updateDateStringWithDateString:dateString];
 }
 
 - (void)hideCustomTitleView {
-    self.titleView.hidden = YES;
+    self.homeTitleView.hidden = YES;
     [self saveTempAlpha];
     [self changeAlphaOfStatusBar:1.0];
 }
 
 - (void)showCustomTitleView {
-    self.titleView.hidden = NO;
+    self.homeTitleView.hidden = NO;
     [self changeAlphaOfStatusBar:self.tempStatusBarAlpha];
+}
+
+- (void)moveBackgroundImageToBack {
+    [self sendSubviewToBack:self.navBarBackgroundView];
 }
 
 #pragma mark - 私有方法

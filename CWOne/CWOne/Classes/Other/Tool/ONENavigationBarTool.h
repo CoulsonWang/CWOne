@@ -32,4 +32,7 @@
 /// 显示日期
 - (void)showCustomTitleView;
 
+/// 将背景色图片移到最后层
+- (void)moveBackgroundImageToBack;
+
 @end

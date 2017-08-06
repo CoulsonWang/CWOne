@@ -66,4 +66,8 @@ static ONENavigationBarTool *_instance;
     [self.homeNavigationBar showCustomTitleView];
 }
 
+- (void)moveBackgroundImageToBack {
+    [self.homeNavigationBar moveBackgroundImageToBack];
+}
+
 @end

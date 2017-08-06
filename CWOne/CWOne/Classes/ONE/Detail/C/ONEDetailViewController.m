@@ -12,6 +12,7 @@
 #import "UIImage+Render.h"
 #import "ONEDetailBottomToolView.h"
 #import "ONEHomeItem.h"
+#import "ONENavigationBarTool.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 
@@ -55,6 +56,11 @@
     toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
     [self.view addSubview:toolView];
     self.toolView = toolView;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[ONENavigationBarTool sharedInstance] moveBackgroundImageToBack];
 }
 
 #pragma mark - 设置UI
