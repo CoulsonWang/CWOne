@@ -13,4 +13,8 @@ CGFloat const ONEScrollOffsetLimit = 120.0;
 
 NSString *const ONETitleViewBackToTodayButtonClickNotifcation = @"ONETitleViewBackToTodayButtonClickNotifcation";
 
+NSString *const ONECommentPraiseNotification = @"ONECommentPraiseNotification";
+
+NSString *const ONECommentUnpraiseNotification = @"ONECommentUnpraiseNotification";
+
 NSString *const ONEThemeFontName = @"CourierNewPSMT";

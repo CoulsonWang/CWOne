@@ -71,6 +71,42 @@ static ONENetworkTool *_instance;
     }];
 }
 
+- (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *))failure {
+    NSString *postURL = @"http://v3.wufazhuce.com:8000/api/comment/praise";
+    NSDictionary *parameters = @{
+                                 @"cmtid":commentId,
+                                 @"itemid":item_id,
+                                 @"type":typeName,
+                                 };
+    [[AFHTTPSessionManager manager] POST:postURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            success();
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)postUnpraisedCommentWithType:(NSString *)typeName item_id:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *))failure {
+    NSString *postURL = @"http://v3.wufazhuce.com:8000/api/comment/unpraise";
+    NSDictionary *parameters = @{
+                                 @"cmtid":commentId,
+                                 @"itemid":item_id,
+                                 @"type":typeName,
+                                 };
+    [[AFHTTPSessionManager manager] POST:postURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            success();
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 - (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = @"http://v3.wufazhuce.com:8000/api/radio/active";
     NSDictionary *parameters = @{};

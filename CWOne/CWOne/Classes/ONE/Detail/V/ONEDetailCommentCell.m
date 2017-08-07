@@ -12,6 +12,7 @@
 #import "ONEUserItem.h"
 #import "ONEDateTool.h"
 #import "UILabel+CWLineSpacing.h"
+#import "ONENetworkTool.h"
 
 @interface ONEDetailCommentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
+@property (assign, nonatomic, getter=isLike) BOOL like;
 
 @end
 
@@ -54,6 +57,24 @@
 }
 
 - (IBAction)likeButtonClick:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    
+    self.like = sender.isSelected;
+    
+    if (sender.isSelected) {
+        NSString *count = [NSString stringWithFormat:@"%ld",[self.likeButton titleForState:UIControlStateNormal].integerValue + 1];
+        [self.likeButton setTitle:count forState:UIControlStateNormal];
+    } else {
+        NSString *count = [NSString stringWithFormat:@"%ld",[self.likeButton titleForState:UIControlStateNormal].integerValue - 1];
+        [self.likeButton setTitle:count forState:UIControlStateNormal];
+    }
+    // 发送网络请求，通知服务器点了\取消了赞
+    if (sender.isSelected) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentPraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID}];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentUnpraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID }];
+    }
+    
 }
 
 

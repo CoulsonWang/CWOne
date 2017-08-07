@@ -12,6 +12,7 @@
 
 @interface ONEDetailCommentCell : UITableViewCell
 
+
 @property (strong, nonatomic) ONECommentItem *commentItem;
 
 @end

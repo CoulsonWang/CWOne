@@ -13,12 +13,15 @@
 #import "ONEDetailBottomToolView.h"
 #import "ONEHomeItem.h"
 #import "ONENavigationBarTool.h"
+#import "ONENetworkTool.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 
 @interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate>
 
 @property (weak, nonatomic) ONEDetailBottomToolView *toolView;
+
+@property (strong, nonatomic, readonly) NSString *typeName;
 
 @end
 
@@ -42,6 +45,9 @@
     // 设置NavBar
     [self setUpNavigationBar];
     
+    // 监听通知
+    [self setUpNotifications];
+    
     // 添加子控制器
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
     detailTableVC.delegate = self;
@@ -64,6 +70,22 @@
     [[ONENavigationBarTool sharedInstance] moveBackgroundImageToBack];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (NSString *)typeName {
+    switch (self.homeItem.type) {
+        case ONEHomeItemTypeEssay:
+            return @"essay";
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
 #pragma mark - 设置UI
 - (void)setUpNavigationBar {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
@@ -74,6 +96,11 @@
     self.title = self.homeItem.typeName;
 }
 
+- (void)setUpNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(praiseComment:) name:ONECommentPraiseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unPraiseComment:) name:ONECommentUnpraiseNotification object:nil];
+}
+
 #pragma mark - 事件响应
 - (void)navigationBarBackButtonClick {
     [self.navigationController popViewControllerAnimated:YES];
@@ -81,6 +108,20 @@
 
 - (void)navigationBarCollectButtonClick {
     NSLog(@"收藏");
+}
+
+- (void)praiseComment:(NSNotification *)notification {
+    NSString *commentId = notification.userInfo[ONECommentIdKey];
+    [[ONENetworkTool sharedInstance] postPraisedCommentWithType:self.typeName itemId:self.homeItem.item_id commentId:commentId success:nil failure:^(NSError *error) {
+        NSLog(@"点赞失败");
+    }];
+}
+
+- (void)unPraiseComment:(NSNotification *)notification {
+    NSString *commentId = notification.userInfo[ONECommentIdKey];
+    [[ONENetworkTool sharedInstance] postUnpraisedCommentWithType:self.typeName item_id:self.homeItem.item_id commentId:commentId success:nil failure:^(NSError *error) {
+        NSLog(@"取消点赞失败");
+    }];
 }
 
 #pragma mark - ONEDetailTableViewControllerDelegate

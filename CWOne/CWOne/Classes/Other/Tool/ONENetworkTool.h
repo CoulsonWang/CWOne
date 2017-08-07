@@ -27,4 +27,10 @@
 /// 请求某篇文章的评论列表
 - (void)requestEssayCommentListWithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *dateArray))success failure:(void (^)(NSError *error))failure;
 
+/// 发送POST请求通知服务器已给某一条评论点赞
+- (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+/// 发送POST请求通知服务器已取消某一条评论的赞
+- (void)postUnpraisedCommentWithType:(NSString *)typeName item_id:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
 @end

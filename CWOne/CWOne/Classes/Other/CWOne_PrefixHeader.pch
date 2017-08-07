@@ -18,6 +18,8 @@
 #define kCatalogueAnimationDuration 0.3
 #define kCurrentDateString @"Today"
 
+#define ONECommentIdKey @"commentId"
+
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"
 #import "ONEConst.h"

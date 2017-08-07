@@ -13,4 +13,8 @@ UIKIT_EXTERN CGFloat const ONEScrollOffsetLimit;
 
 UIKIT_EXTERN NSString *const ONETitleViewBackToTodayButtonClickNotifcation;
 
+UIKIT_EXTERN NSString *const ONECommentPraiseNotification;
+
+UIKIT_EXTERN NSString *const ONECommentUnpraiseNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;
