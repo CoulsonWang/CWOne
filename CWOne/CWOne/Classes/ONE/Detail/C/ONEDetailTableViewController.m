@@ -32,6 +32,8 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 
 @implementation ONEDetailTableViewController
 
+@synthesize commentList = _commentList;
+
 #pragma mark - 懒加载
 - (NSMutableArray *)commentList {
     if (!_commentList) {
@@ -69,6 +71,18 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     self.parentViewController.title = essayItem.title;
 }
 
+// 当给评论列表赋值时，处理一下，判断是否是最后一个热门评论
+- (void)setCommentList:(NSMutableArray<ONECommentItem *> *)commentList {
+    _commentList = commentList;
+    
+    for (int i = 0; i < commentList.count; i++) {
+        if (commentList[i].isHot && !commentList[i+1].isHot) {
+            self.commentList[i].lastHotComment = YES;
+            break;
+        }
+    }
+}
+
 #pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,6 +100,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - 私有工具方法

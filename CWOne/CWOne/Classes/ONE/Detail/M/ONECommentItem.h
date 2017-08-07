@@ -24,6 +24,8 @@
 
 @property (assign, nonatomic) BOOL isHot;
 
+@property (assign, nonatomic, getter=isLastHotComment) BOOL lastHotComment;
+
 + (instancetype)commentItemWithDict:(NSDictionary *)dict;
 
 @end

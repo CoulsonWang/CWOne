@@ -14,14 +14,25 @@
 #import "UILabel+CWLineSpacing.h"
 #import "ONENetworkTool.h"
 
+#define kLargeBottomConstraint 30.0
+#define kSmallBottomConstraint 15.0
+
 @interface ONEDetailCommentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIView *normalSeperatorView;
+@property (weak, nonatomic) IBOutlet UIView *lastHotCommentSeperatorView;
+
+/// 点赞按钮距离底部的距离，决定底部的空间
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
+
 
 @property (assign, nonatomic, getter=isLike) BOOL like;
+
+@property (assign, nonatomic, getter=isLastHotComment) BOOL lastHotComment;
 
 @end
 
@@ -52,6 +63,16 @@
     
     NSString *praiseCount = [NSString stringWithFormat:@"%ld",commentItem.praisenum];
     [self.likeButton setTitle:praiseCount forState:UIControlStateNormal];
+    
+    self.lastHotComment = commentItem.isLastHotComment;
+}
+
+- (void)setLastHotComment:(BOOL)lastHotComment {
+    _lastHotComment = lastHotComment;
+    
+    self.normalSeperatorView.hidden = lastHotComment;
+    self.lastHotCommentSeperatorView.hidden = !lastHotComment;
+    self.bottomSpaceConstraint.constant = lastHotComment ? kLargeBottomConstraint : kSmallBottomConstraint;
 }
 - (IBAction)replyButtonClick:(UIButton *)sender {
 }
