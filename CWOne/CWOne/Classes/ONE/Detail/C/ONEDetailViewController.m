@@ -28,6 +28,8 @@
 
 @property (weak, nonatomic) UITableView *tableView;
 
+@property (weak, nonatomic) UIScrollView *scrollView;
+
 @end
 
 @implementation ONEDetailViewController
@@ -46,31 +48,25 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     // 设置NavBar
     [self setUpNavigationBar];
     
     // 监听通知
     [self setUpNotifications];
     
-    // 添加子控制器
-    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
-    detailTableVC.delegate = self;
-    detailTableVC.itemId = self.homeItem.item_id;
-    [self addChildViewController:detailTableVC];
+    // 添加ScrollView
+    [self setUpScrollView];
     
-    // 添加tableView
-    detailTableVC.view.frame = self.view.bounds;
-    [self.view addSubview:detailTableVC.view];
-    self.tableView = detailTableVC.tableView;
+    // 初始化tableView
+    [self setUpTableView];
     
     // 添加加载视图
     [self setUpLoadingAnimateView];
     
     // 添加自定义的底部工具条
-    ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
-    toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
-    [self.view addSubview:toolView];
-    self.toolView = toolView;
+    [self setUpBottomToolView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -114,6 +110,49 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unPraiseComment:) name:ONECommentUnpraiseNotification object:nil];
 }
 
+- (void)setUpScrollView {
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame = CGRectMake(0, 0, CWScreenW, CWScreenH);
+    CGFloat contentSizeWidth;
+    switch (self.homeItem.type) {
+        case ONEHomeItemTypeEssay:
+            contentSizeWidth = 0;
+            break;
+        case ONEHomeItemTypeSerial:
+            contentSizeWidth = self.homeItem.serial_list.count * CWScreenW;
+            break;
+        default:
+            contentSizeWidth = 0;
+            break;
+    }
+    scrollView.contentSize = CGSizeMake(contentSizeWidth, 0);
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+}
+
+- (void)setUpTableView {
+    // 添加子控制器
+    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
+    detailTableVC.delegate = self;
+    detailTableVC.type = self.homeItem.type;
+    detailTableVC.itemId = self.homeItem.item_id;
+    [self addChildViewController:detailTableVC];
+    
+    // 添加tableView
+    detailTableVC.view.frame = self.view.bounds;
+    [self.scrollView addSubview:detailTableVC.view];
+    self.tableView = detailTableVC.tableView;
+}
+
+- (void)setUpBottomToolView {
+    ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
+    toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
+    [self.view addSubview:toolView];
+    self.toolView = toolView;
+}
+
 - (void)setUpLoadingAnimateView {
     // 先显示一个加载视图。数据加载完成后，再显示tableview
     self.tableView.hidden = YES;
@@ -123,7 +162,7 @@
     gifView.animatedImage = animatedImg;
     gifView.frame = CGRectMake(0, 0, 50, 50);
     gifView.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5 - 60);
-    [self.view addSubview:gifView];
+    [self.scrollView addSubview:gifView];
     self.loadingImageView = gifView;
 }
 

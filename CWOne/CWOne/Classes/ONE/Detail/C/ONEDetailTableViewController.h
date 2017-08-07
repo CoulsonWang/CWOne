@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ONEHomeItem.h"
 
 @class ONEDetailTableViewController;
 
@@ -25,5 +26,7 @@
 @property (weak, nonatomic) id<ONEDetailTableViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSString *itemId;
+
+@property (assign, nonatomic) ONEHomeItemType type;
 
 @end

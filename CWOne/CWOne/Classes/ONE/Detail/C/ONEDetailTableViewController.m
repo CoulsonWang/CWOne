@@ -104,6 +104,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
 }
 
 - (void)setUpFooter {
@@ -116,18 +117,37 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
-    [[ONENetworkTool sharedInstance] requestEssayDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
-        self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-        if ([self.delegate respondsToSelector:@selector(detailTableVC:updateToolViewPraiseCount:andCommentCount:)]) {
-            [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
+    switch (self.type) {
+        case ONEHomeItemTypeEssay:
+        {
+            [[ONENetworkTool sharedInstance] requestEssayDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
+                self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+                [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
+            } failure:^(NSError *error) {
+                NSLog(@"%@",error);
+            }];
         }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+            break;
+        case ONEHomeItemTypeSerial:
+        {
+            [[ONENetworkTool sharedInstance] requestSerialDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
+                self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+                [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
+            } failure:^(NSError *error) {
+                NSLog(@"%@",error);
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 - (void)loadCommentData {
-    [[ONENetworkTool sharedInstance] requestEssayCommentListWithItemID:self.itemId lastID:nil success:^(NSArray<NSDictionary *> *dataArray) {
+    NSString *typeName = [ONEHomeItem getTypeStrWithType:self.type];
+    [[ONENetworkTool sharedInstance] requestCommentListOfType:typeName WithItemID:self.itemId lastID:nil success:^(NSArray<NSDictionary *> *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
         for (NSDictionary *dataDict in dataArray) {
             ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];
@@ -145,12 +165,14 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
                                 
 - (void)loadMoreCommentData {
+    NSString *typeName = [ONEHomeItem getTypeStrWithType:self.type];
     NSString *lastCommentID = self.commentList.lastObject.commentID;
-    [[ONENetworkTool sharedInstance] requestEssayCommentListWithItemID:self.itemId lastID:lastCommentID success:^(NSArray<NSDictionary *> *dataArray) {
+    [[ONENetworkTool sharedInstance] requestCommentListOfType:typeName WithItemID:self.itemId lastID:lastCommentID success:^(NSArray<NSDictionary *> *dataArray) {
         if (dataArray.count == 0) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
+        
         NSMutableArray *tempArray = [self.commentList mutableCopy];
         for (NSDictionary *dataDict in dataArray) {
             ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];

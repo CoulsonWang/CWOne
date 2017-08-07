@@ -143,10 +143,30 @@ static ONENetworkTool *_instance;
         }
     }];
 }
+- (void)requestSerialDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/serialcontent/htmlcontent/%@",item_id];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
 
-- (void)requestEssayCommentListWithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *))success failure:(void (^)(NSError *))failure {
+- (void)requestCommentListOfType:(NSString *)typeName WithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *))success failure:(void (^)(NSError *))failure {
     NSString *lastCommentId = (lastID == nil) ? @"0" : lastID;
-    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/comment/praiseandtime/essay/%@/%@",item_id,lastCommentId];
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/comment/praiseandtime/%@/%@/%@",typeName, item_id,lastCommentId];
     NSDictionary *parameters = @{
                                  @"version":@"v4.3.0",
                                  };
@@ -166,7 +186,5 @@ static ONENetworkTool *_instance;
     }];
 
 }
-
-
 
 @end

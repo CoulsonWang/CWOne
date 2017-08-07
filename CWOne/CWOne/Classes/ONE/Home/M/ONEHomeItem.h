@@ -26,6 +26,9 @@ typedef enum : NSUInteger {
 // 快速构造方法
 + (instancetype)homeItemWithDict:(NSDictionary *)dict;
 
+// 通过类型获取名称
++ (NSString *)getTypeStrWithType:(ONEHomeItemType)type;
+
 /* *********************************** 原始属性 *********************************** */
 
 @property (strong, nonatomic) NSString *item_id;
@@ -63,6 +66,8 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSString *audio_url;
 
 @property (strong, nonatomic) NSString *orientation;
+
+@property (strong, nonatomic) NSArray *serial_list;
 
 // 音乐cell的属性
 @property (strong, nonatomic) NSString *music_name;

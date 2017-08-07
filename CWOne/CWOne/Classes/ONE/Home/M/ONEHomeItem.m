@@ -91,4 +91,26 @@
     }
 }
 
++ (NSString *)getTypeStrWithType:(ONEHomeItemType)type {
+    switch (type) {
+        case ONEHomeItemTypeSmallNote:
+            return @"";
+        case ONEHomeItemTypeEssay:
+            return @"essay";
+        case ONEHomeItemTypeSerial:
+            return @"serial";
+        case ONEHomeItemTypeQuestion:
+            return @"question";
+        case ONEHomeItemTypeMusic:
+            return @"music";
+        case ONEHomeItemTypeMovie:
+            return @"movie";
+        case ONEHomeItemTypeRadio:
+            return @"radio";
+            
+        default:
+            return nil;
+    }
+}
+
 @end

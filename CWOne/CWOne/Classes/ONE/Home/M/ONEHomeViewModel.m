@@ -27,7 +27,7 @@
     if (homeItem.tag_title != nil) {
         styleStr = homeItem.tag_title;
     } else {
-        styleStr = [self getCategoryTitleWithType:homeItem.type];
+        styleStr = homeItem.typeName;
     }
     self.categoryTitle = [NSString stringWithFormat:@"- %@ -",styleStr];
     
@@ -63,27 +63,6 @@
 
 
 #pragma mark - 工具方法
-- (NSString *)getCategoryTitleWithType:(ONEHomeItemType)type {
-    switch (type) {
-        case ONEHomeItemTypeSmallNote:
-            return @"小记";
-        case ONEHomeItemTypeEssay:
-            return @"阅读";
-        case ONEHomeItemTypeSerial:
-            return @"连载";
-        case ONEHomeItemTypeQuestion:
-            return @"问答";
-        case ONEHomeItemTypeMusic:
-            return @"音乐";
-        case ONEHomeItemTypeMovie:
-            return @"影视";
-        case ONEHomeItemTypeRadio:
-            return @"电台";
-            
-        default:
-            return nil;
-    }
-}
 
 // 通过一个字符串比较其时间与当前时间是否是同一天,计算出标签文本
 - (NSString *)getDateStrWithDate:(NSString *)dateStr {
