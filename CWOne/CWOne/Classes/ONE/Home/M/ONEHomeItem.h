@@ -26,9 +26,6 @@ typedef enum : NSUInteger {
 // 快速构造方法
 + (instancetype)homeItemWithDict:(NSDictionary *)dict;
 
-// 通过类型获取名称
-+ (NSString *)getTypeStrWithType:(ONEHomeItemType)type;
-
 /* *********************************** 原始属性 *********************************** */
 
 @property (strong, nonatomic) NSString *item_id;

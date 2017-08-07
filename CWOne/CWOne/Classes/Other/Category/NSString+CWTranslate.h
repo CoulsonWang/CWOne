@@ -7,9 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ONEHomeItem.h"
 
 @interface NSString (CWTranslate)
 
 + (instancetype)chineseNumberWithNumber:(NSUInteger)number;
+
++ (instancetype)getCategoryStringWithCategoryInteger:(NSInteger)category;
+
+
+- (ONEHomeItemType)getType;
+
++ (instancetype)getCategoryWithType:(ONEHomeItemType)type;
+
+// 英文名
+
++ (NSString *)getTypeStrWithCategoryInteger:(NSInteger)category;
+
++ (NSString *)getTypeStrWithType:(ONEHomeItemType)type;
+
+
 
 @end

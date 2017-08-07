@@ -187,4 +187,24 @@ static ONENetworkTool *_instance;
 
 }
 
+- (void)requestRelatedListDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSArray<NSDictionary *> *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/relatedforwebview/%@/%@",typeName,item_id];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end

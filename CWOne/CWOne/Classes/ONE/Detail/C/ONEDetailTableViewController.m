@@ -14,6 +14,7 @@
 #import "ONECommentItem.h"
 #import "ONEDetailCommentCell.h"
 #import <MJRefresh.h>
+#import "NSString+CWTranslate.h"
 
 #define kWebViewMinusHeight 80.0
 #define kScrollAnimationDuration 0.3
@@ -145,8 +146,23 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     
 }
 
+- (void)loadRelatedData {
+    NSString *typeName = [NSString getTypeStrWithType:self.type];
+    [[ONENetworkTool sharedInstance] requestRelatedListDataOfType:typeName withItemId:self.itemId success:^(NSArray<NSDictionary *> *dataArray) {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dataDict in dataArray) {
+            ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];
+            [tempArray addObject:commentItem];
+        }
+        self.commentList = tempArray;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)loadCommentData {
-    NSString *typeName = [ONEHomeItem getTypeStrWithType:self.type];
+    NSString *typeName = [NSString getTypeStrWithType:self.type];
     [[ONENetworkTool sharedInstance] requestCommentListOfType:typeName WithItemID:self.itemId lastID:nil success:^(NSArray<NSDictionary *> *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
         for (NSDictionary *dataDict in dataArray) {
@@ -165,7 +181,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
                                 
 - (void)loadMoreCommentData {
-    NSString *typeName = [ONEHomeItem getTypeStrWithType:self.type];
+    NSString *typeName = [NSString getTypeStrWithType:self.type];
     NSString *lastCommentID = self.commentList.lastObject.commentID;
     [[ONENetworkTool sharedInstance] requestCommentListOfType:typeName WithItemID:self.itemId lastID:lastCommentID success:^(NSArray<NSDictionary *> *dataArray) {
         if (dataArray.count == 0) {

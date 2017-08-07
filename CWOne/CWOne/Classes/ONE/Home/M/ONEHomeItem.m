@@ -8,6 +8,7 @@
 
 #import "ONEHomeItem.h"
 #import "ONEUserItem.h"
+#import "NSString+CWTranslate.h"
 
 @implementation ONEHomeItem
 
@@ -18,32 +19,7 @@
     [item setValuesForKeysWithDictionary:dict];
     
     // 处理类型
-    switch (item.category.integerValue) {
-        case 0:
-            item.type = ONEHomeItemTypeSmallNote;
-            break;
-        case 1:
-            item.type = ONEHomeItemTypeEssay;
-            break;
-        case 2:
-            item.type = ONEHomeItemTypeSerial;
-            break;
-        case 3:
-            item.type = ONEHomeItemTypeQuestion;
-            break;
-        case 4:
-            item.type = ONEHomeItemTypeMusic;
-            break;
-        case 5:
-            item.type = ONEHomeItemTypeMovie;
-            break;
-        case 8:
-            item.type = ONEHomeItemTypeRadio;
-            break;
-        default:
-            item.type = ONEHomeItemTypeUnknown;
-            break;
-    }
+    item.type = [item.category getType];
     
     // 处理作者数据
     NSDictionary *authorDict = dict[@"author"];
@@ -59,7 +35,7 @@
     [item setValue:[ONEUserItem userItemWithDict:answererDict] forKeyPath:@"answererItem"];
     
     //typeName
-    item.typeName = [self getCategoryTitleWithType:item.type];
+    item.typeName = [NSString getCategoryStringWithCategoryInteger:item.category.integerValue];
     
     return item;
 }
@@ -68,49 +44,6 @@
     // do nothing
 }
 
-#pragma mark - 工具方法
-+ (NSString *)getCategoryTitleWithType:(ONEHomeItemType)type {
-    switch (type) {
-        case ONEHomeItemTypeSmallNote:
-            return @"小记";
-        case ONEHomeItemTypeEssay:
-            return @"阅读";
-        case ONEHomeItemTypeSerial:
-            return @"连载";
-        case ONEHomeItemTypeQuestion:
-            return @"问答";
-        case ONEHomeItemTypeMusic:
-            return @"音乐";
-        case ONEHomeItemTypeMovie:
-            return @"影视";
-        case ONEHomeItemTypeRadio:
-            return @"电台";
-            
-        default:
-            return nil;
-    }
-}
 
-+ (NSString *)getTypeStrWithType:(ONEHomeItemType)type {
-    switch (type) {
-        case ONEHomeItemTypeSmallNote:
-            return @"";
-        case ONEHomeItemTypeEssay:
-            return @"essay";
-        case ONEHomeItemTypeSerial:
-            return @"serial";
-        case ONEHomeItemTypeQuestion:
-            return @"question";
-        case ONEHomeItemTypeMusic:
-            return @"music";
-        case ONEHomeItemTypeMovie:
-            return @"movie";
-        case ONEHomeItemTypeRadio:
-            return @"radio";
-            
-        default:
-            return nil;
-    }
-}
 
 @end

@@ -47,4 +47,109 @@
     }
 }
 
+// 中文
+
++ (instancetype)getCategoryStringWithCategoryInteger:(NSInteger)category {
+    switch (category) {
+        case 0:
+            return @"小记";
+        case 1:
+            return @"阅读";
+        case 2:
+            return @"连载";
+        case 3:
+            return @"问答";
+        case 4:
+            return @"音乐";
+        case 5:
+            return @"影视";
+        case 8:
+            return @"电台";
+        default:
+            return nil;
+    }
+}
+
+
+// 英文
+
++ (NSString *)getTypeStrWithCategoryInteger:(NSInteger)category {
+    switch (category) {
+        case 0:
+            return @"";
+        case 1:
+            return @"essay";
+        case 2:
+            return @"serial";
+        case 3:
+            return @"question";
+        case 4:
+            return @"music";
+        case 5:
+            return @"movie";
+        case 8:
+            return @"radio";
+        default:
+            return nil;
+    }
+}
+
++ (NSString *)getTypeStrWithType:(ONEHomeItemType)type {
+    NSInteger category = [NSString getCategoryWithType:type].integerValue;
+    return [self getTypeStrWithCategoryInteger:category];
+}
+
+// 相互转化
+
+- (ONEHomeItemType)getType {
+    switch (self.integerValue) {
+        case 0:
+            return ONEHomeItemTypeSmallNote;
+        case 1:
+            return ONEHomeItemTypeEssay;
+        case 2:
+            return ONEHomeItemTypeSerial;
+        case 3:
+            return ONEHomeItemTypeQuestion;
+        case 4:
+            return ONEHomeItemTypeMusic;
+        case 5:
+            return ONEHomeItemTypeMovie;
+        case 8:
+            return ONEHomeItemTypeRadio;
+        default:
+            return ONEHomeItemTypeUnknown;
+    }
+}
+
++ (instancetype)getCategoryWithType:(ONEHomeItemType)type {
+    NSInteger categoryNum = -1;
+    switch (type) {
+        case ONEHomeItemTypeSmallNote:
+            categoryNum = 0;
+            break;
+        case ONEHomeItemTypeEssay:
+            categoryNum = 1;
+            break;
+        case ONEHomeItemTypeSerial:
+            categoryNum = 2;
+            break;
+        case ONEHomeItemTypeQuestion:
+            categoryNum = 3;
+            break;
+        case ONEHomeItemTypeMusic:
+            categoryNum = 4;
+            break;
+        case ONEHomeItemTypeMovie:
+            categoryNum = 5;
+            break;
+        case ONEHomeItemTypeRadio:
+            categoryNum = 8;
+            break;
+        default:
+            break;
+    }
+    return [NSString stringWithFormat:@"%ld",categoryNum];
+}
+
 @end

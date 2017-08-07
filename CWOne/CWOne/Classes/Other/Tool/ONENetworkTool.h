@@ -27,6 +27,9 @@
 /// 请求连载详情页数据
 - (void)requestSerialDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
+/// 请求某篇文章的关联列表
+- (void)requestRelatedListDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSArray<NSDictionary *> *dataArray))success failure:(void (^)(NSError *error))failure;
+
 /// 请求某篇文章的评论列表
 - (void)requestCommentListOfType:(NSString *)typeName WithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *dataArray))success failure:(void (^)(NSError *error))failure;
 
