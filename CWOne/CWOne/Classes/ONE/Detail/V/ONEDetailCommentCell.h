@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONECommentItem;
+
 @interface ONEDetailCommentCell : UITableViewCell
+
+@property (strong, nonatomic) ONECommentItem *commentItem;
 
 @end

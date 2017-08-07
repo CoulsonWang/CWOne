@@ -12,3 +12,5 @@
 UIKIT_EXTERN CGFloat const ONEScrollOffsetLimit;
 
 UIKIT_EXTERN NSString *const ONETitleViewBackToTodayButtonClickNotifcation;
+
+UIKIT_EXTERN NSString *const ONEThemeFontName;

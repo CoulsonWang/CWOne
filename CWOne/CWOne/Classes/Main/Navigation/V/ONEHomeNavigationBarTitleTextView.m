@@ -73,7 +73,7 @@
 
 - (void)setUpOneLabelsProperty:(UILabel *)label {
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"CourierNewPSMT" size:22];
+    label.font = [UIFont fontWithName:ONEThemeFontName size:22];
     if ([label isKindOfClass:[CWCalendarLabel class]]) {
         CWCalendarLabel *calendarLabel = (CWCalendarLabel *)label;
         calendarLabel.animateDuration = 0.35;

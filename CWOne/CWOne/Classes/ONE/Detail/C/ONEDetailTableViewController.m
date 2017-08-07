@@ -125,7 +125,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     
     ONECommentItem *commentItem = self.commentList[indexPath.row];
     
-    cell.textLabel.text = commentItem.content;
+    cell.commentItem = commentItem;
     
     return cell;
 }
@@ -148,7 +148,6 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
-    NSLog(@"%f",webViewHeight);
     self.headerWebView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight - kWebViewMinusHeight);
     [self.tableView reloadData];
 }

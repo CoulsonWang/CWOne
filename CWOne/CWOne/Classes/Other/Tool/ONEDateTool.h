@@ -22,4 +22,6 @@
 
 - (NSDate *)getDateFromCurrentDateWithDateInterval:(NSInteger)dateInterval;
 
+- (NSString *)getCommentDateStringWithOriginalDateString:(NSString *)dateString;
+
 @end

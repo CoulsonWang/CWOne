@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) NSString *content;
 
-@property (strong, nonatomic) NSString *praisenum;
+@property (assign, nonatomic) NSInteger praisenum;
 
 @property (strong, nonatomic) NSString *input_date;
 

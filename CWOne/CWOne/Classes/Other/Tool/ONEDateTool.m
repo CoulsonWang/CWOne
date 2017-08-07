@@ -48,4 +48,12 @@ static ONEDateTool *_instance;
     return [self getDateStringFromCurrentDateWihtDateInterval:1];
 }
 
+- (NSString *)getCommentDateStringWithOriginalDateString:(NSString *)dateString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *date = [formatter dateFromString:dateString];
+    formatter.dateFormat = @"yyyy.MM.dd HH:mm";
+    return [formatter stringFromDate:date];
+}
+
 @end
