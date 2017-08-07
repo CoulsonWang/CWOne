@@ -39,9 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 先显示一个加载视图。数据加载完成后，再显示tableview
-    
-    
     // 设置NavBar
     [self setUpNavigationBar];
     
@@ -57,6 +54,10 @@
     // 添加tableView
     detailTableVC.view.frame = self.view.bounds;
     [self.view addSubview:detailTableVC.view];
+    
+    // 先显示一个加载视图。数据加载完成后，再显示tableview
+    
+    
     
     // 添加自定义的底部工具条
     ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];

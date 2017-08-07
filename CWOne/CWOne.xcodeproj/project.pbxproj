@@ -72,6 +72,13 @@
 		B9B8290E1F361A0F008BB163 /* ONELikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B828FA1F361A0F008BB163 /* ONELikeView.m */; };
 		B9B8290F1F361A0F008BB163 /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B828FB1F361A0F008BB163 /* ONELikeView.xib */; };
 		B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D6BBFE1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m */; };
+		B9E000F81F38746200A7A609 /* loading@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F11F38746200A7A609 /* loading@2x.gif */; };
+		B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F21F38746200A7A609 /* loading_book@3x.gif */; };
+		B9E000FA1F38746200A7A609 /* loading_book_night@3x.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F31F38746200A7A609 /* loading_book_night@3x.gif */; };
+		B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F41F38746200A7A609 /* loading_gray@2x.gif */; };
+		B9E000FC1F38746200A7A609 /* loading_night@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F51F38746200A7A609 /* loading_night@2x.gif */; };
+		B9E000FD1F38746200A7A609 /* rate_nav.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F61F38746200A7A609 /* rate_nav.gif */; };
+		B9E000FE1F38746200A7A609 /* rate_nav_night.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F71F38746200A7A609 /* rate_nav_night.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +220,13 @@
 		B9B828FB1F361A0F008BB163 /* ONELikeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELikeView.xib; sourceTree = "<group>"; };
 		B9D6BBFD1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeNavigationBarTitleTextView.h; sourceTree = "<group>"; };
 		B9D6BBFE1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeNavigationBarTitleTextView.m; sourceTree = "<group>"; };
+		B9E000F11F38746200A7A609 /* loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading@2x.gif"; sourceTree = "<group>"; };
+		B9E000F21F38746200A7A609 /* loading_book@3x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading_book@3x.gif"; sourceTree = "<group>"; };
+		B9E000F31F38746200A7A609 /* loading_book_night@3x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading_book_night@3x.gif"; sourceTree = "<group>"; };
+		B9E000F41F38746200A7A609 /* loading_gray@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading_gray@2x.gif"; sourceTree = "<group>"; };
+		B9E000F51F38746200A7A609 /* loading_night@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading_night@2x.gif"; sourceTree = "<group>"; };
+		B9E000F61F38746200A7A609 /* rate_nav.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rate_nav.gif; sourceTree = "<group>"; };
+		B9E000F71F38746200A7A609 /* rate_nav_night.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rate_nav_night.gif; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -402,6 +416,7 @@
 			children = (
 				B9321EF21F3059410052752B /* Classes */,
 				B9321EF61F3059410052752B /* SupportFiles */,
+				B9E000F01F38746200A7A609 /* Resource */,
 				B9321ECB1F3058CA0052752B /* Assets.xcassets */,
 			);
 			path = CWOne;
@@ -723,6 +738,20 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		B9E000F01F38746200A7A609 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B9E000F11F38746200A7A609 /* loading@2x.gif */,
+				B9E000F21F38746200A7A609 /* loading_book@3x.gif */,
+				B9E000F31F38746200A7A609 /* loading_book_night@3x.gif */,
+				B9E000F41F38746200A7A609 /* loading_gray@2x.gif */,
+				B9E000F51F38746200A7A609 /* loading_night@2x.gif */,
+				B9E000F61F38746200A7A609 /* rate_nav.gif */,
+				B9E000F71F38746200A7A609 /* rate_nav_night.gif */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		F7AD2679919B3393C7018D5A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,16 +885,23 @@
 				B9B8225C1F374602002F6961 /* ONEDetailCommentCell.xib in Resources */,
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
+				B9E000FD1F38746200A7A609 /* rate_nav.gif in Resources */,
 				B9B829051F361A0F008BB163 /* ONEHomeCatalogueCell.xib in Resources */,
 				B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */,
 				B9B8290F1F361A0F008BB163 /* ONELikeView.xib in Resources */,
 				B9B829081F361A0F008BB163 /* ONEHomeCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
+				B9E000FA1F38746200A7A609 /* loading_book_night@3x.gif in Resources */,
 				B9B8290A1F361A0F008BB163 /* ONEHomeHeadContentView.xib in Resources */,
+				B9E000F81F38746200A7A609 /* loading@2x.gif in Resources */,
+				B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */,
 				B9B8290D1F361A0F008BB163 /* ONEHomeRadioCell.xib in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
+				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
+				B9E000FC1F38746200A7A609 /* loading_night@2x.gif in Resources */,
+				B9E000FE1F38746200A7A609 /* rate_nav_night.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
