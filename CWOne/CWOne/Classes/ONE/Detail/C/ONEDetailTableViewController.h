@@ -14,6 +14,8 @@
 
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum;
 
+- (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC;
+
 @end
 
 @interface ONEDetailTableViewController : UITableViewController

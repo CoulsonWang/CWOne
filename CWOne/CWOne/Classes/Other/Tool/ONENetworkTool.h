@@ -25,7 +25,7 @@
 - (void)requestEssayDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
 /// 请求某篇文章的评论列表
-- (void)requestEssayCommentListWithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *dateArray))success failure:(void (^)(NSError *error))failure;
+- (void)requestEssayCommentListWithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *dataArray))success failure:(void (^)(NSError *error))failure;
 
 /// 发送POST请求通知服务器已给某一条评论点赞
 - (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *error))failure;

@@ -68,9 +68,6 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     _essayItem = essayItem;
     
     [self webViewLoadHtmlData];
-    
-    // 更新标题
-    self.parentViewController.title = essayItem.title;
 }
 
 // 当给评论列表赋值时，处理一下，判断是否是最后一个热门评论
@@ -94,11 +91,6 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [self setUpFooter];
     
     [self setUpNotification];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
 }
 
 - (void)dealloc {
@@ -207,6 +199,8 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     } else {
         [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
     }
+    self.lastOffsetY = scrollView.contentOffset.y;
+    
 }
 
 #pragma mark - UIWebViewDelegate
@@ -214,6 +208,12 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
     self.headerWebView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight - kWebViewMinusHeight);
     [self.tableView reloadData];
+    self.parentViewController.title = self.essayItem.title;
+    
+    // 通知外部控制器切换视图
+    if ([self.delegate respondsToSelector:@selector(detailTableVCDidFinishLoadData:)]) {
+        [self.delegate detailTableVCDidFinishLoadData:self];
+    }
 }
 
 

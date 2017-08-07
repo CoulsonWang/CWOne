@@ -14,6 +14,7 @@
 #import "ONEHomeItem.h"
 #import "ONENavigationBarTool.h"
 #import "ONENetworkTool.h"
+#import <FLAnimatedImage.h>
 
 #define kBottomToolViewHeight kTabBarHeight
 
@@ -22,6 +23,10 @@
 @property (weak, nonatomic) ONEDetailBottomToolView *toolView;
 
 @property (strong, nonatomic, readonly) NSString *typeName;
+
+@property (weak, nonatomic) FLAnimatedImageView *loadingImageView;
+
+@property (weak, nonatomic) UITableView *tableView;
 
 @end
 
@@ -39,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     // 设置NavBar
     [self setUpNavigationBar];
     
@@ -54,10 +61,10 @@
     // 添加tableView
     detailTableVC.view.frame = self.view.bounds;
     [self.view addSubview:detailTableVC.view];
+    self.tableView = detailTableVC.tableView;
     
-    // 先显示一个加载视图。数据加载完成后，再显示tableview
-    
-    
+    // 添加加载视图
+    [self setUpLoadingAnimateView];
     
     // 添加自定义的底部工具条
     ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
@@ -69,6 +76,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[ONENavigationBarTool sharedInstance] moveBackgroundImageToBack];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
 }
 
 - (void)dealloc {
@@ -102,6 +114,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unPraiseComment:) name:ONECommentUnpraiseNotification object:nil];
 }
 
+- (void)setUpLoadingAnimateView {
+    // 先显示一个加载视图。数据加载完成后，再显示tableview
+    self.tableView.hidden = YES;
+    NSURL *imgUrl = [[NSBundle mainBundle] URLForResource:@"loading_book@3x" withExtension:@"gif"];
+    FLAnimatedImage *animatedImg = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgUrl]];
+    FLAnimatedImageView *gifView = [[FLAnimatedImageView alloc] init];
+    gifView.animatedImage = animatedImg;
+    gifView.frame = CGRectMake(0, 0, 50, 50);
+    gifView.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5 - 60);
+    [self.view addSubview:gifView];
+    self.loadingImageView = gifView;
+}
+
 #pragma mark - 事件响应
 - (void)navigationBarBackButtonClick {
     [self.navigationController popViewControllerAnimated:YES];
@@ -129,5 +154,10 @@
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum {
     self.toolView.praisenum = praiseNum;
     self.toolView.commentnum = commentNum;
+}
+
+- (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC {
+    self.tableView.hidden = NO;
+    self.loadingImageView.hidden = YES;
 }
 @end
