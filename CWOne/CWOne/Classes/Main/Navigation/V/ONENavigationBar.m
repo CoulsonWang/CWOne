@@ -31,6 +31,8 @@
     if (self) {
         [self setUpBackgroundView];
         [self setUpHomeTitleView];
+        
+        self.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"CourierNewPSMT" size:18.0]};
     }
     return self;
 }

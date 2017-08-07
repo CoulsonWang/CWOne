@@ -43,7 +43,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 
 - (UIWebView *)headerWebView {
     if (!_headerWebView) {
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, 0)];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
         webView.delegate = self;
         webView.scrollView.scrollEnabled = NO;
         self.tableView.tableHeaderView = webView;
@@ -73,7 +73,7 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+    [self setUpTableView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -82,6 +82,11 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
 
 #pragma mark - 初始化UI
+- (void)setUpTableView {
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
 
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
@@ -143,7 +148,8 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
-    self.headerWebView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, webViewHeight - kWebViewMinusHeight);
+    NSLog(@"%f",webViewHeight);
+    self.headerWebView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight - kWebViewMinusHeight);
     [self.tableView reloadData];
 }
 
