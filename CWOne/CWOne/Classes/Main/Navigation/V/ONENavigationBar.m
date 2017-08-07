@@ -20,6 +20,7 @@
 
 @property (assign, nonatomic) CGFloat tempStatusBarAlpha;
 
+
 @end
 
 @implementation ONENavigationBar
@@ -104,7 +105,6 @@
 - (void)hideNavigationBar {
     self.y = -44;
     self.navBarBackgroundView.y = 20;
-    
 }
 
 - (void)resumeNavigationBar {

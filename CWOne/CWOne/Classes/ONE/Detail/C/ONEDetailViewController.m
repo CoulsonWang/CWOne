@@ -16,7 +16,7 @@
 
 #define kBottomToolViewHeight kTabBarHeight
 
-@interface ONEDetailViewController ()
+@interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate>
 
 @property (weak, nonatomic) ONEDetailBottomToolView *toolView;
 
@@ -44,6 +44,7 @@
     
     // 添加子控制器
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
+    detailTableVC.delegate = self;
     detailTableVC.itemId = self.homeItem.item_id;
     [self addChildViewController:detailTableVC];
     
@@ -70,6 +71,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"collect_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
     
     // 设置控制器标题
+    self.title = self.homeItem.typeName;
 }
 
 #pragma mark - 事件响应
@@ -79,5 +81,10 @@
 
 - (void)navigationBarCollectButtonClick {
     NSLog(@"收藏");
+}
+
+#pragma mark - ONEDetailTableViewControllerDelegate
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC changeTitle:(NSString *)title {
+    self.title = title;
 }
 @end

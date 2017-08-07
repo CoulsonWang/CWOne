@@ -7,6 +7,7 @@
 //
 
 #import "ONEDetailTableViewController.h"
+#import "ONEDetailViewController.h"
 #import "ONENetworkTool.h"
 #import "ONENavigationBarTool.h"
 #import "ONEEssayItem.h"
@@ -63,6 +64,9 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     _essayItem = essayItem;
     
     [self webViewLoadHtmlData];
+    
+    // 更新标题
+    self.parentViewController.title = essayItem.title;
 }
 
 #pragma mark - view的生命周期
@@ -134,7 +138,6 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     } else {
         [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
     }
-    // 修改标题
 }
 
 #pragma mark - UIWebViewDelegate

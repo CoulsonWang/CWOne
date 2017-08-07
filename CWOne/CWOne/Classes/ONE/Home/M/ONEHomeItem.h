@@ -87,4 +87,6 @@ typedef enum : NSUInteger {
 
 @property (assign, nonatomic, getter=isLike) BOOL like;
 
+@property (strong, nonatomic) NSString *typeName;
+
 @end

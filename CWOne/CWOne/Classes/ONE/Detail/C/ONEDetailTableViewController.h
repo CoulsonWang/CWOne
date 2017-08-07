@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEDetailTableViewController;
+
+@protocol ONEDetailTableViewControllerDelegate <NSObject>
+
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC changeTitle:(NSString *)title;
+
+@end
+
 @interface ONEDetailTableViewController : UITableViewController
 
+@property (weak, nonatomic) id<ONEDetailTableViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSString *itemId;
 
