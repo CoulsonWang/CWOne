@@ -33,19 +33,35 @@
     ONELikeView *likeView = [ONELikeView likeViewWithLargeImage];
     [self addSubview:likeView];
     [likeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.commentButton.mas_left).with.offset(-4);
+        make.right.equalTo(self.commentButton.mas_left).with.offset(-8);
         make.centerY.equalTo(self.commentButton);
-        make.height.equalTo(@28);
-        make.width.equalTo(@60);
+        make.height.equalTo(@34);
+        make.width.equalTo(@80);
     }];
     self.likeView = likeView;
 }
 
+- (void)setPraisenum:(NSInteger)praisenum {
+    _praisenum = praisenum;
+    
+    self.likeView.praisenum = praisenum;
+}
+
+- (void)setCommentnum:(NSInteger)commentnum {
+    _commentnum = commentnum;
+    
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",commentnum] forState:UIControlStateNormal];
+}
+
 - (IBAction)writeCommentButtonClick:(UIButton *)sender {
+    // 弹出登录界面
 }
 - (IBAction)shareButtonClick:(UIButton *)sender {
+    // 弹出分享界面
 }
 - (IBAction)commentButtonClick:(UIButton *)sender {
+    // 滚动tableView
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailToolViewCommentButtonClickNotification object:nil];
 }
 
 @end

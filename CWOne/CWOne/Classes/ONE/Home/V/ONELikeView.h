@@ -18,6 +18,9 @@
 
 @property (strong, nonatomic) ONEHomeViewModel *viewModel;
 
+/// 点赞数
+@property (assign, nonatomic) NSInteger praisenum;
+
 - (void)changeButtonImageToLargeOne;
 
 @end

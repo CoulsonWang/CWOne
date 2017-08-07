@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ONEDetailBottomToolView : UIView
 
 + (instancetype)detailBottomToolView;
 
+/// 点赞数
+@property (assign, nonatomic) NSInteger praisenum;
+
+/// 评论数
+@property (assign, nonatomic) NSInteger commentnum;
 
 @end

@@ -17,10 +17,10 @@
 @property (strong, nonatomic) NSString *html_content;
 
 /// 点赞数
-@property (strong, nonatomic) NSString *praisenum;
+@property (assign, nonatomic) NSInteger praisenum;
 
 /// 评论数
-@property (strong, nonatomic) NSString *commentnum;
+@property (assign, nonatomic) NSInteger commentnum;
 
 /// 另一个标题
 @property (strong, nonatomic) NSString *tagTitle;

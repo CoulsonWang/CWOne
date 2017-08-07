@@ -12,7 +12,7 @@
 
 @protocol ONEDetailTableViewControllerDelegate <NSObject>
 
-- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC changeTitle:(NSString *)title;
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum;
 
 @end
 

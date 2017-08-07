@@ -16,6 +16,7 @@
 #import <MJRefresh.h>
 
 #define kWebViewMinusHeight 80.0
+#define kScrollAnimationDuration 0.3
 
 static NSString *const cellID = @"ONEDetailCommentCellID";
 
@@ -91,11 +92,17 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [self setUpTableView];
     
     [self setUpFooter];
+    
+    [self setUpNotification];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 初始化UI
@@ -110,10 +117,17 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreCommentData)];
 }
 
+- (void)setUpNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movePageToComment) name:ONEDetailToolViewCommentButtonClickNotification object:nil];
+}
+
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
     [[ONENetworkTool sharedInstance] requestEssayDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
         self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+        if ([self.delegate respondsToSelector:@selector(detailTableVC:updateToolViewPraiseCount:andCommentCount:)]) {
+            [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -156,6 +170,15 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
         NSLog(@"%@",error);
     }];
 }
+
+- (void)movePageToComment {
+    CGFloat offsetY = self.headerWebView.height - CWScreenH * 0.5;
+    [UIView animateWithDuration:kScrollAnimationDuration animations:^{
+        self.tableView.contentOffset = CGPointMake(0, offsetY);
+    }];
+    
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.commentList.count;

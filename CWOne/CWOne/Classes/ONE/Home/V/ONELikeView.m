@@ -11,12 +11,12 @@
 #import "ONEHomeViewModel.h"
 #import "ONEHomeItem.h"
 #import "CWCalendarLabel.h"
+#import <Masonry.h>
 
 #define kAnimateDuration 0.4
 
-#define kLikeCountLabelWidth 25.0
-#define kLikeCountLabelHeight 11.0
-
+#define kLengthOfPerNum 4.0
+#define kBaseWidth 40.0
 
 @interface ONELikeView ()
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -35,6 +35,9 @@
 + (instancetype)likeViewWithLargeImage {
     ONELikeView *likeView = [ONELikeView likeView];
     [likeView changeButtonImageToLargeOne];
+    
+    
+    
     return likeView;
 }
 
@@ -48,11 +51,14 @@
     
     // 添加点赞数label
     CWCalendarLabel *likeCountLabel = [[CWCalendarLabel alloc] init];
-    likeCountLabel.frame = CGRectMake(self.width - kLikeCountLabelWidth, 0, kLikeCountLabelWidth, kLikeCountLabelHeight);
-    likeCountLabel.font = [UIFont systemFontOfSize:8.0];
+    likeCountLabel.font = [UIFont systemFontOfSize:10.0];
     likeCountLabel.textColor = [UIColor colorWithWhite:169/255.0 alpha:1.0];
     likeCountLabel.animateDuration = 0.35;
     [self addSubview:likeCountLabel];
+    [likeCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top);
+        make.left.equalTo(self.mas_centerX).offset(10);
+    }];
     self.likeCountLabel = likeCountLabel;
 }
 
@@ -61,27 +67,32 @@
     
     self.likeButton.selected = viewModel.homeItem.isLike;
     
+    self.praisenum = viewModel.homeItem.like_count;
+    
     self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",viewModel.homeItem.like_count];
     
     self.isLikeWhenLoad = viewModel.homeItem.isLike;
     
 }
 
+- (void)setPraisenum:(NSInteger)praisenum {
+    _praisenum = praisenum;
+    
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",praisenum];
+    
+}
 
 - (IBAction)likeButtonClick:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    
-    // 更新模型
-    self.viewModel.homeItem.like = sender.isSelected;
     
     // 播放动画，更新点赞数字
     CWCalendarLabelScrollDirection direction = sender.isSelected ? CWCalendarLabelScrollToTop : CWCalendarLabelScrollToBottom;
     
     NSInteger newCount;
     if (self.isLikeWhenLoad) {
-        newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count : self.viewModel.homeItem.like_count - 1;
+        newCount = (direction == CWCalendarLabelScrollToTop) ? self.praisenum : self.praisenum - 1;
     } else {
-        newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count + 1 : self.viewModel.homeItem.like_count;
+        newCount = (direction == CWCalendarLabelScrollToTop) ? self.praisenum + 1: self.praisenum;
     }
     NSString *newCountStr = [NSString stringWithFormat:@"%ld",newCount];
     [self.likeCountLabel showNextText:newCountStr withDirection:direction];

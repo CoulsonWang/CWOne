@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kur-OC-60W">
-                    <rect key="frame" x="20" y="7.6666666666666679" width="140" height="34"/>
+                    <rect key="frame" x="20" y="8" width="140" height="34"/>
                     <state key="normal" image="tool_comment"/>
                     <connections>
                         <action selector="writeCommentButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="k2V-ZC-JWQ"/>
@@ -29,12 +29,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDv-Ck-dmM">
-                    <rect key="frame" x="304" y="9.6666666666666643" width="48" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <rect key="frame" x="305" y="10" width="47" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10.5"/>
                     <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="-22" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="110" image="comment_gray">
-                        <color key="titleColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="commentButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="g5L-ax-bAa"/>

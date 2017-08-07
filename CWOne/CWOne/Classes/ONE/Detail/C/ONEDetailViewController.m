@@ -125,7 +125,8 @@
 }
 
 #pragma mark - ONEDetailTableViewControllerDelegate
-- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC changeTitle:(NSString *)title {
-    self.title = title;
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum {
+    self.toolView.praisenum = praiseNum;
+    self.toolView.commentnum = commentNum;
 }
 @end

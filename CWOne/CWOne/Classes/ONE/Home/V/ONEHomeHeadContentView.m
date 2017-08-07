@@ -48,7 +48,7 @@
     ONELikeView *likeView = [ONELikeView likeView];
     [self addSubview:likeView];
     [likeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.collectButton.mas_left).with.offset(-4);
+        make.right.equalTo(self.collectButton.mas_left).with.offset(-10);
         make.centerY.equalTo(self.collectButton);
         make.height.equalTo(@28);
         make.width.equalTo(@60);
