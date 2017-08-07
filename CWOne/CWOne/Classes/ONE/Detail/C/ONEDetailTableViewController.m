@@ -17,6 +17,7 @@
 
 #define kWebViewMinusHeight 80.0
 #define kScrollAnimationDuration 0.3
+#define kNavTitleChangeValue 64.0
 
 static NSString *const cellID = @"ONEDetailCommentCellID";
 
@@ -187,18 +188,26 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
 
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    self.lastOffsetY = scrollView.contentOffset.y;
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 改变NavBar的高度
-    if (scrollView.contentOffset.y - self.lastOffsetY > 0) {
-        // 隐藏
+    if (scrollView.contentOffset.y - self.lastOffsetY > 0 && scrollView.contentOffset.y > -kNavigationBarHeight) {
         [[ONENavigationBarTool sharedInstance] hideNavigationBar];
     } else {
         [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+        // 修改标题
+        if (scrollView.contentOffset.y >= kNavTitleChangeValue) {
+            [self.delegate detailTableVC:self UpdateTitle:self.essayItem.title];
+        } else {
+            if (self.essayItem.tagTitle) {
+                [self.delegate detailTableVC:self UpdateTitle:self.essayItem.tagTitle];
+            } else {
+                [self.delegate detailTableVC:self UpdateTitle:nil];
+            }
+            
+        }
     }
+    
     self.lastOffsetY = scrollView.contentOffset.y;
     
 }

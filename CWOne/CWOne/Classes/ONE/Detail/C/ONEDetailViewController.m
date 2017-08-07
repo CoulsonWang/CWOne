@@ -160,4 +160,13 @@
     self.tableView.hidden = NO;
     self.loadingImageView.hidden = YES;
 }
+
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC UpdateTitle:(NSString *)titleString {
+    if (titleString) {
+        self.title = titleString;
+    } else {
+        self.title = self.homeItem.typeName;
+    }
+}
+
 @end

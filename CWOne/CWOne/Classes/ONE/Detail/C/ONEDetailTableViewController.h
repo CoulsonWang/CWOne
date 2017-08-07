@@ -16,6 +16,8 @@
 
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC;
 
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC UpdateTitle:(NSString *)titleString;
+
 @end
 
 @interface ONEDetailTableViewController : UITableViewController

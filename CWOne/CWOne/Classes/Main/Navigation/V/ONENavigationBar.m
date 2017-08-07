@@ -32,7 +32,7 @@
         [self setUpBackgroundView];
         [self setUpHomeTitleView];
         
-        self.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:ONEThemeFontName size:18.0]};
+        self.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:18.0]};
     }
     return self;
 }
