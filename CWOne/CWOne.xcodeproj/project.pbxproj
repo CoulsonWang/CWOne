@@ -80,6 +80,8 @@
 		B9E000FD1F38746200A7A609 /* rate_nav.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F61F38746200A7A609 /* rate_nav.gif */; };
 		B9E000FE1F38746200A7A609 /* rate_nav_night.gif in Resources */ = {isa = PBXBuildFile; fileRef = B9E000F71F38746200A7A609 /* rate_nav_night.gif */; };
 		B9E001011F38C1BC00A7A609 /* ONERelatedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E001001F38C1BC00A7A609 /* ONERelatedItem.m */; };
+		B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */; };
+		B9E001061F38CE2600A7A609 /* ONEDetailRelatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +232,9 @@
 		B9E000F71F38746200A7A609 /* rate_nav_night.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rate_nav_night.gif; sourceTree = "<group>"; };
 		B9E000FF1F38C1BC00A7A609 /* ONERelatedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONERelatedItem.h; sourceTree = "<group>"; };
 		B9E001001F38C1BC00A7A609 /* ONERelatedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONERelatedItem.m; sourceTree = "<group>"; };
+		B9E001021F38CE2600A7A609 /* ONEDetailRelatedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailRelatedCell.h; sourceTree = "<group>"; };
+		B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailRelatedCell.m; sourceTree = "<group>"; };
+		B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailRelatedCell.xib; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -673,6 +678,9 @@
 				B9B822581F374602002F6961 /* ONEDetailCommentCell.h */,
 				B9B822591F374602002F6961 /* ONEDetailCommentCell.m */,
 				B9B8225A1F374602002F6961 /* ONEDetailCommentCell.xib */,
+				B9E001021F38CE2600A7A609 /* ONEDetailRelatedCell.h */,
+				B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */,
+				B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -899,6 +907,7 @@
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
 				B9E000FA1F38746200A7A609 /* loading_book_night@3x.gif in Resources */,
 				B9B8290A1F361A0F008BB163 /* ONEHomeHeadContentView.xib in Resources */,
+				B9E001061F38CE2600A7A609 /* ONEDetailRelatedCell.xib in Resources */,
 				B9E000F81F38746200A7A609 /* loading@2x.gif in Resources */,
 				B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */,
 				B9B8290D1F361A0F008BB163 /* ONEHomeRadioCell.xib in Resources */,
@@ -1096,6 +1105,7 @@
 				B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */,
 				B9B8290C1F361A0F008BB163 /* ONEHomeRadioCell.m in Sources */,
 				B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */,
+				B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */,
 				B9B829041F361A0F008BB163 /* ONEHomeCatalogueCell.m in Sources */,
 				B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,

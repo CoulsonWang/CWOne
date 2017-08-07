@@ -15,18 +15,23 @@
 #import "ONEDetailCommentCell.h"
 #import <MJRefresh.h>
 #import "NSString+CWTranslate.h"
+#import "ONERelatedItem.h"
+#import "ONEDetailRelatedCell.h"
 
 #define kWebViewMinusHeight 80.0
 #define kScrollAnimationDuration 0.3
 #define kNavTitleChangeValue 64.0
 
-static NSString *const cellID = @"ONEDetailCommentCellID";
+static NSString *const ONEDetailCommentCellID = @"ONEDetailCommentCellID";
+static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 @interface ONEDetailTableViewController () <UIWebViewDelegate>
 
 @property (strong, nonatomic) ONEEssayItem *essayItem;
 
 @property (strong, nonatomic) NSMutableArray<ONECommentItem *> *commentList;
+
+@property (strong, nonatomic) NSArray<ONERelatedItem *> *relatedList;
 
 @property (weak, nonatomic) UIWebView *headerWebView;
 
@@ -64,6 +69,8 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [self loadDetailData];
     
     [self loadCommentData];
+    
+    [self loadRelatedData];
 }
 
 - (void)setEssayItem:(ONEEssayItem *)essayItem {
@@ -101,11 +108,13 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 
 #pragma mark - 初始化UI
 - (void)setUpTableView {
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:ONEDetailCommentCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailRelatedCell class]) bundle:nil] forCellReuseIdentifier:ONEDetailRelatedCellID];
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
+    
 }
 
 - (void)setUpFooter {
@@ -151,13 +160,13 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [[ONENetworkTool sharedInstance] requestRelatedListDataOfType:typeName withItemId:self.itemId success:^(NSArray<NSDictionary *> *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
         for (NSDictionary *dataDict in dataArray) {
-            ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];
-            [tempArray addObject:commentItem];
+            ONERelatedItem *relatedItem = [ONERelatedItem relatedItemWithDict:dataDict];
+            [tempArray addObject:relatedItem];
         }
-        self.commentList = tempArray;
+        self.relatedList = tempArray;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
-        
+        NSLog(@"%@",error);
     }];
 }
 
@@ -211,18 +220,36 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.commentList.count;
+    if (section == 0) {
+        return self.relatedList.count;
+    } else {
+        return self.commentList.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ONEDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    
-    ONECommentItem *commentItem = self.commentList[indexPath.row];
-    
-    cell.commentItem = commentItem;
-    
-    return cell;
+    if (indexPath.section == 0) {
+        ONEDetailRelatedCell *cell = [tableView dequeueReusableCellWithIdentifier:ONEDetailRelatedCellID forIndexPath:indexPath];
+        ONERelatedItem *relatedItem = self.relatedList[indexPath.row];
+        cell.relatedItem = relatedItem;
+        return cell;
+    } else {
+        ONEDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ONEDetailCommentCellID forIndexPath:indexPath];
+        ONECommentItem *commentItem = self.commentList[indexPath.row];
+        cell.commentItem = commentItem;
+        return cell;
+    }
+}
+
+#pragma mark - UITableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return nil;
 }
 
 #pragma mark - UIScrollViewDelegate
