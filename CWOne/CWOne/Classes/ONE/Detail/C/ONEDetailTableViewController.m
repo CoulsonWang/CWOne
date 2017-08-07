@@ -13,6 +13,7 @@
 #import "ONEEssayItem.h"
 #import "ONECommentItem.h"
 #import "ONEDetailCommentCell.h"
+#import <MJRefresh.h>
 
 #define kWebViewMinusHeight 80.0
 
@@ -88,6 +89,8 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     [super viewDidLoad];
     
     [self setUpTableView];
+    
+    [self setUpFooter];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -103,6 +106,10 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (void)setUpFooter {
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreCommentData)];
+}
+
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
     [[ONENetworkTool sharedInstance] requestEssayDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
@@ -113,9 +120,9 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 }
 
 - (void)loadCommentData {
-    [[ONENetworkTool sharedInstance] requestEssayCommentListWithItemID:self.itemId lastID:nil success:^(NSArray<NSDictionary *> *dateArray) {
+    [[ONENetworkTool sharedInstance] requestEssayCommentListWithItemID:self.itemId lastID:nil success:^(NSArray<NSDictionary *> *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
-        for (NSDictionary *dataDict in dateArray) {
+        for (NSDictionary *dataDict in dataArray) {
             ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];
             [tempArray addObject:commentItem];
         }
@@ -129,7 +136,26 @@ static NSString *const cellID = @"ONEDetailCommentCellID";
 - (void)webViewLoadHtmlData {
     [self.headerWebView loadHTMLString:self.essayItem.html_content baseURL:nil];
 }
-
+                                
+- (void)loadMoreCommentData {
+    NSString *lastCommentID = self.commentList.lastObject.commentID;
+    [[ONENetworkTool sharedInstance] requestEssayCommentListWithItemID:self.itemId lastID:lastCommentID success:^(NSArray<NSDictionary *> *dataArray) {
+        if (dataArray.count == 0) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        }
+        NSMutableArray *tempArray = [self.commentList mutableCopy];
+        for (NSDictionary *dataDict in dataArray) {
+            ONECommentItem *commentItem = [ONECommentItem commentItemWithDict:dataDict];
+            [tempArray addObject:commentItem];
+        }
+        self.commentList = tempArray;
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.commentList.count;
