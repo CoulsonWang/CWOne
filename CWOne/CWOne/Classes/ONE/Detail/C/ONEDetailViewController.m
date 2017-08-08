@@ -127,6 +127,7 @@
 
 - (void)setUpTableView {
     // 添加子控制器
+//    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
     detailTableVC.delegate = self;
     detailTableVC.type = self.homeItem.type;

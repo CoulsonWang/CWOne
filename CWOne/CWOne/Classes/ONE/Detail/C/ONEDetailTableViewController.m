@@ -23,6 +23,7 @@
 #define kWebViewMinusHeight 150.0
 #define kScrollAnimationDuration 0.3
 #define kNavTitleChangeValue 64.0
+#define kSectionHeaderViewHeight 60.0
 
 static NSString *const ONEDetailCommentCellID = @"ONEDetailCommentCellID";
 static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
@@ -116,7 +117,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
-    self.tableView.sectionHeaderHeight = 60;
 }
 
 - (void)setUpFooter {
@@ -252,11 +252,27 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"相关推荐"];
-        return sectionHeaderView;
+        if (self.relatedList.count == 0) {
+            return nil;
+        } else {
+            ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"相关推荐"];
+            return sectionHeaderView;
+        }
     } else {
         ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"评论列表"];
         return sectionHeaderView;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        if (self.relatedList.count == 0) {
+            return 0;
+        } else {
+            return kSectionHeaderViewHeight;
+        }
+    } else {
+        return kSectionHeaderViewHeight;
     }
 }
 
@@ -292,7 +308,17 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             } else {
                 [self.delegate detailTableVC:self UpdateTitle:nil];
             }
-            
+        }
+    }
+    // 解决header悬停
+    if (scrollView == self.tableView) {
+        CGFloat sectionHeaderViewHeight = 60;
+        if (scrollView.contentOffset.y <= sectionHeaderViewHeight && scrollView.contentOffset.y >= 0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        } else if (scrollView.contentOffset.y >= sectionHeaderViewHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderViewHeight, 0, 0, 0);
+        } else {
+            scrollView.contentInset = self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
         }
     }
     
