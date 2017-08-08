@@ -20,6 +20,8 @@
 #import "ONEHomeMenuItem.h"
 #import "ONEDetailViewController.h"
 
+#define kTabBarHideAnimationDuration 0.25
+
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
@@ -206,6 +208,12 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateTitleViewWithOffsetY:scrollView.contentOffset.y confirm:NO];
+    
+    // 修改TabBar的alpha
+    [UIView animateWithDuration:kTabBarHideAnimationDuration animations:^{
+        self.tabBarController.tabBar.alpha = (scrollView.contentOffset.y <= -kNavigationBarHeight) ? 0 : 1;
+    }];
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
