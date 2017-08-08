@@ -18,16 +18,16 @@
 #import "ONERelatedItem.h"
 #import "ONEDetailRelatedCell.h"
 #import "ONEDetailSectionHeaderView.h"
+#import "ONEDetailTableHeaderView.h"
 
-#define kWebViewMinusHeight 150.0
-#define kScrollAnimationDuration 0.3
+
 #define kNavTitleChangeValue 64.0
 #define kSectionHeaderViewHeight 60.0
 
 static NSString *const ONEDetailCommentCellID = @"ONEDetailCommentCellID";
 static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
-@interface ONEDetailTableViewController () <UIWebViewDelegate>
+@interface ONEDetailTableViewController () <ONEDetailTableHeaderViewDelegate>
 
 @property (strong, nonatomic) ONEEssayItem *essayItem;
 
@@ -35,7 +35,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 @property (strong, nonatomic) NSArray<ONERelatedItem *> *relatedList;
 
-@property (weak, nonatomic) UIWebView *headerWebView;
+@property (weak, nonatomic) ONEDetailTableHeaderView *tableHeaderView;
 
 @property (assign, nonatomic) CGFloat lastOffsetY;
 
@@ -54,15 +54,14 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     return _commentList;
 }
 
-- (UIWebView *)headerWebView {
-    if (!_headerWebView) {
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
-        webView.delegate = self;
-        webView.scrollView.scrollEnabled = NO;
-        self.tableView.tableHeaderView = webView;
-        _headerWebView = webView;
+- (ONEDetailTableHeaderView *)tableHeaderView {
+    if (!_tableHeaderView) {
+        ONEDetailTableHeaderView *tableHeaderView = [ONEDetailTableHeaderView detailTableHeaderViewWithType:self.type];
+        tableHeaderView.delegate = self;
+        self.tableView.tableHeaderView = tableHeaderView;
+        _tableHeaderView = tableHeaderView;
     }
-    return _headerWebView;
+    return _tableHeaderView;
 }
 
 - (void)setItemId:(NSString *)itemId {
@@ -78,7 +77,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)setEssayItem:(ONEEssayItem *)essayItem {
     _essayItem = essayItem;
     
-    [self webViewLoadHtmlData];
+    [self.tableHeaderView webViewLoadHtmlDataWithHtmlString:essayItem.html_content];
 }
 
 // 当给评论列表赋值时，处理一下，判断是否是最后一个热门评论
@@ -112,6 +111,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)setUpTableView {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailCommentCell class]) bundle:nil] forCellReuseIdentifier:ONEDetailCommentCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEDetailRelatedCell class]) bundle:nil] forCellReuseIdentifier:ONEDetailRelatedCellID];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -166,10 +166,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         NSLog(@"%@",error);
     }];
 }
-
-- (void)webViewLoadHtmlData {
-    [self.headerWebView loadHTMLString:self.essayItem.html_content baseURL:nil];
-}
                                 
 - (void)loadMoreCommentData {
     NSString *typeName = [NSString getTypeStrWithType:self.type];
@@ -194,7 +190,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 }
 
 - (void)movePageToComment {
-    CGFloat offsetY = self.headerWebView.height - CWScreenH * 0.5;
+    CGFloat offsetY = self.tableHeaderView.height - CWScreenH * 0.5;
     [self.tableView setContentOffset:CGPointMake(0, offsetY) animated:YES];
 
 }
@@ -227,7 +223,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 }
 
 #pragma mark - UITableViewDelegate
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         if (self.relatedList.count == 0) {
@@ -274,7 +269,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 }
 
 #pragma mark - UIScrollViewDelegate
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 改变NavBar的高度
     if (scrollView.contentOffset.y - self.lastOffsetY > 0 && scrollView.contentOffset.y > -kNavigationBarHeight) {
@@ -297,10 +291,9 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     
 }
 
-#pragma mark - UIWebViewDelegate
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
-    self.headerWebView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight - kWebViewMinusHeight);
+#pragma mark - ONEDetailTableHeaderViewDelegate
+- (void)detailTableHeaderView:(ONEDetailTableHeaderView *)detailTableHeaderView WebViewDidFinishLoadWithHeight:(CGFloat)webViewHeight {
+    self.tableHeaderView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight);
     [self.tableView reloadData];
     self.parentViewController.title = self.essayItem.title;
     
@@ -309,6 +302,5 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         [self.delegate detailTableVCDidFinishLoadData:self];
     }
 }
-
 
 @end

@@ -38,6 +38,8 @@
 		B973FC321F3703AC00161989 /* ONEDetailBottomToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC311F3703AC00161989 /* ONEDetailBottomToolView.m */; };
 		B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B973FC331F3703B600161989 /* ONEDetailBottomToolView.xib */; };
 		B98A5A7F1F39BD0C009FCCBC /* CWCalendarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A7E1F39BD0C009FCCBC /* CWCalendarLabel.m */; };
+		B98A5A821F39DADE009FCCBC /* ONEDetailTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A811F39DADE009FCCBC /* ONEDetailTableHeaderView.m */; };
+		B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A831F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
@@ -163,6 +165,9 @@
 		B973FC331F3703B600161989 /* ONEDetailBottomToolView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailBottomToolView.xib; sourceTree = "<group>"; };
 		B98A5A7D1F39BD0C009FCCBC /* CWCalendarLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCalendarLabel.h; sourceTree = "<group>"; };
 		B98A5A7E1F39BD0C009FCCBC /* CWCalendarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCalendarLabel.m; sourceTree = "<group>"; };
+		B98A5A801F39DADE009FCCBC /* ONEDetailTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableHeaderView.h; sourceTree = "<group>"; };
+		B98A5A811F39DADE009FCCBC /* ONEDetailTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailTableHeaderView.m; sourceTree = "<group>"; };
+		B98A5A831F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailTableHeaderView.xib; sourceTree = "<group>"; };
 		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
@@ -689,6 +694,9 @@
 				B9E001071F397B0F00A7A609 /* ONEDetailSectionHeaderView.h */,
 				B9E001081F397B0F00A7A609 /* ONEDetailSectionHeaderView.m */,
 				B9E0010A1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib */,
+				B98A5A801F39DADE009FCCBC /* ONEDetailTableHeaderView.h */,
+				B98A5A811F39DADE009FCCBC /* ONEDetailTableHeaderView.m */,
+				B98A5A831F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -920,6 +928,7 @@
 				B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */,
 				B9B8290D1F361A0F008BB163 /* ONEHomeRadioCell.xib in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
+				B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */,
 				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
@@ -1130,6 +1139,7 @@
 				B9B829031F361A0F008BB163 /* ONEHomeBaseCell.m in Sources */,
 				B9B829011F361A0F008BB163 /* ONEHomeViewModel.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
+				B98A5A821F39DADE009FCCBC /* ONEDetailTableHeaderView.m in Sources */,
 				B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */,
 				B9B8290B1F361A0F008BB163 /* ONEHomeHeaderView.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
