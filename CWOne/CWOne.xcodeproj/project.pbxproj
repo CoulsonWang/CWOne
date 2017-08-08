@@ -82,6 +82,8 @@
 		B9E001011F38C1BC00A7A609 /* ONERelatedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E001001F38C1BC00A7A609 /* ONERelatedItem.m */; };
 		B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */; };
 		B9E001061F38CE2600A7A609 /* ONEDetailRelatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */; };
+		B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E001081F397B0F00A7A609 /* ONEDetailSectionHeaderView.m */; };
+		B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E0010A1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +237,9 @@
 		B9E001021F38CE2600A7A609 /* ONEDetailRelatedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailRelatedCell.h; sourceTree = "<group>"; };
 		B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailRelatedCell.m; sourceTree = "<group>"; };
 		B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailRelatedCell.xib; sourceTree = "<group>"; };
+		B9E001071F397B0F00A7A609 /* ONEDetailSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailSectionHeaderView.h; sourceTree = "<group>"; };
+		B9E001081F397B0F00A7A609 /* ONEDetailSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailSectionHeaderView.m; sourceTree = "<group>"; };
+		B9E0010A1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailSectionHeaderView.xib; sourceTree = "<group>"; };
 		C4965758B0138E3C82A59C69 /* Pods-CWOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOne/Pods-CWOne.release.xcconfig"; sourceTree = "<group>"; };
 		CAEBC5A8134C50C8A3A00FD6 /* libPods-CWOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CWOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1E6FA838C64A1EDF3F4C57 /* Pods-CWOneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneUITests/Pods-CWOneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -681,6 +686,9 @@
 				B9E001021F38CE2600A7A609 /* ONEDetailRelatedCell.h */,
 				B9E001031F38CE2600A7A609 /* ONEDetailRelatedCell.m */,
 				B9E001041F38CE2600A7A609 /* ONEDetailRelatedCell.xib */,
+				B9E001071F397B0F00A7A609 /* ONEDetailSectionHeaderView.h */,
+				B9E001081F397B0F00A7A609 /* ONEDetailSectionHeaderView.m */,
+				B9E0010A1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -912,6 +920,7 @@
 				B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */,
 				B9B8290D1F361A0F008BB163 /* ONEHomeRadioCell.xib in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
+				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
 				B9E000FC1F38746200A7A609 /* loading_night@2x.gif in Resources */,
@@ -1107,6 +1116,7 @@
 				B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */,
 				B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */,
 				B9B829041F361A0F008BB163 /* ONEHomeCatalogueCell.m in Sources */,
+				B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */,
 				B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
 				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,

@@ -17,8 +17,9 @@
 #import "NSString+CWTranslate.h"
 #import "ONERelatedItem.h"
 #import "ONEDetailRelatedCell.h"
+#import "ONEDetailSectionHeaderView.h"
 
-#define kWebViewMinusHeight 80.0
+#define kWebViewMinusHeight 150.0
 #define kScrollAnimationDuration 0.3
 #define kNavTitleChangeValue 64.0
 
@@ -114,7 +115,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
-    
+    self.tableView.sectionHeaderHeight = 60;
 }
 
 - (void)setUpFooter {
@@ -249,7 +250,13 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 #pragma mark - UITableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return nil;
+    if (section == 0) {
+        ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"相关推荐"];
+        return sectionHeaderView;
+    } else {
+        ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"评论列表"];
+        return sectionHeaderView;
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
