@@ -30,6 +30,12 @@
 
 /// 请求音乐的详情页数据
 - (void)requestMusicDetailDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/// 请求电影的详细信息
+- (void)requestMovieDetailDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/// 请求电影的故事数据
+- (void)requestMovieStoryDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;

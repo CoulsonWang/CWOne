@@ -77,7 +77,21 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)setEssayItem:(ONEEssayItem *)essayItem {
     _essayItem = essayItem;
     
-    [self.tableHeaderView webViewLoadHtmlDataWithHtmlString:essayItem.html_content];
+    self.tableHeaderView.essayItem = essayItem;
+    
+    NSString *htmlStr;
+    switch (self.type) {
+        case ONEHomeItemTypeMusic:
+            htmlStr = essayItem.story;
+            break;
+        case ONEHomeItemTypeMovie:
+            htmlStr = essayItem.content;
+            break;
+        default:
+            htmlStr = essayItem.html_content;
+            break;
+    }
+    [self.tableHeaderView webViewLoadHtmlDataWithHtmlString:htmlStr];
 }
 
 // 当给评论列表赋值时，处理一下，判断是否是最后一个热门评论
@@ -128,13 +142,29 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
-    NSString *typeName = [NSString getTypeStrWithType:self.type];
-    [[ONENetworkTool sharedInstance] requestDetailDataOfType:typeName withItemId:self.itemId success:^(NSDictionary *dataDict) {
-        self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-        [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    if (self.type == ONEHomeItemTypeMusic) {
+        [[ONENetworkTool sharedInstance] requestMusicDetailDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
+            self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+            [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else if (self.type == ONEHomeItemTypeMovie) {
+        [[ONENetworkTool sharedInstance] requestMovieStoryDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
+            self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        NSString *typeName = [NSString getTypeStrWithType:self.type];
+        [[ONENetworkTool sharedInstance] requestDetailDataOfType:typeName withItemId:self.itemId success:^(NSDictionary *dataDict) {
+            self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+            [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
+    
 }
 
 - (void)loadRelatedData {

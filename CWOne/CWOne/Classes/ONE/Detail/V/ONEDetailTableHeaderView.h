@@ -10,6 +10,7 @@
 #import "ONEHomeItem.h"
 
 @class ONEDetailTableHeaderView;
+@class ONEEssayItem;
 
 @protocol ONEDetailTableHeaderViewDelegate <NSObject>
 
@@ -18,6 +19,8 @@
 @end
 
 @interface ONEDetailTableHeaderView : UIView
+
+@property (strong, nonatomic) ONEEssayItem *essayItem;
 
 @property (weak, nonatomic) id<ONEDetailTableHeaderViewDelegate> delegate;
 

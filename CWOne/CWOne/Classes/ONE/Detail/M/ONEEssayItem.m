@@ -7,6 +7,7 @@
 //
 
 #import "ONEEssayItem.h"
+#import "ONEUserItem.h"
 
 @implementation ONEEssayItem
 
@@ -18,6 +19,15 @@
     NSArray *tag_list = dict[@"tag_list"];
     NSDictionary *tag = tag_list.firstObject;
     item.tagTitle = tag[@"title"];
+    
+    NSDictionary *authorDict = dict[@"author"];
+    item.author = [ONEUserItem userItemWithDict:authorDict];
+    
+    NSDictionary *storyAuthorDict = dict[@"story_author"];
+    item.story_author = [ONEUserItem userItemWithDict:storyAuthorDict];
+    
+    NSRange range = [item.feeds_cover rangeOfString:@"|"];
+    item.feedsCoverURLstring = [item.feeds_cover substringToIndex:range.location];
     
     return item;
 }

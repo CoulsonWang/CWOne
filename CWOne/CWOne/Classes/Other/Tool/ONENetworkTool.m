@@ -195,6 +195,7 @@ static ONENetworkTool *_instance;
     
     NSDictionary *parameters = @{
                                  @"version":@"v4.3.0",
+                                 @"platform":@"ios",
                                  };
     
     [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -203,6 +204,50 @@ static ONENetworkTool *_instance;
         if (success) {
             NSDictionary *dataDict = responseObject[@"data"];
             success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)requestMovieDetailDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/movie/detail/%@",item_id];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)requestMovieStoryDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/movie/%@/story/1/0",item_id];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            NSArray *dataArray = dataDict[@"data"];
+            NSDictionary *dict = dataArray.firstObject;
+            success(dict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
