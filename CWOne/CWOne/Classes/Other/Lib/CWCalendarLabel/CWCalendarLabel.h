@@ -32,7 +32,10 @@ typedef enum : NSUInteger {
 /// 动画label与原label之间的额外垂直间距，默认为0(紧贴)
 @property (assign, nonatomic) CGFloat distance;
 
-// 确定当新的文本与原文本一致时是否滚动，默认为Yes
+/// 确定当新的文本与原文本一致时是否滚动，默认为Yes
 @property (assign, nonatomic, getter=isEnableWhenSame) BOOL enableWhenSame;
+
+/// 确定生成的动画文本是否需要自适应其尺寸保证能完全显示，默认为NO
+@property (assign, nonatomic, getter=isSizeToFitOn) BOOL sizeToFitOn;
 
 @end

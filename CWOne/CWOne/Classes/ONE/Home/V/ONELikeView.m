@@ -52,8 +52,10 @@
     // 添加点赞数label
     CWCalendarLabel *likeCountLabel = [[CWCalendarLabel alloc] init];
     likeCountLabel.font = [UIFont systemFontOfSize:10.0];
+    likeCountLabel.textAlignment = NSTextAlignmentLeft;
     likeCountLabel.textColor = [UIColor colorWithWhite:169/255.0 alpha:1.0];
     likeCountLabel.animateDuration = 0.35;
+    likeCountLabel.sizeToFitOn = YES;
     [self addSubview:likeCountLabel];
     [likeCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top);

@@ -105,10 +105,29 @@ typedef enum : NSUInteger {
         default:
             break;
     }
-    UILabel *animLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.origin.x, y, kWidth, kHeight)];
+    UILabel *animLabel = [[UILabel alloc] init];
     animLabel.text = text;
-    animLabel.alpha = (position == CWCalendarLabelPositionCenter) ? 1 : 0;
     [self setUpNextTextLabel:animLabel];
+    animLabel.alpha = (position == CWCalendarLabelPositionCenter) ? 1 : 0;
+    
+    if (self.isSizeToFitOn) {
+        [animLabel sizeToFit];
+        // 修改宽度
+        CGFloat width = animLabel.bounds.size.width;
+        CGFloat x;
+        if (self.textAlignment == NSTextAlignmentLeft) {
+            x = self.frame.origin.x;
+        } else if (self.textAlignment == NSTextAlignmentRight) {
+            x = self.frame.origin.x + kWidth - width;
+        } else {
+            x = self.frame.origin.x + (kWidth - width) * 0.5;
+        }
+        animLabel.frame = CGRectMake(x, y, width, kHeight);
+    } else {
+        animLabel.frame = CGRectMake(self.frame.origin.x, y, kWidth, kHeight);
+    }
+    
+    
     [self.superview addSubview:animLabel];
     [self.animLables addObject:animLabel];
     
