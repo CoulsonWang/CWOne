@@ -20,6 +20,8 @@
     NSDictionary *author_dict = author_list.firstObject;
     relatedItem.author = [ONEUserItem userItemWithDict:author_dict];
     
+    
+    
     return relatedItem;
 }
 

@@ -13,17 +13,18 @@
 
 + (instancetype)chineseNumberWithNumber:(NSUInteger)number;
 
+/// 根据category数字获取中文
 + (instancetype)getCategoryStringWithCategoryInteger:(NSInteger)category;
 
-
+/// 根据category数字获取类型
 - (ONEHomeItemType)getType;
 
 + (instancetype)getCategoryWithType:(ONEHomeItemType)type;
 
-// 英文名
 
+/// 根据category数字获取英文
 + (NSString *)getTypeStrWithCategoryInteger:(NSInteger)category;
-
+/// 根据类型获取英文
 + (NSString *)getTypeStrWithType:(ONEHomeItemType)type;
 
 

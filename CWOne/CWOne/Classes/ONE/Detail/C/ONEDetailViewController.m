@@ -15,6 +15,7 @@
 #import "ONENavigationBarTool.h"
 #import "ONENetworkTool.h"
 #import <FLAnimatedImage.h>
+#import "NSString+CWTranslate.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 
@@ -84,15 +85,7 @@
 }
 
 - (NSString *)typeName {
-    switch (self.homeItem.type) {
-        case ONEHomeItemTypeEssay:
-            return @"essay";
-            break;
-            
-        default:
-            return nil;
-            break;
-    }
+    return [NSString getTypeStrWithType:self.homeItem.type];
 }
 
 #pragma mark - 设置UI

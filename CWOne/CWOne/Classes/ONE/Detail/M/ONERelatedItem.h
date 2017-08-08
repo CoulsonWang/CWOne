@@ -12,6 +12,8 @@
 
 @interface ONERelatedItem : NSObject
 
+@property (strong, nonatomic) NSString *content_id;
+
 @property (strong, nonatomic) ONEUserItem *author;
 
 @property (assign, nonatomic) NSInteger category;

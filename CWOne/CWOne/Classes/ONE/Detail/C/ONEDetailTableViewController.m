@@ -18,6 +18,7 @@
 #import "ONERelatedItem.h"
 #import "ONEDetailRelatedCell.h"
 #import "ONEDetailSectionHeaderView.h"
+#import "ONEHomeItem.h"
 
 #define kWebViewMinusHeight 150.0
 #define kScrollAnimationDuration 0.3
@@ -256,6 +257,21 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     } else {
         ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"评论列表"];
         return sectionHeaderView;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+        
+        ONERelatedItem *relatedItem = self.relatedList[indexPath.row];
+        NSDictionary *tempDict = @{@"item_id":relatedItem.content_id,
+                                   @"category":[NSString stringWithFormat:@"%ld",relatedItem.category],
+                                   @"title":relatedItem.title};
+        ONEHomeItem *item = [ONEHomeItem homeItemWithDict:tempDict];
+        detailVC.homeItem = item;
+        
+        [self.navigationController showViewController:detailVC sender:nil];
     }
 }
 
