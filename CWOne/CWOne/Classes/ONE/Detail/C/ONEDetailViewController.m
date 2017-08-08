@@ -18,8 +18,12 @@
 #import "NSString+CWTranslate.h"
 
 #define kBottomToolViewHeight kTabBarHeight
+#define kLoadingImageHeight 50.0
+#define kLoadingImageOffset 60.0
 
-@interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate>
+@interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate, UIScrollViewDelegate>
+
+@property (weak, nonatomic) ONEDetailTableViewController *detailTableVC;
 
 @property (weak, nonatomic) ONEDetailBottomToolView *toolView;
 
@@ -31,6 +35,8 @@
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 
+@property (assign, nonatomic) NSInteger serialIndex;
+
 @end
 
 @implementation ONEDetailViewController
@@ -40,6 +46,7 @@
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
+        self.serialIndex = -1;
     }
     return self;
 }
@@ -69,6 +76,7 @@
     // 添加自定义的底部工具条
     [self setUpBottomToolView];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -106,38 +114,29 @@
 - (void)setUpScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 0, CWScreenW, CWScreenH);
-    CGFloat contentSizeWidth;
-    switch (self.homeItem.type) {
-        case ONEHomeItemTypeEssay:
-            contentSizeWidth = 0;
-            break;
-        case ONEHomeItemTypeSerial:
-            contentSizeWidth = self.homeItem.serial_list.count * CWScreenW;
-            break;
-        default:
-            contentSizeWidth = 0;
-            break;
-    }
-    scrollView.contentSize = CGSizeMake(contentSizeWidth, 0);
+    scrollView.contentSize = CGSizeMake(0, 0);
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.delegate = self;
+    scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
 }
 
 - (void)setUpTableView {
     // 添加子控制器
-//    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
     detailTableVC.delegate = self;
-    detailTableVC.type = self.homeItem.type;
-    detailTableVC.itemId = self.homeItem.item_id;
-    [self addChildViewController:detailTableVC];
-    
     // 添加tableView
     detailTableVC.view.frame = self.view.bounds;
     [self.scrollView addSubview:detailTableVC.view];
     self.tableView = detailTableVC.tableView;
+    
+    detailTableVC.type = self.homeItem.type;
+    detailTableVC.itemId = self.homeItem.item_id;
+    [self tableViewLoadDataAndShowLoadingImage];
+    [self addChildViewController:detailTableVC];
+    self.detailTableVC = detailTableVC;
 }
 
 - (void)setUpBottomToolView {
@@ -148,14 +147,11 @@
 }
 
 - (void)setUpLoadingAnimateView {
-    // 先显示一个加载视图。数据加载完成后，再显示tableview
-    self.tableView.hidden = YES;
     NSURL *imgUrl = [[NSBundle mainBundle] URLForResource:@"loading_book@3x" withExtension:@"gif"];
     FLAnimatedImage *animatedImg = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgUrl]];
     FLAnimatedImageView *gifView = [[FLAnimatedImageView alloc] init];
     gifView.animatedImage = animatedImg;
-    gifView.frame = CGRectMake(0, 0, 50, 50);
-    gifView.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5 - 60);
+    gifView.frame = CGRectMake((CWScreenW - kLoadingImageHeight) * 0.5, (CWScreenH - kLoadingImageHeight) * 0.5 - 60, kLoadingImageHeight, kLoadingImageHeight);
     [self.scrollView addSubview:gifView];
     self.loadingImageView = gifView;
 }
@@ -183,6 +179,51 @@
     }];
 }
 
+#pragma mark - 私有工具方法
+// 取得当前文章在连载数组中的索引
+- (NSInteger)getIndexOfSerial {
+    for (int i = 0; i < self.homeItem.serial_list.count; i++) {
+        NSString *itemId = self.homeItem.serial_list[i];
+        if ([itemId isEqualToString:self.homeItem.item_id]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+- (void)updateSerial {
+    // 隐藏tableView，显示loadingView
+    self.loadingImageView.x = (CWScreenW - kLoadingImageHeight) * 0.5 + self.serialIndex * CWScreenW;
+    [self tableViewLoadDataAndShowLoadingImage];
+    
+    // 加载上\下一章
+    self.detailTableVC.itemId = self.homeItem.serial_list[self.serialIndex];
+    self.tableView.x = CWScreenW * self.serialIndex;
+    self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
+}
+
+- (void)tableViewLoadDataAndShowLoadingImage {
+    // 先显示一个加载视图。数据加载完成后，再显示tableview
+    self.tableView.hidden = YES;
+    self.loadingImageView.hidden = NO;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.serialIndex == -1) { return; }
+    
+    CGFloat offsetX = scrollView.contentOffset.x;
+    
+    if (offsetX > (self.serialIndex * CWScreenW + CWScreenW * 0.5)) {
+        // 加载下一章
+        self.serialIndex += 1;
+        [self updateSerial];
+    } else if (offsetX < (self.serialIndex * CWScreenW - CWScreenW * 0.5)) {
+        self.serialIndex -= 1;
+        [self updateSerial];
+    }
+}
+
 #pragma mark - ONEDetailTableViewControllerDelegate
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum {
     self.toolView.praisenum = praiseNum;
@@ -192,6 +233,16 @@
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC {
     self.tableView.hidden = NO;
     self.loadingImageView.hidden = YES;
+    
+    if (self.serialIndex == -1) {
+        // 设置scrollView的contentSize，修改tableView的frame
+        self.scrollView.contentSize = CGSizeMake(self.homeItem.serial_list.count * CWScreenW, 0);
+        self.serialIndex = [self getIndexOfSerial];
+        if (self.serialIndex == -1) { return; }
+        CGFloat offsetX = self.serialIndex * CWScreenW;
+        self.tableView.x = offsetX;
+        self.scrollView.contentOffset = CGPointMake(offsetX, 0);
+    }
 }
 
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC UpdateTitle:(NSString *)titleString {
