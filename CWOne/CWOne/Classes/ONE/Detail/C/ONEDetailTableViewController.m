@@ -195,10 +195,8 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 - (void)movePageToComment {
     CGFloat offsetY = self.headerWebView.height - CWScreenH * 0.5;
-    [UIView animateWithDuration:kScrollAnimationDuration animations:^{
-        self.tableView.contentOffset = CGPointMake(0, offsetY);
-    }];
-    
+    [self.tableView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+
 }
 
 #pragma mark - UITableViewDataSource
