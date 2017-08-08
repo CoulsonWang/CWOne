@@ -123,28 +123,8 @@ static ONENetworkTool *_instance;
     }];
 }
 
-- (void)requestEssayDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
-    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/essay/htmlcontent/%@",item_id];
-    
-    NSDictionary *parameters = @{
-                                 @"version":@"v4.3.0",
-                                 };
-    
-    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-        // 进度
-    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        if (success) {
-            NSDictionary *dataDict = responseObject[@"data"];
-            success(dataDict);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-- (void)requestSerialDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
-    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/serialcontent/htmlcontent/%@",item_id];
+- (void)requestDetailDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/%@/htmlcontent/%@",typeName,item_id];
     
     NSDictionary *parameters = @{
                                  @"version":@"v4.3.0",

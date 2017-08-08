@@ -12,26 +12,25 @@
 
 + (instancetype)sharedInstance;
 
+/* ********************************************* get请求 ********************************************* */
 /// 请求主页数据
 - (void)requestHomeDataWithDate:(NSString *)date success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
-
-/// 发送POST请求通知服务器某一条已点赞
-- (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 /// 获取当前电台状态数据
 - (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
-/// 请求文章详情页数据
-- (void)requestEssayDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
-
-/// 请求连载详情页数据
-- (void)requestSerialDetailDataWithItemID:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+/// 请求详情页数据
+- (void)requestDetailDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
 /// 请求某篇文章的关联列表
 - (void)requestRelatedListDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSArray<NSDictionary *> *dataArray))success failure:(void (^)(NSError *error))failure;
 
 /// 请求某篇文章的评论列表
 - (void)requestCommentListOfType:(NSString *)typeName WithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/* ********************************************* post请求 ********************************************* */
+/// 发送POST请求通知服务器某一条已点赞
+- (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 /// 发送POST请求通知服务器已给某一条评论点赞
 - (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *error))failure;

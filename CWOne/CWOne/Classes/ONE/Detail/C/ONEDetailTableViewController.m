@@ -18,7 +18,6 @@
 #import "ONERelatedItem.h"
 #import "ONEDetailRelatedCell.h"
 #import "ONEDetailSectionHeaderView.h"
-#import "ONEHomeItem.h"
 
 #define kWebViewMinusHeight 150.0
 #define kScrollAnimationDuration 0.3
@@ -129,32 +128,13 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 #pragma mark - 私有工具方法
 - (void)loadDetailData {
-    switch (self.type) {
-        case ONEHomeItemTypeEssay:
-        {
-            [[ONENetworkTool sharedInstance] requestEssayDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
-                self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-                [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
-            } failure:^(NSError *error) {
-                NSLog(@"%@",error);
-            }];
-        }
-            break;
-        case ONEHomeItemTypeSerial:
-        {
-            [[ONENetworkTool sharedInstance] requestSerialDetailDataWithItemID:self.itemId success:^(NSDictionary *dataDict) {
-                self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-                [self.delegate detailTableVC:self updateToolViewPraiseCount:_essayItem.praisenum andCommentCount:_essayItem.commentnum];
-            } failure:^(NSError *error) {
-                NSLog(@"%@",error);
-            }];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
+    NSString *typeName = [NSString getTypeStrWithType:self.type];
+    [[ONENetworkTool sharedInstance] requestDetailDataOfType:typeName withItemId:self.itemId success:^(NSDictionary *dataDict) {
+        self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+        [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)loadRelatedData {
