@@ -125,7 +125,7 @@
 
 - (void)setUpTableView {
     // 添加子控制器
-    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] init];
+    ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     detailTableVC.delegate = self;
     // 添加tableView
     detailTableVC.view.frame = self.view.bounds;

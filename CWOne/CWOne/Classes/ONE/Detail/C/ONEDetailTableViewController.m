@@ -276,6 +276,10 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
@@ -308,17 +312,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             } else {
                 [self.delegate detailTableVC:self UpdateTitle:nil];
             }
-        }
-    }
-    // 解决header悬停
-    if (scrollView == self.tableView) {
-        CGFloat sectionHeaderViewHeight = 60;
-        if (scrollView.contentOffset.y <= sectionHeaderViewHeight && scrollView.contentOffset.y >= 0) {
-            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-        } else if (scrollView.contentOffset.y >= sectionHeaderViewHeight) {
-            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderViewHeight, 0, 0, 0);
-        } else {
-            scrollView.contentInset = self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
         }
     }
     
