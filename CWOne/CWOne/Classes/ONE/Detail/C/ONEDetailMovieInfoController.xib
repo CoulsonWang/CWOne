@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONEDetailMovieInfoController">
+            <connections>
+                <outlet property="scrollView" destination="7d5-kJ-M1k" id="fRx-Lf-YOu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d5-kJ-M1k">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzu-LT-khV">
+                    <rect key="frame" x="330" y="25" width="20" height="22"/>
+                    <state key="normal" image="close_gray"/>
+                    <connections>
+                        <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="psP-jV-BrQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7d5-kJ-M1k" secondAttribute="trailing" id="1m9-JB-U8L"/>
+                <constraint firstItem="Vzu-LT-khV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="3GR-Sy-jIT"/>
+                <constraint firstAttribute="bottom" secondItem="7d5-kJ-M1k" secondAttribute="bottom" id="4pO-3Z-R9e"/>
+                <constraint firstItem="7d5-kJ-M1k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vq2-Td-n9w"/>
+                <constraint firstAttribute="trailing" secondItem="Vzu-LT-khV" secondAttribute="trailing" constant="25" id="tyT-Ih-El0"/>
+                <constraint firstItem="7d5-kJ-M1k" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vs0-ag-21f"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_gray" width="20" height="20"/>
+    </resources>
+</document>

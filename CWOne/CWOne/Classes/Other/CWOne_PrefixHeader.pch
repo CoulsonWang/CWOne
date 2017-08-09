@@ -19,6 +19,7 @@
 #define kCurrentDateString @"Today"
 
 #define ONECommentIdKey @"commentId"
+#define ONEEssayItemKey @"essayItem"
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"

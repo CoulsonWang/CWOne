@@ -19,4 +19,8 @@ UIKIT_EXTERN NSString *const ONECommentUnpraiseNotification;
 
 UIKIT_EXTERN NSString *const ONEDetailToolViewCommentButtonClickNotification;
 
+UIKIT_EXTERN NSString *const ONEDetailMusicInfoButtonClickNotification;
+
+UIKIT_EXTERN NSString *const ONEDetailMovieInfoButtonClickNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;

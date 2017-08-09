@@ -40,6 +40,10 @@
 		B98A5A7F1F39BD0C009FCCBC /* CWCalendarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A7E1F39BD0C009FCCBC /* CWCalendarLabel.m */; };
 		B98A5A821F39DADE009FCCBC /* ONEDetailTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A811F39DADE009FCCBC /* ONEDetailTableHeaderView.m */; };
 		B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A831F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib */; };
+		B98A5A881F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A861F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m */; };
+		B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A871F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib */; };
+		B98A5A8D1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */; };
+		B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
@@ -168,6 +172,12 @@
 		B98A5A801F39DADE009FCCBC /* ONEDetailTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableHeaderView.h; sourceTree = "<group>"; };
 		B98A5A811F39DADE009FCCBC /* ONEDetailTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailTableHeaderView.m; sourceTree = "<group>"; };
 		B98A5A831F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailTableHeaderView.xib; sourceTree = "<group>"; };
+		B98A5A851F3ACEC0009FCCBC /* ONEDetailMusicInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailMusicInfoController.h; sourceTree = "<group>"; };
+		B98A5A861F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailMusicInfoController.m; sourceTree = "<group>"; };
+		B98A5A871F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailMusicInfoController.xib; sourceTree = "<group>"; };
+		B98A5A8A1F3AD47A009FCCBC /* ONEDetailMovieInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailMovieInfoController.h; sourceTree = "<group>"; };
+		B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailMovieInfoController.m; sourceTree = "<group>"; };
+		B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailMovieInfoController.xib; sourceTree = "<group>"; };
 		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
@@ -662,6 +672,12 @@
 				B973FC281F361ED400161989 /* ONEDetailViewController.m */,
 				B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */,
 				B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */,
+				B98A5A851F3ACEC0009FCCBC /* ONEDetailMusicInfoController.h */,
+				B98A5A861F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m */,
+				B98A5A871F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib */,
+				B98A5A8A1F3AD47A009FCCBC /* ONEDetailMovieInfoController.h */,
+				B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */,
+				B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -917,7 +933,9 @@
 				B9E000FD1F38746200A7A609 /* rate_nav.gif in Resources */,
 				B9B829051F361A0F008BB163 /* ONEHomeCatalogueCell.xib in Resources */,
 				B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */,
+				B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */,
 				B9B8290F1F361A0F008BB163 /* ONELikeView.xib in Resources */,
+				B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */,
 				B9B829081F361A0F008BB163 /* ONEHomeCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -1107,6 +1125,8 @@
 				B9B829021F361A0F008BB163 /* ONEUserItem.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */,
+				B98A5A8D1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m in Sources */,
+				B98A5A881F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m in Sources */,
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,
 				B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,

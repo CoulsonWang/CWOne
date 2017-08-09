@@ -78,4 +78,24 @@ static ONENavigationBarTool *_instance;
     [self.homeNavigationBar resumeNavigationBar];
 }
 
+- (void)hideStatusBarWithAnimated:(BOOL)animated {
+    NSTimeInterval duration = animated ? 0.5 : 0;
+    [UIView animateWithDuration:duration animations:^{
+        UIApplication *app = [UIApplication sharedApplication];
+        // 通过KVC拿到statusBar
+        UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+        statusBar.alpha = 0;
+    }];
+}
+
+- (void)resumeStatusBarWithAnimated:(BOOL)animated {
+    NSTimeInterval duration = animated ? 0.5 : 0;
+    [UIView animateWithDuration:duration animations:^{
+        UIApplication *app = [UIApplication sharedApplication];
+        // 通过KVC拿到statusBar
+        UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+        statusBar.alpha = 1;
+    }];
+}
+
 @end

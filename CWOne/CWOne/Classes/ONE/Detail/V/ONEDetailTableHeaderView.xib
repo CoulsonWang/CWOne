@@ -131,6 +131,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdz-qh-5fG">
                             <rect key="frame" x="335" y="283" width="20" height="22"/>
                             <state key="normal" image="movieInfo"/>
+                            <connections>
+                                <action selector="movieButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="5eK-xz-IZR"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

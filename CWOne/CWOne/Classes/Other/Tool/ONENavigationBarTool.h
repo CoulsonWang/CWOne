@@ -41,4 +41,10 @@
 /// 恢复为原大小
 - (void)resumeNavigationBar;
 
+/// 隐藏状态栏
+- (void)hideStatusBarWithAnimated:(BOOL)animated;
+
+/// 恢复状态栏显示s
+- (void)resumeStatusBarWithAnimated:(BOOL)animated;
+
 @end

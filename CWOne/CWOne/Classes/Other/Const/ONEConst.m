@@ -19,4 +19,8 @@ NSString *const ONECommentUnpraiseNotification = @"ONECommentUnpraiseNotificatio
 
 NSString *const ONEDetailToolViewCommentButtonClickNotification = @"ONEDetailToolViewCommentButtonClickNotification";
 
+NSString *const ONEDetailMusicInfoButtonClickNotification = @"ONEDetailMusicInfoButtonClickNotification";
+
+NSString *const ONEDetailMovieInfoButtonClickNotification = @"ONEDetailMovieInfoButtonClickNotification";
+
 NSString *const ONEThemeFontName = @"CourierNewPSMT";

@@ -11,6 +11,7 @@
 #import "ONEEssayItem.h"
 #import "ONEUserItem.h"
 
+
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 490.0
 #define kMusicInfoHeaderHeight 516.0
@@ -166,6 +167,10 @@
     [self.delegate detailTableHeaderView:self WebViewDidFinishLoadWithHeight:webViewHeight - minusHeight + plusHeight];
 }
 - (IBAction)musicButtonClick:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailMusicInfoButtonClickNotification object:nil userInfo:@{ONEEssayItemKey: self.essayItem}];
+}
+- (IBAction)movieButtonClick:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailMovieInfoButtonClickNotification object:nil userInfo:@{ONEEssayItemKey: self.essayItem}];
 }
 
 @end

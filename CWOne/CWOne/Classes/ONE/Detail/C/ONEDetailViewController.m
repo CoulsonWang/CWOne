@@ -16,6 +16,8 @@
 #import "ONENetworkTool.h"
 #import <FLAnimatedImage.h>
 #import "NSString+CWTranslate.h"
+#import "ONEDetailMovieInfoController.h"
+#import "ONEDetailMusicInfoController.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 #define kLoadingImageHeight 50.0
@@ -109,6 +111,8 @@
 - (void)setUpNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(praiseComment:) name:ONECommentPraiseNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unPraiseComment:) name:ONECommentUnpraiseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMusicDetail:) name:ONEDetailMusicInfoButtonClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMovieDetail:) name:ONEDetailMovieInfoButtonClickNotification object:nil];
 }
 
 - (void)setUpScrollView {
@@ -177,6 +181,16 @@
     [[ONENetworkTool sharedInstance] postUnpraisedCommentWithType:self.typeName item_id:self.homeItem.item_id commentId:commentId success:nil failure:^(NSError *error) {
         NSLog(@"取消点赞失败");
     }];
+}
+
+- (void)showMusicDetail:(NSNotification *)notification {
+    
+}
+
+- (void)showMovieDetail:(NSNotification *)notification {
+    ONEDetailMovieInfoController *movieInfoVC = [[ONEDetailMovieInfoController alloc] init];
+    movieInfoVC.essayItem = notification.userInfo[ONEEssayItemKey];
+    [self presentViewController:movieInfoVC animated:YES completion:nil];
 }
 
 #pragma mark - 私有工具方法
