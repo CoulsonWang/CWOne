@@ -19,6 +19,7 @@
 #import "ONEDetailMovieInfoController.h"
 #import "ONEDetailMusicInfoController.h"
 #import <NYTPhotosViewController.h>
+#import "ONERadioTool.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 #define kLoadingImageHeight 50.0
@@ -78,6 +79,7 @@
     
     // 添加自定义的底部工具条
     [self setUpBottomToolView];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -227,6 +229,12 @@
     self.loadingImageView.hidden = NO;
 }
 
+- (void)playRadio {
+    if (self.homeItem.type == ONEHomeItemTypeRadio) {
+//        [[ONERadioTool sharedInstance] playMusicWithUrlString:self.homeItem.audio_url completion:nil];
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.serialIndex == -1) { return; }
@@ -252,6 +260,8 @@
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC {
     self.tableView.hidden = NO;
     self.loadingImageView.hidden = YES;
+    
+    [self playRadio];
     
     if (self.serialIndex == -1) {
         // 设置scrollView的contentSize，修改tableView的frame

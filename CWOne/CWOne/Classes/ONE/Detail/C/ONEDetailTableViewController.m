@@ -148,7 +148,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) {
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio) {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     } else {
         self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
@@ -334,7 +334,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     CGFloat offsetY = scrollView.contentOffset.y;
     
     // 处理导航条样式
-    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) {
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio) {
         if (offsetY <= kLucencyModeSpace) {
             if (!self.isOnScreen) { return; }
             [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];
