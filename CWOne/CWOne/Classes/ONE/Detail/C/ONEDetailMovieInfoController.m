@@ -13,6 +13,7 @@
 #import "ONENavigationBarTool.h"
 
 #define kSideMargin 45
+#define kLineSpacing 12.0
 
 @interface ONEDetailMovieInfoController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -46,6 +47,7 @@
         [self.scrollView addSubview:titleLabel];
         titleLabel.font = [UIFont systemFontOfSize:19];
         titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.numberOfLines = 0;
         _titleLabel = titleLabel;
     }
     return _titleLabel;
@@ -58,6 +60,7 @@
         summaryLabel.font = [UIFont systemFontOfSize:14];
         summaryLabel.textAlignment = NSTextAlignmentCenter;
         summaryLabel.textColor = [UIColor colorWithWhite:30/255.0 alpha:1.0];
+        summaryLabel.numberOfLines = 0;
         _summaryLabel = summaryLabel;
     }
     return _summaryLabel;
@@ -95,6 +98,7 @@
         [self.scrollView addSubview:officialStoryLabel];
         officialStoryLabel.numberOfLines = 0;
         officialStoryLabel.font = [UIFont systemFontOfSize:14];
+        officialStoryLabel.textAlignment = NSTextAlignmentCenter;
         _officialStoryLabel = officialStoryLabel;
     }
     return _officialStoryLabel;
@@ -109,20 +113,19 @@
     NSURL *posterURL = [NSURL URLWithString:_essayItem.poster];
     [self.postView sd_setImageWithURL:posterURL];
     
-    self.titleLabel.text = _essayItem.movieTitle;
-    [self updateLableFrame:self.titleLabel withTopOffset:22 toView:self.postView];
+    [self.titleLabel setText:_essayItem.movieTitle lineSpacing:kLineSpacing];
+    [self setUpLabel:self.titleLabel withLineSpacing:kLineSpacing withTopOffset:22 toView:self.postView];
     
-    self.summaryLabel.text = _essayItem.summary;
-    [self updateLableFrame:self.summaryLabel withTopOffset:20 toView:self.titleLabel];
+    [self.summaryLabel setText:_essayItem.summary lineSpacing:kLineSpacing];
+    [self setUpLabel:self.summaryLabel withLineSpacing:kLineSpacing withTopOffset:20 toView:self.titleLabel];
     
-    [self.movieInfoLabel setText:_essayItem.info lineSpacing:10.0];
-    [self updateLableFrame:self.movieInfoLabel withTopOffset:30 toView:self.summaryLabel];
+    [self.movieInfoLabel setText:_essayItem.info lineSpacing:kLineSpacing];
+    [self setUpLabel:self.movieInfoLabel withLineSpacing:kLineSpacing withTopOffset:30 toView:self.summaryLabel];
     
-    [self updateLableFrame:self.introducTitleLabel withTopOffset:45 toView:self.movieInfoLabel];
+    [self setUpLabel:self.introducTitleLabel withLineSpacing:kLineSpacing withTopOffset:45 toView:self.movieInfoLabel];
     
-    
-    [self.officialStoryLabel setText:[NSString stringWithFormat:@"  %@",_essayItem.officialstory] lineSpacing:12.0];
-    [self setUpOfficialStoryLabel];
+    [self.officialStoryLabel setText:[NSString stringWithFormat:@"   %@",_essayItem.officialstory] lineSpacing:12.0];
+    [self setUpLabel:self.officialStoryLabel withLineSpacing:12.0 withTopOffset:25 toView:self.introducTitleLabel];
     
     CGFloat sizeHeight = CGRectGetMaxY(self.officialStoryLabel.frame) + 100;
     self.scrollView.contentSize = CGSizeMake(0, sizeHeight);
@@ -153,23 +156,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)updateLableFrame:(UILabel *)label withTopOffset:(CGFloat)topOffset toView:(UIView *)lastView {
-    [label sizeToFit];
-    label.y = CGRectGetMaxY(lastView.frame) + topOffset;
-    label.centerX = CWScreenW * 0.5;
-}
-
-- (void)setUpOfficialStoryLabel {
+- (void)setUpLabel:(UILabel *)label withLineSpacing:(CGFloat)lineSpacing withTopOffset:(CGFloat)topOffset toView:(UIView *)lastView{
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:12.0];
+    [paragraphStyle setLineSpacing:lineSpacing];
     
-    CGRect rect = [_essayItem.officialstory boundingRectWithSize:CGSizeMake(CWScreenW - 2*kSideMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.officialStoryLabel.font,NSParagraphStyleAttributeName : paragraphStyle} context:nil];
+    CGRect rect = [label.text boundingRectWithSize:CGSizeMake(CWScreenW - 2*kSideMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : label.font,NSParagraphStyleAttributeName : paragraphStyle} context:nil];
     
-    self.officialStoryLabel.width = rect.size.width;
-    self.officialStoryLabel.height = rect.size.height;
-    self.officialStoryLabel.y = CGRectGetMaxY(self.introducTitleLabel.frame) + 20;
-    self.officialStoryLabel.centerX = CWScreenW * 0.5;
+    label.width = rect.size.width;
+    label.height = rect.size.height;
+    label.y = CGRectGetMaxY(lastView.frame) + topOffset;
+    label.centerX = CWScreenW * 0.5;
 }
 
 @end
