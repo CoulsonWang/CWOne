@@ -16,7 +16,7 @@
 #import "ONERadioTool.h"
 
 #define kWebViewMinusHeight 150.0
-#define kMovieInfoHeaderHeight 490.0
+#define kMovieInfoHeaderHeight 500.0
 #define kMusicInfoHeaderHeight 516.0
 #define kCoverViewOriginHeight 225.0
 #define kMusicAnimationDuration 0.5

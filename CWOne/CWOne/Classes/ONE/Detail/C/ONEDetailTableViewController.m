@@ -179,6 +179,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             [[ONENetworkTool sharedInstance] requestMovieStoryDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
                 [movieItem setMovieStroyDateWithDetailDict:dataDict];
                 self.essayItem = movieItem;
+                [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
             } failure:^(NSError *error) {
                 NSLog(@"%@",error);
             }];

@@ -50,7 +50,7 @@
     self.content = dict[@"content"];
     self.summary = dict[@"summary"];
     self.movieContentAuthor = [ONEUserItem userItemWithDict:dict[@"user"]];
-    
+    self.praisenum = [dict[@"praisenum"] integerValue];
 }
 
 @end
