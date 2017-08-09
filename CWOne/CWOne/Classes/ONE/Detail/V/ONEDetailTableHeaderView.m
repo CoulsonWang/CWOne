@@ -10,7 +10,8 @@
 #import <UIImageView+WebCache.h>
 #import "ONEEssayItem.h"
 #import "ONEUserItem.h"
-
+#import <SDWebImageManager.h>
+#import "ONEPhoto.h"
 
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 490.0
@@ -40,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieAuthorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *movieButton;
 
+@property (strong, nonatomic) NSMutableArray<ONEPhoto *> *photoArray;
+
 // 底部信息控件
 @property (weak, nonatomic) IBOutlet UIView *bottomInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *charge_edtLabel;
@@ -68,6 +71,14 @@
     return detailTableHeaderView;
 }
 
+- (NSMutableArray *)photoArray {
+    if (!_photoArray) {
+        NSMutableArray *photoArray = [NSMutableArray array];
+        _photoArray = photoArray;
+    }
+    return _photoArray;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -86,6 +97,9 @@
     self.attentionButton.layer.borderWidth = 1;
     self.attentionButton.layer.borderColor = [UIColor colorWithWhite:170/255.0 alpha:1.0].CGColor;
     self.attentionButton.layer.cornerRadius = 2;
+    
+    self.movieCoverView.userInteractionEnabled = YES;
+    [self.movieCoverView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkMoviePhotos)]];
 }
 
 - (void)setType:(ONEHomeItemType)type {
@@ -143,9 +157,33 @@
     }
 }
 
+- (void)checkMoviePhotos {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEPhotoViewerShowNotification object:nil userInfo:@{ONEPhotoArrayKey : self.photoArray}];
+}
+                                        
 #pragma mark - 对外公有方法
 - (void)webViewLoadHtmlDataWithHtmlString:(NSString *)htmlString {
     [self.webView loadHTMLString:htmlString baseURL:nil];
+}
+#pragma mark - 私有方法
+// 缓存图片
+- (void)cachePhotosWithCompletion:(void (^)())completion {
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.essayItem.detailcover] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        ONEPhoto *photo = [ONEPhoto createPhotoObjectWihtImage:image];
+        [self.photoArray addObject:photo];
+        dispatch_group_t group = dispatch_group_create();
+        for (NSString *photoUrl in self.essayItem.photo) {
+            dispatch_group_enter(group);
+            [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:photoUrl] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                ONEPhoto *photo = [ONEPhoto createPhotoObjectWihtImage:image];
+                [self.photoArray addObject:photo];
+                dispatch_group_leave(group);
+            }];
+        }
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            completion();
+        });
+    }];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -165,7 +203,14 @@
             plusHeight = 0;
             break;
     }
-    [self.delegate detailTableHeaderView:self WebViewDidFinishLoadWithHeight:webViewHeight - minusHeight + plusHeight];
+    if (self.type == ONEHomeItemTypeMovie) {
+        [self cachePhotosWithCompletion:^{
+            [self.delegate detailTableHeaderView:self WebViewDidFinishLoadWithHeight:webViewHeight - minusHeight + plusHeight];
+        }];
+    } else {
+        [self.delegate detailTableHeaderView:self WebViewDidFinishLoadWithHeight:webViewHeight - minusHeight + plusHeight];
+    }
+    
 }
 - (IBAction)musicButtonClick:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailMusicInfoButtonClickNotification object:nil userInfo:@{ONEEssayItemKey: self.essayItem}];

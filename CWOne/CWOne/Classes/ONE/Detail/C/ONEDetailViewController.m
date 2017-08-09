@@ -18,12 +18,13 @@
 #import "NSString+CWTranslate.h"
 #import "ONEDetailMovieInfoController.h"
 #import "ONEDetailMusicInfoController.h"
+#import <NYTPhotosViewController.h>
 
 #define kBottomToolViewHeight kTabBarHeight
 #define kLoadingImageHeight 50.0
 #define kLoadingImageOffset 60.0
 
-@interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate, UIScrollViewDelegate>
+@interface ONEDetailViewController () <ONEDetailTableViewControllerDelegate, UIScrollViewDelegate, NYTPhotosViewControllerDelegate>
 
 @property (weak, nonatomic) ONEDetailTableViewController *detailTableVC;
 
@@ -106,6 +107,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unPraiseComment:) name:ONECommentUnpraiseNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMusicDetail:) name:ONEDetailMusicInfoButtonClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMovieDetail:) name:ONEDetailMovieInfoButtonClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPhotoViewer:) name:ONEPhotoViewerShowNotification object:nil];
 }
 
 - (void)setUpScrollView {
@@ -188,6 +190,14 @@
     [self presentViewController:movieInfoVC animated:YES completion:nil];
 }
 
+- (void)showPhotoViewer:(NSNotification *)notification {
+    NSArray *photoArray = notification.userInfo[ONEPhotoArrayKey];
+    NYTPhotosViewController *photoViewerController = [[NYTPhotosViewController alloc] initWithPhotos:photoArray];
+    photoViewerController.delegate = self;
+    [self presentViewController:photoViewerController animated:YES completion:nil];
+    [[ONENavigationBarTool sharedInstance] hideStatusBarWithAnimated:YES];
+}
+
 #pragma mark - 私有工具方法
 // 取得当前文章在连载数组中的索引
 - (NSInteger)getIndexOfSerial {
@@ -262,5 +272,9 @@
     }
 }
 
+#pragma mark - NYTPhotosViewControllerDelegate
+- (void)photosViewControllerDidDismiss:(NYTPhotosViewController *)photosViewController {
+    [[ONENavigationBarTool sharedInstance] resumeStatusBarWithAnimated:YES];
+}
 
 @end

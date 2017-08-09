@@ -20,6 +20,7 @@
 
 #define ONECommentIdKey @"commentId"
 #define ONEEssayItemKey @"essayItem"
+#define ONEPhotoArrayKey @"photoArray"
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"

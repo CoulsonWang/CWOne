@@ -44,6 +44,7 @@
 		B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A871F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib */; };
 		B98A5A8D1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */; };
 		B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */; };
+		B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = B98A5A921F3B50C9009FCCBC /* ONEPhoto.m */; };
 		B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */; };
 		B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF51F31C08A009025FD /* ONEHomeWeatherItem.m */; };
 		B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A73FF81F31CF57009025FD /* ONEConst.m */; };
@@ -178,6 +179,8 @@
 		B98A5A8A1F3AD47A009FCCBC /* ONEDetailMovieInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailMovieInfoController.h; sourceTree = "<group>"; };
 		B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailMovieInfoController.m; sourceTree = "<group>"; };
 		B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEDetailMovieInfoController.xib; sourceTree = "<group>"; };
+		B98A5A911F3B50C9009FCCBC /* ONEPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEPhoto.h; sourceTree = "<group>"; };
+		B98A5A921F3B50C9009FCCBC /* ONEPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEPhoto.m; sourceTree = "<group>"; };
 		B9A73FF11F31B2E2009025FD /* UIView+CWFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CWFrame.h"; sourceTree = "<group>"; };
 		B9A73FF21F31B2E2009025FD /* UIView+CWFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CWFrame.m"; sourceTree = "<group>"; };
 		B9A73FF41F31C08A009025FD /* ONEHomeWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeWeatherItem.h; sourceTree = "<group>"; };
@@ -633,6 +636,8 @@
 				B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */,
 				B9B822601F3754BC002F6961 /* ONENavigationBarTool.h */,
 				B9B822611F3754BC002F6961 /* ONENavigationBarTool.m */,
+				B98A5A911F3B50C9009FCCBC /* ONEPhoto.h */,
+				B98A5A921F3B50C9009FCCBC /* ONEPhoto.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1153,6 +1158,7 @@
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
+				B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */,
 				B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */,
 				B9B828FE1F361A0F008BB163 /* ONECatalogueItem.m in Sources */,
 				B9B829001F361A0F008BB163 /* ONEHomeMenuItem.m in Sources */,

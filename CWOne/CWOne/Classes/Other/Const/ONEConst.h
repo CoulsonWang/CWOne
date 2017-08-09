@@ -23,4 +23,6 @@ UIKIT_EXTERN NSString *const ONEDetailMusicInfoButtonClickNotification;
 
 UIKIT_EXTERN NSString *const ONEDetailMovieInfoButtonClickNotification;
 
+UIKIT_EXTERN NSString *const ONEPhotoViewerShowNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;
