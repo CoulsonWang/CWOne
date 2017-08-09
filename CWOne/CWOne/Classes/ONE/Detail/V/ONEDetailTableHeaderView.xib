@@ -95,6 +95,9 @@
                                 <constraint firstAttribute="height" constant="225" id="Ot2-Nv-lUj"/>
                             </constraints>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MusicFeedsPlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="4CC-R7-MMQ">
+                            <rect key="frame" x="127" y="66" width="120" height="120"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d74-QU-a6w">
                             <rect key="frame" x="127" y="66" width="120" height="120"/>
                             <constraints>
@@ -116,6 +119,9 @@
                             </constraints>
                             <state key="normal" image="audioPlayIcon"/>
                             <state key="selected" image="audioPauseIcon"/>
+                            <connections>
+                                <action selector="playMusicButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="VUM-Ff-IkS"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当你走到我身后" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtW-ql-Yw7" userLabel="标题">
                             <rect key="frame" x="20" y="250" width="335" height="23"/>
@@ -139,23 +145,32 @@
                                 <action selector="musicButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="lk9-7w-poM"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ONEXiamiMusicCopyright" translatesAutoresizingMaskIntoConstraints="NO" id="vGp-Vq-kkz">
+                            <rect key="frame" x="222" y="161" width="25" height="25"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="vGp-Vq-kkz" firstAttribute="trailing" secondItem="d74-QU-a6w" secondAttribute="trailing" id="9rD-Gd-laT"/>
+                        <constraint firstItem="4CC-R7-MMQ" firstAttribute="centerX" secondItem="d74-QU-a6w" secondAttribute="centerX" id="CIL-8f-ayQ"/>
                         <constraint firstItem="Ril-CU-LoY" firstAttribute="centerY" secondItem="d74-QU-a6w" secondAttribute="centerY" id="DZu-0T-kZE"/>
                         <constraint firstItem="53B-Ls-nAS" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="IcG-oD-vbx"/>
                         <constraint firstItem="na5-rG-WWM" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" id="JCu-NY-DiE"/>
+                        <constraint firstItem="vGp-Vq-kkz" firstAttribute="bottom" secondItem="d74-QU-a6w" secondAttribute="bottom" id="Kk6-uV-uHn"/>
                         <constraint firstAttribute="trailing" secondItem="53B-Ls-nAS" secondAttribute="trailing" constant="20" id="O5a-fX-YpZ"/>
                         <constraint firstItem="8Vb-PB-h0k" firstAttribute="top" secondItem="mtW-ql-Yw7" secondAttribute="bottom" constant="35" id="RTN-er-Fb2"/>
                         <constraint firstItem="d74-QU-a6w" firstAttribute="centerX" secondItem="xAE-vS-wVl" secondAttribute="centerX" id="W7N-i6-G6g"/>
                         <constraint firstItem="na5-rG-WWM" firstAttribute="top" secondItem="xAE-vS-wVl" secondAttribute="top" id="XVz-rf-oGq"/>
                         <constraint firstItem="mtW-ql-Yw7" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="YPV-fz-Pgv"/>
                         <constraint firstAttribute="trailing" secondItem="XKi-7V-d0n" secondAttribute="trailing" constant="20" id="YS8-gu-5W9"/>
+                        <constraint firstItem="4CC-R7-MMQ" firstAttribute="centerY" secondItem="d74-QU-a6w" secondAttribute="centerY" id="Yxd-xO-GN9"/>
                         <constraint firstItem="53B-Ls-nAS" firstAttribute="centerX" secondItem="xAE-vS-wVl" secondAttribute="centerX" id="a1X-ex-2ge"/>
+                        <constraint firstItem="4CC-R7-MMQ" firstAttribute="height" secondItem="d74-QU-a6w" secondAttribute="height" id="cUc-Tn-Mbr"/>
                         <constraint firstItem="53B-Ls-nAS" firstAttribute="top" secondItem="d74-QU-a6w" secondAttribute="bottom" constant="8" id="dzi-2R-nc4"/>
                         <constraint firstAttribute="trailing" secondItem="mtW-ql-Yw7" secondAttribute="trailing" constant="20" id="efa-0v-KAx"/>
                         <constraint firstAttribute="bottom" secondItem="8Vb-PB-h0k" secondAttribute="bottom" constant="30" id="hvz-zM-cOg"/>
                         <constraint firstItem="XKi-7V-d0n" firstAttribute="top" secondItem="8Vb-PB-h0k" secondAttribute="top" id="jxe-ph-PuX"/>
+                        <constraint firstItem="4CC-R7-MMQ" firstAttribute="width" secondItem="d74-QU-a6w" secondAttribute="width" id="mca-PI-8X8"/>
                         <constraint firstItem="53B-Ls-nAS" firstAttribute="bottom" secondItem="na5-rG-WWM" secondAttribute="bottom" constant="-15" id="mey-5E-9hJ"/>
                         <constraint firstItem="8Vb-PB-h0k" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="mgH-H2-6uo"/>
                         <constraint firstAttribute="trailing" secondItem="na5-rG-WWM" secondAttribute="trailing" id="sdj-hN-0iN"/>
@@ -262,6 +277,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="albumImageViewCenterYConstraint" destination="CIL-8f-ayQ" id="fjb-IV-RQL"/>
                 <outlet property="albumInfoLabel" destination="53B-Ls-nAS" id="u8x-zp-HyZ"/>
                 <outlet property="attentionButton" destination="8CW-HO-AGN" id="M2A-LA-aJE"/>
                 <outlet property="authorIconImageView" destination="P42-q0-v1j" id="wWY-Ff-vuP"/>
@@ -280,6 +296,7 @@
                 <outlet property="movieTitleLabel" destination="f7E-dC-84t" id="Vlz-Kp-MER"/>
                 <outlet property="musicButton" destination="XKi-7V-d0n" id="aHv-EV-rzI"/>
                 <outlet property="musicInfoView" destination="xAE-vS-wVl" id="jag-kO-1Uz"/>
+                <outlet property="musicPlatformIconView" destination="vGp-Vq-kkz" id="9Mz-z4-KwI"/>
                 <outlet property="picNumLabel" destination="h3B-jK-b4C" id="2qx-hU-Ns5"/>
                 <outlet property="playButton" destination="Ril-CU-LoY" id="BN7-jN-ZzS"/>
                 <outlet property="titleLabel" destination="mtW-ql-Yw7" id="Esz-S8-idQ"/>
@@ -295,6 +312,8 @@
     </objects>
     <resources>
         <image name="MusicBarDetail" width="20" height="20"/>
+        <image name="MusicFeedsPlaceHolder" width="226" height="226"/>
+        <image name="ONEXiamiMusicCopyright" width="25" height="25"/>
         <image name="audioPauseIcon" width="15" height="16"/>
         <image name="audioPlayIcon" width="16" height="16"/>
         <image name="movieInfo" width="20" height="20"/>

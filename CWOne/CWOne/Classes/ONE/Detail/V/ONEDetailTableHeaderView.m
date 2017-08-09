@@ -12,11 +12,14 @@
 #import "ONEUserItem.h"
 #import <SDWebImageManager.h>
 #import "ONEPhoto.h"
+#import <SVProgressHUD.h>
+#import "ONERadioTool.h"
 
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 490.0
 #define kMusicInfoHeaderHeight 516.0
 #define kCoverViewOriginHeight 225.0
+#define kMusicAnimationDuration 0.5
 
 @interface ONEDetailTableHeaderView () <UIWebViewDelegate>
 
@@ -31,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *musicButton;
+@property (weak, nonatomic) IBOutlet UIImageView *musicPlatformIconView;
 
 // 影视的控件
 @property (weak, nonatomic) IBOutlet UIView *movieInfoView;
@@ -59,6 +63,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMusicInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMovieInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewBottomToAuthorInfoViewSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumImageViewCenterYConstraint;
 
 @end
 
@@ -141,6 +146,7 @@
         [self.authorIconImageView sd_setImageWithURL:authorIconURL];
         self.authorNameLabel.text = essayItem.story_author.user_name;
         self.authorSummaryLabel.text = essayItem.story_author.summary;
+        self.musicPlatformIconView.image = essayItem.platform.integerValue == 1 ? [UIImage imageNamed:@"ONEXiamiMusicCopyright"] : [UIImage imageNamed:@"ONEMusicCopyright"];
     } else if (self.type == ONEHomeItemTypeMovie) {
         NSURL *movieCoverURL = [NSURL URLWithString:essayItem.detailcover];
         [self.movieCoverView sd_setImageWithURL:movieCoverURL];
@@ -186,6 +192,24 @@
     }];
 }
 
+- (void)showAlbumImageWithAnimated:(BOOL)animated {
+    
+    NSTimeInterval duration = animated ? kMusicAnimationDuration : 0;
+    [UIView animateWithDuration:duration animations:^{
+        self.albumImageViewCenterYConstraint.constant = 20;
+        [self.musicInfoView layoutIfNeeded];
+    }];
+}
+
+- (void)hideAlbumImageWithAnimated:(BOOL)animated {
+    NSTimeInterval duration = animated ? kMusicAnimationDuration : 0;
+    [UIView animateWithDuration:duration animations:^{
+        self.albumImageViewCenterYConstraint.constant = 0;
+        [self.musicInfoView layoutIfNeeded];
+    }];
+}
+
+
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
@@ -212,11 +236,36 @@
     }
     
 }
+
+#pragma mark - 事件响应
 - (IBAction)musicButtonClick:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailMusicInfoButtonClickNotification object:nil userInfo:@{ONEEssayItemKey: self.essayItem}];
 }
 - (IBAction)movieButtonClick:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:ONEDetailMovieInfoButtonClickNotification object:nil userInfo:@{ONEEssayItemKey: self.essayItem}];
+}
+- (IBAction)playMusicButtonClick:(UIButton *)sender {
+    if (!sender.isSelected) {
+        // 播放音乐
+        if (self.essayItem.platform.integerValue == 1) {
+            // 提示无法播放
+            [SVProgressHUD showErrorWithStatus:@"抱歉,因授权原因,无法播放虾米提供的音乐"];
+            [SVProgressHUD dismissWithDelay:2.5];
+        } else {
+            NSString *musicURLStr = self.essayItem.music_id;
+            __weak typeof(self) weakSelf = self;
+            [[ONERadioTool sharedInstance] playMusicWithUrlString:musicURLStr completion:^{
+                weakSelf.playButton.selected = NO;
+                [weakSelf hideAlbumImageWithAnimated:YES];
+            }];
+            sender.selected = !sender.isSelected;
+            [self showAlbumImageWithAnimated:YES];
+        }
+    } else {
+        sender.selected = !sender.isSelected;
+        [[ONERadioTool sharedInstance] pauseCurrentMusic];
+        [self hideAlbumImageWithAnimated:YES];
+    }
 }
 
 @end

@@ -57,6 +57,8 @@
 
 @property (strong, nonatomic) ONEUserItem *story_author;
 
+@property (strong, nonatomic) NSString *platform;
+
 /* ********************************************* 影视详情页内容 ********************************************* */
 
 /// 故事正文
