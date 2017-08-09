@@ -22,7 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dfU-LB-rRH">
-                    <rect key="frame" x="119" y="20" width="137" height="29"/>
+                    <rect key="frame" x="119" y="20" width="137" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="suu-cf-1Kh"/>
+                    </constraints>
                     <segments>
                         <segment title="歌词"/>
                         <segment title="歌曲信息"/>
@@ -33,7 +36,7 @@
                     </connections>
                 </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4H-O6-rVH">
-                    <rect key="frame" x="339" y="23" width="20" height="22"/>
+                    <rect key="frame" x="339" y="19" width="20" height="22"/>
                     <state key="normal" image="close_gray"/>
                     <connections>
                         <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="8dC-3A-rau"/>
@@ -45,7 +48,7 @@
                     <color key="currentPageIndicatorTintColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qaq-yX-SX1">
-                    <rect key="frame" x="0.0" y="48" width="375" height="532"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="540"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

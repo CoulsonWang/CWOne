@@ -184,7 +184,9 @@
 }
 
 - (void)showMusicDetail:(NSNotification *)notification {
-    
+    ONEDetailMusicInfoController *musicInfoVC = [[ONEDetailMusicInfoController alloc] init];
+    musicInfoVC.essayItem = notification.userInfo[ONEEssayItemKey];
+    [self presentViewController:musicInfoVC animated:YES completion:nil];
 }
 
 - (void)showMovieDetail:(NSNotification *)notification {

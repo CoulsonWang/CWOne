@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEEssayItem;
+
 @interface ONEDetailMusicInfoController : UIViewController
+
+@property (strong, nonatomic) ONEEssayItem *essayItem;
 
 @end
