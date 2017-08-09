@@ -32,6 +32,8 @@
         [self setUpBackgroundView];
         [self setUpHomeTitleView];
         
+        [self setTintColor:[UIColor grayColor]];
+        
         self.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:16.0]};
     }
     return self;
@@ -100,18 +102,22 @@
     [self changeAlphaOfStatusBar:self.tempStatusBarAlpha];
 }
 
-- (void)moveBackgroundImageToBack {
-    [self sendSubviewToBack:self.navBarBackgroundView];
-}
-
-- (void)hideNavigationBar {
+- (void)changeNavigationBarToShortMode {
     self.y = -44;
     self.navBarBackgroundView.y = 20;
+    self.navBarBackgroundView.alpha = 1;
+}
+
+- (void)changeNavigationBarToLucencyMode {
+    self.y = 20;
+    self.navBarBackgroundView.y = 0;
+    self.navBarBackgroundView.alpha = 0;
 }
 
 - (void)resumeNavigationBar {
     self.y = 20;
     self.navBarBackgroundView.y = 0;
+    self.navBarBackgroundView.alpha = 1;
 }
 
 #pragma mark - 私有方法

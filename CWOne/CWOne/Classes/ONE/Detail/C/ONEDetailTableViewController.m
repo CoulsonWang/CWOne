@@ -23,6 +23,7 @@
 
 #define kNavTitleChangeValue 64.0
 #define kSectionHeaderViewHeight 60.0
+#define kLucencyModeSpace 120
 
 static NSString *const ONEDetailCommentCellID = @"ONEDetailCommentCellID";
 static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
@@ -117,6 +118,17 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     [self setUpNotification];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 手动调用一次滚动，确保进入时nav的状态正确
+    [self scrollViewDidScroll:self.tableView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -129,7 +141,12 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
+    
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    } else {
+        self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
+    }
 }
 
 - (void)setUpFooter {
@@ -307,13 +324,30 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) {
+        if (offsetY <= kLucencyModeSpace) {
+            [[ONENavigationBarTool sharedInstance] changeNavigationBarToLucencyMode];
+            [self.delegate detailTableVC:self UpdateTitle:@""];
+            [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];
+        } else {
+            [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+            [self updateNavBarHeightAndTitleWithOffsetY:offsetY];
+        }
+    } else {
+        [self updateNavBarHeightAndTitleWithOffsetY:offsetY];
+    }
+    self.lastOffsetY = offsetY;
+}
+
+- (void)updateNavBarHeightAndTitleWithOffsetY:(CGFloat)offsetY {
     // 改变NavBar的高度
-    if (scrollView.contentOffset.y - self.lastOffsetY > 0 && scrollView.contentOffset.y > -kNavigationBarHeight) {
-        [[ONENavigationBarTool sharedInstance] hideNavigationBar];
+    if (offsetY - self.lastOffsetY > 0 && offsetY > -kNavigationBarHeight) {
+        [[ONENavigationBarTool sharedInstance] changeNavigationBarToShortMode];
     } else {
         [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
         // 修改标题
-        if (scrollView.contentOffset.y >= kNavTitleChangeValue) {
+        if (offsetY >= kNavTitleChangeValue) {
             [self.delegate detailTableVC:self UpdateTitle:self.essayItem.title];
         } else {
             if (self.essayItem.tagTitle) {
@@ -323,16 +357,12 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             }
         }
     }
-    
-    self.lastOffsetY = scrollView.contentOffset.y;
-    
 }
 
 #pragma mark - ONEDetailTableHeaderViewDelegate
 - (void)detailTableHeaderView:(ONEDetailTableHeaderView *)detailTableHeaderView WebViewDidFinishLoadWithHeight:(CGFloat)webViewHeight {
     self.tableHeaderView.frame = CGRectMake(0, 0, CWScreenW, webViewHeight);
     [self.tableView reloadData];
-    self.parentViewController.title = self.essayItem.title;
     
     // 通知外部控制器切换视图
     if ([self.delegate respondsToSelector:@selector(detailTableVCDidFinishLoadData:)]) {

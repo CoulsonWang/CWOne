@@ -66,12 +66,16 @@ static ONENavigationBarTool *_instance;
     [self.homeNavigationBar showCustomTitleView];
 }
 
-- (void)moveBackgroundImageToBack {
-    [self.homeNavigationBar moveBackgroundImageToBack];
-}
 
 - (void)hideNavigationBar {
-    [self.homeNavigationBar hideNavigationBar];
+    [self.homeNavigationBar changeNavigationBarToShortMode];
+}
+- (void)changeNavigationBarToShortMode {
+    [self.homeNavigationBar changeNavigationBarToShortMode];
+}
+
+- (void)changeNavigationBarToLucencyMode {
+    [self.homeNavigationBar changeNavigationBarToLucencyMode];
 }
 
 - (void)resumeNavigationBar {
@@ -96,6 +100,23 @@ static ONENavigationBarTool *_instance;
         UIView *statusBar = [app valueForKeyPath:@"statusBar"];
         statusBar.alpha = 1;
     }];
+}
+
+- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color {
+    switch (color) {
+        case ONENavigationBarTintColorGray:
+            [self.homeNavigationBar setTintColor:[UIColor grayColor]];
+            break;
+        case ONENavigationBarTintColorWhite:
+            [self.homeNavigationBar setTintColor:[UIColor whiteColor]];
+            break;
+        case ONENavigationBarTintColorDark:
+            [self.homeNavigationBar setTintColor:[UIColor darkGrayColor]];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

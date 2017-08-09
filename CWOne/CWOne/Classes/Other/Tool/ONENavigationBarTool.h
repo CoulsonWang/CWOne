@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    ONENavigationBarTintColorGray,
+    ONENavigationBarTintColorWhite,
+    ONENavigationBarTintColorDark,
+} ONENavigationBarTintColor;
+
 @interface ONENavigationBarTool : NSObject
 
 + (instancetype)sharedInstance;
@@ -32,11 +38,11 @@
 /// 显示日期
 - (void)showCustomTitleView;
 
-/// 将背景色图片移到最后层
-- (void)moveBackgroundImageToBack;
+/// 将导航条修改为只显示20的高度的白底格式
+- (void)changeNavigationBarToShortMode;
 
-/// 隐藏整个条，只显示20的高度
-- (void)hideNavigationBar;
+/// 将导航条修改为无背景，按钮和状态栏均为白色的格式
+- (void)changeNavigationBarToLucencyMode;
 
 /// 恢复为原大小
 - (void)resumeNavigationBar;
@@ -46,5 +52,8 @@
 
 /// 恢复状态栏显示s
 - (void)resumeStatusBarWithAnimated:(BOOL)animated;
+
+/// 修改导航按钮的主题色
+- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color;
 
 @end

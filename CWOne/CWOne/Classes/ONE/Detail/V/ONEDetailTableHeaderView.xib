@@ -30,8 +30,8 @@
                                 <constraint firstAttribute="height" constant="120" id="Lzw-C2-9mH"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53B-Ls-nAS" userLabel="信息">
-                            <rect key="frame" x="171" y="169" width="33" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53B-Ls-nAS" userLabel="信息">
+                            <rect key="frame" x="20" y="169" width="335" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -71,7 +71,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Ril-CU-LoY" firstAttribute="centerY" secondItem="d74-QU-a6w" secondAttribute="centerY" id="DZu-0T-kZE"/>
+                        <constraint firstItem="53B-Ls-nAS" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="IcG-oD-vbx"/>
                         <constraint firstItem="na5-rG-WWM" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" id="JCu-NY-DiE"/>
+                        <constraint firstAttribute="trailing" secondItem="53B-Ls-nAS" secondAttribute="trailing" constant="20" id="O5a-fX-YpZ"/>
                         <constraint firstItem="8Vb-PB-h0k" firstAttribute="top" secondItem="mtW-ql-Yw7" secondAttribute="bottom" constant="35" id="RTN-er-Fb2"/>
                         <constraint firstItem="d74-QU-a6w" firstAttribute="centerX" secondItem="xAE-vS-wVl" secondAttribute="centerX" id="W7N-i6-G6g"/>
                         <constraint firstItem="mtW-ql-Yw7" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="YPV-fz-Pgv"/>
@@ -101,7 +103,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_ decoration_image" translatesAutoresizingMaskIntoConstraints="NO" id="FJg-U0-3a5">
                             <rect key="frame" x="0.0" y="180" width="375" height="20"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpw-P3-c0z" userLabel="信息">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpw-P3-c0z" userLabel="信息">
                             <rect key="frame" x="171" y="156" width="33" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

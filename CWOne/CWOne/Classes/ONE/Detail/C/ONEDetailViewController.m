@@ -79,12 +79,6 @@
     [self setUpBottomToolView];
 }
 
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [[ONENavigationBarTool sharedInstance] moveBackgroundImageToBack];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
@@ -100,9 +94,8 @@
 
 #pragma mark - 设置UI
 - (void)setUpNavigationBar {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"collect_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"collect_gray"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
     
     // 设置控制器标题
     self.title = self.homeItem.typeName;
@@ -131,16 +124,16 @@
     // 添加子控制器
     ONEDetailTableViewController *detailTableVC = [[ONEDetailTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     detailTableVC.delegate = self;
+    detailTableVC.type = self.homeItem.type;
+    detailTableVC.itemId = self.homeItem.item_id;
+    [self addChildViewController:detailTableVC];
+    self.detailTableVC = detailTableVC;
     // 添加tableView
     detailTableVC.view.frame = self.view.bounds;
     [self.scrollView addSubview:detailTableVC.view];
     self.tableView = detailTableVC.tableView;
     
-    detailTableVC.type = self.homeItem.type;
-    detailTableVC.itemId = self.homeItem.item_id;
     [self tableViewLoadDataAndShowLoadingImage];
-    [self addChildViewController:detailTableVC];
-    self.detailTableVC = detailTableVC;
 }
 
 - (void)setUpBottomToolView {
@@ -268,5 +261,6 @@
         self.title = self.homeItem.typeName;
     }
 }
+
 
 @end
