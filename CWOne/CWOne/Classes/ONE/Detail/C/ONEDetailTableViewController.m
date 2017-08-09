@@ -150,8 +150,15 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             NSLog(@"%@",error);
         }];
     } else if (self.type == ONEHomeItemTypeMovie) {
-        [[ONENetworkTool sharedInstance] requestMovieStoryDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
-            self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
+        [[ONENetworkTool sharedInstance] requestMovieDetailDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
+            ONEEssayItem *movieItem = [ONEEssayItem essayItemWithDict:dataDict];
+            // 加载完故事数据后再加载详情信息
+            [[ONENetworkTool sharedInstance] requestMovieStoryDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
+                [movieItem setMovieStroyDateWithDetailDict:dataDict];
+                self.essayItem = movieItem;
+            } failure:^(NSError *error) {
+                NSLog(@"%@",error);
+            }];
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];

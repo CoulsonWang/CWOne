@@ -62,8 +62,29 @@
 /// 故事正文
 @property (strong, nonatomic) NSString *content;
 
+@property (strong, nonatomic) NSString *movieTitle;
 
+@property (strong, nonatomic) NSString *contentTitle;
+
+@property (strong, nonatomic) NSString *summary;
+
+@property (strong, nonatomic) ONEUserItem *movieContentAuthor;
+
+@property (strong, nonatomic) NSString *detailcover;
+
+@property (strong, nonatomic) NSString *officialstory;
+
+@property (strong, nonatomic) NSString *charge_edt;
+
+@property (strong, nonatomic) NSString *editor_email;
+
+@property (strong, nonatomic) NSString *poster;
+
+@property (strong, nonatomic) NSArray *photo;
 
 + (instancetype)essayItemWithDict:(NSDictionary *)dict;
+
+// 加载电影数据
+- (void)setMovieStroyDateWithDetailDict:(NSDictionary *)dict;
 
 @end
