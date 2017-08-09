@@ -1,0 +1,1 @@
+../../../NYTPhotoViewer/NYTPhotoViewer/NYTPhotosDataSource.h

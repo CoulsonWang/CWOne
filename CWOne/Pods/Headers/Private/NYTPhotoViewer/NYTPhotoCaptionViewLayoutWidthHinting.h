@@ -1,0 +1,1 @@
+../../../NYTPhotoViewer/NYTPhotoViewer/Protocols/NYTPhotoCaptionViewLayoutWidthHinting.h

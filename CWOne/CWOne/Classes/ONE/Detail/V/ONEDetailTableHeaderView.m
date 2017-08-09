@@ -56,8 +56,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMusicInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMovieInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewBottomToAuthorInfoViewSpaceConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicCoverViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *movieCoverViewConstraint;
 
 @end
 
