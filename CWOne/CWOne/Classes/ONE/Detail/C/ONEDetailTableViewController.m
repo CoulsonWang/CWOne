@@ -23,7 +23,7 @@
 
 #define kNavTitleChangeValue 64.0
 #define kSectionHeaderViewHeight 60.0
-#define kLucencyModeSpace 120
+#define kLucencyModeSpace 100
 
 static NSString *const ONEDetailCommentCellID = @"ONEDetailCommentCellID";
 static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
@@ -39,6 +39,8 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 @property (weak, nonatomic) ONEDetailTableHeaderView *tableHeaderView;
 
 @property (assign, nonatomic) CGFloat lastOffsetY;
+
+@property (assign, nonatomic, getter=isOnScreen) BOOL onScreen;
 
 @end
 
@@ -111,6 +113,8 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.onScreen = YES;
+    
     [self setUpTableView];
     
     [self setUpFooter];
@@ -118,14 +122,16 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     [self setUpNotification];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     // 手动调用一次滚动，确保进入时nav的状态正确
     [self scrollViewDidScroll:self.tableView];
 }
 
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.onScreen = NO;
     [self resumeNavigationStatus];
 }
 
@@ -325,8 +331,12 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
+    
+    // 处理导航条样式
     if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) {
         if (offsetY <= kLucencyModeSpace) {
+            if (!self.isOnScreen) { return; }
+            [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];
             [[ONENavigationBarTool sharedInstance] changeNavigationBarToLucencyMode];
             [self.delegate detailTableVC:self UpdateTitle:@""];
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -340,6 +350,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.lastOffsetY = offsetY;
 }
 
+// 修改导航条的高度
 - (void)updateNavBarHeightAndTitleWithOffsetY:(CGFloat)offsetY {
     // 改变NavBar的高度
     if (offsetY - self.lastOffsetY > 0 && offsetY > -kNavigationBarHeight) {

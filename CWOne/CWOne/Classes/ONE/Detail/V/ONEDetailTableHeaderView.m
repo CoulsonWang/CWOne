@@ -15,6 +15,7 @@
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 490.0
 #define kMusicInfoHeaderHeight 516.0
+#define kCoverViewOriginHeight 225.0
 
 @interface ONEDetailTableHeaderView () <UIWebViewDelegate>
 
@@ -47,7 +48,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorSummaryLabel;
 @property (weak, nonatomic) IBOutlet UIButton *attentionButton;
 
-
 @property (assign, nonatomic) ONEHomeItemType type;
 
 // 约束
@@ -56,6 +56,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMusicInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMovieInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewBottomToAuthorInfoViewSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicCoverViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *movieCoverViewConstraint;
 
 @end
 
@@ -86,10 +88,6 @@
     self.attentionButton.layer.borderWidth = 1;
     self.attentionButton.layer.borderColor = [UIColor colorWithWhite:170/255.0 alpha:1.0].CGColor;
     self.attentionButton.layer.cornerRadius = 2;
-}
-
-- (void)webViewLoadHtmlDataWithHtmlString:(NSString *)htmlString {
-    [self.webView loadHTMLString:htmlString baseURL:nil];
 }
 
 - (void)setType:(ONEHomeItemType)type {
@@ -145,6 +143,11 @@
         self.authorNameLabel.text = essayItem.movieContentAuthor.user_name;
         self.authorSummaryLabel.text = essayItem.movieContentAuthor.summary;
     }
+}
+
+#pragma mark - 对外公有方法
+- (void)webViewLoadHtmlDataWithHtmlString:(NSString *)htmlString {
+    [self.webView loadHTMLString:htmlString baseURL:nil];
 }
 
 #pragma mark - UIWebViewDelegate

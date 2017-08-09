@@ -76,6 +76,7 @@
                         <constraint firstAttribute="trailing" secondItem="53B-Ls-nAS" secondAttribute="trailing" constant="20" id="O5a-fX-YpZ"/>
                         <constraint firstItem="8Vb-PB-h0k" firstAttribute="top" secondItem="mtW-ql-Yw7" secondAttribute="bottom" constant="35" id="RTN-er-Fb2"/>
                         <constraint firstItem="d74-QU-a6w" firstAttribute="centerX" secondItem="xAE-vS-wVl" secondAttribute="centerX" id="W7N-i6-G6g"/>
+                        <constraint firstItem="na5-rG-WWM" firstAttribute="top" secondItem="xAE-vS-wVl" secondAttribute="top" id="XVz-rf-oGq"/>
                         <constraint firstItem="mtW-ql-Yw7" firstAttribute="leading" secondItem="xAE-vS-wVl" secondAttribute="leading" constant="20" id="YPV-fz-Pgv"/>
                         <constraint firstAttribute="trailing" secondItem="XKi-7V-d0n" secondAttribute="trailing" constant="20" id="YS8-gu-5W9"/>
                         <constraint firstItem="53B-Ls-nAS" firstAttribute="centerX" secondItem="xAE-vS-wVl" secondAttribute="centerX" id="a1X-ex-2ge"/>
@@ -88,7 +89,6 @@
                         <constraint firstAttribute="trailing" secondItem="na5-rG-WWM" secondAttribute="trailing" id="sdj-hN-0iN"/>
                         <constraint firstItem="mtW-ql-Yw7" firstAttribute="top" secondItem="na5-rG-WWM" secondAttribute="bottom" constant="25" id="uCe-XN-5Ys"/>
                         <constraint firstItem="Ril-CU-LoY" firstAttribute="centerX" secondItem="d74-QU-a6w" secondAttribute="centerX" id="yig-Kg-hwF"/>
-                        <constraint firstItem="na5-rG-WWM" firstAttribute="top" secondItem="xAE-vS-wVl" secondAttribute="top" id="zWL-eB-75z"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ae-Bn-FFi" userLabel="MovieInfoView">
@@ -102,6 +102,9 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_ decoration_image" translatesAutoresizingMaskIntoConstraints="NO" id="FJg-U0-3a5">
                             <rect key="frame" x="0.0" y="205" width="375" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="zW1-mp-1S6"/>
+                            </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpw-P3-c0z" userLabel="信息">
                             <rect key="frame" x="171" y="181" width="33" height="16"/>
@@ -149,8 +152,8 @@
                         <constraint firstItem="hMf-Jw-rJd" firstAttribute="top" secondItem="f7E-dC-84t" secondAttribute="bottom" constant="35" id="RUe-Gv-d1t"/>
                         <constraint firstItem="vdz-qh-5fG" firstAttribute="top" secondItem="hMf-Jw-rJd" secondAttribute="top" id="WjH-xD-QtH"/>
                         <constraint firstItem="Bpw-P3-c0z" firstAttribute="centerX" secondItem="9ae-Bn-FFi" secondAttribute="centerX" id="ddo-VX-LP2"/>
-                        <constraint firstItem="f7E-dC-84t" firstAttribute="top" secondItem="FJg-U0-3a5" secondAttribute="bottom" constant="25" id="jMK-Nw-EYf"/>
                         <constraint firstAttribute="trailing" secondItem="h3B-jK-b4C" secondAttribute="trailing" constant="8" id="mWr-YR-8H4"/>
+                        <constraint firstItem="f7E-dC-84t" firstAttribute="top" secondItem="Woz-60-IGC" secondAttribute="bottom" constant="25" id="nts-1Y-qfo"/>
                         <constraint firstItem="Woz-60-IGC" firstAttribute="top" secondItem="9ae-Bn-FFi" secondAttribute="top" id="oib-I4-abg"/>
                         <constraint firstItem="FJg-U0-3a5" firstAttribute="trailing" secondItem="Woz-60-IGC" secondAttribute="trailing" id="uPp-dn-WZG"/>
                         <constraint firstItem="FJg-U0-3a5" firstAttribute="top" secondItem="Bpw-P3-c0z" secondAttribute="bottom" constant="8" id="ukL-bD-sJb"/>
@@ -250,7 +253,7 @@
                 <constraint firstItem="xAE-vS-wVl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g0H-wY-cYi"/>
                 <constraint firstItem="C0v-sv-zMF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="g2Y-RY-imT"/>
                 <constraint firstAttribute="trailing" secondItem="9ae-Bn-FFi" secondAttribute="trailing" id="ghL-2A-z0c"/>
-                <constraint firstItem="C0v-sv-zMF" firstAttribute="top" secondItem="9ae-Bn-FFi" secondAttribute="bottom" priority="900" id="ihn-o9-Fqd"/>
+                <constraint firstItem="C0v-sv-zMF" firstAttribute="top" secondItem="9ae-Bn-FFi" secondAttribute="bottom" id="ihn-o9-Fqd"/>
                 <constraint firstAttribute="trailing" secondItem="9iK-89-vbv" secondAttribute="trailing" id="lJ3-jm-WuU"/>
                 <constraint firstItem="xAE-vS-wVl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pQO-rE-yAP"/>
                 <constraint firstItem="9ae-Bn-FFi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="v8e-yT-TNV"/>
@@ -272,10 +275,12 @@
                 <outlet property="movieAuthorLabel" destination="hMf-Jw-rJd" id="EEN-9g-oZj"/>
                 <outlet property="movieButton" destination="vdz-qh-5fG" id="VhD-GD-vuK"/>
                 <outlet property="movieCoverView" destination="Woz-60-IGC" id="XTY-qf-kMD"/>
+                <outlet property="movieCoverViewConstraint" destination="Jms-0n-ZDT" id="x1H-Bu-g2i"/>
                 <outlet property="movieInfoView" destination="9ae-Bn-FFi" id="f5a-wi-FuF"/>
                 <outlet property="movieNameLabel" destination="Bpw-P3-c0z" id="BHT-QZ-CWL"/>
                 <outlet property="movieTitleLabel" destination="f7E-dC-84t" id="Vlz-Kp-MER"/>
                 <outlet property="musicButton" destination="XKi-7V-d0n" id="aHv-EV-rzI"/>
+                <outlet property="musicCoverViewHeightConstraint" destination="Ot2-Nv-lUj" id="IPV-rh-wyo"/>
                 <outlet property="musicInfoView" destination="xAE-vS-wVl" id="jag-kO-1Uz"/>
                 <outlet property="picNumLabel" destination="h3B-jK-b4C" id="2qx-hU-Ns5"/>
                 <outlet property="playButton" destination="Ril-CU-LoY" id="BN7-jN-ZzS"/>
