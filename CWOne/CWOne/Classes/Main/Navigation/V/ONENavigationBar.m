@@ -120,6 +120,10 @@
     self.navBarBackgroundView.alpha = 1;
 }
 
+- (void)changeStatusBarStyle {
+    
+}
+
 #pragma mark - 私有方法
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
     UIApplication *app = [UIApplication sharedApplication];

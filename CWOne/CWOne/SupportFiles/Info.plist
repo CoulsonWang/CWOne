@@ -41,5 +41,7 @@
 	<string>“一个”需要您的授权才能访问您的相册</string>
 	<key>NSCameraUsageDescription</key>
 	<string>“一个”需要您的授权才能访问您的照相机</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

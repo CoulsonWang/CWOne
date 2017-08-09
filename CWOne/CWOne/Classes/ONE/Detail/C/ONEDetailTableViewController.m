@@ -118,15 +118,15 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     [self setUpNotification];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     // 手动调用一次滚动，确保进入时nav的状态正确
     [self scrollViewDidScroll:self.tableView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+    [self resumeNavigationStatus];
 }
 
 - (void)dealloc {
@@ -329,9 +329,9 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         if (offsetY <= kLucencyModeSpace) {
             [[ONENavigationBarTool sharedInstance] changeNavigationBarToLucencyMode];
             [self.delegate detailTableVC:self UpdateTitle:@""];
-            [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         } else {
-            [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+            [self resumeNavigationStatus];
             [self updateNavBarHeightAndTitleWithOffsetY:offsetY];
         }
     } else {
@@ -357,6 +357,11 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             }
         }
     }
+}
+
+- (void)resumeNavigationStatus {
+    [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 #pragma mark - ONEDetailTableHeaderViewDelegate

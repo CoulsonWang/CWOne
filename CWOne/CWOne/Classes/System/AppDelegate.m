@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
     ONELaunchController *launchVC = [[ONELaunchController alloc] init];
     
     
