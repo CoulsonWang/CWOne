@@ -24,5 +24,7 @@
 // 用户头像
 @property (strong, nonatomic) NSString *web_url;
 
+@property (strong, nonatomic) NSString *summary;
+
 
 @end

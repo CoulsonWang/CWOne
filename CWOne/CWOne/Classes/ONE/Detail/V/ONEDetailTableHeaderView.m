@@ -12,7 +12,8 @@
 #import "ONEUserItem.h"
 
 #define kWebViewMinusHeight 150.0
-#define kInfoHeaderHeight 380.0
+#define kMovieInfoHeaderHeight 490.0
+#define kMusicInfoHeaderHeight 516.0
 
 @interface ONEDetailTableHeaderView () <UIWebViewDelegate>
 
@@ -37,6 +38,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieAuthorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *movieButton;
 
+// 底部信息控件
+@property (weak, nonatomic) IBOutlet UIView *bottomInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *charge_edtLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *authorIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorSummaryLabel;
+@property (weak, nonatomic) IBOutlet UIButton *attentionButton;
+
 
 @property (assign, nonatomic) ONEHomeItemType type;
 
@@ -45,6 +54,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewRightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMusicInfoViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewTopToMovieInfoViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewBottomToAuthorInfoViewSpaceConstraint;
 
 @end
 
@@ -68,6 +78,13 @@
     self.playButton.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.7];
     self.playButton.layer.cornerRadius = self.playButton.width * 0.5;
     self.playButton.layer.masksToBounds = YES;
+    
+    self.authorIconImageView.layer.cornerRadius = self.authorIconImageView.width * 0.5;
+    self.authorIconImageView.layer.masksToBounds = YES;
+    
+    self.attentionButton.layer.borderWidth = 1;
+    self.attentionButton.layer.borderColor = [UIColor colorWithWhite:170/255.0 alpha:1.0].CGColor;
+    self.attentionButton.layer.cornerRadius = 2;
 }
 
 - (void)webViewLoadHtmlDataWithHtmlString:(NSString *)htmlString {
@@ -85,9 +102,11 @@
     } else {
         self.musicInfoView.hidden = YES;
         self.movieInfoView.hidden = YES;
+        self.bottomInfoView.hidden = YES;
         
         [self removeConstraint:self.webViewTopToMusicInfoViewTopConstraint];
         [self removeConstraint:self.webViewTopToMovieInfoViewTopConstraint];
+        [self removeConstraint:self.webViewBottomToAuthorInfoViewSpaceConstraint];
         
         self.webViewLeftConstraint.constant = 0;
         self.webViewRightConstraint.constant = 0;
@@ -105,6 +124,12 @@
         self.albumInfoLabel.text = [NSString stringWithFormat:@"· %@ · %@ | %@",essayItem.album,essayItem.author.user_name,essayItem.title];
         self.titleLabel.text = essayItem.story_title;
         self.authorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.story_author.user_name];
+        // 底部作者信息属性
+        self.charge_edtLabel.text = [NSString stringWithFormat:@"%@ %@",essayItem.charge_edt,essayItem.editor_email];
+        NSURL *authorIconURL = [NSURL URLWithString:essayItem.story_author.web_url];
+        [self.authorIconImageView sd_setImageWithURL:authorIconURL];
+        self.authorNameLabel.text = essayItem.story_author.user_name;
+        self.authorSummaryLabel.text = essayItem.story_author.summary;
     } else if (self.type == ONEHomeItemTypeMovie) {
         NSURL *movieCoverURL = [NSURL URLWithString:essayItem.detailcover];
         [self.movieCoverView sd_setImageWithURL:movieCoverURL];
@@ -112,6 +137,12 @@
         self.picNumLabel.text = [NSString stringWithFormat:@"1/%ld",essayItem.photo.count + 1];
         self.movieTitleLabel.text = essayItem.contentTitle;
         self.movieAuthorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.movieContentAuthor.user_name];
+        // 底部作者信息属性
+        self.charge_edtLabel.text = [NSString stringWithFormat:@"%@ %@",essayItem.charge_edt,essayItem.editor_email];
+        NSURL *authorIconURL = [NSURL URLWithString:essayItem.movieContentAuthor.web_url];
+        [self.authorIconImageView sd_setImageWithURL:authorIconURL];
+        self.authorNameLabel.text = essayItem.movieContentAuthor.user_name;
+        self.authorSummaryLabel.text = essayItem.movieContentAuthor.summary;
     }
 }
 
@@ -120,7 +151,18 @@
     CGFloat webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
     
     CGFloat minusHeight = (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) ? 0 : kWebViewMinusHeight;
-    CGFloat plusHeight = (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie) ? kInfoHeaderHeight : 0;
+    CGFloat plusHeight;
+    switch (self.type) {
+        case ONEHomeItemTypeMusic:
+            plusHeight = kMusicInfoHeaderHeight;
+            break;
+        case ONEHomeItemTypeMovie:
+            plusHeight = kMovieInfoHeaderHeight;
+            break;
+        default:
+            plusHeight = 0;
+            break;
+    }
     [self.delegate detailTableHeaderView:self WebViewDidFinishLoadWithHeight:webViewHeight - minusHeight + plusHeight];
 }
 - (IBAction)musicButtonClick:(UIButton *)sender {
