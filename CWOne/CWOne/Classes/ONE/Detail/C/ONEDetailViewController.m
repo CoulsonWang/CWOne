@@ -62,6 +62,8 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    
     // 设置NavBar
     [self setUpNavigationBar];
     
