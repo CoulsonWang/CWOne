@@ -11,6 +11,7 @@
 		96469C48D61426A2834B3F99 /* libPods-CWOneTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0873E175AD65EDFFF9C13BF9 /* libPods-CWOneTests.a */; };
 		A88E8621F07288D54C66EDE4 /* libPods-CWOneUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 178CB81C74BD020AFB33A200 /* libPods-CWOneUITests.a */; };
 		B900E6F41F3C4800006D1466 /* ONEHomeDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B900E6F31F3C4800006D1466 /* ONEHomeDiaryViewController.m */; };
+		B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */; };
 		B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A371F305FE0004E64D9 /* ONELaunchController.m */; };
 		B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */; };
 		B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */; };
@@ -122,6 +123,8 @@
 		A8C8EA9F5DBA5D5DFE7A9B82 /* Pods-CWOneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CWOneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CWOneTests/Pods-CWOneTests.release.xcconfig"; sourceTree = "<group>"; };
 		B900E6F21F3C4800006D1466 /* ONEHomeDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeDiaryViewController.h; sourceTree = "<group>"; };
 		B900E6F31F3C4800006D1466 /* ONEHomeDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeDiaryViewController.m; sourceTree = "<group>"; };
+		B900E6F51F3C7364006D1466 /* UITextView+CWLineSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+CWLineSpacing.h"; sourceTree = "<group>"; };
+		B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+CWLineSpacing.m"; sourceTree = "<group>"; };
 		B90C3A361F305FE0004E64D9 /* ONELaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELaunchController.h; sourceTree = "<group>"; };
 		B90C3A371F305FE0004E64D9 /* ONELaunchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELaunchController.m; sourceTree = "<group>"; };
 		B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELaunchController.xib; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 				B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */,
 				B93A7D6E1F347C8700FF86E9 /* NSString+ONEComponents.h */,
 				B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */,
+				B900E6F51F3C7364006D1466 /* UITextView+CWLineSpacing.h */,
+				B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1155,6 +1160,7 @@
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
+				B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */,
 				B9B822621F3754BC002F6961 /* ONENavigationBarTool.m in Sources */,
 				B9B828FF1F361A0F008BB163 /* ONEHomeItem.m in Sources */,
 				B9B829061F361A0F008BB163 /* ONEHomeCatalogueView.m in Sources */,

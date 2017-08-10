@@ -13,11 +13,13 @@
 #import "ONEMainTabBarController.h"
 #import "ONEHomeWeatherItem.h"
 #import "NSString+ONEComponents.h"
-#import "UILabel+CWLineSpacing.h"
+#import "UITextView+CWLineSpacing.h"
 
 #define kRatioOfHorizontal 207/311.0
 #define kRatioOfVertical 338/311.0
 #define kBottomSpace 200
+#define kLineSpacing 10.0
+#define kMinTextViewBackgroundHeight 160.0
 
 @interface ONEHomeDiaryViewController () <UITextViewDelegate>
 
@@ -126,19 +128,20 @@
         make.width.equalTo(@(CWScreenW - 80));
         make.centerX.equalTo(scrollView);
         make.top.equalTo(coverInfoLabel.mas_bottom).offset(20);
-        make.height.equalTo(@160);
+        make.height.equalTo(@(kMinTextViewBackgroundHeight));
     }];
     self.textBackgroundView = textBackgroundView;
     
     UITextView *textView = [[UITextView alloc] init];
-    textView.font = [UIFont systemFontOfSize:16 weight:-1];
+    textView.font = [UIFont systemFontOfSize:16];
     textView.backgroundColor = [UIColor clearColor];
     textView.returnKeyType = UIReturnKeyDone;
     textView.delegate = self;
+    textView.scrollEnabled = NO;
     [scrollView addSubview:textView];
     [textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(textBackgroundView.mas_left).offset(8);
-        make.right.equalTo(textBackgroundView.mas_right).offset(-8);
+        make.left.equalTo(textBackgroundView.mas_left).offset(5);
+        make.right.equalTo(textBackgroundView.mas_right).offset(-5);
         make.top.equalTo(textBackgroundView).offset(10);
         make.bottom.equalTo(textBackgroundView.mas_bottom).offset(-10);
     }];
@@ -187,12 +190,30 @@
     
     self.coverInfoLabel.text = self.subTitleString;
     
-    self.textView.text = self.contentString;
+    [self.textView setText:self.contentString lineSpacing:kLineSpacing];
+    [self updateTextViewAndBackgroundFrame];
+    
     
     self.authorNameLabel.text = self.authorInfoString;
     
     [self.scrollView layoutIfNeeded];
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.authorNameLabel.frame) + kBottomSpace);
+}
+#pragma mark - 私有方法
+- (void)updateTextViewAndBackgroundFrame {
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:kLineSpacing];
+    
+    CGRect rect = [self.textView.text boundingRectWithSize:CGSizeMake(CWScreenW - 90, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.textView.font, NSParagraphStyleAttributeName : paragraphStyle} context:nil];
+    
+    CGFloat newHeight = rect.size.height + 70;
+    if (newHeight <= kMinTextViewBackgroundHeight) {
+        newHeight = kMinTextViewBackgroundHeight;
+    }
+    [self.textBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(newHeight));
+    }];
+    [self.scrollView layoutIfNeeded];
 }
 
 #pragma mark - 事件响应
@@ -230,8 +251,11 @@
         [self.textView resignFirstResponder];
         return NO;
     } else {
-        return NO;
+        return YES;
     }
+}
+- (void)textViewDidChange:(UITextView *)textView {
+    [self updateTextViewAndBackgroundFrame];
 }
 
 @end
