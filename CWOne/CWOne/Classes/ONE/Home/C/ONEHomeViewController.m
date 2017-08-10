@@ -14,6 +14,7 @@
 #import "ONEHomeCoverImagePresentationController.h"
 #import "ONEHomeDiaryViewController.h"
 #import <FLAnimatedImage.h>
+#import "ONEHomeFeedsViewController.h"
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
@@ -186,6 +187,8 @@ typedef enum : NSUInteger {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewBackToTodayButtonClick) name:ONETitleViewBackToTodayButtonClickNotifcation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentCoverImageViewWithCustomModal:) name:ONEHomeCoverImageDidClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentDiaryViewController:) name:ONEHomeDiaryButtonDidClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentFeedsViewController) name:ONETitleViewFeedsUnFoldNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissFeedsViewController) name:ONETitleViewFeedsFoldNotification object:nil];
 }
 
 #pragma mark - 事件响应
@@ -224,6 +227,16 @@ typedef enum : NSUInteger {
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:diaryVC];
     [self presentViewController:navVC animated:YES completion:nil];
+}
+
+#pragma mark - 处理标题的展开或收起
+- (void)presentFeedsViewController {
+    ONEHomeFeedsViewController *feedVC = [[ONEHomeFeedsViewController alloc] init];
+    
+}
+
+- (void)dismissFeedsViewController {
+    
 }
 
 #pragma mark - 私有工具方法

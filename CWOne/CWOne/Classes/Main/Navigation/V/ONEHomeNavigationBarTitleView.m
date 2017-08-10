@@ -66,6 +66,7 @@
     
     self.unfold = !self.isUnfold;
     
+    // 修改箭头朝向
     if(self.unfold) {
         [UIView animateWithDuration:0.3 animations:^{
             self.arrowImageView.transform = CGAffineTransformMakeRotation(radian(-179.9));
@@ -74,6 +75,12 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.arrowImageView.transform = CGAffineTransformMakeRotation(0);
         }];
+    }
+    // 发出通知来处理弹出或收起
+    if (self.unfold) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewFeedsUnFoldNotification object:nil userInfo:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewFeedsFoldNotification object:nil userInfo:nil];
     }
 }
 

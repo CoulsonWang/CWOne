@@ -12,6 +12,7 @@
 		A88E8621F07288D54C66EDE4 /* libPods-CWOneUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 178CB81C74BD020AFB33A200 /* libPods-CWOneUITests.a */; };
 		B900E6F41F3C4800006D1466 /* ONEHomeDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B900E6F31F3C4800006D1466 /* ONEHomeDiaryViewController.m */; };
 		B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */; };
+		B900E6FA1F3CAE98006D1466 /* ONEHomeFeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B900E6F91F3CAE98006D1466 /* ONEHomeFeedsViewController.m */; };
 		B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A371F305FE0004E64D9 /* ONELaunchController.m */; };
 		B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */; };
 		B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A3D1F306B8E004E64D9 /* NSString+CWTranslate.m */; };
@@ -125,6 +126,8 @@
 		B900E6F31F3C4800006D1466 /* ONEHomeDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeDiaryViewController.m; sourceTree = "<group>"; };
 		B900E6F51F3C7364006D1466 /* UITextView+CWLineSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+CWLineSpacing.h"; sourceTree = "<group>"; };
 		B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+CWLineSpacing.m"; sourceTree = "<group>"; };
+		B900E6F81F3CAE98006D1466 /* ONEHomeFeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedsViewController.h; sourceTree = "<group>"; };
+		B900E6F91F3CAE98006D1466 /* ONEHomeFeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedsViewController.m; sourceTree = "<group>"; };
 		B90C3A361F305FE0004E64D9 /* ONELaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELaunchController.h; sourceTree = "<group>"; };
 		B90C3A371F305FE0004E64D9 /* ONELaunchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELaunchController.m; sourceTree = "<group>"; };
 		B90C3A381F305FE0004E64D9 /* ONELaunchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELaunchController.xib; sourceTree = "<group>"; };
@@ -759,6 +762,8 @@
 				B9D133C21F3C1F88006471F9 /* ONEHomeCoverImagePresentationController.m */,
 				B900E6F21F3C4800006D1466 /* ONEHomeDiaryViewController.h */,
 				B900E6F31F3C4800006D1466 /* ONEHomeDiaryViewController.m */,
+				B900E6F81F3CAE98006D1466 /* ONEHomeFeedsViewController.h */,
+				B900E6F91F3CAE98006D1466 /* ONEHomeFeedsViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1172,6 +1177,7 @@
 				B900E6F41F3C4800006D1466 /* ONEHomeDiaryViewController.m in Sources */,
 				B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */,
 				B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */,
+				B900E6FA1F3CAE98006D1466 /* ONEHomeFeedsViewController.m in Sources */,
 				B9B829041F361A0F008BB163 /* ONEHomeCatalogueCell.m in Sources */,
 				B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */,
 				B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */,

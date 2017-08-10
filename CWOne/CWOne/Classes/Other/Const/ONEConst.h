@@ -31,4 +31,8 @@ UIKIT_EXTERN NSString *const ONEHomeDiaryButtonDidClickNotification;
 
 UIKIT_EXTERN NSString *const ONEHomeShowDetailViaCatalogueNotification;
 
+UIKIT_EXTERN NSString *const ONETitleViewFeedsUnFoldNotification;
+
+UIKIT_EXTERN NSString *const ONETitleViewFeedsFoldNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;

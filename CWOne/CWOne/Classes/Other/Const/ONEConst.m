@@ -31,4 +31,8 @@ NSString *const ONEHomeDiaryButtonDidClickNotification = @"ONEHomeDiaryButtonDid
 
 NSString *const ONEHomeShowDetailViaCatalogueNotification = @"ONEHomeShowDetailViaCatalogueNotification";
 
+NSString *const ONETitleViewFeedsUnFoldNotification = @"ONETitleViewFeedsUnFoldNotification";
+
+NSString *const ONETitleViewFeedsFoldNotification = @"ONETitleViewFeedsFoldNotification";
+
 NSString *const ONEThemeFontName = @"CourierNewPSMT";
