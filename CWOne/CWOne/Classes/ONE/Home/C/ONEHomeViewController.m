@@ -275,6 +275,9 @@ typedef enum : NSUInteger {
     } else if (index == _lastIndex - 1) {
         if (index != 0) {
             [self singleMoveWithDirection:ONESrollDiretionLeft toIndex:index];
+        } else {
+            self.lastIndex = index;
+            [self updateCurrentVCWithDirection:ONESrollDiretionLeft];
         }
     } else if (index == _lastIndex) {
         return;
