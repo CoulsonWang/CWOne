@@ -29,4 +29,6 @@ UIKIT_EXTERN NSString *const ONEHomeCoverImageDidClickNotification;
 
 UIKIT_EXTERN NSString *const ONEHomeDiaryButtonDidClickNotification;
 
+UIKIT_EXTERN NSString *const ONEHomeShowDetailViaCatalogueNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;

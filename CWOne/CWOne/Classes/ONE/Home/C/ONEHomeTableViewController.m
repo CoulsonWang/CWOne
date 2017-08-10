@@ -49,7 +49,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [self reloadDataWithCompletion:completion];
     self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
 }
-#pragma mark - 懒加载
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,10 +56,13 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [self setUpOnce];
     
     [self reloadDataWithCompletion:nil];
+    
+    [self setUpNotification];
 }
 
-
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - 设置UI控件属性
 - (void)setUpOnce {
     // 初始化TableView
@@ -101,6 +103,10 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     };
     self.tableView.tableHeaderView = headerView;
     self.headerView = headerView;
+}
+
+- (void)setUpNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHomeDetailVC:) name:ONEHomeShowDetailViaCatalogueNotification object:nil];
 }
 
 #pragma mark - 私有工具方法
@@ -161,6 +167,17 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     }
 }
 
+- (void)showHomeDetailVC:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    ONEHomeMenuItem *menuItem = userInfo[ONEMenuItemKey];
+    if (menuItem != self.menuItem) { return; }
+    NSInteger index = [userInfo[ONEIndexKey] integerValue];
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+    ONEHomeItem *item = self.homeItems[index + 1];
+    detailVC.homeItem = item;
+    
+    [self.navigationController showViewController:detailVC sender:nil];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -157,4 +157,10 @@ static NSString *const cellID = @"ONEHomeCatelogueCellID";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.row;
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEHomeShowDetailViaCatalogueNotification object:nil userInfo:@{ONEMenuItemKey : self.menuItem, ONEIndexKey : @(index)}];
+}
+
 @end

@@ -21,6 +21,8 @@
 #define ONECommentIdKey @"commentId"
 #define ONEEssayItemKey @"essayItem"
 #define ONEPhotoArrayKey @"photoArray"
+#define ONEMenuItemKey @"menuItem"
+#define ONEIndexKey @"index"
 
 #define ONECoverPresentationImageKey @"ONECoverPresentationImage"
 #define ONECoverPresentationImageOrientationKey @"ONECoverPresentationImageOrientation"
