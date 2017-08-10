@@ -22,6 +22,12 @@
 #define ONEEssayItemKey @"essayItem"
 #define ONEPhotoArrayKey @"photoArray"
 
+#define ONECoverPresentationImageKey @"ONECoverPresentationImage"
+#define ONECoverPresentationImageOrientationKey @"ONECoverPresentationImageOrientation"
+#define ONECoverPresentationSubTitleKey @"ONECoverPresentationSubTitle"
+#define ONECoverPresentationSerialStringKey @"ONECoverPresentationSerialString"
+#define ONECoverPresentationOriginFrameKey @"ONECoverPresentationOriginFrame"
+
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"
 #import "ONEConst.h"

@@ -10,6 +10,8 @@
 #import "ONEHomeTableViewController.h"
 #import "ONEDateTool.h"
 #import "ONENavigationBarTool.h"
+#import "ONECustomTransitionTool.h"
+#import "ONEHomeCoverImagePresentationController.h"
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
@@ -164,6 +166,7 @@ typedef enum : NSUInteger {
 
 - (void)setUpNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewBackToTodayButtonClick) name:ONETitleViewBackToTodayButtonClickNotifcation object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentCoverImageViewWithCustomModal:) name:ONEHomeCoverImageDidClickNotification object:nil];
 }
 
 #pragma mark - 事件响应
@@ -173,6 +176,22 @@ typedef enum : NSUInteger {
     } completion:^(BOOL finished) {
         [self scrollViewDidEndDecelerating:self.scrollView];
     }];
+}
+
+- (void)presentCoverImageViewWithCustomModal:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    ONECustomTransitionTool *transitionTool = [ONECustomTransitionTool sharedInstance];
+    transitionTool.presentImage = userInfo[ONECoverPresentationImageKey];
+    transitionTool.orientation = ([userInfo[ONECoverPresentationImageOrientationKey] integerValue] == 0) ? ONECoverImageOrientationHorizontal : ONECoverImageOrientationVertical;
+    transitionTool.subTitleString = userInfo[ONECoverPresentationSubTitleKey];
+    transitionTool.volumeString = userInfo[ONECoverPresentationSerialStringKey];
+    transitionTool.originFrame = [userInfo[ONECoverPresentationOriginFrameKey] CGRectValue];
+    
+    ONEHomeCoverImagePresentationController *coverPresentVC = [[ONEHomeCoverImagePresentationController alloc] init];
+    coverPresentVC.modalPresentationStyle = UIModalPresentationCustom;
+    coverPresentVC.transitioningDelegate = transitionTool;
+    
+    [self presentViewController:coverPresentVC animated:YES completion:nil];
 }
 
 #pragma mark - 私有工具方法

@@ -103,7 +103,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.headerView = headerView;
 }
 
-
 #pragma mark - 私有工具方法
 // 刷新数据
 - (void)reloadDataWithCompletion:(void(^)())completion{

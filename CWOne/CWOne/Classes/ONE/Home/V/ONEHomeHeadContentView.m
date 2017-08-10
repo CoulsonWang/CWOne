@@ -54,6 +54,10 @@
         make.width.equalTo(@60);
     }];
     self.likeView = likeView;
+    
+    // 给封面图片添加手势
+    self.coverView.userInteractionEnabled = YES;
+    [self.coverView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverViewDidClick)]];
 }
 
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
@@ -78,8 +82,20 @@
     self.headContentViewHeight = CGRectGetMaxY(self.seperateView.frame);
 }
 
-#pragma mark - 私有方法
-
+#pragma mark - 事件响应
+// 通知外界控制器modal
+- (void)coverViewDidClick {
+    CGRect originFrame = [self convertRect:self.coverView.frame toView:[UIApplication sharedApplication].keyWindow];
+    NSDictionary *userInfo = @{
+                               ONECoverPresentationImageKey : self.coverView.image,
+                               ONECoverPresentationImageOrientationKey : self.viewModel.homeItem.orientation,
+                               ONECoverPresentationSubTitleKey : self.subTitleLabel.text,
+                               ONECoverPresentationSerialStringKey : self.viewModel.homeItem.volume,
+                               ONECoverPresentationOriginFrameKey : [NSValue valueWithCGRect:originFrame],
+                               };
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEHomeCoverImageDidClickNotification object:nil userInfo:userInfo];
+}
 
 - (IBAction)smallNoteButtonClick:(UIButton *)sender {
 }
