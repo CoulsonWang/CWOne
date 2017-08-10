@@ -40,8 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setUpSubViews];
@@ -60,8 +58,6 @@
 - (void)setUpSubViews {
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.contentSize = CGSizeMake(0, CWScreenH);
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
@@ -255,6 +251,7 @@
     }
 }
 - (void)textViewDidChange:(UITextView *)textView {
+    self.authorNameLabel.hidden = ![textView.text isEqualToString:self.contentString];
     [self updateTextViewAndBackgroundFrame];
 }
 

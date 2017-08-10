@@ -13,9 +13,11 @@
 #import "ONECustomTransitionTool.h"
 #import "ONEHomeCoverImagePresentationController.h"
 #import "ONEHomeDiaryViewController.h"
+#import <FLAnimatedImage.h>
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
+#define kLoadingImageHeight 50
 
 typedef enum : NSUInteger {
     ONESrollDiretionLeft,
@@ -25,6 +27,8 @@ typedef enum : NSUInteger {
 @interface ONEHomeViewController () <UIScrollViewDelegate, ONEHomeTableViewControllerDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
+
+@property (weak, nonatomic) FLAnimatedImageView *loadingImageView;
 
 @property (weak, nonatomic) ONEHomeTableViewController *leftVC;
 @property (weak, nonatomic) ONEHomeTableViewController *middleVC;
@@ -117,6 +121,8 @@ typedef enum : NSUInteger {
     
     [self setUpTableViews];
     
+    [self setUpLoadingAnimateView];
+    
     [self setUpNotification];
     
     // 初始参数
@@ -163,6 +169,17 @@ typedef enum : NSUInteger {
     
     self.rightTableView.x = CWScreenW;
     self.rightVC.dateStr = [[ONEDateTool sharedInstance] yesterdayDateStr];
+}
+
+- (void)setUpLoadingAnimateView {
+    NSURL *imgUrl = [[NSBundle mainBundle] URLForResource:@"loading_gray@2x" withExtension:@"gif"];
+    FLAnimatedImage *animatedImg = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgUrl]];
+    FLAnimatedImageView *gifView = [[FLAnimatedImageView alloc] init];
+    gifView.animatedImage = animatedImg;
+    gifView.frame = CGRectMake((CWScreenW - kLoadingImageHeight) * 0.5, (CWScreenH - kLoadingImageHeight) * 0.5 - 60, kLoadingImageHeight, kLoadingImageHeight);
+    gifView.hidden = YES;
+    [self.scrollView addSubview:gifView];
+    self.loadingImageView = gifView;
 }
 
 - (void)setUpNotification {
@@ -298,7 +315,10 @@ typedef enum : NSUInteger {
         return;
     } else {
         // 移动了大于一页时的处理,更新三个tableView的位置和数据
+        self.loadingImageView.x = (CWScreenW - kLoadingImageHeight) * 0.5 + CWScreenW * index;
+        self.loadingImageView.hidden = NO;
         [self.middleVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index] withCompletion:^{
+            self.loadingImageView.hidden = YES;
             self.middleTableView.x = index * CWScreenW;
         }];
         [self.rightVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index + 1] withCompletion:^{
