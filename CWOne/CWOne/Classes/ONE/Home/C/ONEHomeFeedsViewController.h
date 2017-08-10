@@ -10,4 +10,6 @@
 
 @interface ONEHomeFeedsViewController : UIViewController
 
+@property (strong, nonatomic) NSString *dateString;
+
 @end

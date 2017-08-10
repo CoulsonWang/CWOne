@@ -13,7 +13,7 @@ typedef enum : NSUInteger {
     ONECoverImageOrientationVertical,
 } ONECoverImageOrientation;
 
-@interface ONECustomTransitionTool : NSObject <UIViewControllerTransitioningDelegate>
+@interface ONEHomeCoverTransitionTool : NSObject <UIViewControllerTransitioningDelegate>
 
 @property (strong, nonatomic) UIImage *presentImage;
 

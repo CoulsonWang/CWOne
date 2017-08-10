@@ -10,7 +10,7 @@
 #import "ONEHomeTableViewController.h"
 #import "ONEDateTool.h"
 #import "ONENavigationBarTool.h"
-#import "ONECustomTransitionTool.h"
+#import "ONEHomeCoverTransitionTool.h"
 #import "ONEHomeCoverImagePresentationController.h"
 #import "ONEHomeDiaryViewController.h"
 #import <FLAnimatedImage.h>
@@ -42,6 +42,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) ONEHomeTableViewController *currentVC;
 @property (assign, nonatomic) NSInteger lastIndex;
 
+@property (weak, nonatomic) ONEHomeFeedsViewController *feedsVC;
+@property (weak, nonatomic) UIView *feedsView;
 @end
 
 @implementation ONEHomeViewController
@@ -113,6 +115,24 @@ typedef enum : NSUInteger {
     return _rightTableView;
 }
 
+- (ONEHomeFeedsViewController *)feedsVC {
+    if (!_feedsVC) {
+        ONEHomeFeedsViewController *feedsVC = [[ONEHomeFeedsViewController alloc] init];
+        [self addChildViewController:feedsVC];
+        _feedsVC = feedsVC;
+    }
+    return _feedsVC;
+}
+
+- (UIView *)feedsView {
+    if (!_feedsView) {
+        UIView *feedsView = self.feedsVC.view;
+        feedsView.frame = CGRectMake(0, -CWScreenH, CWScreenW, CWScreenH);
+        [self.view addSubview:feedsView];
+        _feedsView = feedsView;
+    }
+    return _feedsView;
+}
 
 #pragma mark - view的生命周期
 - (void)viewDidLoad {
@@ -187,7 +207,7 @@ typedef enum : NSUInteger {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewBackToTodayButtonClick) name:ONETitleViewBackToTodayButtonClickNotifcation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentCoverImageViewWithCustomModal:) name:ONEHomeCoverImageDidClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentDiaryViewController:) name:ONEHomeDiaryButtonDidClickNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentFeedsViewController) name:ONETitleViewFeedsUnFoldNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentFeedsViewController:) name:ONETitleViewFeedsUnFoldNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissFeedsViewController) name:ONETitleViewFeedsFoldNotification object:nil];
 }
 
@@ -202,7 +222,7 @@ typedef enum : NSUInteger {
 
 - (void)presentCoverImageViewWithCustomModal:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
-    ONECustomTransitionTool *transitionTool = [ONECustomTransitionTool sharedInstance];
+    ONEHomeCoverTransitionTool *transitionTool = [ONEHomeCoverTransitionTool sharedInstance];
     transitionTool.presentImage = userInfo[ONECoverPresentationImageKey];
     transitionTool.orientation = ([userInfo[ONECoverPresentationImageOrientationKey] integerValue] == 0) ? ONECoverImageOrientationHorizontal : ONECoverImageOrientationVertical;
     transitionTool.subTitleString = userInfo[ONECoverPresentationSubTitleKey];
@@ -230,13 +250,19 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 处理标题的展开或收起
-- (void)presentFeedsViewController {
-    ONEHomeFeedsViewController *feedVC = [[ONEHomeFeedsViewController alloc] init];
-    
+- (void)presentFeedsViewController:(NSNotification *)notification {
+    self.tabBarController.tabBar.hidden = YES;
+    self.feedsVC.dateString = notification.userInfo[ONEDateStringKey];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.feedsView.y = 0;
+    }];
 }
 
 - (void)dismissFeedsViewController {
-    
+    self.tabBarController.tabBar.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.feedsView.y = -CWScreenH;
+    }];
 }
 
 #pragma mark - 私有工具方法

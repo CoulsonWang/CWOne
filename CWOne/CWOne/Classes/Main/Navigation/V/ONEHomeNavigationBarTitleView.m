@@ -78,7 +78,7 @@
     }
     // 发出通知来处理弹出或收起
     if (self.unfold) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewFeedsUnFoldNotification object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewFeedsUnFoldNotification object:nil userInfo:@{ONEDateStringKey : self.textView.dateString}];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewFeedsFoldNotification object:nil userInfo:nil];
     }

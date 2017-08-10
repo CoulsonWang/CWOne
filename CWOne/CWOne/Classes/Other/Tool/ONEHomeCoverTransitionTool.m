@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Coulson_Wang. All rights reserved.
 //
 
-#import "ONECustomTransitionTool.h"
+#import "ONEHomeCoverTransitionTool.h"
 
 #define kHorizontalImageheight 240
 #define kVerticalImageHeight 300
@@ -17,9 +17,9 @@
 #define kSubtitleLabelVerticalMargin 34
 #define kLableVerticalMargin 3
 
-static ONECustomTransitionTool *_instance;
+static ONEHomeCoverTransitionTool *_instance;
 
-@interface ONECustomTransitionTool () <UIViewControllerAnimatedTransitioning>
+@interface ONEHomeCoverTransitionTool () <UIViewControllerAnimatedTransitioning>
 
 @property (assign, nonatomic, getter=isPresented) BOOL presented;
 
@@ -29,7 +29,15 @@ static ONECustomTransitionTool *_instance;
 
 @end
 
-@implementation ONECustomTransitionTool
+@implementation ONEHomeCoverTransitionTool
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+    });
+    return _instance;
+}
 
 #pragma mark - 懒加载
 - (UIImageView *)imageView {
@@ -68,14 +76,6 @@ static ONECustomTransitionTool *_instance;
         _subtitleLabel = subtitleLabel;
     }
     return _subtitleLabel;
-}
-
-+ (instancetype)sharedInstance {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [[ONECustomTransitionTool alloc] init];
-    });
-    return _instance;
 }
 
 - (CGRect)calculateDestinationFrame {

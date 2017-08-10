@@ -23,6 +23,7 @@
 #define ONEPhotoArrayKey @"photoArray"
 #define ONEMenuItemKey @"menuItem"
 #define ONEIndexKey @"index"
+#define ONEDateStringKey @"dataString"
 
 #define ONECoverPresentationImageKey @"ONECoverPresentationImage"
 #define ONECoverPresentationImageOrientationKey @"ONECoverPresentationImageOrientation"

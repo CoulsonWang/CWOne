@@ -256,4 +256,21 @@ static ONENetworkTool *_instance;
     }];
 }
 
+- (void)requestFeedsDataWithDateString:(NSString *)dateString success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/feeds/list/%@",dateString];
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end

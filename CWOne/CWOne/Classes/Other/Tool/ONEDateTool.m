@@ -56,4 +56,12 @@ static ONEDateTool *_instance;
     return [formatter stringFromDate:date];
 }
 
+- (NSString *)getFeedsRequestDateStringWithOriginalDateString:(NSString *)dateString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date = [formatter dateFromString:dateString];
+    formatter.dateFormat = @"yyyy-MM";
+    return [formatter stringFromDate:date];
+}
+
 @end

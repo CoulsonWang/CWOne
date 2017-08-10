@@ -36,6 +36,10 @@
 
 /// 请求电影的故事数据
 - (void)requestMovieStoryDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/// 请求标题点击后展开的feeds列表数据
+- (void)requestFeedsDataWithDateString:(NSString *)dateString success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;
