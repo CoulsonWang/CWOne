@@ -12,6 +12,7 @@
 #import "ONENavigationBarTool.h"
 #import "ONECustomTransitionTool.h"
 #import "ONEHomeCoverImagePresentationController.h"
+#import "ONEHomeDiaryViewController.h"
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
@@ -167,6 +168,7 @@ typedef enum : NSUInteger {
 - (void)setUpNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleViewBackToTodayButtonClick) name:ONETitleViewBackToTodayButtonClickNotifcation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentCoverImageViewWithCustomModal:) name:ONEHomeCoverImageDidClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentDiaryViewController:) name:ONEHomeDiaryButtonDidClickNotification object:nil];
 }
 
 #pragma mark - 事件响应
@@ -192,6 +194,19 @@ typedef enum : NSUInteger {
     coverPresentVC.transitioningDelegate = transitionTool;
     
     [self presentViewController:coverPresentVC animated:YES completion:nil];
+}
+
+- (void)presentDiaryViewController:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    ONEHomeDiaryViewController *diaryVC = [[ONEHomeDiaryViewController alloc] init];
+    diaryVC.coverImage = userInfo[ONECoverPresentationImageKey];
+    diaryVC.orientation = userInfo[ONECoverPresentationImageOrientationKey];
+    diaryVC.subTitleString = userInfo[ONECoverPresentationSubTitleKey];
+    diaryVC.authorInfoString = userInfo[ONEDiaryPresentationAuthorInfoKey];
+    diaryVC.contentString = userInfo[ONEDiaryPresentationContentKey];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:diaryVC];
+    [self presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark - 私有工具方法

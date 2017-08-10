@@ -83,7 +83,7 @@
 }
 
 #pragma mark - 事件响应
-// 通知外界控制器modal
+
 - (void)coverViewDidClick {
     CGRect originFrame = [self convertRect:self.coverView.frame toView:[UIApplication sharedApplication].keyWindow];
     NSDictionary *userInfo = @{
@@ -93,11 +93,20 @@
                                ONECoverPresentationSerialStringKey : self.viewModel.homeItem.volume,
                                ONECoverPresentationOriginFrameKey : [NSValue valueWithCGRect:originFrame],
                                };
-    
+    // 通知外界控制器modal
     [[NSNotificationCenter defaultCenter] postNotificationName:ONEHomeCoverImageDidClickNotification object:nil userInfo:userInfo];
 }
 
 - (IBAction)smallNoteButtonClick:(UIButton *)sender {
+    NSDictionary *userInfo = @{
+                               ONECoverPresentationImageKey : self.coverView.image,
+                               ONECoverPresentationImageOrientationKey : self.viewModel.homeItem.orientation,
+                               ONECoverPresentationSubTitleKey : self.subTitleLabel.text,
+                               ONEDiaryPresentationContentKey : self.viewModel.homeItem.forward,
+                               ONEDiaryPresentationAuthorInfoKey : self.viewModel.homeItem.words_info,
+                               };
+    // 通知外界控制器modal
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEHomeDiaryButtonDidClickNotification object:nil userInfo:userInfo];
 }
 
 - (IBAction)shareButtonClick:(UIButton *)sender {

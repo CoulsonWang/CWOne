@@ -27,4 +27,6 @@ UIKIT_EXTERN NSString *const ONEPhotoViewerShowNotification;
 
 UIKIT_EXTERN NSString *const ONEHomeCoverImageDidClickNotification;
 
+UIKIT_EXTERN NSString *const ONEHomeDiaryButtonDidClickNotification;
+
 UIKIT_EXTERN NSString *const ONEThemeFontName;

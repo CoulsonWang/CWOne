@@ -27,4 +27,6 @@ NSString *const ONEPhotoViewerShowNotification = @"ONEPhotoViewerShowNotificatio
 
 NSString *const ONEHomeCoverImageDidClickNotification = @"ONEHomeCoverImageDidClickNotification";
 
+NSString *const ONEHomeDiaryButtonDidClickNotification = @"ONEHomeDiaryButtonDidClickNotification";
+
 NSString *const ONEThemeFontName = @"CourierNewPSMT";

@@ -27,6 +27,8 @@
 #define ONECoverPresentationSubTitleKey @"ONECoverPresentationSubTitle"
 #define ONECoverPresentationSerialStringKey @"ONECoverPresentationSerialString"
 #define ONECoverPresentationOriginFrameKey @"ONECoverPresentationOriginFrame"
+#define ONEDiaryPresentationContentKey @"ONEDiaryPresentationContent"
+#define ONEDiaryPresentationAuthorInfoKey @"ONEDiaryPresentationAuthorInfo"
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"
