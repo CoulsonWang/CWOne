@@ -120,18 +120,13 @@ typedef enum : NSUInteger {
         ONEHomeFeedsViewController *feedsVC = [[ONEHomeFeedsViewController alloc] init];
         [self addChildViewController:feedsVC];
         _feedsVC = feedsVC;
-    }
-    return _feedsVC;
-}
-
-- (UIView *)feedsView {
-    if (!_feedsView) {
-        UIView *feedsView = self.feedsVC.view;
+        
+        UIView *feedsView = feedsVC.view;
         feedsView.frame = CGRectMake(0, -CWScreenH, CWScreenW, CWScreenH);
         [self.view addSubview:feedsView];
-        _feedsView = feedsView;
+        self.feedsView = feedsView;
     }
-    return _feedsView;
+    return _feedsVC;
 }
 
 #pragma mark - view的生命周期

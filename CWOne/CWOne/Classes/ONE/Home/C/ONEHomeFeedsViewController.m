@@ -14,11 +14,12 @@
 #import "ONEHomeFeedHeaderView.h"
 #import <MJRefresh.h>
 #import <SVProgressHUD.h>
+#import "ONEHomeFeedBottomPickerView.h"
 
 #define kFeedSideMargin 20.0
 #define kFeedDistance 20.0
 #define kFeedLineSpacing 10.0
-#define kBottomDatePickerHeight 44.0
+#define kBottomDatePickerHeight 39.0
 #define kCollectionViewBottomInset 20.0
 
 static NSString *const cellID = @"ONEHomeFeedCellID";
@@ -27,6 +28,8 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 @interface ONEHomeFeedsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) UICollectionView *collectionView;
+
+@property (weak, nonatomic) ONEHomeFeedBottomPickerView *bottomView;
 
 @property (strong, nonatomic) NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList;
 
@@ -78,11 +81,15 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 }
 
 - (void)setUpBottomPickerView {
-    
+     ONEHomeFeedBottomPickerView *bottomView = [[ONEHomeFeedBottomPickerView alloc] initWithFrame:CGRectMake(0, CWScreenH - kBottomDatePickerHeight, CWScreenW, kBottomDatePickerHeight)];
+    [self.view addSubview:bottomView];
+    self.bottomView = bottomView;
 }
 
 - (void)setDateString:(NSString *)dateString {
     _dateString = dateString;
+    
+    self.bottomView.dateString = dateString;
     [self loadFeedsData];
 }
 

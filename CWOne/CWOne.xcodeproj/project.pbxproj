@@ -28,6 +28,7 @@
 		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
 		B9242D631F3D87D40039AE0E /* ONEHomeFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */; };
 		B9242D641F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */; };
+		B9242D671F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */; };
 		B92556031F3CC1F400E9720D /* ONEFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556021F3CC1F400E9720D /* ONEFeedItem.m */; };
 		B92556071F3D782800E9720D /* ONEHomeFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556051F3D782800E9720D /* ONEHomeFeedCell.m */; };
 		B92556081F3D782800E9720D /* ONEHomeFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92556061F3D782800E9720D /* ONEHomeFeedCell.xib */; };
@@ -160,6 +161,8 @@
 		B9242D601F3D87D40039AE0E /* ONEHomeFeedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedHeaderView.h; sourceTree = "<group>"; };
 		B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedHeaderView.m; sourceTree = "<group>"; };
 		B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeFeedHeaderView.xib; sourceTree = "<group>"; };
+		B9242D651F3D96610039AE0E /* ONEHomeFeedBottomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedBottomPickerView.h; sourceTree = "<group>"; };
+		B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedBottomPickerView.m; sourceTree = "<group>"; };
 		B92556011F3CC1F400E9720D /* ONEFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEFeedItem.h; sourceTree = "<group>"; };
 		B92556021F3CC1F400E9720D /* ONEFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEFeedItem.m; sourceTree = "<group>"; };
 		B92556041F3D782800E9720D /* ONEHomeFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedCell.h; sourceTree = "<group>"; };
@@ -830,6 +833,8 @@
 				B9242D601F3D87D40039AE0E /* ONEHomeFeedHeaderView.h */,
 				B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */,
 				B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */,
+				B9242D651F3D96610039AE0E /* ONEHomeFeedBottomPickerView.h */,
+				B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1202,6 +1207,7 @@
 				B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */,
 				B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */,
 				B900E6FA1F3CAE98006D1466 /* ONEHomeFeedsViewController.m in Sources */,
+				B9242D671F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m in Sources */,
 				B9B829041F361A0F008BB163 /* ONEHomeCatalogueCell.m in Sources */,
 				B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */,
 				B9B828FD1F361A0F008BB163 /* ONEHomeViewController.m in Sources */,
