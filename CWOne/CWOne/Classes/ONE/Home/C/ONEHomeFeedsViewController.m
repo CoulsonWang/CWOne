@@ -13,6 +13,7 @@
 #import "ONEHomeFeedCell.h"
 #import "ONEHomeFeedHeaderView.h"
 #import <MJRefresh.h>
+#import <SVProgressHUD.h>
 
 #define kFeedSideMargin 20.0
 #define kFeedDistance 20.0
@@ -53,7 +54,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     flowLayout.minimumInteritemSpacing = kFeedDistance;
     flowLayout.minimumLineSpacing = kFeedLineSpacing;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, kCollectionViewBottomInset, kFeedSideMargin);
-    flowLayout.headerReferenceSize = CGSizeMake(CWScreenW - 2* kFeedSideMargin, 50);
+    flowLayout.headerReferenceSize = CGSizeMake(CWScreenW, 50);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
@@ -62,6 +63,16 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     collectionView.backgroundColor = [UIColor whiteColor];
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedCell class]) bundle:nil] forCellWithReuseIdentifier:cellID];
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedHeaderView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID];
+    
+    MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewerFeedsData)];
+    refreshHeader.lastUpdatedTimeLabel.hidden = YES;
+    refreshHeader.stateLabel.hidden= YES;
+    refreshHeader.arrowView.alpha = 0;
+    collectionView.mj_header = refreshHeader;
+    
+    MJRefreshBackNormalFooter *refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadOlderFeedsData)];
+    collectionView.mj_footer = refreshFooter;
+    
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
 }
@@ -88,6 +99,51 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
         [feedsList addObject:feeds];
         self.feedsList = feedsList;
         [self.collectionView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)loadNewerFeedsData {
+    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
+    NSString *nextMonthDateString = [[ONEDateTool sharedInstance] getNextMonthDateStringWithCurrentMonthDateString:dateString];
+    [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:nextMonthDateString success:^(NSArray *dataArray) {
+        if (dataArray.count == 0) {
+            [SVProgressHUD showImage:nil status:@"没有更多内容"];
+            [SVProgressHUD dismissWithDelay:1.5];
+            [self.collectionView.mj_header endRefreshing];
+        } else {
+            NSMutableArray<ONEFeedItem *> *feeds = [NSMutableArray array];
+            for (NSDictionary *dict in dataArray) {
+                ONEFeedItem *feedItem = [ONEFeedItem feedItemWithDict:dict];
+                [feeds addObject:feedItem];
+            }
+            [self.feedsList insertObject:feeds atIndex:0];
+            [self.collectionView reloadData];
+            [self.collectionView.mj_header endRefreshing];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)loadOlderFeedsData {
+    NSString *oldestDateString = self.feedsList.lastObject.lastObject.date;
+    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:oldestDateString];
+    NSString *lastMonthDateString = [[ONEDateTool sharedInstance] getLastMonthDateStringWithCurrentMonthDateString:dateString];
+    [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:lastMonthDateString success:^(NSArray *dataArray) {
+        if (dataArray.count == 0) {
+            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+        } else {
+            NSMutableArray<ONEFeedItem *> *feeds = [NSMutableArray array];
+            for (NSDictionary *dict in dataArray) {
+                ONEFeedItem *feedItem = [ONEFeedItem feedItemWithDict:dict];
+                [feeds addObject:feedItem];
+            }
+            [self.feedsList addObject:feeds];
+            [self.collectionView reloadData];
+            [self.collectionView.mj_footer endRefreshing];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];

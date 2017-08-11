@@ -21,14 +21,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RwZ-14-sBC">
-                    <rect key="frame" x="0.0" y="24.5" width="133.5" height="1"/>
+                    <rect key="frame" x="20" y="24.5" width="113.5" height="1"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="ylI-j5-JgG"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24w-xi-qlj">
-                    <rect key="frame" x="186.5" y="24" width="133.5" height="1"/>
+                    <rect key="frame" x="186.5" y="24" width="113.5" height="1"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="00R-Jd-JPr"/>
@@ -38,10 +38,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ZGT-PW-s3k" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="PoS-0E-wM8"/>
-                <constraint firstAttribute="trailing" secondItem="24w-xi-qlj" secondAttribute="trailing" id="VOE-Fc-Asy"/>
+                <constraint firstAttribute="trailing" secondItem="24w-xi-qlj" secondAttribute="trailing" constant="20" id="VOE-Fc-Asy"/>
                 <constraint firstItem="ZGT-PW-s3k" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="YyX-1v-P1g"/>
                 <constraint firstItem="ZGT-PW-s3k" firstAttribute="leading" secondItem="RwZ-14-sBC" secondAttribute="trailing" constant="10" id="a8L-su-Vxu"/>
-                <constraint firstItem="RwZ-14-sBC" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="mv2-P5-WMI"/>
+                <constraint firstItem="RwZ-14-sBC" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="20" id="mv2-P5-WMI"/>
                 <constraint firstItem="24w-xi-qlj" firstAttribute="leading" secondItem="ZGT-PW-s3k" secondAttribute="trailing" constant="10" id="nSS-2p-09L"/>
                 <constraint firstItem="24w-xi-qlj" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="zVs-yx-ecD"/>
                 <constraint firstItem="RwZ-14-sBC" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="zh0-bp-eO7"/>

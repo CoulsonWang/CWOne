@@ -30,4 +30,9 @@
 /// 根据原始日期转换为feed展示的日期
 - (NSString *)getFeedsDateStringWithOriginalDateString:(NSString *)originalDateString;
 
+/// 根据当前月份获取到下一个月的日期
+- (NSString *)getNextMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString;
+
+/// 根据当前月份获取上一个月的日期
+- (NSString *)getLastMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString;
 @end

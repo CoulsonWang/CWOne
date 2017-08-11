@@ -72,4 +72,20 @@ static ONEDateTool *_instance;
     return [formatter stringFromDate:date];
 }
 
+- (NSString *)getNextMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM";
+    NSDate *date = [formatter dateFromString:currentMonthDateString];
+    NSDate *nextMonthDate = [date dateByAddingTimeInterval:31*24*60*60];
+    return [formatter stringFromDate:nextMonthDate];
+}
+
+- (NSString *)getLastMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM";
+    NSDate *date = [formatter dateFromString:currentMonthDateString];
+    NSDate *nextMonthDate = [date dateByAddingTimeInterval:-31*24*60*60];
+    return [formatter stringFromDate:nextMonthDate];
+}
+
 @end
