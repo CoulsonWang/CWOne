@@ -12,10 +12,13 @@
 #import "ONEFeedItem.h"
 #import "ONEHomeFeedCell.h"
 #import "ONEHomeFeedHeaderView.h"
+#import <MJRefresh.h>
 
 #define kFeedSideMargin 20.0
 #define kFeedDistance 20.0
 #define kFeedLineSpacing 10.0
+#define kBottomDatePickerHeight 44.0
+#define kCollectionViewBottomInset 20.0
 
 static NSString *const cellID = @"ONEHomeFeedCellID";
 static NSString *const headerID = @"ONEHomeFeedHeaderID";
@@ -49,13 +52,13 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.minimumInteritemSpacing = kFeedDistance;
     flowLayout.minimumLineSpacing = kFeedLineSpacing;
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, 0, kFeedSideMargin);
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, kCollectionViewBottomInset, kFeedSideMargin);
     flowLayout.headerReferenceSize = CGSizeMake(CWScreenW - 2* kFeedSideMargin, 50);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
     collectionView.delegate = self;
-    collectionView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
+    collectionView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, kBottomDatePickerHeight, 0);
     collectionView.backgroundColor = [UIColor whiteColor];
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedCell class]) bundle:nil] forCellWithReuseIdentifier:cellID];
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedHeaderView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID];

@@ -100,8 +100,6 @@
     self.arrowImageView.alpha = (offset/ONEScrollOffsetLimit);
     // 修改天气标签的alpha
     self.weatherLabel.alpha = 1-offset/ONEScrollOffsetLimit;
-    
-    
     // 修改title的frame
     CGFloat titleY = kMinTitleY + kMaxTitleY * (offset/ONEScrollOffsetLimit);
     titleY = titleY < kMinTitleY ? kMinTitleY : titleY;
@@ -112,12 +110,9 @@
     backCenterY = backCenterY < kMinBackBtnCenterY ? kMinBackBtnCenterY : backCenterY;
     backCenterY = backCenterY > kMaxBackBtnCenterY ? kMaxBackBtnCenterY : backCenterY;
     self.backToTodayButton.centerY = backCenterY;
+    
+    self.titleButton.enabled = (offset >= ONEScrollOffsetLimit);
 }
-
-- (void)enableTheTitleButton:(BOOL)isEnable {
-    self.titleButton.enabled = isEnable;
-}
-
 - (void)updateBackButtonVisible:(BOOL)isHidden {
     self.backToTodayButton.hidden = isHidden;
 }

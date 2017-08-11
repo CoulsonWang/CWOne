@@ -75,11 +75,9 @@
     if (offset >= ONEScrollOffsetLimit * 0.5) {
         [self changeAlphaOfStatusBar:1];
         [self.homeTitleView updateSubFrameAndAlphaWithOffset:ONEScrollOffsetLimit];
-        [self.homeTitleView enableTheTitleButton:YES];
     } else {
         [self changeAlphaOfStatusBar:0];
         [self.homeTitleView updateSubFrameAndAlphaWithOffset:0];
-        [self.homeTitleView enableTheTitleButton:NO];
     }
 }
 

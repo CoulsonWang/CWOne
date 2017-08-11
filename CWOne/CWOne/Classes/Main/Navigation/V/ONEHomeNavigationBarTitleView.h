@@ -18,8 +18,6 @@
 
 - (void)updateSubFrameAndAlphaWithOffset:(CGFloat)offset;
 
-- (void)enableTheTitleButton:(BOOL)isEnable;
-
 - (void)updateBackButtonVisible:(BOOL)isHidden;
 
 - (void)updateDateStringWithDateString:(NSString *)dateString;
