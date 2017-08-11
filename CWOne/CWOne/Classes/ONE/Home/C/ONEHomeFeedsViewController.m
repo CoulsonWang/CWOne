@@ -261,26 +261,22 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    NSInteger row = offsetY / kRowHeight;
+    ONEHomeFeedCell *cell = (ONEHomeFeedCell *)[self.collectionView visibleCells].firstObject;
+    NSString *cellDate = cell.feedItem.date;
     
-    NSInteger rowSum = 0;
-    for (NSArray<ONEFeedItem *> *feeds in self.feedsList) {
-        NSInteger feedsRow = (feeds.count + 1) * 0.5;
-        rowSum += feedsRow;
-        if (row < rowSum) {
-            if (![self.bottomView.dateString isEqualToString:feeds.firstObject.date]) {
-                self.bottomView.dateString = feeds.firstObject.date;
-            }
-            break;
-        }
+    NSString *cellDateStr = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:cellDate];
+    NSString *bottomDateStr = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.bottomView.dateString];
+    if (cellDate != nil && ![cellDateStr isEqualToString:bottomDateStr]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.bottomView.dateString = cellDate; 
+        });
     }
 }
 
 #pragma mark - ONEHomeFeedBottomPickerViewDelegate
 - (void)feedDatePickViewDidClick:(ONEHomeFeedBottomPickerView *)pickView {
     // 弹出日期选择器
-    [self.pickerView appear];
+    [self.pickerView appearWithDateString:self.bottomView.dateString];
 }
 #pragma mark - ONEHomeFeedDatePickerViewDelegate
 - (void)feedDataPicker:(ONEHomeFeedDatePickerView *)feedDatePickerView didConfirmSelectedWithDateString:(NSString *)dateString {
@@ -295,6 +291,11 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
         }
     }
     // 如果遍历完数组都没有，则重新加载数据
-    [self loadFeedsDataWithDateString:dateString completion:nil];
+    [self loadFeedsDataWithDateString:dateString completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self scrollViewDidScroll:self.collectionView];
+        });
+        
+    }];
 }
 @end

@@ -20,6 +20,6 @@
 
 @property (weak, nonatomic) id<ONEHomeFeedDatePickerViewDelegate> delegate;
 
-- (void)appear;
+- (void)appearWithDateString:(NSString *)dateString;
 
 @end

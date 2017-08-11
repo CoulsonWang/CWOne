@@ -7,6 +7,7 @@
 //
 
 #import "ONEHomeFeedDatePickerView.h"
+#import "NSString+ONEComponents.h"
 
 #define kInfoLabelHeight 35
 #define kConfirmButtonHeight 48
@@ -137,7 +138,29 @@
 }
 
 #pragma mark - 对外方法
-- (void)appear {
+- (void)appearWithDateString:(NSString *)dateString {
+    NSDateComponents *comp = [dateString getComponents];
+    // 修改选择器的初始值
+    NSInteger yearIndex = 0;
+    for (NSDictionary *yearDict in self.yearArray) {
+        if ([yearDict[kYearKey] integerValue] == comp.year) {
+            yearIndex = [self.yearArray indexOfObject:yearDict];
+            break;
+        }
+    }
+    NSInteger monthIndex= 0;
+    NSArray *months = self.yearArray[yearIndex][kMonthsKey];
+    for (NSNumber *month in months) {
+        if ([month integerValue] == comp.month) {
+            monthIndex = [months indexOfObject:month];
+            break;
+        }
+    }
+    
+    [self.datePicker selectRow:yearIndex inComponent:0 animated:NO];
+    [self.datePicker selectRow:monthIndex inComponent:1 animated:NO];
+    
+    // 动画
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.backgroundView.alpha = 0.5;
         self.totalBottomView.y = CWScreenH - kTotalBottomHeight;
