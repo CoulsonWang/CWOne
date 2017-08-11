@@ -27,4 +27,7 @@
 /// 根据原始日期获取请求feeds列表所需的日期文本
 - (NSString *)getFeedsRequestDateStringWithOriginalDateString:(NSString *)dateString;
 
+/// 根据原始日期转换为feed展示的日期
+- (NSString *)getFeedsDateStringWithOriginalDateString:(NSString *)originalDateString;
+
 @end

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ONEHomeFeedCell">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VJF-dh-6sX">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="133"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="VJF-dh-6sX" secondAttribute="height" multiplier="200:133" id="pJY-cc-AKG"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZrE-bq-q1U">
+                        <rect key="frame" x="0.0" y="133" width="200" height="67"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwO-Ow-Vh2">
+                                <rect key="frame" x="81.5" y="25" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LwO-Ow-Vh2" firstAttribute="centerX" secondItem="ZrE-bq-q1U" secondAttribute="centerX" id="fMI-2J-j3A"/>
+                            <constraint firstItem="LwO-Ow-Vh2" firstAttribute="centerY" secondItem="ZrE-bq-q1U" secondAttribute="centerY" id="j0d-K4-gqK"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-R0-9Ra" userLabel="borderView">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="2ea-R0-9Ra" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="82n-IZ-2YU"/>
+                <constraint firstAttribute="bottom" secondItem="ZrE-bq-q1U" secondAttribute="bottom" id="BF1-Js-erx"/>
+                <constraint firstAttribute="trailing" secondItem="2ea-R0-9Ra" secondAttribute="trailing" id="JBI-Nj-s5c"/>
+                <constraint firstAttribute="bottom" secondItem="2ea-R0-9Ra" secondAttribute="bottom" id="Q3s-Ln-2v3"/>
+                <constraint firstItem="2ea-R0-9Ra" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Rt2-tz-Kwq"/>
+                <constraint firstItem="ZrE-bq-q1U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hsf-p3-GWk"/>
+                <constraint firstItem="ZrE-bq-q1U" firstAttribute="top" secondItem="VJF-dh-6sX" secondAttribute="bottom" id="iK6-d8-Au6"/>
+                <constraint firstAttribute="trailing" secondItem="ZrE-bq-q1U" secondAttribute="trailing" id="k0W-xr-Tuo"/>
+                <constraint firstItem="VJF-dh-6sX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rIC-P8-lnc"/>
+                <constraint firstItem="VJF-dh-6sX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vWo-3c-iO7"/>
+                <constraint firstAttribute="trailing" secondItem="VJF-dh-6sX" secondAttribute="trailing" id="zNz-v9-bb8"/>
+            </constraints>
+            <size key="customSize" width="226" height="201"/>
+            <connections>
+                <outlet property="borderView" destination="2ea-R0-9Ra" id="ZaW-4T-WkK"/>
+                <outlet property="coverImageView" destination="VJF-dh-6sX" id="f9r-1D-qs4"/>
+                <outlet property="dateLabel" destination="LwO-Ow-Vh2" id="fvt-zi-Zf8"/>
+            </connections>
+            <point key="canvasLocation" x="113" y="127"/>
+        </collectionViewCell>
+    </objects>
+</document>

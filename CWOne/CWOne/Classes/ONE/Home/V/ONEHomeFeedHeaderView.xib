@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ONEHomeFeedHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-PW-s3k">
+                    <rect key="frame" x="143.5" y="17.5" width="33" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RwZ-14-sBC">
+                    <rect key="frame" x="0.0" y="24.5" width="133.5" height="1"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ylI-j5-JgG"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24w-xi-qlj">
+                    <rect key="frame" x="186.5" y="24" width="133.5" height="1"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="00R-Jd-JPr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZGT-PW-s3k" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="PoS-0E-wM8"/>
+                <constraint firstAttribute="trailing" secondItem="24w-xi-qlj" secondAttribute="trailing" id="VOE-Fc-Asy"/>
+                <constraint firstItem="ZGT-PW-s3k" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="YyX-1v-P1g"/>
+                <constraint firstItem="ZGT-PW-s3k" firstAttribute="leading" secondItem="RwZ-14-sBC" secondAttribute="trailing" constant="10" id="a8L-su-Vxu"/>
+                <constraint firstItem="RwZ-14-sBC" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="mv2-P5-WMI"/>
+                <constraint firstItem="24w-xi-qlj" firstAttribute="leading" secondItem="ZGT-PW-s3k" secondAttribute="trailing" constant="10" id="nSS-2p-09L"/>
+                <constraint firstItem="24w-xi-qlj" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="zVs-yx-ecD"/>
+                <constraint firstItem="RwZ-14-sBC" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="zh0-bp-eO7"/>
+            </constraints>
+            <connections>
+                <outlet property="dateLabel" destination="ZGT-PW-s3k" id="RfH-lg-knm"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

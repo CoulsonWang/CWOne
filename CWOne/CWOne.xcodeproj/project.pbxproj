@@ -26,7 +26,11 @@
 		B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */; };
 		B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */; };
 		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
+		B9242D631F3D87D40039AE0E /* ONEHomeFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */; };
+		B9242D641F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */; };
 		B92556031F3CC1F400E9720D /* ONEFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556021F3CC1F400E9720D /* ONEFeedItem.m */; };
+		B92556071F3D782800E9720D /* ONEHomeFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556051F3D782800E9720D /* ONEHomeFeedCell.m */; };
+		B92556081F3D782800E9720D /* ONEHomeFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92556061F3D782800E9720D /* ONEHomeFeedCell.xib */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -153,8 +157,14 @@
 		B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeNavigationBarTitleView.xib; sourceTree = "<group>"; };
 		B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONENetworkTool.h; sourceTree = "<group>"; };
 		B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONENetworkTool.m; sourceTree = "<group>"; };
+		B9242D601F3D87D40039AE0E /* ONEHomeFeedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedHeaderView.h; sourceTree = "<group>"; };
+		B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedHeaderView.m; sourceTree = "<group>"; };
+		B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeFeedHeaderView.xib; sourceTree = "<group>"; };
 		B92556011F3CC1F400E9720D /* ONEFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEFeedItem.h; sourceTree = "<group>"; };
 		B92556021F3CC1F400E9720D /* ONEFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEFeedItem.m; sourceTree = "<group>"; };
+		B92556041F3D782800E9720D /* ONEHomeFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedCell.h; sourceTree = "<group>"; };
+		B92556051F3D782800E9720D /* ONEHomeFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedCell.m; sourceTree = "<group>"; };
+		B92556061F3D782800E9720D /* ONEHomeFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeFeedCell.xib; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -814,6 +824,12 @@
 				B9B828F91F361A0F008BB163 /* ONELikeView.h */,
 				B9B828FA1F361A0F008BB163 /* ONELikeView.m */,
 				B9B828FB1F361A0F008BB163 /* ONELikeView.xib */,
+				B92556041F3D782800E9720D /* ONEHomeFeedCell.h */,
+				B92556051F3D782800E9720D /* ONEHomeFeedCell.m */,
+				B92556061F3D782800E9720D /* ONEHomeFeedCell.xib */,
+				B9242D601F3D87D40039AE0E /* ONEHomeFeedHeaderView.h */,
+				B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */,
+				B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -966,6 +982,7 @@
 				B90C3A581F3079DA004E64D9 /* ONEMeController.xib in Resources */,
 				B9321EFF1F3059410052752B /* Main.storyboard in Resources */,
 				B9E000FD1F38746200A7A609 /* rate_nav.gif in Resources */,
+				B9242D641F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib in Resources */,
 				B9B829051F361A0F008BB163 /* ONEHomeCatalogueCell.xib in Resources */,
 				B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */,
 				B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */,
@@ -983,6 +1000,7 @@
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
 				B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */,
 				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
+				B92556081F3D782800E9720D /* ONEHomeFeedCell.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
 				B9E000FC1F38746200A7A609 /* loading_night@2x.gif in Resources */,
@@ -1167,6 +1185,7 @@
 				B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
 				B9A73FF31F31B2E2009025FD /* UIView+CWFrame.m in Sources */,
+				B92556071F3D782800E9720D /* ONEHomeFeedCell.m in Sources */,
 				B90C3A571F3079DA004E64D9 /* ONEMeController.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
@@ -1193,6 +1212,7 @@
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
+				B9242D631F3D87D40039AE0E /* ONEHomeFeedHeaderView.m in Sources */,
 				B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */,
 				B9D133C31F3C1F88006471F9 /* ONEHomeCoverImagePresentationController.m in Sources */,
 				B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */,

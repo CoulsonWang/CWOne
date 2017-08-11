@@ -10,6 +10,15 @@
 #import "ONENetworkTool.h"
 #import "ONEDateTool.h"
 #import "ONEFeedItem.h"
+#import "ONEHomeFeedCell.h"
+#import "ONEHomeFeedHeaderView.h"
+
+#define kFeedSideMargin 20.0
+#define kFeedDistance 20.0
+#define kFeedLineSpacing 10.0
+
+static NSString *const cellID = @"ONEHomeFeedCellID";
+static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 @interface ONEHomeFeedsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -22,19 +31,11 @@
 @implementation ONEHomeFeedsViewController
 
 #pragma mark - 懒加载
-- (NSMutableArray<NSArray<ONEFeedItem *> *> *)feedsList {
-    if (!_feedsList) {
-        NSMutableArray *feedsList = [NSMutableArray array];
-        _feedsList = feedsList;
-    }
-    return _feedsList;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.view.frame = CGRectMake(0, kNavigationBarHeight, CWScreenW, CWScreenH - kNavigationBarHeight);
     
     [self setUpCollectionView];
     
@@ -42,9 +43,22 @@
 }
 
 - (void)setUpCollectionView {
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds];
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    CGFloat width = (CWScreenW - 2 * kFeedSideMargin - kFeedDistance) * 0.5;
+    flowLayout.itemSize = CGSizeMake(width, width);
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    flowLayout.minimumInteritemSpacing = kFeedDistance;
+    flowLayout.minimumLineSpacing = kFeedLineSpacing;
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, 0, kFeedSideMargin);
+    flowLayout.headerReferenceSize = CGSizeMake(CWScreenW - 2* kFeedSideMargin, 50);
+    
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
     collectionView.delegate = self;
+    collectionView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
+    collectionView.backgroundColor = [UIColor whiteColor];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedCell class]) bundle:nil] forCellWithReuseIdentifier:cellID];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeFeedHeaderView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
 }
@@ -62,12 +76,15 @@
 - (void)loadFeedsData {
     NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:dateString success:^(NSArray *dataArray) {
+        NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList = [NSMutableArray array];
         NSMutableArray<ONEFeedItem *> *feeds = [NSMutableArray array];
         for (NSDictionary *dict in dataArray) {
             ONEFeedItem *feedItem = [ONEFeedItem feedItemWithDict:dict];
             [feeds addObject:feedItem];
         }
-        [self.feedsList addObject:feeds];
+        [feedsList addObject:feeds];
+        self.feedsList = feedsList;
+        [self.collectionView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -75,15 +92,29 @@
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return self.feedsList.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    NSArray *feeds = self.feedsList[section];
+    return feeds.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    ONEHomeFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    
+    NSArray *feeds = self.feedsList[indexPath.section];
+    ONEFeedItem *feedItem = feeds[indexPath.item];
+    
+    cell.feedItem = feedItem;
+    
+    return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    ONEHomeFeedHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID forIndexPath:indexPath];
+    headerView.dateString = self.feedsList[indexPath.section].firstObject.date;
+    return headerView;
+    
+}
 @end
