@@ -29,6 +29,7 @@
 		B9242D631F3D87D40039AE0E /* ONEHomeFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D611F3D87D40039AE0E /* ONEHomeFeedHeaderView.m */; };
 		B9242D641F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */; };
 		B9242D671F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */; };
+		B9242D6C1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D6B1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.m */; };
 		B92556031F3CC1F400E9720D /* ONEFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556021F3CC1F400E9720D /* ONEFeedItem.m */; };
 		B92556071F3D782800E9720D /* ONEHomeFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92556051F3D782800E9720D /* ONEHomeFeedCell.m */; };
 		B92556081F3D782800E9720D /* ONEHomeFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92556061F3D782800E9720D /* ONEHomeFeedCell.xib */; };
@@ -163,6 +164,8 @@
 		B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeFeedHeaderView.xib; sourceTree = "<group>"; };
 		B9242D651F3D96610039AE0E /* ONEHomeFeedBottomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedBottomPickerView.h; sourceTree = "<group>"; };
 		B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedBottomPickerView.m; sourceTree = "<group>"; };
+		B9242D6A1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedDatePickerView.h; sourceTree = "<group>"; };
+		B9242D6B1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeFeedDatePickerView.m; sourceTree = "<group>"; };
 		B92556011F3CC1F400E9720D /* ONEFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEFeedItem.h; sourceTree = "<group>"; };
 		B92556021F3CC1F400E9720D /* ONEFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEFeedItem.m; sourceTree = "<group>"; };
 		B92556041F3D782800E9720D /* ONEHomeFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeFeedCell.h; sourceTree = "<group>"; };
@@ -835,6 +838,8 @@
 				B9242D621F3D87D40039AE0E /* ONEHomeFeedHeaderView.xib */,
 				B9242D651F3D96610039AE0E /* ONEHomeFeedBottomPickerView.h */,
 				B9242D661F3D96610039AE0E /* ONEHomeFeedBottomPickerView.m */,
+				B9242D6A1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.h */,
+				B9242D6B1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1184,6 +1189,7 @@
 				B9B829021F361A0F008BB163 /* ONEUserItem.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */,
+				B9242D6C1F3DD8560039AE0E /* ONEHomeFeedDatePickerView.m in Sources */,
 				B98A5A8D1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m in Sources */,
 				B98A5A881F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m in Sources */,
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,

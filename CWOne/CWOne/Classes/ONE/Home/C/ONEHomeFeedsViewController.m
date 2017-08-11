@@ -16,17 +16,21 @@
 #import <SVProgressHUD.h>
 #import "ONEHomeFeedBottomPickerView.h"
 #import <FLAnimatedImage.h>
+#import "ONEHomeFeedDatePickerView.h"
 
 #define kFeedSideMargin 20.0
 #define kFeedDistance 20.0
 #define kFeedLineSpacing 10.0
 #define kBottomDatePickerHeight 39.0
 #define kLoadingImageHeight 35
+#define kSectionHeaderViewHeight 50.0
+
+#define kRowHeight (CWScreenW - 2* kFeedSideMargin - kFeedSideMargin) * 0.5 + kFeedLineSpacing
 
 static NSString *const cellID = @"ONEHomeFeedCellID";
 static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
-@interface ONEHomeFeedsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ONEHomeFeedsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, ONEHomeFeedBottomPickerViewDelegate, ONEHomeFeedDatePickerViewDelegate>
 
 @property (weak, nonatomic) UICollectionView *collectionView;
 
@@ -34,13 +38,24 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 @property (weak, nonatomic) FLAnimatedImageView *loadingImageView;
 
+@property (weak, nonatomic) ONEHomeFeedDatePickerView *pickerView;
+
 @property (strong, nonatomic) NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList;
 
 @end
 
 @implementation ONEHomeFeedsViewController
 
-#pragma mark - 懒加载
+-(ONEHomeFeedDatePickerView *)pickerView {
+    if (!_pickerView) {
+        ONEHomeFeedDatePickerView *pickerView = [[ONEHomeFeedDatePickerView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
+        pickerView.delegate = self;
+        [[UIApplication sharedApplication].keyWindow addSubview:pickerView];
+        _pickerView = pickerView;
+    }
+    return _pickerView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -53,6 +68,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     [self setUpLoadingView];
 }
 
+#pragma mark - 设置界面
 - (void)setUpCollectionView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat width = (CWScreenW - 2 * kFeedSideMargin - kFeedDistance) * 0.5;
@@ -61,7 +77,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     flowLayout.minimumInteritemSpacing = kFeedDistance;
     flowLayout.minimumLineSpacing = kFeedLineSpacing;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, 0, kFeedSideMargin);
-    flowLayout.headerReferenceSize = CGSizeMake(CWScreenW, 50);
+    flowLayout.headerReferenceSize = CGSizeMake(CWScreenW, kSectionHeaderViewHeight);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
@@ -86,6 +102,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 - (void)setUpBottomPickerView {
      ONEHomeFeedBottomPickerView *bottomView = [[ONEHomeFeedBottomPickerView alloc] initWithFrame:CGRectMake(0, CWScreenH - kBottomDatePickerHeight, CWScreenW, kBottomDatePickerHeight)];
+    bottomView.delegate = self;
     [self.view addSubview:bottomView];
     self.bottomView = bottomView;
 }
@@ -100,20 +117,27 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     self.loadingImageView = gifView;
 }
 
+#pragma mark - setter方法
 - (void)setDateString:(NSString *)dateString {
     _dateString = dateString;
-    
     self.bottomView.dateString = dateString;
     [self loadFeedsData];
 }
 
-#pragma mark - 事件响应
+#pragma mark - 私有方法
 - (void)loadFeedsData {
+    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
+    [self loadFeedsDataWithDateString:dateString completion:^{
+        [self makeCurrentDateCellVisible];
+    }];
+    
+}
+
+- (void)loadFeedsDataWithDateString:(NSString *)dateString completion:(void(^)())completion {
     self.loadingImageView.hidden = NO;
     self.collectionView.hidden = YES;
     self.bottomView.hidden = YES;
     
-    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:dateString success:^(NSArray *dataArray) {
         NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList = [NSMutableArray array];
         NSMutableArray<ONEFeedItem *> *feeds = [NSMutableArray array];
@@ -128,6 +152,9 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
         self.collectionView.hidden = NO;
         self.bottomView.hidden= NO;
         self.loadingImageView.hidden = YES;
+        if (completion) {
+            completion();
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -177,6 +204,19 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     }];
 }
 
+- (void)makeCurrentDateCellVisible {
+    // 将CollectionView移动到能看到当前日期对应的cell的位置
+    for (int i = 0; i < self.feedsList.firstObject.count; i++) {
+        ONEFeedItem *feedItem = self.feedsList.firstObject[i];
+        if ([feedItem.date isEqualToString:self.dateString]) {
+            NSInteger row = (i + 1) * 0.5;
+            CGFloat offsetY = row * kRowHeight + kSectionHeaderViewHeight - CWScreenH * 0.5 + kNavigationBarHeight;
+            self.collectionView.contentOffset = CGPointMake(0, offsetY);
+            break;
+        }
+    }
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.feedsList.count;
@@ -194,6 +234,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     ONEFeedItem *feedItem = feeds[indexPath.item];
     
     cell.feedItem = feedItem;
+    cell.isToday = [feedItem.date isEqualToString:self.dateString];
     
     return cell;
 }
@@ -221,8 +262,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat lineHeight = (CWScreenW - 2* kFeedSideMargin - kFeedSideMargin) * 0.5 + kFeedLineSpacing;
-    NSInteger row = offsetY / lineHeight;
+    NSInteger row = offsetY / kRowHeight;
     
     NSInteger rowSum = 0;
     for (NSArray<ONEFeedItem *> *feeds in self.feedsList) {
@@ -235,5 +275,26 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
             break;
         }
     }
+}
+
+#pragma mark - ONEHomeFeedBottomPickerViewDelegate
+- (void)feedDatePickViewDidClick:(ONEHomeFeedBottomPickerView *)pickView {
+    // 弹出日期选择器
+    [self.pickerView appear];
+}
+#pragma mark - ONEHomeFeedDatePickerViewDelegate
+- (void)feedDataPicker:(ONEHomeFeedDatePickerView *)feedDatePickerView didConfirmSelectedWithDateString:(NSString *)dateString {
+    // 先查找目前已加载的数组中是否已有目标日期
+    for (NSArray<ONEFeedItem *> *feeds in self.feedsList) {
+        // 如果有，直接滚动collectionView到对应位置
+        if ([[[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:feeds.firstObject.date] isEqualToString:dateString]) {
+            NSInteger section = [self.feedsList indexOfObject:feeds];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+            return;
+        }
+    }
+    // 如果遍历完数组都没有，则重新加载数据
+    [self loadFeedsDataWithDateString:dateString completion:nil];
 }
 @end

@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) ONEFeedItem *feedItem;
 
+@property (assign, nonatomic) BOOL isToday;
+
 @end

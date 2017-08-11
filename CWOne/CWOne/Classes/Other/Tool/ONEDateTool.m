@@ -82,7 +82,7 @@ static ONEDateTool *_instance;
 - (NSString *)getNextMonthDateStringWithDateString:(NSString *)dateString {
     NSDateComponents *components = [dateString getComponents];
     if (components.month == 12) {
-        return [NSString stringWithFormat:@"%ld-%02ld",components.year + 1, components.month];
+        return [NSString stringWithFormat:@"%ld-01",components.year + 1];
     } else {
         return [NSString stringWithFormat:@"%ld-%02ld",components.year, components.month + 1];
     }

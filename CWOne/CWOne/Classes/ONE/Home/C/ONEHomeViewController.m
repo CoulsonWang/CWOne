@@ -179,7 +179,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)setUpTableViews {
-    self.leftTableView.x = CWScreenW * 2;
+    self.leftTableView.x = -CWScreenW * 2;
     
     self.middleTableView.x = 0;
     self.middleVC.dateStr = kCurrentDateString;
@@ -258,6 +258,9 @@ typedef enum : NSUInteger {
     self.tabBarController.tabBar.hidden = NO;
     [UIView animateWithDuration:0.3 animations:^{
         self.feedsView.y = -CWScreenH;
+    } completion:^(BOOL finished) {
+        [self.feedsView removeFromSuperview];
+        [self.feedsVC removeFromParentViewController];
     }];
 }
 

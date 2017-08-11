@@ -21,13 +21,6 @@
 
 @implementation ONEHomeFeedCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.borderView.layer.borderColor= [UIColor colorWithWhite:240/255.0 alpha:1.0].CGColor;
-    self.borderView.layer.borderWidth = 1;
-}
-
 - (void)setFeedItem:(ONEFeedItem *)feedItem {
     _feedItem = feedItem;
     
@@ -35,6 +28,18 @@
     [self.coverImageView sd_setImageWithURL:imageURL];
     
     self.dateLabel.text = [[ONEDateTool sharedInstance] getFeedsDateStringWithOriginalDateString:feedItem.date];
+}
+
+- (void)setIsToday:(BOOL)isToday {
+    _isToday = isToday;
+    if (isToday) {
+        self.borderView.layer.borderWidth = 1.5;
+        self.borderView.layer.borderColor = [UIColor blackColor].CGColor;
+    } else {
+        self.borderView.layer.borderWidth = 1;
+        self.borderView.layer.borderColor = [UIColor colorWithWhite:240/255.0 alpha:1.0].CGColor;
+    }
+    
 }
 
 @end

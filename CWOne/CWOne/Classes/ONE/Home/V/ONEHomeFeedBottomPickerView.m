@@ -100,7 +100,9 @@
 }
 
 - (void)didTapPicker {
-    
+    if ([self.delegate respondsToSelector:@selector(feedDatePickViewDidClick:)]) {
+        [self.delegate feedDatePickViewDidClick:self];
+    }
 }
 
 @end
