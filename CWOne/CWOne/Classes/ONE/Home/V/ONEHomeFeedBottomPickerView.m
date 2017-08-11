@@ -31,11 +31,16 @@
 }
 
 - (void)setDateString:(NSString *)dateString {
-    _dateString = dateString;
-    
+    NSDate *oldDate = [self.dateString getDate];
+    NSDate *newDate = [dateString getDate];
+    CWCalendarLabelScrollDirection direction = ([newDate timeIntervalSinceDate:oldDate] > 0) ? CWCalendarLabelScrollToBottom : CWCalendarLabelScrollToTop;
     NSDateComponents *components = [dateString getComponents];
-    self.yearNumLabel.text = [NSString stringWithFormat:@"%ld",components.year];
-    self.monthNumLabel.text = [NSString stringWithFormat:@"%ld",components.month];
+    NSString *year = [NSString stringWithFormat:@"%ld",components.year];
+    NSString *month = [NSString stringWithFormat:@"%ld",components.month];
+    [self.yearNumLabel showNextText:year withDirection:direction];
+    [self.monthNumLabel showNextText:month withDirection:direction];
+    
+    _dateString = dateString;
 }
 
 - (void)addAllSubViews {

@@ -217,7 +217,9 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
         NSInteger feedsRow = (feeds.count + 1) * 0.5;
         rowSum += feedsRow;
         if (row < rowSum) {
-            self.bottomView.dateString = feeds.firstObject.date;
+            if (![self.bottomView.dateString isEqualToString:feeds.firstObject.date]) {
+                self.bottomView.dateString = feeds.firstObject.date;
+            }
             break;
         }
     }
