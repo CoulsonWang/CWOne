@@ -35,4 +35,6 @@ NSString *const ONETitleViewFeedsUnFoldNotification = @"ONETitleViewFeedsUnFoldN
 
 NSString *const ONETitleViewFeedsFoldNotification = @"ONETitleViewFeedsFoldNotification";
 
+NSString *const ONEFeedsDidSelectedNotification = @"ONEFeedsDidSelectedNotification";
+
 NSString *const ONEThemeFontName = @"CourierNewPSMT";

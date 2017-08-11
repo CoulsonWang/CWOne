@@ -41,7 +41,6 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 @implementation ONEHomeFeedsViewController
 
 #pragma mark - 懒加载
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -204,6 +203,19 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     headerView.dateString = self.feedsList[indexPath.section].firstObject.date;
     return headerView;
     
+}
+
+#pragma mark - UICollectionViewDelegate 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // 发送通知，通知标题视图收起
+    [[NSNotificationCenter defaultCenter] postNotificationName:ONEFeedsDidSelectedNotification object:nil];
+    
+    // 通知代理跳转界面
+    NSArray *feeds = self.feedsList[indexPath.section];
+    ONEFeedItem *feedItem = feeds[indexPath.item];
+    if ([self.delegate respondsToSelector:@selector(feedsViewController:didSelectedCollectionViewWithDateString:)]) {
+        [self.delegate feedsViewController:self didSelectedCollectionViewWithDateString:feedItem.date];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate

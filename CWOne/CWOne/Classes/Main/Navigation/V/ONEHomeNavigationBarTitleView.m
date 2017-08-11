@@ -50,6 +50,12 @@
     textView.frame = CGRectMake(0, kMaxTitleY, CWScreenW, kNavigationBarHeight - kMaxTitleY);
     [self insertSubview:textView atIndex:0];
     self.textView = textView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedsDidSelected) name:ONEFeedsDidSelectedNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setWeatherItem:(ONEHomeWeatherItem *)weatherItem {
@@ -93,6 +99,11 @@
     }
     // 发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewBackToTodayButtonClickNotifcation object:nil userInfo:nil];
+}
+
+- (void)feedsDidSelected {
+    // 点击一次按钮，让其收起
+    [self titleButtonClick:nil];
 }
 
 #pragma mark - 对外方法

@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
     ONESrollDiretionRight,
 } ONESrollDiretion;
 
-@interface ONEHomeViewController () <UIScrollViewDelegate, ONEHomeTableViewControllerDelegate>
+@interface ONEHomeViewController () <UIScrollViewDelegate, ONEHomeTableViewControllerDelegate, ONEHomeFeedsViewControllerDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 
@@ -118,6 +118,7 @@ typedef enum : NSUInteger {
 - (ONEHomeFeedsViewController *)feedsVC {
     if (!_feedsVC) {
         ONEHomeFeedsViewController *feedsVC = [[ONEHomeFeedsViewController alloc] init];
+        feedsVC.delegate = self;
         [self addChildViewController:feedsVC];
         _feedsVC = feedsVC;
         
@@ -305,7 +306,6 @@ typedef enum : NSUInteger {
         }
     }
 }
-
 // 移动一页
 - (void)singleMoveWithDirection:(ONESrollDiretion)direction toIndex:(NSInteger)index{
     ONEHomeTableViewController *moveVC = [self getTheControllerNeedToMoveWithDirection:direction];
@@ -315,7 +315,6 @@ typedef enum : NSUInteger {
     self.lastIndex = index;
     [self updateCurrentVCWithDirection:direction];
 }
-
 // 更新navigationBar的状态
 - (void)refreshTitleViewWithOffset:(CGFloat)offset {
     [[ONENavigationBarTool sharedInstance] confirmTitlViewWithOffset:offset];
@@ -324,7 +323,6 @@ typedef enum : NSUInteger {
 - (void)updateNavBarBackButtonVisible:(BOOL)isHidden {
     [[ONENavigationBarTool sharedInstance] updateTitleViewBackToTodayButtonVisible:isHidden];
 }
-
 // 更新navigationBar上的日期文本
 - (void)updateNavBarDateTextWithDateString:(NSString *)dateString {
     [[ONENavigationBarTool sharedInstance] updateTitleViewDateStringWithDateString:dateString];
@@ -378,6 +376,17 @@ typedef enum : NSUInteger {
     CGFloat currentOffsetX = self.scrollView.contentOffset.x;
     [UIView animateWithDuration:kChangePageAnimateDuration animations:^{
         self.scrollView.contentOffset = CGPointMake(currentOffsetX + CWScreenW, 0);
+    } completion:^(BOOL finished) {
+        [self scrollViewDidEndDecelerating:self.scrollView];
+    }];
+    
+}
+
+#pragma mark - ONEHomeFeedsViewControllerDelegate
+- (void)feedsViewController:(ONEHomeFeedsViewController *)feedsViewController didSelectedCollectionViewWithDateString:(NSString *)dateString {
+    NSInteger dateInterval = [[ONEDateTool sharedInstance] getDateIntervalFromCurrentDateWithDateString:dateString];
+    [UIView animateWithDuration:kChangePageAnimateDuration animations:^{
+        self.scrollView.contentOffset = CGPointMake(-dateInterval * CWScreenW, 0);
     } completion:^(BOOL finished) {
         [self scrollViewDidEndDecelerating:self.scrollView];
     }];

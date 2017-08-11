@@ -16,13 +16,20 @@
 
 + (instancetype)sharedInstance;
 
+/// 获取昨天的日期文本
 - (NSString *)yesterdayDateStr;
 
+/// 根据日期差距获取日期文本
 - (NSString *)getDateStringFromCurrentDateWihtDateInterval:(NSInteger)dateInterval;
 
+/// 根据日期差距获取日期
 - (NSDate *)getDateFromCurrentDateWithDateInterval:(NSInteger)dateInterval;
 
+/// 通过日期文本生成评论中显示的日期文本
 - (NSString *)getCommentDateStringWithOriginalDateString:(NSString *)dateString;
+
+/// 根据日期文本计算与目前日期的时间差距
+- (NSInteger)getDateIntervalFromCurrentDateWithDateString:(NSString *)dateString;
 
 /// 根据原始日期获取请求feeds列表所需的日期文本
 - (NSString *)getFeedsRequestDateStringWithOriginalDateString:(NSString *)dateString;
