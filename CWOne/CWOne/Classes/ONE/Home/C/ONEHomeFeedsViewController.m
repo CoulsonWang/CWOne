@@ -21,7 +21,6 @@
 #define kFeedDistance 20.0
 #define kFeedLineSpacing 10.0
 #define kBottomDatePickerHeight 39.0
-#define kCollectionViewBottomInset 20.0
 #define kLoadingImageHeight 35
 
 static NSString *const cellID = @"ONEHomeFeedCellID";
@@ -62,7 +61,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.minimumInteritemSpacing = kFeedDistance;
     flowLayout.minimumLineSpacing = kFeedLineSpacing;
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, kCollectionViewBottomInset, kFeedSideMargin);
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, kFeedSideMargin, 0, kFeedSideMargin);
     flowLayout.headerReferenceSize = CGSizeMake(CWScreenW, 50);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
@@ -137,8 +136,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 - (void)loadNewerFeedsData {
     NSString *newestDateString = self.feedsList.firstObject.firstObject.date;
-    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:newestDateString];
-    NSString *nextMonthDateString = [[ONEDateTool sharedInstance] getNextMonthDateStringWithCurrentMonthDateString:dateString];
+    NSString *nextMonthDateString = [[ONEDateTool sharedInstance] getNextMonthDateStringWithDateString:newestDateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:nextMonthDateString success:^(NSArray *dataArray) {
         if (dataArray.count == 0) {
             [SVProgressHUD showImage:nil status:@"没有更多内容"];
@@ -161,8 +159,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 - (void)loadOlderFeedsData {
     NSString *oldestDateString = self.feedsList.lastObject.lastObject.date;
-    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:oldestDateString];
-    NSString *lastMonthDateString = [[ONEDateTool sharedInstance] getLastMonthDateStringWithCurrentMonthDateString:dateString];
+    NSString *lastMonthDateString = [[ONEDateTool sharedInstance] getLastMonthDateStringWithDateString:oldestDateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:lastMonthDateString success:^(NSArray *dataArray) {
         if (dataArray.count == 0) {
             [self.collectionView.mj_footer endRefreshingWithNoMoreData];
@@ -207,5 +204,22 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     headerView.dateString = self.feedsList[indexPath.section].firstObject.date;
     return headerView;
     
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat lineHeight = (CWScreenW - 2* kFeedSideMargin - kFeedSideMargin) * 0.5 + kFeedLineSpacing;
+    NSInteger row = offsetY / lineHeight;
+    
+    NSInteger rowSum = 0;
+    for (NSArray<ONEFeedItem *> *feeds in self.feedsList) {
+        NSInteger feedsRow = (feeds.count + 1) * 0.5;
+        rowSum += feedsRow;
+        if (row < rowSum) {
+            self.bottomView.dateString = feeds.firstObject.date;
+            break;
+        }
+    }
 }
 @end

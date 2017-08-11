@@ -72,20 +72,22 @@ static ONEDateTool *_instance;
     return [formatter stringFromDate:date];
 }
 
-- (NSString *)getNextMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM";
-    NSDate *date = [formatter dateFromString:currentMonthDateString];
-    NSDate *nextMonthDate = [date dateByAddingTimeInterval:31*24*60*60];
-    return [formatter stringFromDate:nextMonthDate];
+- (NSString *)getNextMonthDateStringWithDateString:(NSString *)dateString {
+    NSDateComponents *components = [dateString getComponents];
+    if (components.month == 12) {
+        return [NSString stringWithFormat:@"%ld-%02ld",components.year + 1, components.month];
+    } else {
+        return [NSString stringWithFormat:@"%ld-%02ld",components.year, components.month + 1];
+    }
 }
 
-- (NSString *)getLastMonthDateStringWithCurrentMonthDateString:(NSString *)currentMonthDateString {
+- (NSString *)getLastMonthDateStringWithDateString:(NSString *)dateString {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date = [formatter dateFromString:dateString];
+    NSDate *lastMonthDate = [date dateByAddingTimeInterval:-24*60*60];
     formatter.dateFormat = @"yyyy-MM";
-    NSDate *date = [formatter dateFromString:currentMonthDateString];
-    NSDate *nextMonthDate = [date dateByAddingTimeInterval:-31*24*60*60];
-    return [formatter stringFromDate:nextMonthDate];
+    return [formatter stringFromDate:lastMonthDate];
 }
 
 @end

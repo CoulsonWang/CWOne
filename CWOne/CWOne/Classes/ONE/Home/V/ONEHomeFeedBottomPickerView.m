@@ -52,7 +52,7 @@
     yearNumLabel.enableWhenSame = NO;
     yearNumLabel.sizeToFitOn = YES;
     yearNumLabel.textAlignment = NSTextAlignmentCenter;
-    yearNumLabel.frame = CGRectMake(self.width * 0.5 - 60, 0, 30, 15);
+    yearNumLabel.frame = CGRectMake(self.width * 0.5 - 60, 0, 35, 15);
     yearNumLabel.centerY = self.height * 0.5;
     [self addSubview:yearNumLabel];
     self.yearNumLabel = yearNumLabel;
@@ -72,7 +72,7 @@
     monthNumLabel.enableWhenSame = NO;
     monthNumLabel.sizeToFitOn = YES;
     monthNumLabel.textAlignment = NSTextAlignmentCenter;
-    monthNumLabel.frame = CGRectMake(CGRectGetMaxX(yearLabel.frame) + kMargin, 0, 12, 15);
+    monthNumLabel.frame = CGRectMake(CGRectGetMaxX(yearLabel.frame) + kMargin, 0, 15, 15);
     monthNumLabel.centerY = self.height * 0.5;
     [self addSubview:monthNumLabel];
     self.monthNumLabel = monthNumLabel;
