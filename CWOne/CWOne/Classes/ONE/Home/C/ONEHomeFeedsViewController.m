@@ -15,12 +15,14 @@
 #import <MJRefresh.h>
 #import <SVProgressHUD.h>
 #import "ONEHomeFeedBottomPickerView.h"
+#import <FLAnimatedImage.h>
 
 #define kFeedSideMargin 20.0
 #define kFeedDistance 20.0
 #define kFeedLineSpacing 10.0
 #define kBottomDatePickerHeight 39.0
 #define kCollectionViewBottomInset 20.0
+#define kLoadingImageHeight 35
 
 static NSString *const cellID = @"ONEHomeFeedCellID";
 static NSString *const headerID = @"ONEHomeFeedHeaderID";
@@ -30,6 +32,8 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 @property (weak, nonatomic) UICollectionView *collectionView;
 
 @property (weak, nonatomic) ONEHomeFeedBottomPickerView *bottomView;
+
+@property (weak, nonatomic) FLAnimatedImageView *loadingImageView;
 
 @property (strong, nonatomic) NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList;
 
@@ -47,6 +51,8 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     [self setUpCollectionView];
     
     [self setUpBottomPickerView];
+    
+    [self setUpLoadingView];
 }
 
 - (void)setUpCollectionView {
@@ -86,6 +92,16 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     self.bottomView = bottomView;
 }
 
+- (void)setUpLoadingView {
+    NSURL *imgUrl = [[NSBundle mainBundle] URLForResource:@"loading@2x" withExtension:@"gif"];
+    FLAnimatedImage *animatedImg = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgUrl]];
+    FLAnimatedImageView *gifView = [[FLAnimatedImageView alloc] init];
+    gifView.animatedImage = animatedImg;
+    gifView.frame = CGRectMake((CWScreenW - kLoadingImageHeight) * 0.5, (CWScreenH - kLoadingImageHeight) * 0.5 , kLoadingImageHeight, kLoadingImageHeight);
+    [self.view addSubview:gifView];
+    self.loadingImageView = gifView;
+}
+
 - (void)setDateString:(NSString *)dateString {
     _dateString = dateString;
     
@@ -95,6 +111,10 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 #pragma mark - 事件响应
 - (void)loadFeedsData {
+    self.loadingImageView.hidden = NO;
+    self.collectionView.hidden = YES;
+    self.bottomView.hidden = YES;
+    
     NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:dateString success:^(NSArray *dataArray) {
         NSMutableArray<NSArray<ONEFeedItem *> *> *feedsList = [NSMutableArray array];
@@ -106,13 +126,18 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
         [feedsList addObject:feeds];
         self.feedsList = feedsList;
         [self.collectionView reloadData];
+        
+        self.collectionView.hidden = NO;
+        self.bottomView.hidden= NO;
+        self.loadingImageView.hidden = YES;
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
 }
 
 - (void)loadNewerFeedsData {
-    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.dateString];
+    NSString *newestDateString = self.feedsList.firstObject.firstObject.date;
+    NSString *dateString = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:newestDateString];
     NSString *nextMonthDateString = [[ONEDateTool sharedInstance] getNextMonthDateStringWithCurrentMonthDateString:dateString];
     [[ONENetworkTool sharedInstance] requestFeedsDataWithDateString:nextMonthDateString success:^(NSArray *dataArray) {
         if (dataArray.count == 0) {

@@ -18,7 +18,7 @@
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
-#define kLoadingImageHeight 50
+#define kLoadingImageHeight 35
 
 typedef enum : NSUInteger {
     ONESrollDiretionLeft,
@@ -192,7 +192,7 @@ typedef enum : NSUInteger {
     FLAnimatedImage *animatedImg = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgUrl]];
     FLAnimatedImageView *gifView = [[FLAnimatedImageView alloc] init];
     gifView.animatedImage = animatedImg;
-    gifView.frame = CGRectMake((CWScreenW - kLoadingImageHeight) * 0.5, (CWScreenH - kLoadingImageHeight) * 0.5 - 60, kLoadingImageHeight, kLoadingImageHeight);
+    gifView.frame = CGRectMake((CWScreenW - kLoadingImageHeight) * 0.5, (CWScreenH - kLoadingImageHeight) * 0.5 , kLoadingImageHeight, kLoadingImageHeight);
     gifView.hidden = YES;
     [self.scrollView addSubview:gifView];
     self.loadingImageView = gifView;

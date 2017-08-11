@@ -88,6 +88,9 @@
     
 }
 - (IBAction)backToTodayButtonClick:(UIButton *)sender {
+    if (self.unfold) {
+        [self titleButtonClick:nil];
+    }
     // 发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:ONETitleViewBackToTodayButtonClickNotifcation object:nil userInfo:nil];
 }
