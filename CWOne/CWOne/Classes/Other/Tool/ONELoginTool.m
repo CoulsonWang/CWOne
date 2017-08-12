@@ -31,6 +31,11 @@ static ONELoginTool *_instance;
     
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     
+    // 取出正在展示的子控制器
+    while (rootVC.presentedViewController) {
+        rootVC = rootVC.presentedViewController;
+    }
+    
     [rootVC presentViewController:loginVC animated:YES completion:nil];
 }
 
