@@ -20,4 +20,6 @@
 
 @property (strong, nonatomic) NSString *authorInfoString;
 
+@property (strong, nonatomic) NSString *shareUrl;
+
 @end

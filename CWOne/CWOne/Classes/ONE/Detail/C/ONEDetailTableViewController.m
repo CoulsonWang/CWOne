@@ -168,7 +168,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     if (self.type == ONEHomeItemTypeMusic) {
         [[ONENetworkTool sharedInstance] requestMusicDetailDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
             self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-            [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+            [self.delegate detailTableVC:self updateToolViewPraiseAndCommentCountWithEssayItem:self.essayItem];
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];
@@ -179,7 +179,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
             [[ONENetworkTool sharedInstance] requestMovieStoryDataWithItemId:self.itemId success:^(NSDictionary *dataDict) {
                 [movieItem setMovieStroyDateWithDetailDict:dataDict];
                 self.essayItem = movieItem;
-                [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+                [self.delegate detailTableVC:self updateToolViewPraiseAndCommentCountWithEssayItem:self.essayItem];
             } failure:^(NSError *error) {
                 NSLog(@"%@",error);
             }];
@@ -190,7 +190,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         NSString *typeName = [NSString getTypeStrWithType:self.type];
         [[ONENetworkTool sharedInstance] requestDetailDataOfType:typeName withItemId:self.itemId success:^(NSDictionary *dataDict) {
             self.essayItem = [ONEEssayItem essayItemWithDict:dataDict];
-            [self.delegate detailTableVC:self updateToolViewPraiseCount:self.essayItem.praisenum andCommentCount:self.essayItem.commentnum];
+            [self.delegate detailTableVC:self updateToolViewPraiseAndCommentCountWithEssayItem:self.essayItem];
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];

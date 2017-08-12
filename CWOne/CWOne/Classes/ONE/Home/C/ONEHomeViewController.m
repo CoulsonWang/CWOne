@@ -240,6 +240,7 @@ typedef enum : NSUInteger {
     diaryVC.subTitleString = userInfo[ONECoverPresentationSubTitleKey];
     diaryVC.authorInfoString = userInfo[ONEDiaryPresentationAuthorInfoKey];
     diaryVC.contentString = userInfo[ONEDiaryPresentationContentKey];
+    diaryVC.shareUrl = userInfo[ONEDiartPresentationShareUrlKey];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:diaryVC];
     [self presentViewController:navVC animated:YES completion:nil];

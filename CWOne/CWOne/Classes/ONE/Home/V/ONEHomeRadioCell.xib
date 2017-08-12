@@ -15,23 +15,23 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="263.66666666666669"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vfd-jz-iSI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="263.66666666666669"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vfd-jz-iSI" secondAttribute="height" multiplier="414:263" priority="990" id="kDC-dC-njj"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eY4-vH-2vP">
-                        <rect key="frame" x="58" y="233.66666666666666" width="33" height="15.666666666666686"/>
+                        <rect key="frame" x="58" y="234" width="33" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第 111 期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4q-s3-rF2">
-                        <rect key="frame" x="62.999999999999993" y="152" width="46.333333333333321" height="14"/>
+                        <rect key="frame" x="63" y="152" width="47" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11.5"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -44,21 +44,24 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-Ma-gUw" userLabel="分割线">
-                        <rect key="frame" x="0.0" y="217" width="414" height="0.33333333333334281"/>
+                        <rect key="frame" x="0.0" y="217" width="414" height="0.0"/>
                         <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="Lr4-CY-Roo"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZB-sV-Fm9">
-                        <rect key="frame" x="63" y="175.66666666666666" width="336" height="21.666666666666686"/>
+                        <rect key="frame" x="63" y="175" width="336" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JY5-9u-IOS" userLabel="分享按钮">
-                        <rect key="frame" x="383" y="229.66666666666666" width="16" height="22"/>
+                        <rect key="frame" x="383" y="230" width="16" height="22"/>
                         <state key="normal" image="share_gray_mini"/>
+                        <connections>
+                            <action selector="shareButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Fi-S1-tb3"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_FM_white" translatesAutoresizingMaskIntoConstraints="NO" id="5eO-JR-Ein">
                         <rect key="frame" x="20" y="19" width="30" height="35"/>
@@ -68,7 +71,7 @@
                         <rect key="frame" x="10" y="152" width="45" height="45"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTw-Vl-Pub">
-                                <rect key="frame" x="14.666666666666666" y="11" width="15.999999999999998" height="22"/>
+                                <rect key="frame" x="15" y="11" width="16" height="22"/>
                                 <state key="normal" image="audioPlayIcon"/>
                                 <state key="selected" image="audioPauseIcon"/>
                                 <connections>
@@ -85,7 +88,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I0-h6-5mg">
-                        <rect key="frame" x="188.33333333333334" y="191" width="37.333333333333314" height="18"/>
+                        <rect key="frame" x="188" y="191" width="38" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

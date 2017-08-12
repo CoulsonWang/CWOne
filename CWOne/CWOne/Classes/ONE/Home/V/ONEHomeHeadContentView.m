@@ -14,6 +14,8 @@
 #import "ONEHomeItem.h"
 #import "ONEMainTabBarController.h"
 #import "UILabel+CWLineSpacing.h"
+#import "ONELoginTool.h"
+#import "ONEShareTool.h"
 
 #define kRatioOfHorizontal 207/311.0
 #define kRatioOfVertical 338/311.0
@@ -104,14 +106,22 @@
                                ONECoverPresentationSubTitleKey : self.subTitleLabel.text,
                                ONEDiaryPresentationContentKey : self.viewModel.homeItem.forward,
                                ONEDiaryPresentationAuthorInfoKey : self.viewModel.homeItem.words_info,
+                               ONEDiartPresentationShareUrlKey : self.viewModel.homeItem.share_url,
                                };
     // 通知外界控制器modal
     [[NSNotificationCenter defaultCenter] postNotificationName:ONEHomeDiaryButtonDidClickNotification object:nil userInfo:userInfo];
 }
 
 - (IBAction)shareButtonClick:(UIButton *)sender {
+    [[ONEShareTool sharedInstance] showShareViewWithShareUrl:self.viewModel.homeItem.share_url];
 }
 - (IBAction)collectButtonClick:(UIButton *)sender {
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理收藏逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
 }
 
 @end

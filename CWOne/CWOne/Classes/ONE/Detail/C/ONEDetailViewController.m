@@ -20,6 +20,7 @@
 #import "ONEDetailMusicInfoController.h"
 #import <NYTPhotosViewController.h>
 #import "ONERadioTool.h"
+#import "ONELoginTool.h"
 
 #define kBottomToolViewHeight kTabBarHeight
 #define kLoadingImageHeight 50.0
@@ -165,7 +166,12 @@
 }
 
 - (void)navigationBarCollectButtonClick {
-    NSLog(@"收藏");
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理收藏逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
 }
 
 - (void)praiseComment:(NSNotification *)notification {
@@ -254,9 +260,8 @@
 }
 
 #pragma mark - ONEDetailTableViewControllerDelegate
-- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum {
-    self.toolView.praisenum = praiseNum;
-    self.toolView.commentnum = commentNum;
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseAndCommentCountWithEssayItem:(ONEEssayItem *)essayItem {
+    self.toolView.essayItem = essayItem;
 }
 
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC {

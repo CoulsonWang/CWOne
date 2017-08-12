@@ -14,6 +14,8 @@
 #import "ONEHomeWeatherItem.h"
 #import "NSString+ONEComponents.h"
 #import "UITextView+CWLineSpacing.h"
+#import "ONELoginTool.h"
+#import "ONEShareTool.h"
 
 #define kRatioOfHorizontal 207/311.0
 #define kRatioOfVertical 338/311.0
@@ -218,11 +220,16 @@
 }
 
 - (void)saveContentButtonClick {
-    
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理保存逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
 }
 
 - (void)shareButtonClick {
-    
+    [[ONEShareTool sharedInstance] showShareViewWithShareUrl:self.shareUrl];
 }
 
 - (void)showPhotoPicker {

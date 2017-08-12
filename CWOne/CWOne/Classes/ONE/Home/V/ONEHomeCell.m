@@ -16,6 +16,7 @@
 #import "UILabel+CWLineSpacing.h"
 #import "ONERadioTool.h"
 #import "CALayer+CWAnimation.h"
+#import "ONEShareTool.h"
 
 #define kSideMargin 25.0
 #define kRatio 0.6
@@ -176,6 +177,7 @@
 }
 
 - (IBAction)shareButtonClick:(UIButton *)sender {
+    [[ONEShareTool sharedInstance] showShareViewWithShareUrl:self.viewModel.homeItem.share_url];
 }
 
 #pragma mark - 私有方法

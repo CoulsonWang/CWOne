@@ -9,6 +9,9 @@
 #import "ONEDetailBottomToolView.h"
 #import "ONELikeView.h"
 #import <Masonry.h>
+#import "ONELoginTool.h"
+#import "ONEShareTool.h"
+#import "ONEEssayItem.h"
 
 @interface ONEDetailBottomToolView ()
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
@@ -41,23 +44,23 @@
     self.likeView = likeView;
 }
 
-- (void)setPraisenum:(NSInteger)praisenum {
-    _praisenum = praisenum;
+- (void)setEssayItem:(ONEEssayItem *)essayItem {
+    _essayItem = essayItem;
     
-    self.likeView.praisenum = praisenum;
-}
-
-- (void)setCommentnum:(NSInteger)commentnum {
-    _commentnum = commentnum;
-    
-    [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",commentnum] forState:UIControlStateNormal];
+    self.likeView.praisenum = essayItem.praisenum;
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",essayItem.commentnum] forState:UIControlStateNormal];
 }
 
 - (IBAction)writeCommentButtonClick:(UIButton *)sender {
-    // 弹出登录界面
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理收藏逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
 }
 - (IBAction)shareButtonClick:(UIButton *)sender {
-    // 弹出分享界面
+    [[ONEShareTool sharedInstance] showShareViewWithShareUrl:self.essayItem.web_url];
 }
 - (IBAction)commentButtonClick:(UIButton *)sender {
     // 滚动tableView

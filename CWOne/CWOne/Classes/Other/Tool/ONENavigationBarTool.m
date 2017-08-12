@@ -92,6 +92,13 @@ static ONENavigationBarTool *_instance;
     }];
 }
 
+- (void)changeStatusBarAlpha:(CGFloat)alpha {
+    UIApplication *app = [UIApplication sharedApplication];
+    // 通过KVC拿到statusBar
+    UIView *statusBar = [app valueForKeyPath:@"statusBar"];
+    statusBar.alpha = alpha;
+}
+
 - (void)resumeStatusBarWithAnimated:(BOOL)animated {
     NSTimeInterval duration = animated ? 0.5 : 0;
     [UIView animateWithDuration:duration animations:^{

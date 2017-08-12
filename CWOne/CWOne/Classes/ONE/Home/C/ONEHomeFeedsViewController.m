@@ -268,7 +268,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
     NSString *bottomDateStr = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.bottomView.dateString];
     if (cellDate != nil && ![cellDateStr isEqualToString:bottomDateStr]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.bottomView.dateString = cellDate; 
+            self.bottomView.dateString = cellDate;
         });
     }
 }

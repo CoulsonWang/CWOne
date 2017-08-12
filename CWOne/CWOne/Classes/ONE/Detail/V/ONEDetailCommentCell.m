@@ -13,6 +13,7 @@
 #import "ONEDateTool.h"
 #import "UILabel+CWLineSpacing.h"
 #import "ONENetworkTool.h"
+#import "ONELoginTool.h"
 
 #define kLargeBottomConstraint 30.0
 #define kSmallBottomConstraint 15.0
@@ -75,6 +76,12 @@
     self.bottomSpaceConstraint.constant = lastHotComment ? kLargeBottomConstraint : kSmallBottomConstraint;
 }
 - (IBAction)replyButtonClick:(UIButton *)sender {
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理评论逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
 }
 
 - (IBAction)likeButtonClick:(UIButton *)sender {

@@ -32,6 +32,7 @@
 #define ONECoverPresentationOriginFrameKey @"ONECoverPresentationOriginFrame"
 #define ONEDiaryPresentationContentKey @"ONEDiaryPresentationContent"
 #define ONEDiaryPresentationAuthorInfoKey @"ONEDiaryPresentationAuthorInfo"
+#define ONEDiartPresentationShareUrlKey @"ONEDiartPresentationShareUrl"
 
 #import "UIColor+CWQuickCreate.h"
 #import "UIView+CWFrame.h"

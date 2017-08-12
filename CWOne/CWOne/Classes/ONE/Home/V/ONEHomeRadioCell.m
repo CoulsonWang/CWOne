@@ -15,6 +15,7 @@
 #import "ONELikeView.h"
 #import "ONERadioTool.h"
 #import "ONERadioItem.h"
+#import "ONEShareTool.h"
 
 #define kRatio 44.0/69.0
 
@@ -136,6 +137,9 @@
     
 }
 
+- (IBAction)shareButtonClick:(UIButton *)sender {
+    [[ONEShareTool sharedInstance] showShareViewWithShareUrl:self.viewModel.homeItem.share_url];
+}
 #pragma mark - 私有工具方法
 - (UIImage *)getCircleImageViewWithRadius:(CGFloat)radius lineWidth:(CGFloat)lineWidth{
     CGFloat rect = radius * 2+ lineWidth * 2;

@@ -8,15 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEEssayItem;
 
 @interface ONEDetailBottomToolView : UIView
 
 + (instancetype)detailBottomToolView;
 
-/// 点赞数
-@property (assign, nonatomic) NSInteger praisenum;
-
-/// 评论数
-@property (assign, nonatomic) NSInteger commentnum;
+@property (strong, nonatomic) ONEEssayItem *essayItem;
 
 @end

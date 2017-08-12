@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ONEHomeItem.h"
 
-
-
 @class ONEDetailTableViewController;
+@class ONEEssayItem;
 
 @protocol ONEDetailTableViewControllerDelegate <NSObject>
 
-- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseCount:(NSInteger)praiseNum andCommentCount:(NSInteger)commentNum;
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseAndCommentCountWithEssayItem:(ONEEssayItem *)essayItem;
 
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC;
 

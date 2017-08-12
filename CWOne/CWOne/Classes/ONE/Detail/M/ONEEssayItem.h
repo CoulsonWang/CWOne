@@ -29,6 +29,9 @@
 /// 另一个标题
 @property (strong, nonatomic) NSString *tagTitle;
 
+/// 分享用的链接地址
+@property (strong, nonatomic) NSString *web_url;
+
 /* ********************************************* 音乐详情页内容 ********************************************* */
 
 /// 故事标题

@@ -50,10 +50,13 @@ typedef enum : NSUInteger {
 /// 隐藏状态栏
 - (void)hideStatusBarWithAnimated:(BOOL)animated;
 
-/// 恢复状态栏显示s
+/// 恢复状态栏显示
 - (void)resumeStatusBarWithAnimated:(BOOL)animated;
 
 /// 修改导航按钮的主题色
 - (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color;
+
+/// 修改状态栏的透明度
+- (void)changeStatusBarAlpha:(CGFloat)alpha;
 
 @end
