@@ -23,8 +23,6 @@
 
 @property (weak, nonatomic) ONEPhotoPickerViewButton *cameraButton;
 @property (weak, nonatomic) ONEPhotoPickerViewButton *photoLibraryButton;
-
-@property (weak, nonatomic) UIImagePickerController *pickerVC;
 @end
 
 @implementation ONEDiaryPhotoPickerView
@@ -128,7 +126,7 @@
     if (type == UIImagePickerControllerSourceTypePhotoLibrary) {
         pickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         pickerVC.allowsEditing = NO;
-        pickerVC.delegate = self;
+        pickerVC.delegate = self.delegate;
         pickerVC.navigationBar.tintColor = [UIColor grayColor];
         [self presentVC:pickerVC];
     }
@@ -146,12 +144,4 @@
     [rootVC presentViewController:pickerVC animated:YES completion:nil];
 }
 
-#pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
-    [picker dismissViewControllerAnimated:YES completion:^{
-        [self.delegate photoPickerView:self didPickImage:image];
-    }];
-}
 @end

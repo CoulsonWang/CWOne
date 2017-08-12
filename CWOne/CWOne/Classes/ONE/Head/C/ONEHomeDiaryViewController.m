@@ -24,7 +24,7 @@
 #define kLineSpacing 10.0
 #define kMinTextViewBackgroundHeight 160.0
 
-@interface ONEHomeDiaryViewController () <UITextViewDelegate ,ONEDiaryPhotoPickerViewDelegate>
+@interface ONEHomeDiaryViewController () <UITextViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UILabel *timeLabel;
@@ -204,11 +204,9 @@
     [self.textView setText:self.contentString lineSpacing:kLineSpacing];
     [self updateTextViewAndBackgroundFrame];
     
-    
     self.authorNameLabel.text = self.authorInfoString;
     
-    [self.scrollView layoutIfNeeded];
-    self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.authorNameLabel.frame) + kBottomSpace);
+    [self reloadScorllView];
 }
 
 - (void)updateTextViewAndBackgroundFrame {
@@ -224,7 +222,13 @@
     [self.textBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(newHeight));
     }];
+    
+    [self reloadScorllView];
+}
+
+- (void)reloadScorllView {
     [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.authorNameLabel.frame) + kBottomSpace);
 }
 
 #pragma mark - 事件响应
@@ -276,15 +280,18 @@
     [self updateTextViewAndBackgroundFrame];
 }
 
-#pragma mark - ONEDiaryPhotoPickerViewDelegate
-- (void)photoPickerView:(ONEDiaryPhotoPickerView *)photoPickerView didPickImage:(UIImage *)image {
-    self.coverImageView.image = image;
-    
-    CGFloat newCoverHeight = CWScreenW * image.size.width / image.size.height;
-    [self.coverImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(newCoverHeight));
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        self.coverImageView.image = image;
+        
+        CGFloat newCoverHeight = CWScreenW * image.size.height / image.size.width;
+        [self.coverImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@(newCoverHeight));
+        }];
+        [self reloadScorllView];
     }];
-    [self.scrollView layoutIfNeeded];
 }
 
 @end

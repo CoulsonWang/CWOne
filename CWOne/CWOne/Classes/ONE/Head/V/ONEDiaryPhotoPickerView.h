@@ -8,17 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class ONEDiaryPhotoPickerView;
-
-@protocol ONEDiaryPhotoPickerViewDelegate <NSObject>
-
-- (void)photoPickerView:(ONEDiaryPhotoPickerView *)photoPickerView didPickImage:(UIImage *)image;
-
-@end
-
 @interface ONEDiaryPhotoPickerView : UIView
 
-@property (weak, nonatomic) id<ONEDiaryPhotoPickerViewDelegate> delegate;
+@property (weak, nonatomic) id<UIImagePickerControllerDelegate, UINavigationControllerDelegate> delegate;
 
 - (void)showPhotoPickerView;
 
