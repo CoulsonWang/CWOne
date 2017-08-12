@@ -59,6 +59,8 @@
 		B9242DEB1F3F52C10039AE0E /* ONEHomeRadioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9242DCC1F3F52C10039AE0E /* ONEHomeRadioCell.xib */; };
 		B9242DEC1F3F52C10039AE0E /* ONELikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242DCE1F3F52C10039AE0E /* ONELikeView.m */; };
 		B9242DED1F3F52C10039AE0E /* ONELikeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9242DCF1F3F52C10039AE0E /* ONELikeView.xib */; };
+		B9242DF01F3F53400039AE0E /* ONEDiaryPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242DEF1F3F53400039AE0E /* ONEDiaryPhotoPickerView.m */; };
+		B9242DF31F3F58250039AE0E /* ONEPhotoPickerViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242DF21F3F58250039AE0E /* ONEPhotoPickerViewButton.m */; };
 		B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9321ECB1F3058CA0052752B /* Assets.xcassets */; };
 		B9321EDA1F3058CA0052752B /* CWOneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321ED91F3058CA0052752B /* CWOneTests.m */; };
 		B9321EE51F3058CA0052752B /* CWOneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321EE41F3058CA0052752B /* CWOneUITests.m */; };
@@ -222,6 +224,12 @@
 		B9242DCD1F3F52C10039AE0E /* ONELikeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELikeView.h; sourceTree = "<group>"; };
 		B9242DCE1F3F52C10039AE0E /* ONELikeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELikeView.m; sourceTree = "<group>"; };
 		B9242DCF1F3F52C10039AE0E /* ONELikeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONELikeView.xib; sourceTree = "<group>"; };
+		B9242DEE1F3F53400039AE0E /* ONEDiaryPhotoPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDiaryPhotoPickerView.h; sourceTree = "<group>"; };
+		B9242DEF1F3F53400039AE0E /* ONEDiaryPhotoPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDiaryPhotoPickerView.m; sourceTree = "<group>"; };
+		B9242DF11F3F58250039AE0E /* ONEPhotoPickerViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEPhotoPickerViewButton.h; sourceTree = "<group>"; };
+		B9242DF21F3F58250039AE0E /* ONEPhotoPickerViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEPhotoPickerViewButton.m; sourceTree = "<group>"; };
+		B9242DF41F3F642F0039AE0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B9242DF51F3F642F0039AE0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		B9321EBC1F3058CA0052752B /* CWOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9321ECB1F3058CA0052752B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9321ED51F3058CA0052752B /* CWOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -636,6 +644,10 @@
 				B9242DB41F3F52C10039AE0E /* ONEHomeHeadContentView.xib */,
 				B9242DB51F3F52C10039AE0E /* ONEHomeHeaderView.h */,
 				B9242DB61F3F52C10039AE0E /* ONEHomeHeaderView.m */,
+				B9242DEE1F3F53400039AE0E /* ONEDiaryPhotoPickerView.h */,
+				B9242DEF1F3F53400039AE0E /* ONEDiaryPhotoPickerView.m */,
+				B9242DF11F3F58250039AE0E /* ONEPhotoPickerViewButton.h */,
+				B9242DF21F3F58250039AE0E /* ONEPhotoPickerViewButton.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1361,6 +1373,7 @@
 				B98A5A8D1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m in Sources */,
 				B98A5A881F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m in Sources */,
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,
+				B9242DF01F3F53400039AE0E /* ONEDiaryPhotoPickerView.m in Sources */,
 				B9242DD11F3F52C10039AE0E /* ONEFeedItem.m in Sources */,
 				B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
@@ -1369,6 +1382,7 @@
 				B9242DD81F3F52C10039AE0E /* ONEHomeCoverImagePresentationController.m in Sources */,
 				B9242DD91F3F52C10039AE0E /* ONEHomeDiaryViewController.m in Sources */,
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
+				B9242DF31F3F58250039AE0E /* ONEPhotoPickerViewButton.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */,
 				B9B822621F3754BC002F6961 /* ONENavigationBarTool.m in Sources */,
@@ -1444,6 +1458,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B9321EF81F3059410052752B /* Base */,
+				B9242DF41F3F642F0039AE0E /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1452,6 +1467,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B9321EFA1F3059410052752B /* Base */,
+				B9242DF51F3F642F0039AE0E /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1463,6 +1479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1511,6 +1528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

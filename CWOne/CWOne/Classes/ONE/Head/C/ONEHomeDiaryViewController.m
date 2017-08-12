@@ -14,6 +14,7 @@
 #import "ONEHomeWeatherItem.h"
 #import "NSString+ONEComponents.h"
 #import "UITextView+CWLineSpacing.h"
+#import "ONEDiaryPhotoPickerView.h"
 #import "ONELoginTool.h"
 #import "ONEShareTool.h"
 
@@ -23,7 +24,7 @@
 #define kLineSpacing 10.0
 #define kMinTextViewBackgroundHeight 160.0
 
-@interface ONEHomeDiaryViewController () <UITextViewDelegate>
+@interface ONEHomeDiaryViewController () <UITextViewDelegate ,ONEDiaryPhotoPickerViewDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UILabel *timeLabel;
@@ -35,10 +36,22 @@
 @property (weak, nonatomic) UITextView *textView;
 @property (weak, nonatomic) UILabel *authorNameLabel;
 
+@property (weak, nonatomic) ONEDiaryPhotoPickerView *photoPickerView;
+
 @end
 
 @implementation ONEHomeDiaryViewController
-
+#pragma mark - 懒加载
+- (ONEDiaryPhotoPickerView *)photoPickerView {
+    if (!_photoPickerView) {
+        ONEDiaryPhotoPickerView *photoPickerView = [[ONEDiaryPhotoPickerView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
+        photoPickerView.delegate = self;
+        [[UIApplication sharedApplication].keyWindow addSubview:photoPickerView];
+        _photoPickerView = photoPickerView;
+    }
+    return _photoPickerView;
+}
+#pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -56,7 +69,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+#pragma mark - 初始化方法
 - (void)setUpSubViews {
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.contentSize = CGSizeMake(0, CWScreenH);
@@ -172,7 +185,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
-
+#pragma mark - 私有方法
 - (void)loadData {
     ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     NSDateComponents *components = [tabBarVC.weatherItem.date getComponents];
@@ -197,7 +210,7 @@
     [self.scrollView layoutIfNeeded];
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.authorNameLabel.frame) + kBottomSpace);
 }
-#pragma mark - 私有方法
+
 - (void)updateTextViewAndBackgroundFrame {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:kLineSpacing];
@@ -234,6 +247,7 @@
 
 - (void)showPhotoPicker {
     // 显示拍照、相册选择界面
+    [self.photoPickerView showPhotoPickerView];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -260,6 +274,17 @@
 - (void)textViewDidChange:(UITextView *)textView {
     self.authorNameLabel.hidden = ![textView.text isEqualToString:self.contentString];
     [self updateTextViewAndBackgroundFrame];
+}
+
+#pragma mark - ONEDiaryPhotoPickerViewDelegate
+- (void)photoPickerView:(ONEDiaryPhotoPickerView *)photoPickerView didPickImage:(UIImage *)image {
+    self.coverImageView.image = image;
+    
+    CGFloat newCoverHeight = CWScreenW * image.size.width / image.size.height;
+    [self.coverImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(newCoverHeight));
+    }];
+    [self.scrollView layoutIfNeeded];
 }
 
 @end
