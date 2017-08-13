@@ -10,6 +10,7 @@
 #import "ONENavigationBarTool.h"
 #import "ONEPhotoPickerViewButton.h"
 #import <Photos/Photos.h>
+#import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD.h>
 
 #define kAnimationDuration 0.3
@@ -91,9 +92,28 @@
         [self removeFromSuperview];
     }];
 }
+
 - (void)openCamera {
-    
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [self showAuthorizationErrorWithMessage:@"您的设备没有照相机设备"];
+        return;
+    }
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
+            }else {
+                [self showAuthorizationErrorWithMessage:@"无法访问您的照相机"];
+            }
+        }];
+    } else if (authStatus == AVAuthorizationStatusAuthorized) {
+        [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
+    } else {
+        [self showAuthorizationErrorWithMessage:@"无法访问您的照相机"];
+    }
 }
+
 - (void)openPhotoLibrary {
     // 权限处理
     PHAuthorizationStatus photoAuthStatus = [PHPhotoLibrary authorizationStatus];
@@ -123,14 +143,17 @@
 - (void)presentImagePickerControllerWithType:(UIImagePickerControllerSourceType)type {
     [self hidePhotoPickerView];
     UIImagePickerController *pickerVC = [[UIImagePickerController alloc] init];
+    pickerVC.allowsEditing = NO;
+    pickerVC.delegate = self.delegate;
     if (type == UIImagePickerControllerSourceTypePhotoLibrary) {
         pickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        pickerVC.allowsEditing = NO;
-        pickerVC.delegate = self.delegate;
         pickerVC.navigationBar.tintColor = [UIColor grayColor];
-        [self presentVC:pickerVC];
+    } else if (type == UIImagePickerControllerSourceTypeCamera) {
+        pickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
+    [self presentVC:pickerVC];
 }
+
 
 - (void)cancelPick {
     
