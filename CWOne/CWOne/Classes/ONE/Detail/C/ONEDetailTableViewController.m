@@ -113,8 +113,6 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.onScreen = YES;
-    
     [self setUpTableView];
     
     [self setUpFooter];
@@ -124,15 +122,13 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.onScreen = YES;
     // 手动调用一次滚动，确保进入时nav的状态正确
     [self scrollViewDidScroll:self.tableView];
 }
-
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     self.onScreen = NO;
-    [self resumeNavigationStatus];
 }
 
 - (void)dealloc {

@@ -19,18 +19,10 @@
 
 @implementation ONESettingTableViewController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.hidesBottomBarWhenPushed = YES;
-        self.recAppCell.imageView.bounds = CGRectMake(0, 0, 30, 30);
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.recAppCell.imageView.bounds = CGRectMake(0, 0, 30, 30);
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(popVC)];
     self.title = @"设置";
@@ -40,7 +32,7 @@
     
     [[ONENetworkTool sharedInstance] requestRecAppListSuccess:^(NSDictionary *dataDict) {
         NSURL *imageURL = [NSURL URLWithString:dataDict[@"app_icon_url"]];
-        [self.recAppCell.imageView sd_setImageWithURL:imageURL];
+        [self.recAppCell.imageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(30, 30)]];
         self.recAppCell.textLabel.text = dataDict[@"app_name"];
         self.recAppCell.detailTextLabel.text = dataDict[@"app_describe"];
     } failure:nil];
