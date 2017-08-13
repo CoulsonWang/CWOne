@@ -152,6 +152,7 @@ typedef enum : NSUInteger {
     [super viewWillAppear:animated];
     
     [[ONENavigationBarTool sharedInstance] showCustomTitleView];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -54,6 +54,12 @@
 
 /// 请求用户关注列表数据
 - (void)requestUserFollowListCountWithUserId:(NSString *)userId success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/* ********************************************* 设置界面请求 ********************************************* */
+
+/// 请求推荐应用
+- (void)requestRecAppListSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *error))failure;
