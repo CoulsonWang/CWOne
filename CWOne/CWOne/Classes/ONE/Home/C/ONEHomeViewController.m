@@ -15,6 +15,7 @@
 #import "ONEHomeDiaryViewController.h"
 #import <FLAnimatedImage.h>
 #import "ONEHomeFeedsViewController.h"
+#import "ONEHomeWeatherItem.h"
 
 #define kChangePageAnimateDuration 0.3
 #define kBackToTodatAnimateDuration 0.4
@@ -318,6 +319,7 @@ typedef enum : NSUInteger {
     moveVC.tableView.x = newIndex * CWScreenW;
     self.lastIndex = index;
     [self updateCurrentVCWithDirection:direction];
+    [self updateNavBarWeatherTextWithWeatherItem:self.currentVC.weatherItem];
 }
 // 更新navigationBar的状态
 - (void)refreshTitleViewWithOffset:(CGFloat)offset {
@@ -330,6 +332,10 @@ typedef enum : NSUInteger {
 // 更新navigationBar上的日期文本
 - (void)updateNavBarDateTextWithDateString:(NSString *)dateString {
     [[ONENavigationBarTool sharedInstance] updateTitleViewDateStringWithDateString:dateString];
+}
+// 更新navigationBar上的天气文本
+- (void)updateNavBarWeatherTextWithWeatherItem:(ONEHomeWeatherItem *)weatherItem {
+    [[ONENavigationBarTool sharedInstance] updateTitleViewWeatherStringWithWeatherItem:weatherItem];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -356,6 +362,7 @@ typedef enum : NSUInteger {
         [self.middleVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index] withCompletion:^{
             self.loadingImageView.hidden = YES;
             self.middleTableView.x = index * CWScreenW;
+            [self updateNavBarWeatherTextWithWeatherItem:self.rightVC.weatherItem];
         }];
         [self.rightVC setDateStr:[[ONEDateTool sharedInstance] getDateStringFromCurrentDateWihtDateInterval:index + 1] withCompletion:^{
             self.rightTableView.x = (index + 1) * CWScreenW;

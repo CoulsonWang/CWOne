@@ -7,6 +7,7 @@
 //
 
 #import "ONEAuthorizationTool.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation ONEAuthorizationTool
 
@@ -42,6 +43,10 @@
             completion(NO);
         }
     }
+}
+
++ (CLAuthorizationStatus)getCurrentLocationStatus {
+    return [CLLocationManager authorizationStatus];
 }
 
 @end

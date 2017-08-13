@@ -24,6 +24,7 @@
 #define ONEMenuItemKey @"menuItem"
 #define ONEIndexKey @"index"
 #define ONEDateStringKey @"dataString"
+#define ONECityNameKey @"cityName"
 
 #define ONECoverPresentationImageKey @"ONECoverPresentationImage"
 #define ONECoverPresentationImageOrientationKey @"ONECoverPresentationImageOrientation"

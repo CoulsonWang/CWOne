@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
-#import <AVFoundation/AVFoundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ONEAuthorizationTool : NSObject
 
@@ -17,5 +17,8 @@
 
 /// 请求照相机权限，如果已经请求过，直接执行block
 + (void)requestCameraAuthorizationWithCompletion:(void(^)(BOOL granted))completion;
+
+/// 获取当前定位状态
++ (CLAuthorizationStatus)getCurrentLocationStatus;
 
 @end

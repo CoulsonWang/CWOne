@@ -89,6 +89,10 @@
     [self.homeTitleView updateDateStringWithDateString:dateString];
 }
 
+- (void)updateTitleViewWeatherStringWithWeatherItem:(ONEHomeWeatherItem *)weatherItem {
+    self.homeTitleView.weatherItem = weatherItem;
+}
+
 - (void)hideCustomTitleView {
     self.homeTitleView.hidden = YES;
     [self saveTempAlpha];

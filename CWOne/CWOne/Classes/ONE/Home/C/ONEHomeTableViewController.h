@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeWeatherItem;
+
 @class ONEHomeTableViewController;
 
 @protocol ONEHomeTableViewControllerDelegate <NSObject>
@@ -19,6 +21,8 @@
 @interface ONEHomeTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *dateStr;
+
+@property (strong, nonatomic) ONEHomeWeatherItem *weatherItem;
 
 @property (weak, nonatomic) id<ONEHomeTableViewControllerDelegate> delegate;
 

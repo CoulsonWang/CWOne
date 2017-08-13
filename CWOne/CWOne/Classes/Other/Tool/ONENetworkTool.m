@@ -21,15 +21,14 @@ static ONENetworkTool *_instance;
     return _instance;
 }
 
-- (void)requestHomeDataWithDate:(NSString *)date success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+- (void)requestHomeDataWithDate:(NSString *)date cityName:(NSString *)cityName success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     
-    NSString *requestURL;
-    if (date == nil) {
-        requestURL = @"http://v3.wufazhuce.com:8000/api/channel/one/0/0";
-    } else {
-        requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/channel/one/%@/0",date];
-    }
-    
+    NSString *dateStr = (date == nil) ? @"0" : date;
+    NSString *cityStr = (cityName == nil) ? @"0" : cityName;
+
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/channel/one/%@/%@",dateStr,cityStr];
+    // 将中文进行转码
+    requestURL = [requestURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSDictionary *parameters = @{
                                  @"version":@"v4.3.0",
                                  };

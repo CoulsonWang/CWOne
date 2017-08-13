@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ONEHomeWeatherItem;
+
 typedef enum : NSUInteger {
     ONENavigationBarTintColorGray,
     ONENavigationBarTintColorWhite,
@@ -31,6 +33,9 @@ typedef enum : NSUInteger {
 
 /// 修改日期
 - (void)updateTitleViewDateStringWithDateString:(NSString *)dateString;
+
+/// 修改天气
+- (void)updateTitleViewWeatherStringWithWeatherItem:(ONEHomeWeatherItem *)weatherItem;
 
 /// 隐藏日期
 - (void)hideCustomTitleView;

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEHomeWeatherItem;
+
 @interface ONENavigationBar : UINavigationBar
 
 - (void)updateTitleViewWithOffset:(CGFloat)offset;
@@ -20,6 +22,9 @@
 
 /// 修改日期
 - (void)updateTitleViewDateStringWithDateString:(NSString *)dateString;
+
+/// 修改天气
+- (void)updateTitleViewWeatherStringWithWeatherItem:(ONEHomeWeatherItem *)weatherItem;
 
 /// 隐藏日期
 - (void)hideCustomTitleView;

@@ -14,7 +14,7 @@
 
 /* ********************************************* get请求 ********************************************* */
 /// 请求主页数据
-- (void)requestHomeDataWithDate:(NSString *)date success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+- (void)requestHomeDataWithDate:(NSString *)date cityName:(NSString *)cityName success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
 /// 获取当前电台状态数据
 - (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;

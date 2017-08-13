@@ -41,6 +41,8 @@
 	<string>“一个”需要您的授权才能访问您的相册</string>
 	<key>NSCameraUsageDescription</key>
 	<string>“一个”需要您的授权才能访问您的照相机</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;一个&quot;想要获取您的地理位置，为您提供天气信息</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

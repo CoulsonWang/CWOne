@@ -83,7 +83,7 @@
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    self.monthLabel.center = CGPointMake(self.width * 0.5, self.height * 0.5);
+    self.monthLabel.center = CGPointMake(self.width * 0.5 + 8, self.height * 0.5);
     self.leftSlashLabel.centerY = self.height * 0.5;
     self.leftSlashLabel.x = self.monthLabel.x - kSlashWidth;
     self.yearLabel.centerY = self.height * 0.5;

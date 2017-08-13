@@ -56,6 +56,11 @@ static ONENavigationBarTool *_instance;
     [self.homeNavigationBar updateTitleViewDateStringWithDateString:dateString];
 }
 
+/// 修改天气
+- (void)updateTitleViewWeatherStringWithWeatherItem:(ONEHomeWeatherItem *)weatherItem {
+    [self.homeNavigationBar updateTitleViewWeatherStringWithWeatherItem:weatherItem];
+}
+
 /// 隐藏日期
 - (void)hideCustomTitleView {
     [self.homeNavigationBar hideCustomTitleView];

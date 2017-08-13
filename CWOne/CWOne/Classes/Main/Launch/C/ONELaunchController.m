@@ -15,6 +15,7 @@
 #import "ONERadioTool.h"
 #import "ONEHomeMenuItem.h"
 #import "ONEDateTool.h"
+#import "ONELocationTool.h"
 
 @interface ONELaunchController ()
 
@@ -95,27 +96,28 @@
 }
 
 - (void)loadData {
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil success:^(NSDictionary *dataDict) {
-        
-        NSDictionary *weatherDict = dataDict[@"weather"];
-        ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];
-        
-        NSDictionary *menuDict = dataDict[@"menu"];
-        ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
-        
-        NSString *dateOriginStr = dataDict[@"date"];
-        [ONEDateTool sharedInstance].dateOriginStr = dateOriginStr;
-        
-        NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
-        NSMutableArray<ONEHomeItem *> *tempArray = [NSMutableArray array];
-        for (NSDictionary *dict in contentList) {
-            ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
-            [tempArray addObject:item];
-        }
-        
-        [self changeRootContollerWith:tempArray weatherItem:weatherItem menuItem:menuItem];
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+    [[ONELocationTool sharedInstance] requestLocationAndGetCityNameWithCompletion:^(NSString *cityName) {
+        // 缓存城市名称
+        [[NSUserDefaults standardUserDefaults] setValue:cityName forKey:ONECityNameKey];
+        [[ONENetworkTool sharedInstance] requestHomeDataWithDate:nil cityName:cityName success:^(NSDictionary *dataDict) {
+            NSDictionary *weatherDict = dataDict[@"weather"];
+            ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];
+            
+            NSDictionary *menuDict = dataDict[@"menu"];
+            ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
+            
+            NSString *dateOriginStr = dataDict[@"date"];
+            [ONEDateTool sharedInstance].dateOriginStr = dateOriginStr;
+            
+            NSArray<NSDictionary *> *contentList = dataDict[@"content_list"];
+            NSMutableArray<ONEHomeItem *> *tempArray = [NSMutableArray array];
+            for (NSDictionary *dict in contentList) {
+                ONEHomeItem *item = [ONEHomeItem homeItemWithDict:dict];
+                [tempArray addObject:item];
+            }
+            
+            [self changeRootContollerWith:tempArray weatherItem:weatherItem menuItem:menuItem];
+        } failure:nil];
     }];
 }
 

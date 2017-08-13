@@ -19,6 +19,8 @@
 #import "ONEHomeHeaderView.h"
 #import "ONEHomeMenuItem.h"
 #import "ONEDetailViewController.h"
+#import "ONELocationTool.h"
+#import "ONEHomeWeatherItem.h"
 
 #define kTabBarHideAnimationDuration 0.25
 
@@ -135,7 +137,12 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         return;
     }
     
-    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:self.dateStr success:^(NSDictionary *dataDict) {
+    // 获取缓存的城市名称
+    NSString *cityName = [[NSUserDefaults standardUserDefaults] valueForKey:ONECityNameKey];
+    [[ONENetworkTool sharedInstance] requestHomeDataWithDate:self.dateStr cityName:cityName success:^(NSDictionary *dataDict) {
+        NSDictionary *weatherDict = dataDict[@"weather"];
+        ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:weatherDict];
+        
         NSDictionary *menuDict = dataDict[@"menu"];
         ONEHomeMenuItem *menuItem = [ONEHomeMenuItem menuItemWithDict:menuDict];
         
@@ -147,16 +154,14 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
         }
         self.homeItems = tempArray;
         self.menuItem = menuItem;
+        self.weatherItem = weatherItem;
         self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tempArray.firstObject];
         self.headerView.menuItem = menuItem;
         if (completion) {
             completion();
         }
         [self refreshTableView];
-    } failure:^(NSError *error) {
-        [self.tableView.mj_header endRefreshing];
-        NSLog(@"%@",error);
-    }];
+    } failure:nil];
 }
 
 - (void)refreshTableView {

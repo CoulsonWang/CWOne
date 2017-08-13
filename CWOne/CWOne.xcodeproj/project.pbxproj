@@ -73,6 +73,7 @@
 		B953EAFA1F402DA100DDC478 /* ONEPersistent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B953EAF81F402DA100DDC478 /* ONEPersistent.xcdatamodeld */; };
 		B953EAFE1F402DF000DDC478 /* ONEPersistentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */; };
 		B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */; };
+		B953EB0A1F4051EF00DDC478 /* ONELocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EB091F4051EF00DDC478 /* ONELocationTool.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -256,6 +257,8 @@
 		B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEPersistentTool.m; sourceTree = "<group>"; };
 		B953EB021F40487100DDC478 /* ONEAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorizationTool.h; sourceTree = "<group>"; };
 		B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorizationTool.m; sourceTree = "<group>"; };
+		B953EB081F4051EF00DDC478 /* ONELocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELocationTool.h; sourceTree = "<group>"; };
+		B953EB091F4051EF00DDC478 /* ONELocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELocationTool.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -943,6 +946,8 @@
 				B9242D7D1F3F393E0039AE0E /* ONEShareTool.m */,
 				B953EB021F40487100DDC478 /* ONEAuthorizationTool.h */,
 				B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */,
+				B953EB081F4051EF00DDC478 /* ONELocationTool.h */,
+				B953EB091F4051EF00DDC478 /* ONELocationTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1435,6 +1440,7 @@
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,
 				B98A5A821F39DADE009FCCBC /* ONEDetailTableHeaderView.m in Sources */,
 				B9242DE61F3F52C10039AE0E /* ONEUserItem.m in Sources */,
+				B953EB0A1F4051EF00DDC478 /* ONELocationTool.m in Sources */,
 				B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
