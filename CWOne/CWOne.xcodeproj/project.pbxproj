@@ -74,6 +74,7 @@
 		B953EAFE1F402DF000DDC478 /* ONEPersistentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */; };
 		B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */; };
 		B953EB0A1F4051EF00DDC478 /* ONELocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EB091F4051EF00DDC478 /* ONELocationTool.m */; };
+		B95F22FB1F407F96004FC239 /* ONEAuthorInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F22FA1F407F96004FC239 /* ONEAuthorInfoController.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -259,6 +260,8 @@
 		B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorizationTool.m; sourceTree = "<group>"; };
 		B953EB081F4051EF00DDC478 /* ONELocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELocationTool.h; sourceTree = "<group>"; };
 		B953EB091F4051EF00DDC478 /* ONELocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELocationTool.m; sourceTree = "<group>"; };
+		B95F22F91F407F96004FC239 /* ONEAuthorInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorInfoController.h; sourceTree = "<group>"; };
+		B95F22FA1F407F96004FC239 /* ONEAuthorInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorInfoController.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -867,6 +870,8 @@
 				B9B828D11F361A0F008BB163 /* Detail */,
 				B9242D7F1F3F3A240039AE0E /* Login */,
 				B9242D881F3F3A4F0039AE0E /* Share */,
+				B95F22F11F407F0F004FC239 /* Author */,
+				B95F22F51F407F0F004FC239 /* User */,
 			);
 			path = ONE;
 			sourceTree = "<group>";
@@ -968,6 +973,70 @@
 				B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */,
 			);
 			path = Persistent;
+			sourceTree = "<group>";
+		};
+		B95F22F11F407F0F004FC239 /* Author */ = {
+			isa = PBXGroup;
+			children = (
+				B95F22F21F407F0F004FC239 /* C */,
+				B95F22F31F407F0F004FC239 /* M */,
+				B95F22F41F407F0F004FC239 /* V */,
+			);
+			path = Author;
+			sourceTree = "<group>";
+		};
+		B95F22F21F407F0F004FC239 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				B95F22F91F407F96004FC239 /* ONEAuthorInfoController.h */,
+				B95F22FA1F407F96004FC239 /* ONEAuthorInfoController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B95F22F31F407F0F004FC239 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B95F22F41F407F0F004FC239 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		B95F22F51F407F0F004FC239 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B95F22F61F407F0F004FC239 /* C */,
+				B95F22F71F407F0F004FC239 /* M */,
+				B95F22F81F407F0F004FC239 /* V */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B95F22F61F407F0F004FC239 /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		B95F22F71F407F0F004FC239 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		B95F22F81F407F0F004FC239 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 		B98A5A7C1F39BD0C009FCCBC /* CWCalendarLabel */ = {
@@ -1443,6 +1512,7 @@
 				B953EB0A1F4051EF00DDC478 /* ONELocationTool.m in Sources */,
 				B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
+				B95F22FB1F407F96004FC239 /* ONEAuthorInfoController.m in Sources */,
 				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
 				B9E001011F38C1BC00A7A609 /* ONERelatedItem.m in Sources */,
 				B9242DDA1F3F52C10039AE0E /* ONECatalogueItem.m in Sources */,

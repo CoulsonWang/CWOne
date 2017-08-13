@@ -43,6 +43,17 @@
 /// 请求日记页的天气信息
 - (void)requestDiaryWeatherDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
+/// 请求作者信息数据
+- (void)requestAuthorInfoDataWithAuthorId:(NSString *)authorId success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/// 请求作者作品列表数据
+- (void)requestAuthorWorksListDataWithAuthorId:(NSString *)authorId pageNumber:(NSString *)pageNumber success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/// 请求用户信息数据
+- (void)requestUserInfoDataWithUserId:(NSString *)userId success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/// 请求用户关注列表数据
+- (void)requestUserFollowListCountWithUserId:(NSString *)userId success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *error))failure;

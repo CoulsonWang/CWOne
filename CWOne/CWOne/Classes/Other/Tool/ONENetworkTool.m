@@ -303,4 +303,94 @@ static ONENetworkTool *_instance;
     }];
 }
 
+/// 请求作者信息数据
+- (void)requestAuthorInfoDataWithAuthorId:(NSString *)authorId success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/author/info"];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"author_id":authorId
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求作者作品列表数据
+- (void)requestAuthorWorksListDataWithAuthorId:(NSString *)authorId pageNumber:(NSString *)pageNumber success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/author/works"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"author_id":authorId,
+                                 @"page_num":pageNumber
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求用户信息数据
+- (void)requestUserInfoDataWithUserId:(NSString *)userId success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/user/info/%@",userId];
+    
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求用户关注列表数据
+- (void)requestUserFollowListCountWithUserId:(NSString *)userId success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/user/follow_list"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"uid":userId,
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end
