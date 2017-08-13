@@ -123,19 +123,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     if (self.dateStr == nil) {
         return;
     }
-    // 如果是今天，不需要再从网络获取，直接获取缓存好的数据
-    if ([self.dateStr isEqualToString:kCurrentDateString]) {
-        ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-        self.homeItems = tabBarVc.homeItems;
-        self.menuItem = tabBarVc.menuItem;
-        self.headerView.viewModel = [ONEHomeViewModel viewModelWithItem:tabBarVc.homeItems.firstObject];
-        self.headerView.menuItem = tabBarVc.menuItem;
-        if (completion) {
-            completion();
-        }
-        [self refreshTableView];
-        return;
-    }
     
     // 获取缓存的城市名称
     NSString *cityName = [[NSUserDefaults standardUserDefaults] valueForKey:ONECityNameKey];

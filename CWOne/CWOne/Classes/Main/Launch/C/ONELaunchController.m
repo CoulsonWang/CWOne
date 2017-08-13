@@ -124,10 +124,6 @@
 - (void)changeRootContollerWith:(NSArray *)homeItems weatherItem:(ONEHomeWeatherItem *)weatherItem menuItem:(ONEHomeMenuItem *)menuItem {
     ONEMainTabBarController *tabBarVC = [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;
     
-    tabBarVC.homeItems = homeItems;
-    tabBarVC.weatherItem = weatherItem;
-    tabBarVC.menuItem = menuItem;
-    
     [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
 }
 

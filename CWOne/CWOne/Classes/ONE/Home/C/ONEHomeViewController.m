@@ -137,9 +137,9 @@ typedef enum : NSUInteger {
     
     [self setUpScrollView];
     
-    [self setUpTableViews];
-    
     [self setUpLoadingAnimateView];
+    
+    [self setUpTableViews];
     
     [self setUpNotification];
     
@@ -182,8 +182,15 @@ typedef enum : NSUInteger {
 - (void)setUpTableViews {
     self.leftTableView.x = -CWScreenW * 2;
     
-    self.middleTableView.x = 0;
-    self.middleVC.dateStr = kCurrentDateString;
+    self.middleTableView.x = -CWScreenW;
+    self.loadingImageView.hidden = NO;
+    [self.middleVC setDateStr:kCurrentDateString withCompletion:^{
+        self.loadingImageView.hidden = YES;
+        self.middleTableView.x = 0;
+        [self updateNavBarDateTextWithDateString:[ONEDateTool sharedInstance].currentDateString];
+        [self updateNavBarWeatherTextWithWeatherItem:self.middleVC.weatherItem];
+    }];
+    
     
     self.rightTableView.x = CWScreenW;
     self.rightVC.dateStr = [[ONEDateTool sharedInstance] yesterdayDateStr];

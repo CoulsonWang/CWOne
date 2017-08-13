@@ -277,4 +277,30 @@ static ONENetworkTool *_instance;
     }];
 }
 
+- (void)requestDiaryWeatherDataSuccess:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/weather/search"];
+    
+    NSString *cityName = [[NSUserDefaults standardUserDefaults] valueForKey:ONECityNameKey];
+    if (cityName == nil) {
+        cityName = @"0";
+    }
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"city_name":cityName,
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end

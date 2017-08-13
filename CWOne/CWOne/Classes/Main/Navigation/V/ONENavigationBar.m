@@ -54,8 +54,6 @@
 - (void)setUpHomeTitleView {
     ONEHomeNavigationBarTitleView *homeTitleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
     homeTitleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
-    ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    homeTitleView.weatherItem = tabBarVC.weatherItem;
     [self addSubview:homeTitleView];
     self.homeTitleView = homeTitleView;
 }

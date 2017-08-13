@@ -15,6 +15,7 @@
 #import "NSString+ONEComponents.h"
 #import "UITextView+CWLineSpacing.h"
 #import "ONEDiaryPhotoPickerView.h"
+#import "ONENetworkTool.h"
 #import "ONELoginTool.h"
 #import "ONEShareTool.h"
 
@@ -187,10 +188,12 @@
 }
 #pragma mark - 私有方法
 - (void)loadData {
-    ONEMainTabBarController *tabBarVC = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    NSDateComponents *components = [tabBarVC.weatherItem.date getComponents];
-    self.timeLabel.text = [NSString stringWithFormat:@"%ld / %02ld / %02ld",components.year,components.month,components.day];
-    self.placeLabel.text = [NSString stringWithFormat:@"%@, %@",tabBarVC.weatherItem.climate,tabBarVC.weatherItem.city_name];
+    [[ONENetworkTool sharedInstance] requestDiaryWeatherDataSuccess:^(NSDictionary *dataDict) {
+        ONEHomeWeatherItem *weatherItem = [ONEHomeWeatherItem weatherItemWithDict:dataDict];
+        NSDateComponents *components = [weatherItem.date getComponents];
+        self.timeLabel.text = [NSString stringWithFormat:@"%ld / %02ld / %02ld",components.year,components.month,components.day];
+        self.placeLabel.text = [NSString stringWithFormat:@"%@, %@",weatherItem.climate,weatherItem.city_name];
+    } failure:nil];
     
     CGFloat ratio = (self.orientation.integerValue == 0) ? kRatioOfHorizontal : kRatioOfVertical;
     CGFloat coverHeight = CWScreenW * ratio;
