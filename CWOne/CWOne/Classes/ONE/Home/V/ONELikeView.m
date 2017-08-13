@@ -14,6 +14,7 @@
 #import <Masonry.h>
 #import "NSString+CWTranslate.h"
 #import "ONEEssayItem.h"
+#import "ONEPersistentTool.h"
 
 #define kAnimateDuration 0.4
 
@@ -71,12 +72,25 @@
     
     self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",viewModel.homeItem.like_count];
     
+    // 加载数据库中点赞情况
+    HomeItem *homeItem = [[ONEPersistentTool sharedInstance] fetchHomeItemWithTypeName:[NSString getTypeStrWithType:viewModel.homeItem.type] itemID:viewModel.homeItem.item_id];
+    if (homeItem) {
+        self.isLikeWhenLoad = homeItem.isLike;
+    }
+    [self updateButtonSelectionViaLike];
 }
 
 - (void)setEssayItem:(ONEEssayItem *)essayItem {
     _essayItem = essayItem;
     
     self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",essayItem.praisenum];
+    
+    // 加载数据库中点赞情况
+    HomeItem *homeItem = [[ONEPersistentTool sharedInstance] fetchHomeItemWithTypeName:[NSString getTypeStrWithCategoryInteger:essayItem.category] itemID:essayItem.item_id];
+    if (homeItem) {
+        self.isLikeWhenLoad = homeItem.isLike;
+    }
+    [self updateButtonSelectionViaLike];
 }
 
 - (IBAction)likeButtonClick:(UIButton *)sender {
@@ -84,7 +98,6 @@
     
     // 播放动画，更新点赞数字
     CWCalendarLabelScrollDirection direction = sender.isSelected ? CWCalendarLabelScrollToTop : CWCalendarLabelScrollToBottom;
-    
     NSInteger newCount;
     if (self.isLikeWhenLoad) {
         if (self.isSummary) {
@@ -102,25 +115,31 @@
     NSString *newCountStr = [NSString stringWithFormat:@"%ld",newCount];
     [self.likeCountLabel showNextText:newCountStr withDirection:direction];
     
+    NSString *typeName;
+    NSString *itemId;
+    if (self.isSummary) {
+        typeName = [NSString getTypeStrWithType:self.viewModel.homeItem.type];
+        itemId = self.viewModel.homeItem.item_id;
+    } else {
+        typeName = [NSString getTypeStrWithCategoryInteger:self.essayItem.category];
+        itemId = self.essayItem.item_id;
+    }
     if (sender.isSelected) {
         // 发送一个POST请求通知服务器已点赞
-        NSString *typeName;
-        NSString *itemId;
-        if (self.isSummary) {
-            typeName = [NSString getTypeStrWithType:self.viewModel.homeItem.type];
-            itemId = self.viewModel.homeItem.item_id;
-        } else {
-            typeName = [NSString getTypeStrWithCategoryInteger:self.essayItem.category];
-            itemId = self.essayItem.item_id;
-        }
         [[ONENetworkTool sharedInstance] postPraisedWithItemId:itemId typeName:typeName success:nil failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];
-        
         // 修改本地数据库中的数据
+        [[ONEPersistentTool sharedInstance] updateHomeItemWithTypeName:typeName itemID:itemId isLike:YES];
+        
     } else {
         // 修改本地数据库中的数据
+        [[ONEPersistentTool sharedInstance] updateHomeItemWithTypeName:typeName itemID:itemId isLike:NO];
     }
+}
+
+- (void)updateButtonSelectionViaLike {
+    self.likeButton.selected = self.isLikeWhenLoad;
 }
 
 @end

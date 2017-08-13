@@ -50,6 +50,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.tableView.contentOffset = CGPointMake(0, -kNavigationBarHeight);
 }
 
+#pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -58,6 +59,11 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [self reloadDataWithCompletion:nil];
     
     [self setUpNotification];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)dealloc {

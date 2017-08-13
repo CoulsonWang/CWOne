@@ -278,6 +278,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     } else {
         ONEDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ONEDetailCommentCellID forIndexPath:indexPath];
         ONECommentItem *commentItem = self.commentList[indexPath.row];
+        cell.typeName = [NSString getTypeStrWithType:self.type];
         cell.commentItem = commentItem;
         return cell;
     }

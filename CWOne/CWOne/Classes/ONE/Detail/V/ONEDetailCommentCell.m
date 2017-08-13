@@ -14,6 +14,7 @@
 #import "UILabel+CWLineSpacing.h"
 #import "ONENetworkTool.h"
 #import "ONELoginTool.h"
+#import "ONEPersistentTool.h"
 
 #define kLargeBottomConstraint 30.0
 #define kSmallBottomConstraint 15.0
@@ -66,6 +67,13 @@
     [self.likeButton setTitle:praiseCount forState:UIControlStateNormal];
     
     self.lastHotComment = commentItem.isLastHotComment;
+    
+    // 加载数据库中点赞情况
+    CommentItem *comment = [[ONEPersistentTool sharedInstance] fetchCommentItemWithTypeName:self.typeName commentID:commentItem.commentID];
+    if (comment) {
+        self.like = comment.isLike;
+        self.likeButton.selected = self.isLike;
+    }
 }
 
 - (void)setLastHotComment:(BOOL)lastHotComment {
@@ -90,16 +98,19 @@
     self.like = sender.isSelected;
     
     if (sender.isSelected) {
+        // 修改点赞数字文本
         NSString *count = [NSString stringWithFormat:@"%ld",[self.likeButton titleForState:UIControlStateNormal].integerValue + 1];
         [self.likeButton setTitle:count forState:UIControlStateNormal];
+        // 修改本地数据库
+        [[ONEPersistentTool sharedInstance] updateCommentItemWithType:self.typeName commentID:self.commentItem.commentID isLike:YES];
+        // 发送网络请求，通知服务器点了\取消了赞
+        [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentPraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID}];
     } else {
         NSString *count = [NSString stringWithFormat:@"%ld",[self.likeButton titleForState:UIControlStateNormal].integerValue - 1];
         [self.likeButton setTitle:count forState:UIControlStateNormal];
-    }
-    // 发送网络请求，通知服务器点了\取消了赞
-    if (sender.isSelected) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentPraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID}];
-    } else {
+        
+        [[ONEPersistentTool sharedInstance] updateCommentItemWithType:self.typeName commentID:self.commentItem.commentID isLike:NO];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentUnpraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID }];
     }
     
