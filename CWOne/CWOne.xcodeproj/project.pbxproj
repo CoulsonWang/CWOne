@@ -70,6 +70,8 @@
 		B9321F271F305AD70052752B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9321F261F305AD70052752B /* AppDelegate.m */; };
 		B93A7D6D1F347A6A00FF86E9 /* ONEDateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */; };
 		B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */; };
+		B953EAFA1F402DA100DDC478 /* ONEPersistent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B953EAF81F402DA100DDC478 /* ONEPersistent.xcdatamodeld */; };
+		B953EAFE1F402DF000DDC478 /* ONEPersistentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -248,6 +250,9 @@
 		B93A7D6C1F347A6A00FF86E9 /* ONEDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDateTool.m; sourceTree = "<group>"; };
 		B93A7D6E1F347C8700FF86E9 /* NSString+ONEComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ONEComponents.h"; sourceTree = "<group>"; };
 		B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ONEComponents.m"; sourceTree = "<group>"; };
+		B953EAF91F402DA100DDC478 /* ONEPersistent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ONEPersistent.xcdatamodel; sourceTree = "<group>"; };
+		B953EAFC1F402DF000DDC478 /* ONEPersistentTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEPersistentTool.h; sourceTree = "<group>"; };
+		B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEPersistentTool.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -775,6 +780,7 @@
 				B9321EF91F3059410052752B /* Main.storyboard */,
 				B9321EFB1F3059410052752B /* Info.plist */,
 				B9321EFC1F3059410052752B /* main.m */,
+				B953EAF81F402DA100DDC478 /* ONEPersistent.xcdatamodeld */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 		B9321F231F305AD70052752B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B953EAFB1F402DF000DDC478 /* Persistent */,
 				B9242D7B1F3F39200039AE0E /* Model */,
 				B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */,
 				B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */,
@@ -942,6 +949,15 @@
 				B9321F261F305AD70052752B /* AppDelegate.m */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		B953EAFB1F402DF000DDC478 /* Persistent */ = {
+			isa = PBXGroup;
+			children = (
+				B953EAFC1F402DF000DDC478 /* ONEPersistentTool.h */,
+				B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */,
+			);
+			path = Persistent;
 			sourceTree = "<group>";
 		};
 		B98A5A7C1F39BD0C009FCCBC /* CWCalendarLabel */ = {
@@ -1367,6 +1383,7 @@
 				B9242DE21F3F52C10039AE0E /* ONEHomeTableViewController.m in Sources */,
 				B9242DD21F3F52C10039AE0E /* ONEHomeFeedBottomPickerView.m in Sources */,
 				B90C3A3E1F306B8F004E64D9 /* NSString+CWTranslate.m in Sources */,
+				B953EAFE1F402DF000DDC478 /* ONEPersistentTool.m in Sources */,
 				B90C3A531F3079CA004E64D9 /* ONEAllController.m in Sources */,
 				B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */,
 				B9242D711F3F2F0B0039AE0E /* ONELoginTool.m in Sources */,
@@ -1417,6 +1434,7 @@
 				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
 				B9E001011F38C1BC00A7A609 /* ONERelatedItem.m in Sources */,
 				B9242DDA1F3F52C10039AE0E /* ONECatalogueItem.m in Sources */,
+				B953EAFA1F402DA100DDC478 /* ONEPersistent.xcdatamodeld in Sources */,
 				B9B8225F1F3751F3002F6961 /* ONENavigationBar.m in Sources */,
 				B973FC321F3703AC00161989 /* ONEDetailBottomToolView.m in Sources */,
 			);
@@ -1576,7 +1594,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CWOne/Classes/Other/CWOne_PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1592,7 +1610,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CWOne/Classes/Other/CWOne_PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1689,6 +1707,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B953EAF81F402DA100DDC478 /* ONEPersistent.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B953EAF91F402DA100DDC478 /* ONEPersistent.xcdatamodel */,
+			);
+			currentVersion = B953EAF91F402DA100DDC478 /* ONEPersistent.xcdatamodel */;
+			path = ONEPersistent.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B9321EB41F3058CA0052752B /* Project object */;
 }

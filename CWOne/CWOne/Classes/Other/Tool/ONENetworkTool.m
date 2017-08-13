@@ -54,11 +54,16 @@ static ONENetworkTool *_instance;
     }];
 }
 
-- (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *))failure {
+- (void)postPraisedWithItemId:(NSString *)item_id  typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *))failure {
     
-    NSDictionary *parameters = @{};
+    NSDictionary *parameters = @{
+                                 @"deviceid":[[[UIDevice currentDevice] identifierForVendor] UUIDString],
+                                 @"devicetype":@"ios",
+                                 @"itemid":item_id,
+                                 @"type":typeName,
+                                 };
     
-    [[AFHTTPSessionManager manager] POST:@"" parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [[AFHTTPSessionManager manager] POST:@"http://v3.wufazhuce.com:8000/api/praise/add" parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         // 进度
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {

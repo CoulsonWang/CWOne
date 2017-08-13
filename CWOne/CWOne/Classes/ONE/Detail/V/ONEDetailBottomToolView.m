@@ -34,6 +34,7 @@
     // 添加点赞控件
     // 添加点赞控件
     ONELikeView *likeView = [ONELikeView likeViewWithLargeImage];
+    
     [self addSubview:likeView];
     [likeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.commentButton.mas_left).with.offset(-8);
@@ -47,7 +48,7 @@
 - (void)setEssayItem:(ONEEssayItem *)essayItem {
     _essayItem = essayItem;
     
-    self.likeView.praisenum = essayItem.praisenum;
+    self.likeView.essayItem = essayItem;
     [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",essayItem.commentnum] forState:UIControlStateNormal];
 }
 

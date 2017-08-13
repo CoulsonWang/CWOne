@@ -32,6 +32,11 @@
 /// 分享用的链接地址
 @property (strong, nonatomic) NSString *web_url;
 
+/// 类别
+@property (assign, nonatomic) NSInteger category;
+
+@property (strong, nonatomic) NSString *item_id;
+
 /* ********************************************* 音乐详情页内容 ********************************************* */
 
 /// 故事标题

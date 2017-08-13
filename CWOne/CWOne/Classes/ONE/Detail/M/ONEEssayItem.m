@@ -20,6 +20,8 @@
     NSDictionary *tag = tag_list.firstObject;
     item.tagTitle = tag[@"title"];
     
+    item.item_id = dict[@"id"];
+    
     // 音乐属性
     NSDictionary *authorDict = dict[@"author"];
     if (authorDict) {

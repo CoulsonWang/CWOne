@@ -12,6 +12,8 @@
 #import "ONEHomeItem.h"
 #import "CWCalendarLabel.h"
 #import <Masonry.h>
+#import "NSString+CWTranslate.h"
+#import "ONEEssayItem.h"
 
 #define kAnimateDuration 0.4
 
@@ -29,15 +31,15 @@
 @implementation ONELikeView
 
 + (instancetype)likeView {
-    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
+    ONELikeView *likeView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
+    likeView.isSummary = YES;
+    return likeView;
 }
 
 + (instancetype)likeViewWithLargeImage {
     ONELikeView *likeView = [ONELikeView likeView];
     [likeView changeButtonImageToLargeOne];
-    
-    
-    
+    likeView.isSummary = NO;
     return likeView;
 }
 
@@ -67,21 +69,14 @@
 - (void)setViewModel:(ONEHomeViewModel *)viewModel {
     _viewModel = viewModel;
     
-    self.likeButton.selected = viewModel.homeItem.isLike;
-    
-    self.praisenum = viewModel.homeItem.like_count;
-    
     self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",viewModel.homeItem.like_count];
-    
-    self.isLikeWhenLoad = viewModel.homeItem.isLike;
     
 }
 
-- (void)setPraisenum:(NSInteger)praisenum {
-    _praisenum = praisenum;
+- (void)setEssayItem:(ONEEssayItem *)essayItem {
+    _essayItem = essayItem;
     
-    self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",praisenum];
-    
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",essayItem.praisenum];
 }
 
 - (IBAction)likeButtonClick:(UIButton *)sender {
@@ -92,19 +87,40 @@
     
     NSInteger newCount;
     if (self.isLikeWhenLoad) {
-        newCount = (direction == CWCalendarLabelScrollToTop) ? self.praisenum : self.praisenum - 1;
+        if (self.isSummary) {
+            newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count : self.viewModel.homeItem.like_count - 1;
+        } else {
+            newCount = (direction == CWCalendarLabelScrollToTop) ? self.essayItem.praisenum : self.essayItem.praisenum - 1;
+        }
     } else {
-        newCount = (direction == CWCalendarLabelScrollToTop) ? self.praisenum + 1: self.praisenum;
+        if (self.isSummary) {
+            newCount = (direction == CWCalendarLabelScrollToTop) ? self.viewModel.homeItem.like_count + 1: self.viewModel.homeItem.like_count;
+        } else {
+            newCount = (direction == CWCalendarLabelScrollToTop) ? self.essayItem.praisenum + 1: self.essayItem.praisenum;
+        }
     }
     NSString *newCountStr = [NSString stringWithFormat:@"%ld",newCount];
     [self.likeCountLabel showNextText:newCountStr withDirection:direction];
     
-    // 发送一个POST请求通知服务器已点赞
-    [[ONENetworkTool sharedInstance] postPraisedWithItemId:self.viewModel.homeItem.item_id success:^{
-        //
-    } failure:^(NSError *error) {
-        //
-    }];
+    if (sender.isSelected) {
+        // 发送一个POST请求通知服务器已点赞
+        NSString *typeName;
+        NSString *itemId;
+        if (self.isSummary) {
+            typeName = [NSString getTypeStrWithType:self.viewModel.homeItem.type];
+            itemId = self.viewModel.homeItem.item_id;
+        } else {
+            typeName = [NSString getTypeStrWithCategoryInteger:self.essayItem.category];
+            itemId = self.essayItem.item_id;
+        }
+        [[ONENetworkTool sharedInstance] postPraisedWithItemId:itemId typeName:typeName success:nil failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+        
+        // 修改本地数据库中的数据
+    } else {
+        // 修改本地数据库中的数据
+    }
 }
 
 @end

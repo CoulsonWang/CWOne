@@ -42,7 +42,7 @@
 
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
-- (void)postPraisedWithItemId:(NSString *)item_id success:(void (^)())success failure:(void (^)(NSError *error))failure;
+- (void)postPraisedWithItemId:(NSString *)item_id typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 /// 发送POST请求通知服务器已给某一条评论点赞
 - (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *error))failure;

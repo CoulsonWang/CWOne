@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class ONEHomeViewModel;
+@class ONEEssayItem;
 
 @interface ONELikeView : UIView
 
@@ -18,8 +19,9 @@
 
 @property (strong, nonatomic) ONEHomeViewModel *viewModel;
 
-/// 点赞数
-@property (assign, nonatomic) NSInteger praisenum;
+@property (strong, nonatomic) ONEEssayItem *essayItem;
+
+@property (assign, nonatomic) BOOL isSummary;
 
 - (void)changeButtonImageToLargeOne;
 
