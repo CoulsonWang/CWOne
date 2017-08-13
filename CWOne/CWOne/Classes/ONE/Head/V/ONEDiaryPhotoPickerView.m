@@ -9,9 +9,8 @@
 #import "ONEDiaryPhotoPickerView.h"
 #import "ONENavigationBarTool.h"
 #import "ONEPhotoPickerViewButton.h"
-#import <Photos/Photos.h>
-#import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD.h>
+#import "ONEAuthorizationTool.h"
 
 #define kAnimationDuration 0.3
 #define kButtonHorizontalDistance 100.0
@@ -98,41 +97,26 @@
         [self showAuthorizationErrorWithMessage:@"您的设备没有照相机设备"];
         return;
     }
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (authStatus == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            if (granted) {
-                [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
-            }else {
-                [self showAuthorizationErrorWithMessage:@"无法访问您的照相机"];
-            }
-        }];
-    } else if (authStatus == AVAuthorizationStatusAuthorized) {
-        [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
-    } else {
-        [self showAuthorizationErrorWithMessage:@"无法访问您的照相机"];
-    }
+    
+    [ONEAuthorizationTool requestCameraAuthorizationWithCompletion:^(BOOL granted) {
+        if (granted) {
+            [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypeCamera];
+        }else {
+            [self showAuthorizationErrorWithMessage:@"无法访问您的照相机"];
+        }
+    }];
 }
 
 - (void)openPhotoLibrary {
-    // 权限处理
-    PHAuthorizationStatus photoAuthStatus = [PHPhotoLibrary authorizationStatus];
-    if (photoAuthStatus == PHAuthorizationStatusNotDetermined) {
-        // 请求授权
-        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-            if (status == PHAuthorizationStatusAuthorized) {
-                // 打开图片选择器
-                [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
-            } else {
-                // 提示无法选取图片
-                [self showAuthorizationErrorWithMessage:@"无法访问您的相册"];
-            }
-        }];
-    }else if(photoAuthStatus == PHAuthorizationStatusAuthorized) {
-        [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
-    } else {
-        [self showAuthorizationErrorWithMessage:@"无法访问您的相册"];
-    }
+    [ONEAuthorizationTool requestPhotoLibraryAuthorizationWithCompletion:^(PHAuthorizationStatus status) {
+        if (status == PHAuthorizationStatusAuthorized) {
+            // 打开图片选择器
+            [self presentImagePickerControllerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+        } else {
+            // 提示无法选取图片
+            [self showAuthorizationErrorWithMessage:@"无法访问您的相册"];
+        }
+    }];
 }
 #pragma mark - 工具方法
 - (void)showAuthorizationErrorWithMessage:(NSString *)errorMessage {

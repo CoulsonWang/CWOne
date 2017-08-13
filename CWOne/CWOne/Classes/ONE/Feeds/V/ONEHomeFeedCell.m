@@ -25,7 +25,7 @@
     _feedItem = feedItem;
     
     NSURL *imageURL = [NSURL URLWithString:feedItem.cover];
-    [self.coverImageView sd_setImageWithURL:imageURL];
+    [self.coverImageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"feed_figure_placeholder"]];
     
     self.dateLabel.text = [[ONEDateTool sharedInstance] getFeedsDateStringWithOriginalDateString:feedItem.date];
 }

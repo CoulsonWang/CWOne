@@ -72,6 +72,7 @@
 		B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */; };
 		B953EAFA1F402DA100DDC478 /* ONEPersistent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B953EAF81F402DA100DDC478 /* ONEPersistent.xcdatamodeld */; };
 		B953EAFE1F402DF000DDC478 /* ONEPersistentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */; };
+		B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -253,6 +254,8 @@
 		B953EAF91F402DA100DDC478 /* ONEPersistent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ONEPersistent.xcdatamodel; sourceTree = "<group>"; };
 		B953EAFC1F402DF000DDC478 /* ONEPersistentTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEPersistentTool.h; sourceTree = "<group>"; };
 		B953EAFD1F402DF000DDC478 /* ONEPersistentTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEPersistentTool.m; sourceTree = "<group>"; };
+		B953EB021F40487100DDC478 /* ONEAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorizationTool.h; sourceTree = "<group>"; };
+		B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorizationTool.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -938,6 +941,8 @@
 				B9242D701F3F2F0B0039AE0E /* ONELoginTool.m */,
 				B9242D7C1F3F393E0039AE0E /* ONEShareTool.h */,
 				B9242D7D1F3F393E0039AE0E /* ONEShareTool.m */,
+				B953EB021F40487100DDC478 /* ONEAuthorizationTool.h */,
+				B953EB031F40487100DDC478 /* ONEAuthorizationTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1423,6 +1428,7 @@
 				B9242DE51F3F52C10039AE0E /* ONEHomeViewModel.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
 				B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */,
+				B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */,
 				B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */,
 				B9242D8E1F3F3B330039AE0E /* ONEShareView.m in Sources */,
 				B9242D7E1F3F393E0039AE0E /* ONEShareTool.m in Sources */,
