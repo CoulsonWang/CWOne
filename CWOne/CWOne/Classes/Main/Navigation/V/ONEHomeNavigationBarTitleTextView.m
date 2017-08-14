@@ -44,7 +44,6 @@
     
     UILabel *leftSlash = [[UILabel alloc] init];
     leftSlash.bounds = CGRectMake(0,0,kSlashWidth,kLabelHeight);
-    leftSlash.text = @"/";
     [self addSubview:leftSlash];
     self.leftSlashLabel = leftSlash;
     
@@ -55,7 +54,6 @@
     
     UILabel *rightSlash = [[UILabel alloc] init];
     rightSlash.bounds = CGRectMake(0,0,kSlashWidth,kLabelHeight);
-    rightSlash.text = @"/";
     [self addSubview:rightSlash];
     self.rightSlashLabel = rightSlash;
     
@@ -101,6 +99,8 @@
     NSString *monthStr = [NSString stringWithFormat:@"%02ld",components.month];
     NSString *dayStr = [NSString stringWithFormat:@"%02ld",components.day];
     
+    self.leftSlashLabel.text = @"/";
+    self.rightSlashLabel.text = @"/";
     // 仅赋值，不做动画
     if (_dateString == nil) {
         self.yearLabel.text = yearStr;

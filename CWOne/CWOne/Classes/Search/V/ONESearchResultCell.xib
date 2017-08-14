@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="ONESearchResultCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUO-8U-vPw">
+                        <rect key="frame" x="15" y="8" width="37" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="gUO-8U-vPw" secondAttribute="height" multiplier="1:1" id="FX3-L1-uAN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUL-C6-Hm7">
+                        <rect key="frame" x="64" y="8" width="246" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrM-AM-WFI">
+                        <rect key="frame" x="64" y="29" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gUO-8U-vPw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="27v-GB-JHy"/>
+                    <constraint firstItem="OrM-AM-WFI" firstAttribute="bottom" secondItem="gUO-8U-vPw" secondAttribute="bottom" id="COQ-hq-Dqa"/>
+                    <constraint firstItem="gUO-8U-vPw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="E57-gJ-4vF"/>
+                    <constraint firstItem="MUL-C6-Hm7" firstAttribute="top" secondItem="gUO-8U-vPw" secondAttribute="top" id="E7L-aE-tYM"/>
+                    <constraint firstAttribute="trailing" secondItem="MUL-C6-Hm7" secondAttribute="trailing" constant="10" id="LWD-bS-b9D"/>
+                    <constraint firstItem="MUL-C6-Hm7" firstAttribute="leading" secondItem="gUO-8U-vPw" secondAttribute="trailing" constant="12" id="Uc0-G3-4bK"/>
+                    <constraint firstAttribute="bottom" secondItem="gUO-8U-vPw" secondAttribute="bottom" constant="8" id="W3B-pe-d8K"/>
+                    <constraint firstItem="OrM-AM-WFI" firstAttribute="leading" secondItem="gUO-8U-vPw" secondAttribute="trailing" constant="12" id="prE-NS-Zrf"/>
+                    <constraint firstItem="gUO-8U-vPw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tMP-VG-rcH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImageView" destination="gUO-8U-vPw" id="YY4-37-4g0"/>
+                <outlet property="resultTitleLabel" destination="MUL-C6-Hm7" id="E6o-yB-EPh"/>
+                <outlet property="volumeLabel" destination="OrM-AM-WFI" id="F78-Na-Keg"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -10,6 +10,7 @@
 #import "ONEHomeWeatherItem.h"
 #import "NSString+ONEComponents.h"
 #import "ONEHomeNavigationBarTitleTextView.h"
+#import "ONESearchTool.h"
 
 #define kMaxTitleY 20.0
 #define kMinTitleY 0.0
@@ -91,8 +92,9 @@
 }
 
 - (IBAction)searchButtonClick:(UIButton *)sender {
-    
+    [[ONESearchTool sharedInstance] presentSearchViewController];
 }
+
 - (IBAction)backToTodayButtonClick:(UIButton *)sender {
     if (self.unfold) {
         [self titleButtonClick:nil];
