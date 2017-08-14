@@ -15,7 +15,9 @@ static ONENavigationBarTool *_instance;
 
 @interface ONENavigationBarTool ()
 
-- (ONENavigationBar *)homeNavigationBar;
+- (ONENavigationBar *)currentNavigationBar;
+
+@property (weak, nonatomic) UIViewController *currentVC;
 
 @end
 
@@ -29,64 +31,86 @@ static ONENavigationBarTool *_instance;
     return _instance;
 }
 
-// 用于修改HomeNavigationBar的方法
-- (ONENavigationBar *)homeNavigationBar {
-    ONEMainTabBarController *tabBarVc = (ONEMainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    ONEHomeNavigationController *navController = tabBarVc.viewControllers.firstObject;
+- (void)updateCurrentViewController:(UIViewController *)viewController {
+    self.currentVC = viewController;
+}
+
+// 获取当前的navigationBar
+- (ONENavigationBar *)currentNavigationBar {
+    ONEHomeNavigationController *navController = (ONEHomeNavigationController *)self.currentVC.navigationController;
     ONENavigationBar *navBar = (ONENavigationBar *)navController.navigationBar;
     return navBar;
 }
+
 /// 更新title的状态
 - (void)updateTitleViewWithOffset:(CGFloat)offset {
-    [self.homeNavigationBar updateTitleViewWithOffset:offset];
+    [self.currentNavigationBar updateTitleViewWithOffset:offset];
 }
 
 /// 确定title的状态
 - (void)confirmTitlViewWithOffset:(CGFloat)offset {
-    [self.homeNavigationBar confirmTitlViewWithOffset:offset];
+    [self.currentNavigationBar confirmTitlViewWithOffset:offset];
 }
 
 /// 修改返回今天按钮的显示性
 - (void)updateTitleViewBackToTodayButtonVisible:(BOOL)isHidden {
-    [self.homeNavigationBar updateTitleViewBackToTodayButtonVisible:isHidden];
+    [self.currentNavigationBar updateTitleViewBackToTodayButtonVisible:isHidden];
 }
 
 /// 修改日期
 - (void)updateTitleViewDateStringWithDateString:(NSString *)dateString {
-    [self.homeNavigationBar updateTitleViewDateStringWithDateString:dateString];
+    [self.currentNavigationBar updateTitleViewDateStringWithDateString:dateString];
 }
 
 /// 修改天气
 - (void)updateTitleViewWeatherStringWithWeatherItem:(ONEHomeWeatherItem *)weatherItem {
-    [self.homeNavigationBar updateTitleViewWeatherStringWithWeatherItem:weatherItem];
+    [self.currentNavigationBar updateTitleViewWeatherStringWithWeatherItem:weatherItem];
 }
 
 /// 隐藏日期
 - (void)hideCustomTitleView {
-    [self.homeNavigationBar hideCustomTitleView];
+    [self.currentNavigationBar hideCustomTitleView];
 }
 
 /// 显示日期
 - (void)showCustomTitleView {
-    [self.homeNavigationBar showCustomTitleView];
+    [self.currentNavigationBar showCustomTitleView];
 }
 
 
 - (void)hideNavigationBar {
-    [self.homeNavigationBar changeNavigationBarToShortMode];
+    [self.currentNavigationBar changeNavigationBarToShortMode];
 }
 - (void)changeNavigationBarToShortMode {
-    [self.homeNavigationBar changeNavigationBarToShortMode];
+    [self.currentNavigationBar changeNavigationBarToShortMode];
 }
 
 - (void)changeNavigationBarToLucencyMode {
-    [self.homeNavigationBar changeNavigationBarToLucencyMode];
+    [self.currentNavigationBar changeNavigationBarToLucencyMode];
 }
 
 - (void)resumeNavigationBar {
-    [self.homeNavigationBar resumeNavigationBar];
+    [self.currentNavigationBar resumeNavigationBar];
 }
 
+- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color {
+    switch (color) {
+        case ONENavigationBarTintColorGray:
+            [self.currentNavigationBar setTintColor:[UIColor grayColor]];
+            break;
+        case ONENavigationBarTintColorWhite:
+            [self.currentNavigationBar setTintColor:[UIColor whiteColor]];
+            break;
+        case ONENavigationBarTintColorDark:
+            [self.currentNavigationBar setTintColor:[UIColor darkGrayColor]];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+// 修改statusBar的方法，不需要用到currentVC
 - (void)hideStatusBarWithAnimated:(BOOL)animated {
     NSTimeInterval duration = animated ? 0.5 : 0;
     [UIView animateWithDuration:duration animations:^{
@@ -113,22 +137,4 @@ static ONENavigationBarTool *_instance;
         statusBar.alpha = 1;
     }];
 }
-
-- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color {
-    switch (color) {
-        case ONENavigationBarTintColorGray:
-            [self.homeNavigationBar setTintColor:[UIColor grayColor]];
-            break;
-        case ONENavigationBarTintColorWhite:
-            [self.homeNavigationBar setTintColor:[UIColor whiteColor]];
-            break;
-        case ONENavigationBarTintColorDark:
-            [self.homeNavigationBar setTintColor:[UIColor darkGrayColor]];
-            break;
-            
-        default:
-            break;
-    }
-}
-
 @end

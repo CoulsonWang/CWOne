@@ -135,6 +135,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+    
     [self setUpScrollView];
     
     [self setUpLoadingAnimateView];

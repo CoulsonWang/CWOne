@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)sharedInstance;
 
+/// 通知工具类确定当前的控制器。使用工具类的方法修改导航条时，必须先调用该方法
+- (void)updateCurrentViewController:(UIViewController *)viewController;
 
 // 用于修改HomeNavigationBar的方法
 
@@ -52,14 +54,16 @@ typedef enum : NSUInteger {
 /// 恢复为原大小
 - (void)resumeNavigationBar;
 
+/// 修改导航按钮的主题色
+- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color;
+
+
+/* ********************************************* 修改状态栏 ********************************************* */
 /// 隐藏状态栏
 - (void)hideStatusBarWithAnimated:(BOOL)animated;
 
 /// 恢复状态栏显示
 - (void)resumeStatusBarWithAnimated:(BOOL)animated;
-
-/// 修改导航按钮的主题色
-- (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color;
 
 /// 修改状态栏的透明度
 - (void)changeStatusBarAlpha:(CGFloat)alpha;
