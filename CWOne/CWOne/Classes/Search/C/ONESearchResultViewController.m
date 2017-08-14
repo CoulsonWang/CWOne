@@ -10,8 +10,10 @@
 #import "UIImage+CWColorAndStretch.h"
 #import "ONESearchResultCell.h"
 #import "ONESearchResultItem.h"
+#import "ONENetworkTool.h"
 
-#define kTitleScrollViewHeight 35.0
+#define kTitleScrollViewHeight 38.0
+#define kCellHeight 60;
 
 static NSString *const searchResultCellId = @"searchResultCellId";
 
@@ -22,6 +24,8 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 @property (weak, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray<ONESearchResultItem *> *resultList;
+
+@property (assign, nonatomic) UIButton *selectedButton;
 
 @end
 
@@ -68,6 +72,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
     UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, kTitleScrollViewHeight)];
     titleScrollView.showsVerticalScrollIndicator = NO;
     titleScrollView.showsHorizontalScrollIndicator = NO;
+    titleScrollView.backgroundColor = [UIColor colorWithR:252 G:253 B:254];
     
     for (NSInteger index = 0; index < titles.count; index ++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -83,6 +88,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
         [titleScrollView addSubview:button];
         if (index == 0) {
             button.selected = YES;
+            self.selectedButton = button;
         }
     }
     
@@ -95,13 +101,26 @@ static NSString *const searchResultCellId = @"searchResultCellId";
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH - kNavigationBarHeight) style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.backgroundColor = [UIColor whiteColor];
+    tableView.contentInset = UIEdgeInsetsMake(kTitleScrollViewHeight, 0, 0, 0);
+    tableView.rowHeight = kCellHeight;
+    tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONESearchResultCell class]) bundle:nil] forCellReuseIdentifier:searchResultCellId];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
 
 - (void)search {
-    
+    [[ONENetworkTool sharedInstance] requestSearchResultDataWithTypeName:[self getRequestTypeName] searchText:self.searchBar.text page:0 success:^(NSArray *dataArray) {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dataDict in dataArray) {
+            ONESearchResultItem *searchResultItem = [ONESearchResultItem searchResultItemWihtDict:dataDict];
+            [tempArray addObject:searchResultItem];
+        }
+        self.resultList = tempArray;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 #pragma mark - 事件响应
 - (void)titleButtonClick:(UIButton *)button {
@@ -114,6 +133,26 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 #pragma mark - 私有方法
 - (void)reSearch {
     
+}
+
+- (NSString *)getRequestTypeName {
+    NSInteger index = self.selectedButton.tag;
+    switch (index) {
+        case 0:
+            return @"hp";
+        case 1:
+            return @"reading";
+        case 2:
+            return @"music";
+        case 3:
+            return @"movie";
+        case 4:
+            return @"radio";
+        case 5:
+            return @"author";
+        default:
+            return nil;
+    }
 }
 
 #pragma mark - UISearchBarDelegate

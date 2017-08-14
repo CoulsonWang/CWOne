@@ -55,6 +55,8 @@
 /// 请求用户关注列表数据
 - (void)requestUserFollowListCountWithUserId:(NSString *)userId success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 
+/// 请求搜索结果页数据
+- (void)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 /* ********************************************* 设置界面请求 ********************************************* */
 
 /// 请求推荐应用

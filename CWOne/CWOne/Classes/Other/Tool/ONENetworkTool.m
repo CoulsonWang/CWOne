@@ -21,6 +21,7 @@ static ONENetworkTool *_instance;
     return _instance;
 }
 
+// 请求主页数据
 - (void)requestHomeDataWithDate:(NSString *)date cityName:(NSString *)cityName success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     
     NSString *dateStr = (date == nil) ? @"0" : date;
@@ -53,6 +54,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 通知服务器点赞了一条内容
 - (void)postPraisedWithItemId:(NSString *)item_id  typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *))failure {
     
     NSDictionary *parameters = @{
@@ -75,6 +77,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 通知服务器点赞了一条评论
 - (void)postPraisedCommentWithType:(NSString *)typeName itemId:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *))failure {
     NSString *postURL = @"http://v3.wufazhuce.com:8000/api/comment/praise";
     NSDictionary *parameters = @{
@@ -93,6 +96,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 通知服务器取消了一评论点赞
 - (void)postUnpraisedCommentWithType:(NSString *)typeName item_id:(NSString *)item_id commentId:(NSString *)commentId success:(void (^)())success failure:(void (^)(NSError *))failure {
     NSString *postURL = @"http://v3.wufazhuce.com:8000/api/comment/unpraise";
     NSDictionary *parameters = @{
@@ -111,6 +115,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求电台状态
 - (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = @"http://v3.wufazhuce.com:8000/api/radio/active";
     NSDictionary *parameters = @{};
@@ -127,6 +132,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求详情页数据
 - (void)requestDetailDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     if ([typeName isEqualToString:@"serial"]) {
         typeName = @"serialcontent";
@@ -151,6 +157,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求评论列表数据
 - (void)requestCommentListOfType:(NSString *)typeName WithItemID:(NSString *)item_id lastID:(NSString *)lastID success:(void (^)(NSArray<NSDictionary *> *))success failure:(void (^)(NSError *))failure {
     NSString *lastCommentId = (lastID == nil) ? @"0" : lastID;
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/comment/praiseandtime/%@/%@/%@",typeName, item_id,lastCommentId];
@@ -174,6 +181,7 @@ static ONENetworkTool *_instance;
 
 }
 
+// 请求相关文章列表数据
 - (void)requestRelatedListDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSArray<NSDictionary *> *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/relatedforwebview/%@/%@",typeName,item_id];
     NSDictionary *parameters = @{
@@ -194,6 +202,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求音乐详情数据
 - (void)requestMusicDetailDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/music/detail/%@",item_id];
     
@@ -216,6 +225,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求电影详情数据
 - (void)requestMovieDetailDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/movie/detail/%@",item_id];
     
@@ -237,6 +247,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求电影故事数据
 - (void)requestMovieStoryDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/movie/%@/story/1/0",item_id];
     
@@ -260,6 +271,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求期刊列表数据
 - (void)requestFeedsDataWithDateString:(NSString *)dateString success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/feeds/list/%@",dateString];
     
@@ -277,6 +289,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+// 请求日记中的天气数据
 - (void)requestDiaryWeatherDataSuccess:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/weather/search"];
     
@@ -393,6 +406,7 @@ static ONENetworkTool *_instance;
     }];
 }
 
+/// 请求推荐应用数据
 - (void)requestRecAppListSuccess:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/recapplist/ios"];
     
@@ -407,6 +421,30 @@ static ONENetworkTool *_instance;
             NSArray *dataArray = responseObject[@"data"];
             NSDictionary *dataDict = dataArray.firstObject;
             success(dataDict);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+// 请求搜索结果数据
+- (void)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/search/%@/%@/%ld",typeName,searchText,pageNum];
+    // 将中文进行转码
+    requestURL = [requestURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            NSArray *dataArray = dataDict[@"list"];
+            success(dataArray);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
