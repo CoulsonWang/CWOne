@@ -37,15 +37,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6Q-Za-uFc">
+                        <rect key="frame" x="0.0" y="52.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="d2z-bx-9Qr"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gUO-8U-vPw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="27v-GB-JHy"/>
+                    <constraint firstAttribute="trailing" secondItem="G6Q-Za-uFc" secondAttribute="trailing" id="5eX-pm-IGO"/>
                     <constraint firstItem="OrM-AM-WFI" firstAttribute="bottom" secondItem="gUO-8U-vPw" secondAttribute="bottom" id="COQ-hq-Dqa"/>
                     <constraint firstItem="gUO-8U-vPw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="E57-gJ-4vF"/>
                     <constraint firstItem="MUL-C6-Hm7" firstAttribute="top" secondItem="gUO-8U-vPw" secondAttribute="top" id="E7L-aE-tYM"/>
                     <constraint firstAttribute="trailing" secondItem="MUL-C6-Hm7" secondAttribute="trailing" constant="10" id="LWD-bS-b9D"/>
                     <constraint firstItem="MUL-C6-Hm7" firstAttribute="leading" secondItem="gUO-8U-vPw" secondAttribute="trailing" constant="12" id="Uc0-G3-4bK"/>
                     <constraint firstAttribute="bottom" secondItem="gUO-8U-vPw" secondAttribute="bottom" constant="8" id="W3B-pe-d8K"/>
+                    <constraint firstItem="G6Q-Za-uFc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WT7-1y-Bte"/>
+                    <constraint firstAttribute="bottom" secondItem="G6Q-Za-uFc" secondAttribute="bottom" id="gtv-8W-H2H"/>
                     <constraint firstItem="OrM-AM-WFI" firstAttribute="leading" secondItem="gUO-8U-vPw" secondAttribute="trailing" constant="12" id="prE-NS-Zrf"/>
                     <constraint firstItem="gUO-8U-vPw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tMP-VG-rcH"/>
                 </constraints>
