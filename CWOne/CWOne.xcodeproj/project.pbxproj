@@ -84,6 +84,9 @@
 		B95F23441F4192D7004FC239 /* ONESearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23431F4192D7004FC239 /* ONESearchResultItem.m */; };
 		B95F23471F42CB26004FC239 /* ONEFeedsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23461F42CB26004FC239 /* ONEFeedsDetailViewController.m */; };
 		B95F234A1F42DD05004FC239 /* ONESearchAllListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23491F42DD05004FC239 /* ONESearchAllListViewController.m */; };
+		B95F234D1F433D46004FC239 /* ONESpecialItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F234C1F433D46004FC239 /* ONESpecialItem.m */; };
+		B95F23511F4342D8004FC239 /* ONEAllSpecialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */; };
+		B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -288,6 +291,11 @@
 		B95F23461F42CB26004FC239 /* ONEFeedsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEFeedsDetailViewController.m; sourceTree = "<group>"; };
 		B95F23481F42DD05004FC239 /* ONESearchAllListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESearchAllListViewController.h; sourceTree = "<group>"; };
 		B95F23491F42DD05004FC239 /* ONESearchAllListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESearchAllListViewController.m; sourceTree = "<group>"; };
+		B95F234B1F433D46004FC239 /* ONESpecialItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESpecialItem.h; sourceTree = "<group>"; };
+		B95F234C1F433D46004FC239 /* ONESpecialItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESpecialItem.m; sourceTree = "<group>"; };
+		B95F234E1F4342D8004FC239 /* ONEAllSpecialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllSpecialTableViewCell.h; sourceTree = "<group>"; };
+		B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllSpecialTableViewCell.m; sourceTree = "<group>"; };
+		B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllSpecialTableViewCell.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -843,6 +851,8 @@
 		B9321F111F305AD70052752B /* M */ = {
 			isa = PBXGroup;
 			children = (
+				B95F234B1F433D46004FC239 /* ONESpecialItem.h */,
+				B95F234C1F433D46004FC239 /* ONESpecialItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -850,6 +860,9 @@
 		B9321F121F305AD70052752B /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B95F234E1F4342D8004FC239 /* ONEAllSpecialTableViewCell.h */,
+				B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */,
+				B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1335,6 +1348,7 @@
 				B973FC341F3703B600161989 /* ONEDetailBottomToolView.xib in Resources */,
 				B9242D871F3F3A240039AE0E /* ONELoginViewController.xib in Resources */,
 				B9242DED1F3F52C10039AE0E /* ONELikeView.xib in Resources */,
+				B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */,
 				B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */,
 				B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */,
 				B95F23411F4190BD004FC239 /* ONESearchResultCell.xib in Resources */,
@@ -1577,12 +1591,14 @@
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
 				B9242DD01F3F52C10039AE0E /* ONEHomeFeedsViewController.m in Sources */,
 				B9242DE71F3F52C10039AE0E /* ONEHomeBaseCell.m in Sources */,
+				B95F234D1F433D46004FC239 /* ONESpecialItem.m in Sources */,
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9242DE51F3F52C10039AE0E /* ONEHomeViewModel.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
 				B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */,
 				B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */,
+				B95F23511F4342D8004FC239 /* ONEAllSpecialTableViewCell.m in Sources */,
 				B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */,
 				B9242D8E1F3F3B330039AE0E /* ONEShareView.m in Sources */,
 				B95F23471F42CB26004FC239 /* ONEFeedsDetailViewController.m in Sources */,

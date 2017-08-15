@@ -504,4 +504,96 @@ static ONENetworkTool *_instance;
         }
     }];
 }
+
+/* ********************************************* All专题界面请求 ********************************************* */
+
+/// 请求轮播器数据
+- (void)requestAllHeaderBannerDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *lasdID = (last_id == nil) ? @"0" : last_id;
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/banner/list/3"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"last_id":lasdID,
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求所有人问所有人模块数据
+- (void)requestAllEveryOneAskEveryOneDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *lasdID = (last_id == nil) ? @"0" : last_id;
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/banner/list/5"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"last_id":lasdID,
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求近期热门作者列表数据
+- (void)requestAllHotAuthorListDataSuccess:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/author/hot"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/// 请求专题列表数据
+- (void)requestAllSpecilaListDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
+    NSString *lasdID = (last_id == nil) ? @"0" : last_id;
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/banner/list/4"];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 @"last_id":lasdID,
+                                 };
+    
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSArray *dataArray = responseObject[@"data"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
 @end

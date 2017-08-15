@@ -12,13 +12,20 @@
 
 + (instancetype)sharedInstance;
 
-/* ********************************************* get请求 ********************************************* */
+/* ********************************************* 主页请求 ********************************************* */
 /// 请求主页数据
 - (void)requestHomeDataWithDate:(NSString *)date cityName:(NSString *)cityName success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
 /// 获取当前电台状态数据
 - (void)requestRadioStatusDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
+/// 请求标题点击后展开的feeds列表数据
+- (void)requestFeedsDataWithDateString:(NSString *)dateString success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/// 请求日记页的天气信息
+- (void)requestDiaryWeatherDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
+
+/* ********************************************* 详情页请求 ********************************************* */
 /// 请求详情页数据
 - (void)requestDetailDataOfType:(NSString *)typeName withItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
@@ -36,13 +43,7 @@
 
 /// 请求电影的故事数据
 - (void)requestMovieStoryDataWithItemId:(NSString *)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
-
-/// 请求标题点击后展开的feeds列表数据
-- (void)requestFeedsDataWithDateString:(NSString *)dateString success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
-
-/// 请求日记页的天气信息
-- (void)requestDiaryWeatherDataSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
-
+/* ********************************************* 作者页和用户页请求 ********************************************* */
 /// 请求作者信息数据
 - (void)requestAuthorInfoDataWithAuthorId:(NSString *)authorId success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
@@ -55,6 +56,7 @@
 /// 请求用户关注列表数据
 - (void)requestUserFollowListCountWithUserId:(NSString *)userId success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 
+/* ********************************************* 搜索界面请求 ********************************************* */
 /// 请求搜索结果页数据
 - (NSURLSessionDataTask *)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 
@@ -68,6 +70,19 @@
 /// 请求推荐应用
 - (void)requestRecAppListSuccess:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 
+/* ********************************************* All专题界面请求 ********************************************* */
+
+/// 请求轮播器数据
+- (void)requestAllHeaderBannerDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/// 请求所有人问所有人模块数据
+- (void)requestAllEveryOneAskEveryOneDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/// 请求近期热门作者列表数据
+- (void)requestAllHotAuthorListDataSuccess:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
+
+/// 请求专题列表数据
+- (void)requestAllSpecilaListDataWithLastId:(NSString *)last_id success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 /* ********************************************* post请求 ********************************************* */
 /// 发送POST请求通知服务器某一条已点赞
 - (void)postPraisedWithItemId:(NSString *)item_id typeName:(NSString *)typeName success:(void (^)())success failure:(void (^)(NSError *error))failure;
