@@ -50,7 +50,6 @@
         <!--Item-->
         <scene sceneID="Pmf-4M-NWg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ioh-sJ-RlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="L0c-49-UG2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="zZy-Qm-arI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7se-Qt-0He">
@@ -61,6 +60,7 @@
                         <segue destination="yc4-5d-nO1" kind="relationship" relationship="rootViewController" id="IIK-bZ-2xl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ioh-sJ-RlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-165" y="645"/>
         </scene>
@@ -341,7 +341,7 @@
                                         <rect key="frame" x="0.0" y="575.5" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XZY-Ec-ZJf" id="aI2-rP-PlG">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="55.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="55.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XH8-4d-ZX5">

@@ -48,21 +48,32 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.searchBar resignFirstResponder];
 }
+
 - (IBAction)imgAndArticleButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:0];
 }
 - (IBAction)questionButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:1];
 }
 - (IBAction)essayButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:2];
 }
-- (IBAction)serialButtonClick:(id)sender {
+- (IBAction)serialButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:3];
 }
 - (IBAction)movieButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:4];
 }
 - (IBAction)musicButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:5];
 }
 - (IBAction)radioButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:6];
 }
 
+- (void)pushToContentListViewControllerWithIndex:(NSInteger)index {
+    
+}
 
 #pragma mark - UISearchBarDelegate
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

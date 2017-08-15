@@ -60,7 +60,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (UIImageView *)noDataInfoImageView {
     if (!_noDataInfoImageView) {
         UIImageView *noDataInfoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"no_searchresult_placeholder"]];
-        noDataInfoView.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5);
+        noDataInfoView.center = CGPointMake(self.view.width * 0.5, (self.view.height-kNavigationBarHeight) * 0.5);
         [self.view addSubview:noDataInfoView];
         _noDataInfoImageView = noDataInfoView;
     }
@@ -70,7 +70,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (UIActivityIndicatorView *)indicator {
     if (!_indicator) {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        indicator.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5 - 50);
+        indicator.center = CGPointMake(self.view.width * 0.5, (self.view.height-kNavigationBarHeight) * 0.5);
         indicator.hidesWhenStopped = YES;
         [self.view addSubview:indicator];
         _indicator = indicator;
@@ -84,6 +84,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
     self.lastPage = 0;
     
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self setUpNavigationBar];
     
@@ -102,6 +103,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 #pragma mark - 初始化
 - (void)setUpNavigationBar {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = YES;
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, 44)];
     searchBar.delegate = self;
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
@@ -114,7 +116,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 }
 - (void)setUpTitleScrollView {
     
-    UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, kTitleScrollViewHeight)];
+    UIScrollView *titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, CWScreenW, kTitleScrollViewHeight)];
     titleScrollView.showsVerticalScrollIndicator = NO;
     titleScrollView.showsHorizontalScrollIndicator = NO;
     titleScrollView.backgroundColor = [UIColor colorWithR:252 G:253 B:254];
@@ -153,7 +155,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 }
 
 - (void)setUpTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH - kNavigationBarHeight) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, CWScreenW, CWScreenH - kNavigationBarHeight) style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.backgroundColor = [UIColor whiteColor];

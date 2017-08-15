@@ -83,10 +83,7 @@
     // 添加自定义的底部工具条
     [self setUpBottomToolView];
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.view.frame = CGRectMake(0, 0, CWScreenW, CWScreenH);
-}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

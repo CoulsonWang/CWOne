@@ -58,6 +58,9 @@
 /// 请求搜索结果页数据
 - (NSURLSessionDataTask *)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure;
 
+/// 请求快捷搜索页列表
+- (void)requestSearchListDataWithCategoryIndex:(NSInteger)categoryIndex success:(void (^)(NSString *html_content))success failure:(void (^)(NSError *error))failure;
+
 /// 请求图文详情页数据
 - (void)requestFeedsDetailDataWithItemId:(NSInteger)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure;
 /* ********************************************* 设置界面请求 ********************************************* */

@@ -454,6 +454,30 @@ static ONENetworkTool *_instance;
     return task;
 }
 
+/// 请求快捷搜索页列表
+- (void)requestSearchListDataWithCategoryIndex:(NSInteger)categoryIndex success:(void (^)(NSString *html_content))success failure:(void (^)(NSError *error))failure {
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/all/list/%ld",categoryIndex];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+    [manager GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSString *html_content = responseObject[@"html_content"];
+            success(html_content);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
 /// 请求图文详情页数据
 - (void)requestFeedsDetailDataWithItemId:(NSInteger)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure {
     NSString *cityName = [[NSUserDefaults standardUserDefaults] valueForKey:ONECityNameKey];
