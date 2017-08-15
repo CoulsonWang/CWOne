@@ -99,6 +99,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 #pragma mark - 初始化
 - (void)setUpNavigationBar {
@@ -149,7 +150,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
     self.titleUnderlineView = underlineView;
     
     
-    titleScrollView.contentSize = CGSizeMake(CGRectGetMaxX(titleScrollView.subviews.lastObject.frame), 0);
+    titleScrollView.contentSize = CGSizeMake(CGRectGetMaxX([titleScrollView viewWithTag:(kTitleArray.count - 1)].frame), 0);
     [self.view addSubview:titleScrollView];
     self.titleScrollView = titleScrollView;
 }

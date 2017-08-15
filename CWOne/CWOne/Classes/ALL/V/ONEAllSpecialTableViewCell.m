@@ -25,11 +25,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.infoLabel.font = [UIFont systemFontOfSize:16.0 weight:-0.5];
+    self.infoLabel.font = [UIFont systemFontOfSize:16.0 weight:-0.1];
     
     // 给图片左上角添加标签
     UIView *tagView = [[UIView alloc] initWithFrame:CGRectMake(self.coverImageView.x, self.coverImageView.y, kSpecialTagViewSize, kSpecialTagViewSize)];
-    tagView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    tagView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
     [self.contentView addSubview:tagView];
     
     // 进行三角形裁剪

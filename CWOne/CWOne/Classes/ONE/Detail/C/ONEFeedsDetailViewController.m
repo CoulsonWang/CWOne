@@ -69,6 +69,8 @@
 }
 
 - (void)setUpNavigationBar {
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"share_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(shareButtonClick)];
