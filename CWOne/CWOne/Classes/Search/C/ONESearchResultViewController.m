@@ -11,7 +11,10 @@
 #import "ONESearchResultCell.h"
 #import "ONESearchResultItem.h"
 #import "ONENetworkTool.h"
+#import "ONEDetailViewController.h"
+#import "ONEHomeItem.h"
 #import <MJRefresh.h>
+#import "ONENavigationBarTool.h"
 
 #define kTitleScrollViewHeight 38.0
 #define kCellHeight 60
@@ -63,7 +66,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (UIActivityIndicatorView *)indicator {
     if (!_indicator) {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        indicator.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5);
+        indicator.center = CGPointMake(self.view.width * 0.5, self.view.height * 0.5 - 50);
         indicator.hidesWhenStopped = YES;
         [self.view addSubview:indicator];
         _indicator = indicator;
@@ -88,6 +91,10 @@ static NSString *const searchResultCellId = @"searchResultCellId";
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+}
 #pragma mark - 初始化
 - (void)setUpNavigationBar {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
@@ -273,6 +280,15 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.searchBar resignFirstResponder];
 }
-
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+    
+    ONESearchResultItem *resultItem = self.resultList[indexPath.row];
+    ONEHomeItem *item = [ONEHomeItem homeItemWithSearchResultItem:resultItem];
+    detailVC.homeItem = item;
+    
+    [self.navigationController showViewController:detailVC sender:nil];
+}
 
 @end

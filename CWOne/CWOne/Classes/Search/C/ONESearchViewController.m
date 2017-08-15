@@ -74,7 +74,7 @@
     NSString *searchText = searchBar.text;
     [self.searchBar resignFirstResponder];
     // 重新modal搜索结果控制器
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
     [[ONESearchTool sharedInstance] presentSearchResultViewControllerWithSearchText:searchText];
 }
 @end

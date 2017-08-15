@@ -20,11 +20,15 @@ typedef enum : NSUInteger {
 } ONEHomeItemType;
 
 @class ONEUserItem;
+@class ONESearchResultItem;
 
 @interface ONEHomeItem : NSObject
 
 // 快速构造方法
 + (instancetype)homeItemWithDict:(NSDictionary *)dict;
+
+// 通过搜索结果创建
++ (instancetype)homeItemWithSearchResultItem:(ONESearchResultItem *)searchResultItem;
 
 /* *********************************** 原始属性 *********************************** */
 

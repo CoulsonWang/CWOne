@@ -9,6 +9,7 @@
 #import "ONESearchTool.h"
 #import "ONESearchViewController.h"
 #import "ONESearchResultViewController.h"
+#import "ONEHomeNavigationController.h"
 
 static ONESearchTool *_instance;
 @implementation ONESearchTool
@@ -26,7 +27,7 @@ static ONESearchTool *_instance;
     
     ONESearchViewController *searchVC = [[ONESearchViewController alloc] init];
     
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    ONEHomeNavigationController *navVC = [[ONEHomeNavigationController alloc] initWithRootViewController:searchVC];
     
     [rootVC presentViewController:navVC animated:YES completion:nil];
 }
@@ -36,7 +37,7 @@ static ONESearchTool *_instance;
     
     ONESearchResultViewController *resultVC = [[ONESearchResultViewController alloc] init];
     resultVC.searchText = searchText;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:resultVC];
+    ONEHomeNavigationController *navVC = [[ONEHomeNavigationController alloc] initWithRootViewController:resultVC];
     
     [rootVC presentViewController:navVC animated:YES completion:nil];
 }

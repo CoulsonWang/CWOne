@@ -25,12 +25,21 @@
 
 @implementation ONENavigationBar
 
+- (ONEHomeNavigationBarTitleView *)homeTitleView {
+    if (!_homeTitleView) {
+        ONEHomeNavigationBarTitleView *homeTitleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
+        homeTitleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
+        [self addSubview:homeTitleView];
+        _homeTitleView = homeTitleView;
+    }
+    return _homeTitleView;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setUpBackgroundView];
-        [self setUpHomeTitleView];
         
         [self setTintColor:[UIColor grayColor]];
         
@@ -49,13 +58,6 @@
     [backgroundView addSubview:underlineImageView];
     [self setValue:backgroundView forKeyPath:@"_customBackgroundView"];
     self.navBarBackgroundView = backgroundView;
-}
-
-- (void)setUpHomeTitleView {
-    ONEHomeNavigationBarTitleView *homeTitleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
-    homeTitleView.frame = CGRectMake(0, -20, CWScreenW, kNavigationBarHeight);
-    [self addSubview:homeTitleView];
-    self.homeTitleView = homeTitleView;
 }
 
 #pragma mark - 对外公有方法

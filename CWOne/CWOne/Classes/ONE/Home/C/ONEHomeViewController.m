@@ -135,8 +135,6 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
-    
     [self setUpScrollView];
     
     [self setUpLoadingAnimateView];
@@ -153,6 +151,7 @@ typedef enum : NSUInteger {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
     [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
     [[ONENavigationBarTool sharedInstance] showCustomTitleView];
     [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];

@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     [self setUpNavigationBar];
+    
 }
 
 - (void)setUpNavigationBar {

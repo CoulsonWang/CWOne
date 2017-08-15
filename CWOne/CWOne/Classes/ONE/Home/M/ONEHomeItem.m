@@ -7,6 +7,7 @@
 //
 
 #import "ONEHomeItem.h"
+#import "ONESearchResultItem.h"
 #import "ONEUserItem.h"
 #import "NSString+CWTranslate.h"
 
@@ -38,6 +39,19 @@
     item.typeName = [NSString getCategoryStringWithCategoryInteger:item.category.integerValue];
     
     return item;
+}
+
++ (instancetype)homeItemWithSearchResultItem:(ONESearchResultItem *)searchResultItem {
+    ONEHomeItem *homeItem = [[ONEHomeItem alloc] init];
+    
+    homeItem.title = searchResultItem.title;
+    homeItem.category = [NSString stringWithFormat:@"%ld",searchResultItem.category];
+    homeItem.item_id = [NSString stringWithFormat:@"%ld",searchResultItem.content_id];
+    homeItem.serial_list = searchResultItem.serial_list;
+    
+    homeItem.type = [homeItem.category getType];
+    
+    return homeItem;
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {

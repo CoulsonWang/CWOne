@@ -82,9 +82,11 @@
     
     // 添加自定义的底部工具条
     [self setUpBottomToolView];
-    
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.view.frame = CGRectMake(0, 0, CWScreenW, CWScreenH);
+}
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -140,6 +142,7 @@
 
 - (void)setUpBottomToolView {
     ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
+    toolView.autoresizingMask = UIViewAutoresizingNone;
     toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
     [self.view addSubview:toolView];
     self.toolView = toolView;

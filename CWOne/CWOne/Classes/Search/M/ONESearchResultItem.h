@@ -20,6 +20,8 @@
 
 @property (assign, nonatomic) NSInteger content_id;
 
+@property (strong, nonatomic) NSArray *serial_list;
+
 + (instancetype)searchResultItemWihtDict:(NSDictionary *)dict;
 
 
