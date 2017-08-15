@@ -9,6 +9,7 @@
 #import "ONESearchViewController.h"
 #import "UIImage+CWColorAndStretch.h"
 #import "ONESearchTool.h"
+#import "ONESearchAllListViewController.h"
 
 @interface ONESearchViewController () <UISearchBarDelegate>
 
@@ -62,17 +63,22 @@
     [self pushToContentListViewControllerWithIndex:3];
 }
 - (IBAction)movieButtonClick:(UIButton *)sender {
-    [self pushToContentListViewControllerWithIndex:4];
-}
-- (IBAction)musicButtonClick:(UIButton *)sender {
     [self pushToContentListViewControllerWithIndex:5];
 }
+- (IBAction)musicButtonClick:(UIButton *)sender {
+    [self pushToContentListViewControllerWithIndex:4];
+}
 - (IBAction)radioButtonClick:(UIButton *)sender {
-    [self pushToContentListViewControllerWithIndex:6];
+    [self pushToContentListViewControllerWithIndex:8];
 }
 
 - (void)pushToContentListViewControllerWithIndex:(NSInteger)index {
+    [self.searchBar resignFirstResponder];
     
+    ONESearchAllListViewController *searchListVC = [[ONESearchAllListViewController alloc] init];
+    searchListVC.categoryIndex = index;
+    
+    [self.navigationController showViewController:searchListVC sender:nil];
 }
 
 #pragma mark - UISearchBarDelegate
