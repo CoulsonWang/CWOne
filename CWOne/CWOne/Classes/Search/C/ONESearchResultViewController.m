@@ -15,6 +15,7 @@
 #import "ONEHomeItem.h"
 #import <MJRefresh.h>
 #import "ONENavigationBarTool.h"
+#import "ONEFeedsDetailViewController.h"
 
 #define kTitleScrollViewHeight 38.0
 #define kCellHeight 60
@@ -35,10 +36,13 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 @property (weak, nonatomic) UIImageView *noDataInfoImageView;
 
 @property (strong, nonatomic) NSMutableArray<ONESearchResultItem *> *resultList;
+@property (strong, nonatomic) NSURLSessionDataTask *task;
 
 @property (assign, nonatomic) UIButton *selectedButton;
 
 @property (assign, nonatomic) NSInteger lastPage;
+
+@property (assign, nonatomic, getter=isLoading) BOOL loading;
 
 @end
 
@@ -182,7 +186,8 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 #pragma mark - 私有方法
 - (void)search {
     [self showIndicator];
-    [[ONENetworkTool sharedInstance] requestSearchResultDataWithTypeName:[self getRequestTypeName] searchText:self.searchBar.text page:0 success:^(NSArray *dataArray) {
+    [self.task cancel];
+    NSURLSessionDataTask *currentTask = [[ONENetworkTool sharedInstance] requestSearchResultDataWithTypeName:[self getRequestTypeName] searchText:self.searchBar.text page:0 success:^(NSArray *dataArray) {
         if (dataArray.count == 0) {
             [self.indicator stopAnimating];
             self.noDataInfoImageView.hidden = NO;
@@ -197,10 +202,13 @@ static NSString *const searchResultCellId = @"searchResultCellId";
             [self.indicator stopAnimating];
             self.tableView.hidden = NO;
         }
+        self.loading = NO;
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
+    self.task = currentTask;
 }
+
 - (void)searchMore {
     self.indicator.hidden = NO;
     [self.indicator startAnimating];
@@ -282,13 +290,20 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 }
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
-    
-    ONESearchResultItem *resultItem = self.resultList[indexPath.row];
-    ONEHomeItem *item = [ONEHomeItem homeItemWithSearchResultItem:resultItem];
-    detailVC.homeItem = item;
-    
-    [self.navigationController showViewController:detailVC sender:nil];
+    if (self.selectedButton.tag == 0) {
+        ONEFeedsDetailViewController *feedsVC = [[ONEFeedsDetailViewController alloc] init];
+        feedsVC.item_id = self.resultList[indexPath.row].content_id;
+        [self.navigationController showViewController:feedsVC sender:nil];
+        
+    } else {
+        ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+        
+        ONESearchResultItem *resultItem = self.resultList[indexPath.row];
+        ONEHomeItem *item = [ONEHomeItem homeItemWithSearchResultItem:resultItem];
+        detailVC.homeItem = item;
+        
+        [self.navigationController showViewController:detailVC sender:nil];
+    }
 }
 
 @end

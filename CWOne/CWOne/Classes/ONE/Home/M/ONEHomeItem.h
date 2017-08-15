@@ -21,6 +21,7 @@ typedef enum : NSUInteger {
 
 @class ONEUserItem;
 @class ONESearchResultItem;
+@class ONEHomeWeatherItem;
 
 @interface ONEHomeItem : NSObject
 
@@ -92,5 +93,7 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) ONEHomeItemType type;
 
 @property (strong, nonatomic) NSString *typeName;
+
+@property (strong, nonatomic) ONEHomeWeatherItem *weather;
 
 @end

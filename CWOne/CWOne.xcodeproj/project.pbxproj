@@ -82,6 +82,7 @@
 		B95F23401F4190BD004FC239 /* ONESearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F233E1F4190BD004FC239 /* ONESearchResultCell.m */; };
 		B95F23411F4190BD004FC239 /* ONESearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F233F1F4190BD004FC239 /* ONESearchResultCell.xib */; };
 		B95F23441F4192D7004FC239 /* ONESearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23431F4192D7004FC239 /* ONESearchResultItem.m */; };
+		B95F23471F42CB26004FC239 /* ONEFeedsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23461F42CB26004FC239 /* ONEFeedsDetailViewController.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -282,6 +283,8 @@
 		B95F233F1F4190BD004FC239 /* ONESearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONESearchResultCell.xib; sourceTree = "<group>"; };
 		B95F23421F4192D7004FC239 /* ONESearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESearchResultItem.h; sourceTree = "<group>"; };
 		B95F23431F4192D7004FC239 /* ONESearchResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESearchResultItem.m; sourceTree = "<group>"; };
+		B95F23451F42CB26004FC239 /* ONEFeedsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEFeedsDetailViewController.h; sourceTree = "<group>"; };
+		B95F23461F42CB26004FC239 /* ONEFeedsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEFeedsDetailViewController.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -1136,6 +1139,8 @@
 				B98A5A8A1F3AD47A009FCCBC /* ONEDetailMovieInfoController.h */,
 				B98A5A8B1F3AD47A009FCCBC /* ONEDetailMovieInfoController.m */,
 				B98A5A8C1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib */,
+				B95F23451F42CB26004FC239 /* ONEFeedsDetailViewController.h */,
+				B95F23461F42CB26004FC239 /* ONEFeedsDetailViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1574,6 +1579,7 @@
 				B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */,
 				B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */,
 				B9242D8E1F3F3B330039AE0E /* ONEShareView.m in Sources */,
+				B95F23471F42CB26004FC239 /* ONEFeedsDetailViewController.m in Sources */,
 				B9242D7E1F3F393E0039AE0E /* ONEShareTool.m in Sources */,
 				B95F232B1F417E19004FC239 /* ONESearchTool.m in Sources */,
 				B9A73FF91F31CF57009025FD /* ONEConst.m in Sources */,

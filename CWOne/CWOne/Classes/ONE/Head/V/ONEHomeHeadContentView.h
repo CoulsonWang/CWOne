@@ -18,4 +18,6 @@
 
 + (instancetype)headContentView;
 
+- (void)hideSeperatorView;
+
 @end

@@ -85,6 +85,9 @@
 }
 
 #pragma mark - 事件响应
+- (void)hideSeperatorView {
+    self.seperateView.hidden = YES;
+}
 
 - (void)coverViewDidClick {
     CGRect originFrame = [self convertRect:self.coverView.frame toView:[UIApplication sharedApplication].keyWindow];

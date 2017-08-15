@@ -135,6 +135,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+    
     [self setUpScrollView];
     
     [self setUpLoadingAnimateView];
@@ -241,7 +243,11 @@ typedef enum : NSUInteger {
     coverPresentVC.modalPresentationStyle = UIModalPresentationCustom;
     coverPresentVC.transitioningDelegate = transitionTool;
     
-    [self presentViewController:coverPresentVC animated:YES completion:nil];
+    UIViewController *topVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    [topVC presentViewController:coverPresentVC animated:YES completion:nil];
 }
 
 - (void)presentDiaryViewController:(NSNotification *)notification {
@@ -255,7 +261,11 @@ typedef enum : NSUInteger {
     diaryVC.shareUrl = userInfo[ONEDiartPresentationShareUrlKey];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:diaryVC];
-    [self presentViewController:navVC animated:YES completion:nil];
+    UIViewController *topVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    [topVC presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark - 处理标题的展开或收起

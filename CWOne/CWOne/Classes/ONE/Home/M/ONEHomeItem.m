@@ -10,6 +10,7 @@
 #import "ONESearchResultItem.h"
 #import "ONEUserItem.h"
 #import "NSString+CWTranslate.h"
+#import "ONEHomeWeatherItem.h"
 
 @implementation ONEHomeItem
 
@@ -38,6 +39,10 @@
     //typeName
     item.typeName = [NSString getCategoryStringWithCategoryInteger:item.category.integerValue];
     
+    // 处理天气
+    item.weather = [ONEHomeWeatherItem weatherItemWithDict:dict[@"weather"]];
+    
+    
     return item;
 }
 
@@ -50,6 +55,7 @@
     homeItem.serial_list = searchResultItem.serial_list;
     
     homeItem.type = [homeItem.category getType];
+    homeItem.typeName = [NSString getCategoryStringWithCategoryInteger:homeItem.category.integerValue];
     
     return homeItem;
 }

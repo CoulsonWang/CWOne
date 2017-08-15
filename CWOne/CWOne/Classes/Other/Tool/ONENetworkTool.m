@@ -430,8 +430,37 @@ static ONENetworkTool *_instance;
 }
 
 // 请求搜索结果数据
-- (void)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+- (NSURLSessionDataTask *)requestSearchResultDataWithTypeName:(NSString *)typeName searchText:(NSString *)searchText page:(NSInteger)pageNum success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/search/%@/%@/%ld",typeName,searchText,pageNum];
+    // 将中文进行转码
+    requestURL = [requestURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSDictionary *parameters = @{
+                                 @"version":@"v4.3.0",
+                                 };
+    
+    NSURLSessionDataTask *task =[[AFHTTPSessionManager manager] GET:requestURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        // 进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (success) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            NSArray *dataArray = dataDict[@"list"];
+            success(dataArray);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    return task;
+}
+
+/// 请求图文详情页数据
+- (void)requestFeedsDetailDataWithItemId:(NSInteger)item_id success:(void (^)(NSDictionary *dataDict))success failure:(void (^)(NSError *error))failure {
+    NSString *cityName = [[NSUserDefaults standardUserDefaults] valueForKey:ONECityNameKey];
+    if (cityName == nil) {
+        cityName = @"0";
+    }
+    NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/hp/feeds/%ld/%@",item_id,cityName];
     // 将中文进行转码
     requestURL = [requestURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSDictionary *parameters = @{
@@ -443,8 +472,7 @@ static ONENetworkTool *_instance;
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if (success) {
             NSDictionary *dataDict = responseObject[@"data"];
-            NSArray *dataArray = dataDict[@"list"];
-            success(dataArray);
+            success(dataDict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
