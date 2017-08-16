@@ -29,10 +29,10 @@ static NSString *const cellID = @"ONEAllHotAuthorCell";
     return hotAuthorView;
 }
 
-//- (void)setFrame:(CGRect)frame {
-//    frame.size.height = frame.size.height - 8;
-//    [super setFrame:frame];
-//}
+- (void)setFrame:(CGRect)frame {
+    frame.size.height -= ONEAllSeperatorViewHeight;
+    [super setFrame:frame];
+}
 
 - (void)setHotAuthorList:(NSArray *)hotAuthorList {
     _hotAuthorList = hotAuthorList;

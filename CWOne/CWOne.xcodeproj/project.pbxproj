@@ -97,6 +97,10 @@
 		B95F23781F441FAF004FC239 /* ONEAllHotAuthorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */; };
 		B95F237B1F443183004FC239 /* ONEAllCategoryNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */; };
 		B95F237D1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */; };
+		B95F23801F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F237F1F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m */; };
+		B95F23841F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23821F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m */; };
+		B95F23851F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23831F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib */; };
+		B95F23881F4446EE004FC239 /* UIImageView+ONEAddTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -322,6 +326,13 @@
 		B95F23791F443183004FC239 /* ONEAllCategoryNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllCategoryNavigationView.h; sourceTree = "<group>"; };
 		B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllCategoryNavigationView.m; sourceTree = "<group>"; };
 		B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllCategoryNavigationView.xib; sourceTree = "<group>"; };
+		B95F237E1F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllEveryOneAskEveryOneView.h; sourceTree = "<group>"; };
+		B95F237F1F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllEveryOneAskEveryOneView.m; sourceTree = "<group>"; };
+		B95F23811F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllEveryOneAskEveryOneCell.h; sourceTree = "<group>"; };
+		B95F23821F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllEveryOneAskEveryOneCell.m; sourceTree = "<group>"; };
+		B95F23831F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllEveryOneAskEveryOneCell.xib; sourceTree = "<group>"; };
+		B95F23861F4446EE004FC239 /* UIImageView+ONEAddTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ONEAddTag.h"; sourceTree = "<group>"; };
+		B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ONEAddTag.m"; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -901,6 +912,11 @@
 				B95F23791F443183004FC239 /* ONEAllCategoryNavigationView.h */,
 				B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */,
 				B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */,
+				B95F237E1F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.h */,
+				B95F237F1F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m */,
+				B95F23811F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.h */,
+				B95F23821F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m */,
+				B95F23831F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -988,6 +1004,8 @@
 				B93A7D6F1F347C8700FF86E9 /* NSString+ONEComponents.m */,
 				B900E6F51F3C7364006D1466 /* UITextView+CWLineSpacing.h */,
 				B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */,
+				B95F23861F4446EE004FC239 /* UIImageView+ONEAddTag.h */,
+				B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1411,6 +1429,7 @@
 				B9E000F81F38746200A7A609 /* loading@2x.gif in Resources */,
 				B9E000F91F38746200A7A609 /* loading_book@3x.gif in Resources */,
 				B9321EFE1F3059410052752B /* LaunchScreen.storyboard in Resources */,
+				B95F23851F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib in Resources */,
 				B9242DD41F3F52C10039AE0E /* ONEHomeFeedCell.xib in Resources */,
 				B9242DEB1F3F52C10039AE0E /* ONEHomeRadioCell.xib in Resources */,
 				B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */,
@@ -1598,6 +1617,7 @@
 				B9D133C61F3C1FC6006471F9 /* ONEHomeCoverTransitionTool.m in Sources */,
 				B9242DD51F3F52C10039AE0E /* ONEHomeFeedDatePickerView.m in Sources */,
 				B9242DD31F3F52C10039AE0E /* ONEHomeFeedCell.m in Sources */,
+				B95F23881F4446EE004FC239 /* UIImageView+ONEAddTag.m in Sources */,
 				B9242DE11F3F52C10039AE0E /* ONEHomeHeaderView.m in Sources */,
 				B9242D861F3F3A240039AE0E /* ONELoginViewController.m in Sources */,
 				B9242DDB1F3F52C10039AE0E /* ONEHomeMenuItem.m in Sources */,
@@ -1645,6 +1665,7 @@
 				B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
 				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,
+				B95F23801F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
 				B95F23771F441FAF004FC239 /* ONEAllHotAuthorCell.m in Sources */,
 				B9242DD01F3F52C10039AE0E /* ONEHomeFeedsViewController.m in Sources */,
@@ -1673,6 +1694,7 @@
 				B95F23401F4190BD004FC239 /* ONESearchResultCell.m in Sources */,
 				B9A740111F32EE4B009025FD /* ONERadioTool.m in Sources */,
 				B95F22FB1F407F96004FC239 /* ONEAuthorInfoController.m in Sources */,
+				B95F23841F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m in Sources */,
 				B9D6BBFF1F35F339002CA8FC /* ONEHomeNavigationBarTitleTextView.m in Sources */,
 				B9E001011F38C1BC00A7A609 /* ONERelatedItem.m in Sources */,
 				B9242DDA1F3F52C10039AE0E /* ONECatalogueItem.m in Sources */,

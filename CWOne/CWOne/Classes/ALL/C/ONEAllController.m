@@ -16,9 +16,11 @@
 #import "CWCarouselView.h"
 #import "ONEAllHotAuthorView.h"
 #import "ONEAllCategoryNavigationView.h"
+#import "ONEAllEveryOneAskEveryOneView.h"
 
 #define kBannerRatio 229/384.0
 #define kCategoryNavigationRatio 242/381.0
+#define kEveryOneAskEveryOneRatio 190/380.0
 
 static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
@@ -32,6 +34,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
 @property (weak, nonatomic) CWCarouselView *bannerView;
 @property (strong, nonatomic) ONEAllHotAuthorView *hotAuthorView;
+@property (strong, nonatomic) ONEAllEveryOneAskEveryOneView *everyOneAskEveryOneView;
 
 @end
 
@@ -46,6 +49,15 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     return _hotAuthorView;
 }
 
+- (ONEAllEveryOneAskEveryOneView *)everyOneAskEveryOneView {
+    if (!_everyOneAskEveryOneView) {
+        ONEAllEveryOneAskEveryOneView *everyOneView = [[ONEAllEveryOneAskEveryOneView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kEveryOneAskEveryOneRatio)];
+        _everyOneAskEveryOneView = everyOneView;
+    }
+    return _everyOneAskEveryOneView;
+}
+
+#pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -160,6 +172,10 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     _hotAuthorList = hotAuthorList;
     self.hotAuthorView.hotAuthorList = hotAuthorList;
 }
+- (void)setEveryOneAskEveryOneSpecialList:(NSArray<ONESpecialItem *> *)everyOneAskEveryOneSpecialList {
+    _everyOneAskEveryOneSpecialList = everyOneAskEveryOneSpecialList;
+    self.everyOneAskEveryOneView.specialList = everyOneAskEveryOneSpecialList;
+}
 #pragma mark - 事件响应
 - (void)searchButtonClick {
     [[ONESearchTool sharedInstance] presentSearchViewController];
@@ -197,6 +213,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         return [ONEAllCategoryNavigationView categoryNavigationView];
     } else {
         // 显示所有人问所有人
+        return self.everyOneAskEveryOneView;
     }
     return nil;
 }
@@ -206,7 +223,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         // 显示近期热门作者列表
         return self.hotAuthorView;
     }else {
-        return [[UIView alloc] init];
+        return nil;
     }
 }
 
@@ -222,7 +239,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     if (section == 0) {
         return CWScreenW * kCategoryNavigationRatio + ONEAllSeperatorViewHeight;
     } else {
-        return 0;
+        return CWScreenW * kEveryOneAskEveryOneRatio + ONEAllSeperatorViewHeight;
     }
 }
 #pragma mark - CWCarouselViewDelegate
