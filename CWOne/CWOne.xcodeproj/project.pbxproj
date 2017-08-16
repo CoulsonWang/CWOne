@@ -89,6 +89,8 @@
 		B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */; };
 		B95F23591F44054C004FC239 /* ONEHomeAdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23571F44054C004FC239 /* ONEHomeAdvertisementCell.m */; };
 		B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */; };
+		B95F236C1F44189F004FC239 /* CWCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23671F44189F004FC239 /* CWCarouselView.m */; };
+		B95F236D1F44189F004FC239 /* CWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23691F44189F004FC239 /* CWImageView.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -301,6 +303,10 @@
 		B95F23561F44054C004FC239 /* ONEHomeAdvertisementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeAdvertisementCell.h; sourceTree = "<group>"; };
 		B95F23571F44054C004FC239 /* ONEHomeAdvertisementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeAdvertisementCell.m; sourceTree = "<group>"; };
 		B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeAdvertisementCell.xib; sourceTree = "<group>"; };
+		B95F23661F44189F004FC239 /* CWCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCarouselView.h; sourceTree = "<group>"; };
+		B95F23671F44189F004FC239 /* CWCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCarouselView.m; sourceTree = "<group>"; };
+		B95F23681F44189F004FC239 /* CWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWImageView.h; sourceTree = "<group>"; };
+		B95F23691F44189F004FC239 /* CWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWImageView.m; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -974,6 +980,7 @@
 		B9321F221F305AD70052752B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B95F23651F44189F004FC239 /* CWCarouselView */,
 				B98A5A7C1F39BD0C009FCCBC /* CWCalendarLabel */,
 			);
 			path = Lib;
@@ -1131,6 +1138,17 @@
 				B95F233F1F4190BD004FC239 /* ONESearchResultCell.xib */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		B95F23651F44189F004FC239 /* CWCarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				B95F23661F44189F004FC239 /* CWCarouselView.h */,
+				B95F23671F44189F004FC239 /* CWCarouselView.m */,
+				B95F23681F44189F004FC239 /* CWImageView.h */,
+				B95F23691F44189F004FC239 /* CWImageView.m */,
+			);
+			path = CWCarouselView;
 			sourceTree = "<group>";
 		};
 		B98A5A7C1F39BD0C009FCCBC /* CWCalendarLabel */ = {
@@ -1605,7 +1623,9 @@
 				B90C3A4D1F3072A9004E64D9 /* ONEMainTabBarController.m in Sources */,
 				B90C3A5B1F307DE8004E64D9 /* UIColor+CWQuickCreate.m in Sources */,
 				B9242DE51F3F52C10039AE0E /* ONEHomeViewModel.m in Sources */,
+				B95F236C1F44189F004FC239 /* CWCarouselView.m in Sources */,
 				B9321F011F3059410052752B /* main.m in Sources */,
+				B95F236D1F44189F004FC239 /* CWImageView.m in Sources */,
 				B98A5A931F3B50C9009FCCBC /* ONEPhoto.m in Sources */,
 				B953EB041F40487100DDC478 /* ONEAuthorizationTool.m in Sources */,
 				B95F23511F4342D8004FC239 /* ONEAllSpecialTableViewCell.m in Sources */,

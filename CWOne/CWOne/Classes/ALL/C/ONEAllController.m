@@ -13,16 +13,22 @@
 #import "ONESpecialItem.h"
 #import "ONEUserItem.h"
 #import "ONEAllSpecialTableViewCell.h"
+#import "CWCarouselView.h"
+
+#define kBannerRatio 229/384.0
+#define kSeperatorViewHeight 10.0
 
 static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
-@interface ONEAllController ()
+@interface ONEAllController () <CWCarouselViewDelegate>
 
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *stickSpecialList;
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *normalSpecialList;
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *bannerSpecialList;
 @property (strong, nonatomic) NSArray<ONEUserItem *> *hotAuthorList;
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *everyOneAskEveryOneSpecialList;
+
+@property (weak, nonatomic) CWCarouselView *bannerView;
 
 @end
 
@@ -33,6 +39,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     
     [self setUpTableView];
     
+    [self setUpTableViewHeader];
     
     [self setUpNavigationBar];
     
@@ -56,6 +63,24 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEAllSpecialTableViewCell class]) bundle:nil] forCellReuseIdentifier:cellID];
 }
+
+- (void)setUpTableViewHeader {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kBannerRatio + kSeperatorViewHeight)];
+    self.tableView.tableHeaderView = headerView;
+    
+    CWCarouselView *bannerView = [CWCarouselView carouselViewWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kBannerRatio) imageUrls:nil placeholder:nil];
+    bannerView.delegate = self;
+    bannerView.interval = 1.8;
+    bannerView.scrollAnimationDuration = 0.35;
+    bannerView.pageControlPostion = CWPageControlPostionTopRight;
+    [headerView addSubview:bannerView];
+    self.bannerView = bannerView;
+    
+    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CWScreenW * kBannerRatio, CWScreenW, kSeperatorViewHeight)];
+    seperatorView.backgroundColor = [UIColor colorWithWhite:238/255.0 alpha:1.0];
+    [headerView addSubview:seperatorView];
+}
+
 - (void)loadData {
     // 请求轮播器数据
     [[ONENetworkTool sharedInstance] requestAllHeaderBannerDataWithLastId:nil success:^(NSArray *dataArray) {
@@ -107,6 +132,17 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     }];
 }
 
+#pragma mark - setter方法
+- (void)setBannerSpecialList:(NSArray<ONESpecialItem *> *)bannerSpecialList {
+    _bannerSpecialList = bannerSpecialList;
+    
+    NSMutableArray<NSURL *> *imgUrlArray = [NSMutableArray array];
+    for (ONESpecialItem *specialItem in bannerSpecialList) {
+        NSURL *coverURL = [NSURL URLWithString:specialItem.cover];
+        [imgUrlArray addObject:coverURL];
+    }
+    self.bannerView.imageUrls = imgUrlArray;
+}
 #pragma mark - 事件响应
 - (void)searchButtonClick {
     [[ONESearchTool sharedInstance] presentSearchViewController];
@@ -152,5 +188,9 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         // 显示近期热门作者列表
     }
     return nil;
+}
+#pragma mark - CWCarouselViewDelegate
+- (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {
+    
 }
 @end
