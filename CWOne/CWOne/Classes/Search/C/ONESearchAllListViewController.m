@@ -14,17 +14,20 @@
 #import "NSString+CWTranslate.h"
 #import "ONEHomeFeedDatePickerView.h"
 #import "NSString+ONEComponents.h"
+#import "ONESearchAllListTitleButton.h"
+#import "ONECategoryChooserView.h"
 
 #define kDatePickerHeight 39.0
 #define kRowHeight 63.5
 #define kSectionHeaderHeight 32.0
 
-@interface ONESearchAllListViewController () <ONEHomeFeedBottomPickerViewDelegate, ONEHomeFeedDatePickerViewDelegate, UIScrollViewDelegate>
+@interface ONESearchAllListViewController () <ONEHomeFeedBottomPickerViewDelegate, ONEHomeFeedDatePickerViewDelegate, UIScrollViewDelegate, ONECategoryChooserViewDelegate>
 
 @property (weak, nonatomic) UIWebView *webView;
 @property (weak, nonatomic) ONEHomeFeedBottomPickerView *datePickerView;
 @property (weak, nonatomic) ONEHomeFeedDatePickerView *pickerView;
-
+@property (weak, nonatomic) ONESearchAllListTitleButton *titleButton;
+@property (weak, nonatomic) ONECategoryChooserView *chooserView;
 @end
 
 @implementation ONESearchAllListViewController
@@ -32,9 +35,9 @@
 #pragma mark - 懒加载
 - (ONEHomeFeedDatePickerView *)pickerView {
     if (!_pickerView) {
-        ONEHomeFeedDatePickerView *pickerView = [ONEHomeFeedDatePickerView datePickerViewWithPosition:ONEDatePickerViewPositionTop frame:CGRectMake(0, kNavigationBarHeight, CWScreenW, CWScreenH - kNavigationBarHeight)];
+        ONEHomeFeedDatePickerView *pickerView = [ONEHomeFeedDatePickerView datePickerViewWithPosition:ONEDatePickerViewPositionTop frame:CGRectMake(0, 0, CWScreenW, CWScreenH - kNavigationBarHeight)];
         pickerView.delegate = self;
-        [[UIApplication sharedApplication].keyWindow addSubview:pickerView];
+        [self.view addSubview:pickerView];
         _pickerView = pickerView;
     }
     return _pickerView;
@@ -56,15 +59,36 @@
     
     [self loadData];
 }
+- (ONECategoryChooserView *)chooserView {
+    if (!_chooserView) {
+        ONECategoryChooserView *chooserView = [[ONECategoryChooserView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH - kNavigationBarHeight)];
+        chooserView.delegate = self;
+        [self.view addSubview:chooserView];
+        _chooserView = chooserView;
+    }
+    return _chooserView;
+}
 
+#pragma mark - 初始化
 - (void)setUpNavigationBar {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
     
+    
+    ONESearchAllListTitleButton *button = [ONESearchAllListTitleButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(showCategoryChooserViewButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    NSString *titleStr;
     if (self.categoryIndex == 0) {
-        self.title = @"图文";
+        titleStr = @"图文";
     } else {
-        self.title = [NSString getCategoryStringWithCategoryInteger:self.categoryIndex];
+        titleStr = [NSString getCategoryStringWithCategoryInteger:self.categoryIndex];
     }
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button setTitle:titleStr forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, 60, 44);
+    self.navigationItem.titleView = button;
+    self.titleButton = button;
 }
 
 - (void)setUpDatePickerView {
@@ -90,8 +114,26 @@
     } failure:nil];
 }
 
+#pragma mark - 事件响应
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)showCategoryChooserViewButtonClick:(ONESearchAllListTitleButton *)button {
+    button.selected = !button.isSelected;
+    if (button.isSelected) {
+        [self.chooserView showChooserView];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.titleButton.imageView.transform = CGAffineTransformMakeRotation(radian(-179.0));
+        }];
+    } else {
+        [self.chooserView hideChooserView];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.titleButton.imageView.transform = CGAffineTransformIdentity;
+        }];
+    }
+    
+    
 }
 
 #pragma mark - ONEHomeFeedBottomPickerViewDelegate
@@ -123,6 +165,18 @@
             self.datePickerView.dateString = newDateString;
         });
     }
+}
+#pragma mark - ONECategoryChooserViewDelegate
+- (void)categoryChooserViewDidCancleChoose:(ONECategoryChooserView *)categoryChooserView {
+    self.titleButton.selected = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.titleButton.imageView.transform = CGAffineTransformIdentity;
+    }];
+}
+- (void)categoryChooserView:(ONECategoryChooserView *)categoryChooserView didChooseAtIndex:(NSInteger)index {
+    self.categoryIndex = index;
+    [self showCategoryChooserViewButtonClick:self.titleButton];
+    [self loadData];
 }
 
 @end

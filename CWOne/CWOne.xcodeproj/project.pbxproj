@@ -101,6 +101,10 @@
 		B95F23841F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23821F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.m */; };
 		B95F23851F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23831F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib */; };
 		B95F23881F4446EE004FC239 /* UIImageView+ONEAddTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */; };
+		B95F238E1F4492C2004FC239 /* ONESearchAllListTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F238D1F4492C2004FC239 /* ONESearchAllListTitleButton.m */; };
+		B95F23911F44985D004FC239 /* ONECategoryChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23901F44985D004FC239 /* ONECategoryChooserView.m */; };
+		B95F23951F449A31004FC239 /* ONECategoryChooserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */; };
+		B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -333,6 +337,13 @@
 		B95F23831F443DBA004FC239 /* ONEAllEveryOneAskEveryOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllEveryOneAskEveryOneCell.xib; sourceTree = "<group>"; };
 		B95F23861F4446EE004FC239 /* UIImageView+ONEAddTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ONEAddTag.h"; sourceTree = "<group>"; };
 		B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ONEAddTag.m"; sourceTree = "<group>"; };
+		B95F238C1F4492C2004FC239 /* ONESearchAllListTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONESearchAllListTitleButton.h; sourceTree = "<group>"; };
+		B95F238D1F4492C2004FC239 /* ONESearchAllListTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONESearchAllListTitleButton.m; sourceTree = "<group>"; };
+		B95F238F1F44985D004FC239 /* ONECategoryChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECategoryChooserView.h; sourceTree = "<group>"; };
+		B95F23901F44985D004FC239 /* ONECategoryChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONECategoryChooserView.m; sourceTree = "<group>"; };
+		B95F23921F449A31004FC239 /* ONECategoryChooserViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECategoryChooserViewCell.h; sourceTree = "<group>"; };
+		B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONECategoryChooserViewCell.m; sourceTree = "<group>"; };
+		B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONECategoryChooserViewCell.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -1178,6 +1189,13 @@
 				B95F233D1F4190BD004FC239 /* ONESearchResultCell.h */,
 				B95F233E1F4190BD004FC239 /* ONESearchResultCell.m */,
 				B95F233F1F4190BD004FC239 /* ONESearchResultCell.xib */,
+				B95F238C1F4492C2004FC239 /* ONESearchAllListTitleButton.h */,
+				B95F238D1F4492C2004FC239 /* ONESearchAllListTitleButton.m */,
+				B95F238F1F44985D004FC239 /* ONECategoryChooserView.h */,
+				B95F23901F44985D004FC239 /* ONECategoryChooserView.m */,
+				B95F23921F449A31004FC239 /* ONECategoryChooserViewCell.h */,
+				B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */,
+				B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1419,6 +1437,7 @@
 				B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */,
 				B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */,
 				B95F237D1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib in Resources */,
+				B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */,
 				B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */,
 				B95F23411F4190BD004FC239 /* ONESearchResultCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
@@ -1608,6 +1627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9242DDE1F3F52C10039AE0E /* ONEHomeCatalogueView.m in Sources */,
+				B95F23911F44985D004FC239 /* ONECategoryChooserView.m in Sources */,
 				B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */,
 				B9242DE31F3F52C10039AE0E /* ONEHomeViewController.m in Sources */,
 				B9242DDF1F3F52C10039AE0E /* ONEHomeHeadContentView.m in Sources */,
@@ -1623,6 +1643,7 @@
 				B9242DDB1F3F52C10039AE0E /* ONEHomeMenuItem.m in Sources */,
 				B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */,
 				B9242DD61F3F52C10039AE0E /* ONEHomeFeedHeaderView.m in Sources */,
+				B95F238E1F4492C2004FC239 /* ONESearchAllListTitleButton.m in Sources */,
 				B95F237B1F443183004FC239 /* ONEAllCategoryNavigationView.m in Sources */,
 				B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */,
 				B9242DE21F3F52C10039AE0E /* ONEHomeTableViewController.m in Sources */,
@@ -1636,6 +1657,7 @@
 				B98A5A881F3ACEC0009FCCBC /* ONEDetailMusicInfoController.m in Sources */,
 				B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */,
 				B9242DF01F3F53400039AE0E /* ONEDiaryPhotoPickerView.m in Sources */,
+				B95F23951F449A31004FC239 /* ONECategoryChooserViewCell.m in Sources */,
 				B9242DD11F3F52C10039AE0E /* ONEFeedItem.m in Sources */,
 				B93A7D701F347C8700FF86E9 /* NSString+ONEComponents.m in Sources */,
 				B90C3A391F305FE0004E64D9 /* ONELaunchController.m in Sources */,
