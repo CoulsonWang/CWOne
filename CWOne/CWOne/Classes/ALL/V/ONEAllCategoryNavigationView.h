@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEAllCategoryNavigationView;
+
+@protocol ONEAllCategoryNavigationViewDelegate <NSObject>
+
+- (void)categoryNavigationView:(ONEAllCategoryNavigationView *)categoryNavigationView didClickButtonWithCategoryIndex:(NSInteger)categoryIndex;
+
+@end
+
 @interface ONEAllCategoryNavigationView : UIView
+
+@property (weak, nonatomic) id<ONEAllCategoryNavigationViewDelegate> delegate;
 
 + (instancetype)categoryNavigationView;
 

@@ -19,20 +19,10 @@
     [super setFrame:frame];
 }
 
-- (IBAction)hpButtonClick:(UIButton *)sender {
-}
-
-- (IBAction)questionButtonClick:(UIButton *)sender {
-}
-- (IBAction)essayButtonClick:(UIButton *)sender {
-}
-- (IBAction)serialButtonClick:(UIButton *)sender {
-}
-- (IBAction)movieButtonClick:(UIButton *)sender {
-}
-- (IBAction)musicButtonClick:(UIButton *)sender {
-}
-- (IBAction)radioButtonClick:(UIButton *)sender {
+- (IBAction)buttonClick:(UIButton *)sender {
+    NSInteger categoryIndex = sender.tag;
+    
+    [self.delegate categoryNavigationView:self didClickButtonWithCategoryIndex:categoryIndex];
 }
 
 @end

@@ -31,6 +31,8 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self setUpNavigationBar];
     
     [self setUpWebView];

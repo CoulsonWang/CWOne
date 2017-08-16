@@ -44,7 +44,8 @@ static NSString *const cellID = @"ONEAllHotAuthorCell";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.rowHeight = 60;
+    self.tableView.rowHeight = 70;
+    self.tableView.scrollEnabled = NO;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEAllHotAuthorCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     
     self.changeButton.layer.borderWidth = 1;

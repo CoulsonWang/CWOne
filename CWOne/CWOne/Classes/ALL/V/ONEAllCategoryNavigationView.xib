@@ -29,61 +29,61 @@
                     </constraints>
                     <state key="normal" image="tuwen"/>
                     <connections>
-                        <action selector="hpButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="MTc-Md-j8q"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Er0-EU-jeP"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xew-Ku-vQn">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xew-Ku-vQn">
                     <rect key="frame" x="96.5" y="52" width="72" height="71.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="xew-Ku-vQn" secondAttribute="height" multiplier="1:1" id="pfB-VV-JP6"/>
                     </constraints>
                     <state key="normal" image="wenda"/>
                     <connections>
-                        <action selector="questionButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="kOd-U4-qjZ"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="jIr-Ec-aD2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-xY-gTI">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-xY-gTI">
                     <rect key="frame" x="20" y="128.5" width="71.5" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Jc0-xY-gTI" secondAttribute="height" multiplier="1:1" id="QKL-Ed-MNk"/>
                     </constraints>
                     <state key="normal" image="lianzai"/>
                     <connections>
-                        <action selector="serialButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="6RZ-t8-LUf"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="n6h-3h-Gh9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47w-PJ-YBh">
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47w-PJ-YBh">
                     <rect key="frame" x="96.5" y="128.5" width="72" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="47w-PJ-YBh" secondAttribute="height" multiplier="1:1" id="2Fd-hK-DDK"/>
                     </constraints>
                     <state key="normal" image="yingshi"/>
                     <connections>
-                        <action selector="movieButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="a90-dg-oXF"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="7MF-bQ-cD9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5p-Kp-WZ8">
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5p-Kp-WZ8">
                     <rect key="frame" x="173.5" y="128.5" width="71.5" height="72"/>
                     <state key="normal" image="yinyue"/>
                     <connections>
-                        <action selector="musicButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ter-sT-4AE"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="4hh-fp-GSq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBG-UD-2lf">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBG-UD-2lf">
                     <rect key="frame" x="173.5" y="52" width="148.5" height="71.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="yBG-UD-2lf" secondAttribute="height" multiplier="171:82" id="oOg-Gy-mre"/>
                     </constraints>
                     <state key="normal" image="yuedu"/>
                     <connections>
-                        <action selector="essayButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="xaN-lu-gfg"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="2xE-pb-2lu"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsJ-aZ-qy5">
+                <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsJ-aZ-qy5">
                     <rect key="frame" x="250" y="128.5" width="72" height="72"/>
                     <state key="normal" image="diantai"/>
                     <connections>
-                        <action selector="radioButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="X9x-ht-lpt"/>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="9g9-Hf-RPH"/>
                     </connections>
                 </button>
             </subviews>

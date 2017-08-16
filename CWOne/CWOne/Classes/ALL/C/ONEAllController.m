@@ -17,14 +17,17 @@
 #import "ONEAllHotAuthorView.h"
 #import "ONEAllCategoryNavigationView.h"
 #import "ONEAllEveryOneAskEveryOneView.h"
+#import <MJRefresh.h>
+#import "ONESearchAllListViewController.h"
 
 #define kBannerRatio 229/384.0
 #define kCategoryNavigationRatio 242/381.0
 #define kEveryOneAskEveryOneRatio 190/380.0
+#define kHotAuthorRatio 315/382.0
 
 static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
-@interface ONEAllController () <CWCarouselViewDelegate>
+@interface ONEAllController () <CWCarouselViewDelegate, ONEAllCategoryNavigationViewDelegate>
 
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *stickSpecialList;
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *normalSpecialList;
@@ -81,11 +84,17 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 }
 
 - (void)setUpTableView {
-    self.tableView.backgroundColor = [UIColor colorWithWhite:238/255.0 alpha:1.0];
+    self.tableView.backgroundColor = ONEBackgroundColor;
     self.tableView.estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEAllSpecialTableViewCell class]) bundle:nil] forCellReuseIdentifier:cellID];
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.backgroundColor = ONEBackgroundColor;
+    self.tableView.mj_header = header;
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreSpecialData)];
 }
 
 - (void)setUpTableViewHeader {
@@ -152,6 +161,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         self.stickSpecialList = stickArray;
         self.normalSpecialList = notStickArray;
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -179,6 +189,26 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 #pragma mark - 事件响应
 - (void)searchButtonClick {
     [[ONESearchTool sharedInstance] presentSearchViewController];
+}
+
+- (void)loadMoreSpecialData {
+    NSString *lastID = [NSString stringWithFormat:@"%ld",self.normalSpecialList.lastObject.id];
+    [[ONENetworkTool sharedInstance] requestAllSpecilaListDataWithLastId:lastID success:^(NSArray *dataArray) {
+        if (dataArray.count == 0) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        } else {
+            NSMutableArray *tempArrya = [self.normalSpecialList mutableCopy];
+            for (NSDictionary *dataDict in dataArray) {
+                ONESpecialItem *specialItem = [ONESpecialItem specialItemWithDict:dataDict];
+                [tempArrya addObject:specialItem];
+            }
+            self.normalSpecialList = tempArrya;
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -210,7 +240,9 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         // 分类导航
-        return [ONEAllCategoryNavigationView categoryNavigationView];
+        ONEAllCategoryNavigationView *categoryView = [ONEAllCategoryNavigationView categoryNavigationView];
+        categoryView.delegate = self;
+        return categoryView;
     } else {
         // 显示所有人问所有人
         return self.everyOneAskEveryOneView;
@@ -229,9 +261,9 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return 320.0;
+        return CWScreenW * kHotAuthorRatio + ONEAllSeperatorViewHeight;
     } else {
-        return 0;
+        return 1;
     }
 }
 
@@ -244,6 +276,13 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 }
 #pragma mark - CWCarouselViewDelegate
 - (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {
-    
+
+}
+#pragma mark - ONEAllCategoryNavigationViewDelegate
+- (void)categoryNavigationView:(ONEAllCategoryNavigationView *)categoryNavigationView didClickButtonWithCategoryIndex:(NSInteger)categoryIndex {
+    ONESearchAllListViewController *searchListVC = [[ONESearchAllListViewController alloc] init];
+    searchListVC.categoryIndex = categoryIndex;
+    searchListVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController showViewController:searchListVC sender:nil];
 }
 @end
