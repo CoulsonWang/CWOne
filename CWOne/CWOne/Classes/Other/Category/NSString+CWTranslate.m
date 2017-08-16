@@ -63,6 +63,8 @@
             return @"音乐";
         case 5:
             return @"影视";
+        case 6:
+            return @"广告";
         case 8:
             return @"电台";
         default:
@@ -87,6 +89,8 @@
             return @"music";
         case 5:
             return @"movie";
+        case 6:
+            return @"advertisement";
         case 8:
             return @"radio";
         default:
@@ -115,6 +119,8 @@
             return ONEHomeItemTypeMusic;
         case 5:
             return ONEHomeItemTypeMovie;
+        case 6:
+            return ONEHomeItemTypeAdvertisement;
         case 8:
             return ONEHomeItemTypeRadio;
         default:
@@ -142,6 +148,9 @@
             break;
         case ONEHomeItemTypeMovie:
             categoryNum = 5;
+            break;
+        case ONEHomeItemTypeAdvertisement:
+            categoryNum = 6;
             break;
         case ONEHomeItemTypeRadio:
             categoryNum = 8;

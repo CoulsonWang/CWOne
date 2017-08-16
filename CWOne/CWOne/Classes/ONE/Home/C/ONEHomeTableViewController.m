@@ -16,16 +16,19 @@
 #import <MJRefresh.h>
 #import "ONEHomeCell.h"
 #import "ONEHomeRadioCell.h"
+#import "ONEHomeAdvertisementCell.h"
 #import "ONEHomeHeaderView.h"
 #import "ONEHomeMenuItem.h"
 #import "ONEDetailViewController.h"
 #import "ONELocationTool.h"
 #import "ONEHomeWeatherItem.h"
+#import <SafariServices/SafariServices.h>
 
 #define kTabBarHideAnimationDuration 0.25
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
+static NSString *const OneHomeAdCellID = @"OneHomeAdCellID";
 
 @interface ONEHomeTableViewController ()
 
@@ -76,6 +79,7 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     // 初始化TableView
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeRadioCell class]) bundle:nil] forCellReuseIdentifier:OneHomeRadioCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeAdvertisementCell class]) bundle:nil] forCellReuseIdentifier:OneHomeAdCellID];
     
     self.tableView.estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -196,6 +200,11 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
             reuseIdentifier = OneHomeRadioCellID;
         }
             break;
+        case ONEHomeItemTypeAdvertisement:
+        {
+            reuseIdentifier = OneHomeAdCellID;
+        }
+            break;
         default:
         {
             reuseIdentifier = OneHomeCellID;
@@ -211,12 +220,19 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
-    
     ONEHomeItem *item = self.homeItems[indexPath.row + 1];
-    detailVC.homeItem = item;
-    
-    [self.navigationController showViewController:detailVC sender:nil];
+    if (item.type == ONEHomeItemTypeAdvertisement) {
+        // 打开广告界面
+        NSURL *adURL = [NSURL URLWithString:item.ad_linkurl];
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:adURL];
+        [self presentViewController:safariVC animated:YES completion:nil];
+    } else {
+        ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+        
+        detailVC.homeItem = item;
+        
+        [self.navigationController showViewController:detailVC sender:nil];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate

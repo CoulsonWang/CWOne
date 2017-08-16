@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     ONEHomeItemTypeQuestion,
     ONEHomeItemTypeMusic,
     ONEHomeItemTypeMovie,
+    ONEHomeItemTypeAdvertisement,
     ONEHomeItemTypeRadio,
     ONEHomeItemTypeUnknown,
 } ONEHomeItemType;
@@ -70,6 +71,8 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSString *orientation;
 
 @property (strong, nonatomic) NSArray *serial_list;
+
+@property (strong, nonatomic) NSString *ad_linkurl;
 
 // 音乐cell的属性
 @property (strong, nonatomic) NSString *music_name;

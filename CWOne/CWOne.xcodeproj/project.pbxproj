@@ -87,6 +87,8 @@
 		B95F234D1F433D46004FC239 /* ONESpecialItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F234C1F433D46004FC239 /* ONESpecialItem.m */; };
 		B95F23511F4342D8004FC239 /* ONEAllSpecialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */; };
 		B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */; };
+		B95F23591F44054C004FC239 /* ONEHomeAdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23571F44054C004FC239 /* ONEHomeAdvertisementCell.m */; };
+		B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -296,6 +298,9 @@
 		B95F234E1F4342D8004FC239 /* ONEAllSpecialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllSpecialTableViewCell.h; sourceTree = "<group>"; };
 		B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllSpecialTableViewCell.m; sourceTree = "<group>"; };
 		B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllSpecialTableViewCell.xib; sourceTree = "<group>"; };
+		B95F23561F44054C004FC239 /* ONEHomeAdvertisementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeAdvertisementCell.h; sourceTree = "<group>"; };
+		B95F23571F44054C004FC239 /* ONEHomeAdvertisementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeAdvertisementCell.m; sourceTree = "<group>"; };
+		B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeAdvertisementCell.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -748,6 +753,9 @@
 				B9242DCD1F3F52C10039AE0E /* ONELikeView.h */,
 				B9242DCE1F3F52C10039AE0E /* ONELikeView.m */,
 				B9242DCF1F3F52C10039AE0E /* ONELikeView.xib */,
+				B95F23561F44054C004FC239 /* ONEHomeAdvertisementCell.h */,
+				B95F23571F44054C004FC239 /* ONEHomeAdvertisementCell.m */,
+				B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1365,6 +1373,7 @@
 				B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */,
 				B95F23391F4183F6004FC239 /* ONESearchViewController.xib in Resources */,
 				B9242DD71F3F52C10039AE0E /* ONEHomeFeedHeaderView.xib in Resources */,
+				B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */,
 				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 				B9242DE91F3F52C10039AE0E /* ONEHomeCell.xib in Resources */,
@@ -1573,6 +1582,7 @@
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B95F234A1F42DD05004FC239 /* ONESearchAllListViewController.m in Sources */,
 				B9242DF31F3F58250039AE0E /* ONEPhotoPickerViewButton.m in Sources */,
+				B95F23591F44054C004FC239 /* ONEHomeAdvertisementCell.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */,
 				B9B822621F3754BC002F6961 /* ONENavigationBarTool.m in Sources */,
