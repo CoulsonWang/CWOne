@@ -12,18 +12,33 @@
 #import "ONEDateTool.h"
 #import "UIImage+Render.h"
 #import "NSString+CWTranslate.h"
+#import "ONEHomeFeedDatePickerView.h"
+#import "NSString+ONEComponents.h"
 
 #define kDatePickerHeight 39.0
+#define kRowHeight 63.5
+#define kSectionHeaderHeight 32.0
 
-@interface ONESearchAllListViewController ()
+@interface ONESearchAllListViewController () <ONEHomeFeedBottomPickerViewDelegate, ONEHomeFeedDatePickerViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) UIWebView *webView;
 @property (weak, nonatomic) ONEHomeFeedBottomPickerView *datePickerView;
+@property (weak, nonatomic) ONEHomeFeedDatePickerView *pickerView;
 
 @end
 
 @implementation ONESearchAllListViewController
 
+#pragma mark - 懒加载
+- (ONEHomeFeedDatePickerView *)pickerView {
+    if (!_pickerView) {
+        ONEHomeFeedDatePickerView *pickerView = [ONEHomeFeedDatePickerView datePickerViewWithPosition:ONEDatePickerViewPositionTop frame:CGRectMake(0, kNavigationBarHeight, CWScreenW, CWScreenH - kNavigationBarHeight)];
+        pickerView.delegate = self;
+        [[UIApplication sharedApplication].keyWindow addSubview:pickerView];
+        _pickerView = pickerView;
+    }
+    return _pickerView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -55,6 +70,7 @@
 - (void)setUpDatePickerView {
     ONEHomeFeedBottomPickerView *datePickerView = [[ONEHomeFeedBottomPickerView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, kDatePickerHeight)];
     datePickerView.dateString = [[ONEDateTool sharedInstance] currentDateString];
+    datePickerView.delegate = self;
     [self.view addSubview:datePickerView];
     self.datePickerView = datePickerView;
 }
@@ -63,6 +79,7 @@
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, self.view.height)];
     webView.backgroundColor = [UIColor whiteColor];
     webView.scrollView.contentInset = UIEdgeInsetsMake(kDatePickerHeight, 0, 0, 0);
+    webView.scrollView.delegate = self;
     [self.view addSubview:webView];
     self.webView = webView;
 }
@@ -75,6 +92,37 @@
 
 - (void)goBack {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - ONEHomeFeedBottomPickerViewDelegate
+- (void)feedDatePickViewDidClick:(ONEHomeFeedBottomPickerView *)pickView {
+    // 显示日期选择器
+    [self.pickerView appearWithDateString:self.datePickerView.dateString];
+}
+#pragma mark - ONEHomeFeedDatePickerViewDelegate
+- (void)feedDataPicker:(ONEHomeFeedDatePickerView *)feedDatePickerView didConfirmSelectedWithDateString:(NSString *)dateString {
+    // 更新webView的位置
+    NSDate *newDate = [[NSString stringWithFormat:@"%@-01",dateString] getDate];
+    NSTimeInterval timeInterval = [newDate timeIntervalSinceDate:[NSDate date]];
+    NSInteger dayInterval = timeInterval/(24 * 3600);
+    
+    CGFloat offsetY = dayInterval * (kRowHeight + kSectionHeaderHeight/30);
+    [self.webView.scrollView setContentOffset:CGPointMake(0, -offsetY) animated:YES];
+}
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    NSInteger row = offsetY/(kRowHeight+ kSectionHeaderHeight/30);
+    
+    NSDate *destDate = [[NSDate date] dateByAddingTimeInterval:(-row * 24 * 3600)];
+    NSString *newDateString = [NSString getDateStringWithDate:destDate];
+    NSString *lastStr = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:self.datePickerView.dateString];
+    NSString *newStr = [[ONEDateTool sharedInstance] getFeedsRequestDateStringWithOriginalDateString:newDateString];
+    if (newStr != nil && ![newStr isEqualToString:lastStr]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.datePickerView.dateString = newDateString;
+        });
+    }
 }
 
 @end

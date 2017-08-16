@@ -1,4 +1,4 @@
-//
+    //
 //  ONEHomeFeedDatePickerView.m
 //  CWOne
 //
@@ -28,6 +28,8 @@
 @property (weak, nonatomic) UIButton *confirmButton;
 
 @property (strong, nonatomic) NSArray<NSDictionary *> *yearArray;
+
+@property (assign, nonatomic) ONEDatePickerViewPosition postion;
 
 @end
 
@@ -63,11 +65,18 @@
     return _yearArray;
 }
 
++ (instancetype)datePickerViewWithPosition:(ONEDatePickerViewPosition)postion frame:(CGRect)frame {
+    ONEHomeFeedDatePickerView *datePickerView = [[ONEHomeFeedDatePickerView alloc] initWithFrame:frame];
+    datePickerView.postion = postion;
+    [datePickerView setUpSubviews];
+    return datePickerView;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setUpSubviews];
+        self.clipsToBounds = YES;
     }
     return self;
 }
@@ -75,38 +84,39 @@
 - (void)setUpSubviews {
     self.backgroundColor = [UIColor clearColor];
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
     backgroundView.backgroundColor = [UIColor blackColor];
     backgroundView.alpha = 0;
     [backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideThePickerView)]];
     [self addSubview:backgroundView];
     self.backgroundView = backgroundView;
     
-    UIView *totalBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, CWScreenH, CWScreenW , kTotalBottomHeight)];
+    CGFloat y = (self.postion == ONEDatePickerViewPositionTop) ? -kTotalBottomHeight : self.height;
+    UIView *totalBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, y, self.width , kTotalBottomHeight)];
     totalBottomView.backgroundColor = [UIColor colorWithWhite:251/255.0 alpha:1.0];
     [self addSubview:totalBottomView];
     self.totalBottomView = totalBottomView;
     
     UILabel *infoLabel = [[UILabel alloc] init];
     infoLabel.text = @"选择日期";
-    infoLabel.frame = CGRectMake(0, 0, CWScreenW, kInfoLabelHeight);
+    infoLabel.frame = CGRectMake(0, 0, self.width, kInfoLabelHeight);
     infoLabel.font = [UIFont systemFontOfSize:13];
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = [UIColor colorWithWhite:137/255.0 alpha:1.0];
     [totalBottomView addSubview:infoLabel];
     self.infoLabel = infoLabel;
     
-    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kInfoLabelHeight, CWScreenW, kPickerHeight)];
+    UIPickerView *picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kInfoLabelHeight, self.width, kPickerHeight)];
     picker.dataSource = self;
     picker.delegate = self;
     [totalBottomView addSubview:picker];
     self.datePicker = picker;
     
-    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, kTotalBottomHeight - kConfirmButtonHeight - 0.5, CWScreenW, 0.5)];
+    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, kTotalBottomHeight - kConfirmButtonHeight - 0.5, self.width, 0.5)];
     seperatorView.backgroundColor = [UIColor colorWithWhite:241/255.0 alpha:1.0];
     [totalBottomView addSubview:seperatorView];
     
-    UIButton *confirmButton = [[UIButton alloc] initWithFrame:CGRectMake(0, kTotalBottomHeight - kConfirmButtonHeight, CWScreenW, kConfirmButtonHeight)];
+    UIButton *confirmButton = [[UIButton alloc] initWithFrame:CGRectMake(0, kTotalBottomHeight - kConfirmButtonHeight, self.width, kConfirmButtonHeight)];
     [confirmButton setTitle:@"确定" forState:UIControlStateNormal];
     [confirmButton setTitleColor:[UIColor colorWithWhite:78/255.0 alpha:1.0] forState:UIControlStateNormal];
     confirmButton.titleLabel.font = [UIFont systemFontOfSize:13];
@@ -116,9 +126,10 @@
 }
 
 - (void)hideThePickerView {
+    CGFloat hideY = (self.postion == ONEDatePickerViewPositionTop) ? -kTotalBottomHeight : self.height;
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.backgroundView.alpha = 0;
-        self.totalBottomView.y = CWScreenH;
+        self.totalBottomView.y = hideY;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
@@ -161,9 +172,10 @@
     [self.datePicker selectRow:monthIndex inComponent:1 animated:NO];
     
     // 动画
+    CGFloat appearY = (self.postion == ONEDatePickerViewPositionTop) ? 0 : self.height - kTotalBottomHeight;
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.backgroundView.alpha = 0.5;
-        self.totalBottomView.y = CWScreenH - kTotalBottomHeight;
+        self.totalBottomView.y = appearY;
     }];
 }
 

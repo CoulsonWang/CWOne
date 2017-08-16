@@ -73,6 +73,10 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
 #pragma mark - 初始化
 - (void)setUpNavigationBar {
     // 标题

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    ONEDatePickerViewPositionTop,
+    ONEDatePickerViewPositionBottom,
+} ONEDatePickerViewPosition;
+
 @class ONEHomeFeedDatePickerView;
 
 @protocol ONEHomeFeedDatePickerViewDelegate <NSObject>
@@ -19,6 +24,8 @@
 @interface ONEHomeFeedDatePickerView : UIView
 
 @property (weak, nonatomic) id<ONEHomeFeedDatePickerViewDelegate> delegate;
+
++ (instancetype)datePickerViewWithPosition:(ONEDatePickerViewPosition)postion frame:(CGRect)frame;
 
 - (void)appearWithDateString:(NSString *)dateString;
 

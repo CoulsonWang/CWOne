@@ -48,7 +48,7 @@ static NSString *const headerID = @"ONEHomeFeedHeaderID";
 
 -(ONEHomeFeedDatePickerView *)pickerView {
     if (!_pickerView) {
-        ONEHomeFeedDatePickerView *pickerView = [[ONEHomeFeedDatePickerView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
+        ONEHomeFeedDatePickerView *pickerView = [ONEHomeFeedDatePickerView datePickerViewWithPosition:ONEDatePickerViewPositionBottom frame:CGRectMake(0, 0, CWScreenW, CWScreenH)];
         pickerView.delegate = self;
         [[UIApplication sharedApplication].keyWindow addSubview:pickerView];
         _pickerView = pickerView;
