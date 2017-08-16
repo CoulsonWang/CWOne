@@ -95,6 +95,8 @@
 		B95F23731F441CEF004FC239 /* ONEAllHotAuthorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23721F441CEF004FC239 /* ONEAllHotAuthorView.xib */; };
 		B95F23771F441FAF004FC239 /* ONEAllHotAuthorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */; };
 		B95F23781F441FAF004FC239 /* ONEAllHotAuthorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */; };
+		B95F237B1F443183004FC239 /* ONEAllCategoryNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */; };
+		B95F237D1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -317,6 +319,9 @@
 		B95F23741F441FAF004FC239 /* ONEAllHotAuthorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllHotAuthorCell.h; sourceTree = "<group>"; };
 		B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllHotAuthorCell.m; sourceTree = "<group>"; };
 		B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllHotAuthorCell.xib; sourceTree = "<group>"; };
+		B95F23791F443183004FC239 /* ONEAllCategoryNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllCategoryNavigationView.h; sourceTree = "<group>"; };
+		B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllCategoryNavigationView.m; sourceTree = "<group>"; };
+		B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllCategoryNavigationView.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -893,6 +898,9 @@
 				B95F23741F441FAF004FC239 /* ONEAllHotAuthorCell.h */,
 				B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */,
 				B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */,
+				B95F23791F443183004FC239 /* ONEAllCategoryNavigationView.h */,
+				B95F237A1F443183004FC239 /* ONEAllCategoryNavigationView.m */,
+				B95F237C1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1392,6 +1400,7 @@
 				B9242DED1F3F52C10039AE0E /* ONELikeView.xib in Resources */,
 				B95F23521F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib in Resources */,
 				B98A5A891F3ACEC0009FCCBC /* ONEDetailMusicInfoController.xib in Resources */,
+				B95F237D1F4431B6004FC239 /* ONEAllCategoryNavigationView.xib in Resources */,
 				B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */,
 				B95F23411F4190BD004FC239 /* ONESearchResultCell.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
@@ -1594,6 +1603,7 @@
 				B9242DDB1F3F52C10039AE0E /* ONEHomeMenuItem.m in Sources */,
 				B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */,
 				B9242DD61F3F52C10039AE0E /* ONEHomeFeedHeaderView.m in Sources */,
+				B95F237B1F443183004FC239 /* ONEAllCategoryNavigationView.m in Sources */,
 				B9A73FF61F31C08A009025FD /* ONEHomeWeatherItem.m in Sources */,
 				B9242DE21F3F52C10039AE0E /* ONEHomeTableViewController.m in Sources */,
 				B9242DD21F3F52C10039AE0E /* ONEHomeFeedBottomPickerView.m in Sources */,

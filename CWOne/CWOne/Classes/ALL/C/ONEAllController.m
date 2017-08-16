@@ -15,9 +15,10 @@
 #import "ONEAllSpecialTableViewCell.h"
 #import "CWCarouselView.h"
 #import "ONEAllHotAuthorView.h"
+#import "ONEAllCategoryNavigationView.h"
 
 #define kBannerRatio 229/384.0
-#define kSeperatorViewHeight 10.0
+#define kCategoryNavigationRatio 242/381.0
 
 static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
@@ -76,7 +77,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 }
 
 - (void)setUpTableViewHeader {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kBannerRatio + kSeperatorViewHeight)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kBannerRatio + ONEAllSeperatorViewHeight)];
     self.tableView.tableHeaderView = headerView;
     
     CWCarouselView *bannerView = [CWCarouselView carouselViewWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kBannerRatio) imageUrls:nil placeholder:nil];
@@ -87,7 +88,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     [headerView addSubview:bannerView];
     self.bannerView = bannerView;
     
-    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CWScreenW * kBannerRatio, CWScreenW, kSeperatorViewHeight)];
+    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CWScreenW * kBannerRatio, CWScreenW, ONEAllSeperatorViewHeight)];
     seperatorView.backgroundColor = [UIColor colorWithWhite:238/255.0 alpha:1.0];
     [headerView addSubview:seperatorView];
 }
@@ -193,6 +194,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         // 分类导航
+        return [ONEAllCategoryNavigationView categoryNavigationView];
     } else {
         // 显示所有人问所有人
     }
@@ -211,6 +213,14 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 0) {
         return 320.0;
+    } else {
+        return 0;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return CWScreenW * kCategoryNavigationRatio + ONEAllSeperatorViewHeight;
     } else {
         return 0;
     }

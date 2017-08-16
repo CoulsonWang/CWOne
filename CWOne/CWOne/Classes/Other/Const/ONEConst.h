@@ -38,3 +38,5 @@ UIKIT_EXTERN NSString *const ONETitleViewFeedsFoldNotification;
 UIKIT_EXTERN NSString *const ONEFeedsDidSelectedNotification;
 
 UIKIT_EXTERN NSString *const ONEThemeFontName;
+
+UIKIT_EXTERN CGFloat const ONEAllSeperatorViewHeight;

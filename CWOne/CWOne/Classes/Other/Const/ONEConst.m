@@ -38,3 +38,5 @@ NSString *const ONETitleViewFeedsFoldNotification = @"ONETitleViewFeedsFoldNotif
 NSString *const ONEFeedsDidSelectedNotification = @"ONEFeedsDidSelectedNotification";
 
 NSString *const ONEThemeFontName = @"CourierNewPSMT";
+
+CGFloat const ONEAllSeperatorViewHeight = 10.0;
