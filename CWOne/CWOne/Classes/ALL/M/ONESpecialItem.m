@@ -13,6 +13,8 @@
 + (instancetype)specialItemWithDict:(NSDictionary *)dict {
     ONESpecialItem *specialItem = [[ONESpecialItem alloc] init];
     [specialItem setValuesForKeysWithDictionary:dict];
+    
+    specialItem.is_stick = ([dict[@"is_stick"] integerValue] == 1);
     return specialItem;
 }
 

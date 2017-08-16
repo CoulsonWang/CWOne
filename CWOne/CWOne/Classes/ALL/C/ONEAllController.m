@@ -14,6 +14,7 @@
 #import "ONEUserItem.h"
 #import "ONEAllSpecialTableViewCell.h"
 #import "CWCarouselView.h"
+#import "ONEAllHotAuthorView.h"
 
 #define kBannerRatio 229/384.0
 #define kSeperatorViewHeight 10.0
@@ -29,10 +30,20 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *everyOneAskEveryOneSpecialList;
 
 @property (weak, nonatomic) CWCarouselView *bannerView;
+@property (strong, nonatomic) ONEAllHotAuthorView *hotAuthorView;
 
 @end
 
 @implementation ONEAllController
+
+#pragma mark - 懒加载
+- (ONEAllHotAuthorView *)hotAuthorView {
+    if (!_hotAuthorView) {
+        ONEAllHotAuthorView *hotAuthorView = [ONEAllHotAuthorView hotAuthorView];
+        _hotAuthorView = hotAuthorView;
+    }
+    return _hotAuthorView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,6 +112,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
             [tempArray addObject:userItem];
         }
         self.hotAuthorList = tempArray;
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -121,7 +133,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         NSMutableArray *notStickArray = [NSMutableArray array];
         for (NSDictionary *dataDict in dataArray) {
             ONESpecialItem *specialItem = [ONESpecialItem specialItemWithDict:dataDict];
-            BOOL is_stick = dataDict[@"is_stick"];
+            BOOL is_stick = [dataDict[@"is_stick"] integerValue];
             is_stick ? [stickArray addObject:specialItem] : [notStickArray addObject:specialItem];
         }
         self.stickSpecialList = stickArray;
@@ -142,6 +154,10 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         [imgUrlArray addObject:coverURL];
     }
     self.bannerView.imageUrls = imgUrlArray;
+}
+- (void)setHotAuthorList:(NSArray<ONEUserItem *> *)hotAuthorList {
+    _hotAuthorList = hotAuthorList;
+    self.hotAuthorView.hotAuthorList = hotAuthorList;
 }
 #pragma mark - 事件响应
 - (void)searchButtonClick {
@@ -176,7 +192,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 #pragma mark - UITableViewDelegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        // 显示轮播器和分类导航
+        // 分类导航
     } else {
         // 显示所有人问所有人
     }
@@ -186,8 +202,18 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 0) {
         // 显示近期热门作者列表
+        return self.hotAuthorView;
+    }else {
+        return [[UIView alloc] init];
     }
-    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 0) {
+        return 320.0;
+    } else {
+        return 0;
+    }
 }
 #pragma mark - CWCarouselViewDelegate
 - (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {

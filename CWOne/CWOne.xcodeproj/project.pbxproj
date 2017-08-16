@@ -91,6 +91,10 @@
 		B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23581F44054C004FC239 /* ONEHomeAdvertisementCell.xib */; };
 		B95F236C1F44189F004FC239 /* CWCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23671F44189F004FC239 /* CWCarouselView.m */; };
 		B95F236D1F44189F004FC239 /* CWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23691F44189F004FC239 /* CWImageView.m */; };
+		B95F23711F441CE6004FC239 /* ONEAllHotAuthorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23701F441CE6004FC239 /* ONEAllHotAuthorView.m */; };
+		B95F23731F441CEF004FC239 /* ONEAllHotAuthorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23721F441CEF004FC239 /* ONEAllHotAuthorView.xib */; };
+		B95F23771F441FAF004FC239 /* ONEAllHotAuthorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */; };
+		B95F23781F441FAF004FC239 /* ONEAllHotAuthorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -307,6 +311,12 @@
 		B95F23671F44189F004FC239 /* CWCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCarouselView.m; sourceTree = "<group>"; };
 		B95F23681F44189F004FC239 /* CWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWImageView.h; sourceTree = "<group>"; };
 		B95F23691F44189F004FC239 /* CWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWImageView.m; sourceTree = "<group>"; };
+		B95F236F1F441CE6004FC239 /* ONEAllHotAuthorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllHotAuthorView.h; sourceTree = "<group>"; };
+		B95F23701F441CE6004FC239 /* ONEAllHotAuthorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllHotAuthorView.m; sourceTree = "<group>"; };
+		B95F23721F441CEF004FC239 /* ONEAllHotAuthorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllHotAuthorView.xib; sourceTree = "<group>"; };
+		B95F23741F441FAF004FC239 /* ONEAllHotAuthorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAllHotAuthorCell.h; sourceTree = "<group>"; };
+		B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAllHotAuthorCell.m; sourceTree = "<group>"; };
+		B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAllHotAuthorCell.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -877,6 +887,12 @@
 				B95F234E1F4342D8004FC239 /* ONEAllSpecialTableViewCell.h */,
 				B95F234F1F4342D8004FC239 /* ONEAllSpecialTableViewCell.m */,
 				B95F23501F4342D8004FC239 /* ONEAllSpecialTableViewCell.xib */,
+				B95F236F1F441CE6004FC239 /* ONEAllHotAuthorView.h */,
+				B95F23701F441CE6004FC239 /* ONEAllHotAuthorView.m */,
+				B95F23721F441CEF004FC239 /* ONEAllHotAuthorView.xib */,
+				B95F23741F441FAF004FC239 /* ONEAllHotAuthorCell.h */,
+				B95F23751F441FAF004FC239 /* ONEAllHotAuthorCell.m */,
+				B95F23761F441FAF004FC239 /* ONEAllHotAuthorCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1391,11 +1407,13 @@
 				B98A5A841F39DC6C009FCCBC /* ONEDetailTableHeaderView.xib in Resources */,
 				B95F23391F4183F6004FC239 /* ONESearchViewController.xib in Resources */,
 				B9242DD71F3F52C10039AE0E /* ONEHomeFeedHeaderView.xib in Resources */,
+				B95F23781F441FAF004FC239 /* ONEAllHotAuthorCell.xib in Resources */,
 				B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */,
 				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
 				B9242DE91F3F52C10039AE0E /* ONEHomeCell.xib in Resources */,
 				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
+				B95F23731F441CEF004FC239 /* ONEAllHotAuthorView.xib in Resources */,
 				B9E000FC1F38746200A7A609 /* loading_night@2x.gif in Resources */,
 				B9E000FE1F38746200A7A609 /* rate_nav_night.gif in Resources */,
 				B9242DE01F3F52C10039AE0E /* ONEHomeHeadContentView.xib in Resources */,
@@ -1601,6 +1619,7 @@
 				B95F234A1F42DD05004FC239 /* ONESearchAllListViewController.m in Sources */,
 				B9242DF31F3F58250039AE0E /* ONEPhotoPickerViewButton.m in Sources */,
 				B95F23591F44054C004FC239 /* ONEHomeAdvertisementCell.m in Sources */,
+				B95F23711F441CE6004FC239 /* ONEAllHotAuthorView.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */,
 				B9B822621F3754BC002F6961 /* ONENavigationBarTool.m in Sources */,
@@ -1617,6 +1636,7 @@
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
 				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
+				B95F23771F441FAF004FC239 /* ONEAllHotAuthorCell.m in Sources */,
 				B9242DD01F3F52C10039AE0E /* ONEHomeFeedsViewController.m in Sources */,
 				B9242DE71F3F52C10039AE0E /* ONEHomeBaseCell.m in Sources */,
 				B95F234D1F433D46004FC239 /* ONESpecialItem.m in Sources */,
