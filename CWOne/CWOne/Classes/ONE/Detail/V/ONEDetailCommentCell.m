@@ -11,14 +11,15 @@
 #import <UIImageView+WebCache.h>
 #import "ONEUserItem.h"
 #import "ONEDateTool.h"
-#import "UILabel+CWLineSpacing.h"
 #import "ONENetworkTool.h"
 #import "ONELoginTool.h"
 #import "ONEPersistentTool.h"
 #import "UIButton+CWColor.h"
+#import "UILabel+CWLineSpacing.h"
 
 #define kLargeBottomConstraint 30.0
 #define kSmallBottomConstraint 15.0
+#define kLineSpacing 8.0
 
 @interface ONEDetailCommentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIView *normalSeperatorView;
+@property (weak, nonatomic) IBOutlet UIView *quoteBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *quoteContentLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *lastHotCommentSeperatorView;
 @property (weak, nonatomic) IBOutlet UILabel *lastHotCommentLabel;
@@ -36,6 +39,7 @@
 
 /// 点赞按钮距离底部的距离，决定底部的空间
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTopToIconViewSpaceConstraint;
 
 
 @property (assign, nonatomic, getter=isLike) BOOL like;
@@ -52,9 +56,13 @@
     self.iconView.layer.cornerRadius = self.iconView.width * 0.5;
     self.iconView.layer.masksToBounds = YES;
     
-    self.contentLabel.font = [UIFont fontWithName:ONEThemeFontName size:14.0];
+    self.contentLabel.font = [UIFont systemFontOfSize:14.0 weight:-0.1];
+    self.quoteContentLabel.font = [UIFont systemFontOfSize:14.0 weight:-0.1];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    self.quoteBackgroundView.layer.borderWidth = 1;
+    self.quoteBackgroundView.layer.borderColor = [UIColor colorWithWhite:230/255.0 alpha:1.0].CGColor;
 }
 
 - (void)setCommentItem:(ONECommentItem *)commentItem {
@@ -67,12 +75,23 @@
     
     self.postTimeLabel.text = [[ONEDateTool sharedInstance] getCommentDateStringWithOriginalDateString:commentItem.input_date];
     
-    [self.contentLabel setText:commentItem.content lineSpacing:6.0];
+    [self.contentLabel setText:commentItem.content lineSpacing:kLineSpacing];
     
     NSString *praiseCount = [NSString stringWithFormat:@"%ld",commentItem.praisenum];
     [self.likeButton setTitle:praiseCount forState:UIControlStateNormal];
     
     self.lastHotComment = commentItem.isLastHotComment;
+    
+    // 处理引用
+    if (commentItem.touser) {
+        self.quoteBackgroundView.hidden = NO;
+        self.contentTopToIconViewSpaceConstraint.priority = UILayoutPriorityDefaultLow;
+        [self.quoteContentLabel setText:[NSString stringWithFormat:@"%@: %@",commentItem.touser.user_name,commentItem.quote] lineSpacing:kLineSpacing];
+    } else {
+        self.quoteBackgroundView.hidden = YES;
+        self.contentTopToIconViewSpaceConstraint.priority = UILayoutPriorityDefaultHigh;
+    }
+    
     
     // 加载数据库中点赞情况
     CommentItem *comment = [[ONEPersistentTool sharedInstance] fetchCommentItemWithTypeName:self.typeName commentID:commentItem.commentID];
@@ -96,6 +115,8 @@
         self.userNameLabel.textColor = fontColor;
         self.postTimeLabel.textColor = fontColor;
         self.contentLabel.textColor = fontColor;
+        self.quoteContentLabel.textColor = fontColor;
+        self.quoteBackgroundView.layer.borderColor = fontColor.CGColor;
         self.normalSeperatorView.hidden = YES;
         self.lastHotCommentLabel.textColor = fontColor;
         self.leftSeperatorView.backgroundColor = fontColor;

@@ -18,6 +18,10 @@
     
     item.commentID = dict[@"id"];
     item.userItem = [ONEUserItem userItemWithDict:dict[@"user"]];
+    NSDictionary *touserDict = dict[@"touser"];
+    if ([touserDict isKindOfClass:[NSDictionary class]]) {
+        item.touser = [ONEUserItem userItemWithDict:dict[@"touser"]];
+    }
     item.isHot = ([dict[@"type"] integerValue] == 0);
     
     return item;
