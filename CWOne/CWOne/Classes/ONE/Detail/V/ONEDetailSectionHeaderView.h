@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) NSString *title;
 
+@property (strong, nonatomic) UIColor *fontColor;
+
 @end

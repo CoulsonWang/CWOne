@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ONEUserItem;
+
 @interface ONEAuthorInfoController : UITableViewController
+
+@property (strong, nonatomic) ONEUserItem *author;
 
 @end

@@ -57,6 +57,8 @@ typedef enum : NSUInteger {
 /// 修改导航按钮的主题色
 - (void)changeNavigationBarTintColor:(ONENavigationBarTintColor)color;
 
+/// 显示或隐藏阴影
+- (void)changeShadowViewVisible:(BOOL)visible;
 
 /* ********************************************* 修改状态栏 ********************************************* */
 /// 隐藏状态栏

@@ -19,7 +19,7 @@
 #import "ONEDetailRelatedCell.h"
 #import "ONEDetailSectionHeaderView.h"
 #import "ONEDetailTableHeaderView.h"
-
+#import "ONEAuthorInfoController.h"
 
 #define kNavTitleChangeValue 64.0
 #define kSectionHeaderViewHeight 60.0
@@ -312,6 +312,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         }
     } else {
         ONEDetailSectionHeaderView *sectionHeaderView = [ONEDetailSectionHeaderView sectionHeaderViewWithTitleString:@"评论列表"];
+        sectionHeaderView.fontColor = self.fontColor;
         return sectionHeaderView;
     }
 }
@@ -404,5 +405,8 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         [self.delegate detailTableVCDidFinishLoadData:self];
     }
 }
-
+- (void)detailTableHeaderViewDidClickAuthorButton:(ONEDetailTableHeaderView *)detailTableHeaderView {
+    ONEAuthorInfoController *authorVC = [[ONEAuthorInfoController alloc] init];
+    [self.parentViewController.navigationController pushViewController:authorVC animated:YES];
+}
 @end

@@ -16,6 +16,7 @@
 
 - (void)detailTableHeaderView:(ONEDetailTableHeaderView *)detailTableHeaderView WebViewDidFinishLoadWithHeight:(CGFloat)webViewHeight;
 
+- (void)detailTableHeaderViewDidClickAuthorButton:(ONEDetailTableHeaderView *)detailTableHeaderView;
 @end
 
 @interface ONEDetailTableHeaderView : UIView

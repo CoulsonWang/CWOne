@@ -14,6 +14,7 @@
 #import "ONEPhoto.h"
 #import <SVProgressHUD.h>
 #import "ONERadioTool.h"
+#import "ONELoginTool.h"
 
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 500.0
@@ -140,13 +141,7 @@
         [self.coverView sd_setImageWithURL:coverURL];
         self.albumInfoLabel.text = [NSString stringWithFormat:@"· %@ · %@ | %@",essayItem.album,essayItem.author.user_name,essayItem.title];
         self.titleLabel.text = essayItem.story_title;
-        self.authorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.story_author.user_name];
-        // 底部作者信息属性
-        self.charge_edtLabel.text = [NSString stringWithFormat:@"%@ %@",essayItem.charge_edt,essayItem.editor_email];
-        NSURL *authorIconURL = [NSURL URLWithString:essayItem.story_author.web_url];
-        [self.authorIconImageView sd_setImageWithURL:authorIconURL];
-        self.authorNameLabel.text = essayItem.story_author.user_name;
-        self.authorSummaryLabel.text = essayItem.story_author.summary;
+        self.authorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.author.user_name];
         self.musicPlatformIconView.image = essayItem.platform.integerValue == 1 ? [UIImage imageNamed:@"ONEXiamiMusicCopyright"] : [UIImage imageNamed:@"ONEMusicCopyright"];
     } else if (self.type == ONEHomeItemTypeMovie) {
         NSURL *movieCoverURL = [NSURL URLWithString:essayItem.detailcover];
@@ -154,14 +149,14 @@
         self.movieNameLabel.text = [NSString stringWithFormat:@"《%@》",essayItem.movieTitle];
         self.picNumLabel.text = [NSString stringWithFormat:@"1/%ld",essayItem.photo.count + 1];
         self.movieTitleLabel.text = essayItem.contentTitle;
-        self.movieAuthorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.movieContentAuthor.user_name];
-        // 底部作者信息属性
-        self.charge_edtLabel.text = [NSString stringWithFormat:@"%@ %@",essayItem.charge_edt,essayItem.editor_email];
-        NSURL *authorIconURL = [NSURL URLWithString:essayItem.movieContentAuthor.web_url];
-        [self.authorIconImageView sd_setImageWithURL:authorIconURL];
-        self.authorNameLabel.text = essayItem.movieContentAuthor.user_name;
-        self.authorSummaryLabel.text = essayItem.movieContentAuthor.summary;
+        self.movieAuthorLabel.text = [NSString stringWithFormat:@"文 / %@",essayItem.author.user_name];
     }
+    // 底部作者信息属性
+    self.charge_edtLabel.text = [NSString stringWithFormat:@"%@ %@",essayItem.charge_edt,essayItem.editor_email];
+    NSURL *authorIconURL = [NSURL URLWithString:essayItem.author.web_url];
+    [self.authorIconImageView sd_setImageWithURL:authorIconURL];
+    self.authorNameLabel.text = essayItem.author.user_name;
+    self.authorSummaryLabel.text = essayItem.author.summary;
 }
 
 - (void)checkMoviePhotos {
@@ -270,6 +265,18 @@
         [[ONERadioTool sharedInstance] pauseCurrentMusic];
         [self hideAlbumImageWithAnimated:YES];
     }
+}
+- (IBAction)followButtonClick:(UIButton *)sender {
+    if ([[ONELoginTool sharedInstance] isLogin]) {
+        // 已登录，处理关注逻辑
+    } else {
+        // 未登录，显示登录界面
+        [[ONELoginTool sharedInstance] showLoginView];
+    }
+}
+- (IBAction)authorButtonClick:(UIButton *)sender {
+    // 展示作者界面
+    [self.delegate detailTableHeaderViewDidClickAuthorButton:self];
 }
 
 @end

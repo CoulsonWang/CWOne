@@ -63,8 +63,6 @@
 
 @property (strong, nonatomic) ONEUserItem *author;
 
-@property (strong, nonatomic) ONEUserItem *story_author;
-
 @property (strong, nonatomic) NSString *platform;
 
 /* ********************************************* 影视详情页内容 ********************************************* */
@@ -78,8 +76,6 @@
 
 @property (strong, nonatomic) NSString *summary;
 
-@property (strong, nonatomic) ONEUserItem *movieContentAuthor;
-
 @property (strong, nonatomic) NSString *detailcover;
 
 @property (strong, nonatomic) NSString *officialstory;
@@ -92,7 +88,6 @@
 
 @property (strong, nonatomic) NSArray *photo;
 
-+ (instancetype)essayItemWithDict:(NSDictionary *)dict;
 
 /* ********************************************* 专题详情页内容 ********************************************* */
 
@@ -101,6 +96,9 @@
 
 @property (strong, nonatomic) UIColor *backgroundColor;
 @property (strong, nonatomic) UIColor *fontColor;
+
+
++ (instancetype)essayItemWithDict:(NSDictionary *)dict;
 
 // 加载电影数据
 - (void)setMovieStroyDateWithDetailDict:(NSDictionary *)dict;

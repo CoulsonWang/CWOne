@@ -27,4 +27,11 @@
     self.titleLabel.text = title;
 }
 
+- (void)setFontColor:(UIColor *)fontColor {
+    _fontColor = fontColor;
+    if (fontColor) {
+        self.titleLabel.textColor = fontColor;
+    }
+}
+
 @end

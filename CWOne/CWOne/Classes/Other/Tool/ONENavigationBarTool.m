@@ -81,6 +81,7 @@ static ONENavigationBarTool *_instance;
 - (void)hideNavigationBar {
     [self.currentNavigationBar changeNavigationBarToShortMode];
 }
+
 - (void)changeNavigationBarToShortMode {
     [self.currentNavigationBar changeNavigationBarToShortMode];
 }
@@ -108,6 +109,11 @@ static ONENavigationBarTool *_instance;
         default:
             break;
     }
+}
+
+/// 显示或隐藏阴影
+- (void)changeShadowViewVisible:(BOOL)visible {
+    [self.currentNavigationBar changeShadowViewVisible:visible];
 }
 
 // 修改statusBar的方法，不需要用到currentVC

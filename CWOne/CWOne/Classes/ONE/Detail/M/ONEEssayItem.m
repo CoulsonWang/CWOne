@@ -23,16 +23,14 @@
     
     item.item_id = dict[@"id"];
     
+    NSArray<NSDictionary *> *authorList = dict[@"author_list"];
+    item.author = [ONEUserItem userItemWithDict:authorList.firstObject];
+    
     // 音乐属性
-    NSDictionary *authorDict = dict[@"author"];
-    if (authorDict) {
-        item.author = [ONEUserItem userItemWithDict:authorDict];
-    }
     NSDictionary *storyAuthorDict = dict[@"story_author"];
     if (storyAuthorDict) {
-        item.story_author = [ONEUserItem userItemWithDict:storyAuthorDict];
+        item.author = [ONEUserItem userItemWithDict:storyAuthorDict];
     }
-    
     NSRange range = [item.feeds_cover rangeOfString:@"|"];
     item.feedsCoverURLstring = [item.feeds_cover substringToIndex:range.location];
     
@@ -56,7 +54,7 @@
     self.title = dict[@"title"];
     self.content = dict[@"content"];
     self.summary = dict[@"summary"];
-    self.movieContentAuthor = [ONEUserItem userItemWithDict:dict[@"user"]];
+    self.author = [ONEUserItem userItemWithDict:dict[@"user"]];
     self.praisenum = [dict[@"praisenum"] integerValue];
 }
 

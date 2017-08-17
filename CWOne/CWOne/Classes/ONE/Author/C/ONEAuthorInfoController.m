@@ -7,6 +7,7 @@
 //
 
 #import "ONEAuthorInfoController.h"
+#import "ONENavigationBarTool.h"
 
 @interface ONEAuthorInfoController ()
 
@@ -17,12 +18,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self setUpNavigationBar];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadData];
 }
 
+- (void)setUpNavigationBar {
+    [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:YES];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
+    
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+}
+
+- (void)loadData {
+    
+}
+
+#pragma mark - 事件响应
+- (void)navigationBarBackButtonClick {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

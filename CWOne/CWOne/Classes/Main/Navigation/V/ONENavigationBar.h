@@ -41,4 +41,7 @@
 /// 恢复为原大小
 - (void)resumeNavigationBar;
 
+/// 显示或隐藏阴影
+- (void)changeShadowViewVisible:(BOOL)visible;
+
 @end

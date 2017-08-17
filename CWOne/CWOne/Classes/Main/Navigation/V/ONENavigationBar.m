@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) UIView *navBarBackgroundView;
 
+@property (weak, nonatomic) UIImageView *shadowView;
+
 @property (weak, nonatomic) ONEHomeNavigationBarTitleView *homeTitleView;
 
 @property (assign, nonatomic) CGFloat tempStatusBarAlpha;
@@ -33,6 +35,17 @@
         _homeTitleView = homeTitleView;
     }
     return _homeTitleView;
+}
+
+- (UIImageView *)shadowView {
+    if (!_shadowView) {
+        UIImageView *shadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navigationBarShadowImage"]];
+        shadowView.frame = CGRectMake(0, 44, CWScreenW, 5);
+        shadowView.hidden = YES;
+        [self addSubview:shadowView];
+        _shadowView = shadowView;
+    }
+    return _shadowView;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -124,6 +137,10 @@
 
 - (void)changeStatusBarStyle {
     
+}
+
+- (void)changeShadowViewVisible:(BOOL)visible {
+    self.shadowView.hidden = !visible;
 }
 
 #pragma mark - 私有方法
