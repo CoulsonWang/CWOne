@@ -19,6 +19,7 @@ static NSString *const cellID = @"ONEAllHotAuthorCell";
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 
 @property (assign, nonatomic) NSInteger lastItemIndex;
+@property (copy, nonatomic) void(^clickBlock)(ONEUserItem *);
 
 @end
 
@@ -26,6 +27,11 @@ static NSString *const cellID = @"ONEAllHotAuthorCell";
 
 + (instancetype)hotAuthorView {
     ONEAllHotAuthorView *hotAuthorView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
+    return hotAuthorView;
+}
++ (instancetype)hotAuthorViewWithClickOperation:(void (^)(ONEUserItem *))operation {
+    ONEAllHotAuthorView *hotAuthorView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
+    hotAuthorView.clickBlock = operation;
     return hotAuthorView;
 }
 
@@ -73,7 +79,12 @@ static NSString *const cellID = @"ONEAllHotAuthorCell";
 }
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    // 弹出作者信息界面
+    NSInteger index = (self.hotAuthorList.count != 0) ? (self.lastItemIndex + indexPath.row)%(self.hotAuthorList.count) : 0;
+    ONEUserItem *authorItem = self.hotAuthorList[index];
+    if (self.clickBlock) {
+        self.clickBlock(authorItem);
+    }
 }
 
 @end

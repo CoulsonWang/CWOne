@@ -96,8 +96,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 }
 - (void)setUpNavigationBar {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
-    
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 - (void)loadAuthorInfoData {
     NSString *authorID = [NSString stringWithFormat:@"%ld",self.author_id];

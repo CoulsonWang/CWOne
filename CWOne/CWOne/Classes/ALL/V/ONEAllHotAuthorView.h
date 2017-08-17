@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) NSArray<ONEUserItem *> *hotAuthorList;
 
-+ (instancetype)hotAuthorView;
++ (instancetype)hotAuthorViewWithClickOperation:(void(^)(ONEUserItem *author))operation;
 
 @end

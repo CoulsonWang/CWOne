@@ -23,6 +23,7 @@
 #import "ONEHomeItem.h"
 #import "ONENavigationBarTool.h"
 #import <SafariServices/SafariServices.h>
+#import "ONEAuthorInfoController.h"
 
 #define kBannerRatio 229/384.0
 #define kCategoryNavigationRatio 242/381.0
@@ -50,7 +51,12 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 #pragma mark - 懒加载
 - (ONEAllHotAuthorView *)hotAuthorView {
     if (!_hotAuthorView) {
-        ONEAllHotAuthorView *hotAuthorView = [ONEAllHotAuthorView hotAuthorView];
+        __weak typeof(self) weakSelf = self;
+        ONEAllHotAuthorView *hotAuthorView = [ONEAllHotAuthorView hotAuthorViewWithClickOperation:^(ONEUserItem *author) {
+            ONEAuthorInfoController *authorVC = [[ONEAuthorInfoController alloc] initWithStyle:UITableViewStyleGrouped];
+            authorVC.author = author;
+            [weakSelf.navigationController showViewController:authorVC sender:nil];
+        }];
         _hotAuthorView = hotAuthorView;
     }
     return _hotAuthorView;
