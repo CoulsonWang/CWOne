@@ -342,6 +342,10 @@ static ONENetworkTool *_instance;
 /// 请求作者作品列表数据
 - (void)requestAuthorWorksListDataWithAuthorId:(NSString *)authorId pageNumber:(NSString *)pageNumber success:(void (^)(NSArray *dataArray))success failure:(void (^)(NSError *error))failure {
     NSString *requestURL = [NSString stringWithFormat:@"http://v3.wufazhuce.com:8000/api/author/works"];
+    
+    if (!pageNumber) {
+        pageNumber = @"0";
+    }
     NSDictionary *parameters = @{
                                  @"version":@"v4.3.0",
                                  @"author_id":authorId,

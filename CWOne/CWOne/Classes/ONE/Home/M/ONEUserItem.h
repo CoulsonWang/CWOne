@@ -15,6 +15,7 @@
 
 // 原始属性
 
+@property (strong, nonatomic) NSString *user_id;
 // 用户名称
 @property (strong, nonatomic) NSString *user_name;
 
@@ -25,6 +26,8 @@
 @property (strong, nonatomic) NSString *web_url;
 
 @property (strong, nonatomic) NSString *summary;
+
+@property (strong, nonatomic) NSString *fans_total;
 
 
 @end

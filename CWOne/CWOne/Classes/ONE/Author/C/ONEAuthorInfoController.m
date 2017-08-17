@@ -8,8 +8,22 @@
 
 #import "ONEAuthorInfoController.h"
 #import "ONENavigationBarTool.h"
+#import "ONENetworkTool.h"
+#import "ONEUserItem.h"
+#import "ONEHomeItem.h"
+#import "ONEHomeCell.h"
+#import "ONEHomeRadioCell.h"
+#import "ONEHomeViewModel.h"
+#import <MJRefresh.h>
+
+static NSString *const OneHomeCellID = @"OneHomeCellID";
+static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @interface ONEAuthorInfoController ()
+
+@property (strong, nonatomic) NSArray<ONEHomeItem *> *worksList;
+
+@property (assign, nonatomic) NSInteger pageNumber;
 
 @end
 
@@ -20,11 +34,31 @@
     
     [self setUpNavigationBar];
     
+    [self setUpTableView];
+    
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+}
+
+- (void)setUpTableView {
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeCell class]) bundle:nil] forCellReuseIdentifier:OneHomeCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ONEHomeRadioCell class]) bundle:nil] forCellReuseIdentifier:OneHomeRadioCellID];
+    self.tableView.estimatedRowHeight = 300;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = ONEBackgroundColor;
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreWorksData)];
+}
 - (void)setUpNavigationBar {
     [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:YES];
+    
+    self.title = self.author.user_name;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
     
@@ -32,7 +66,36 @@
 }
 
 - (void)loadData {
-    
+    // 加载作者作品信息
+    [[ONENetworkTool sharedInstance] requestAuthorWorksListDataWithAuthorId:self.author.user_id pageNumber:0 success:^(NSArray *dataArray) {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *workDict in dataArray) {
+            ONEHomeItem *homeItem = [ONEHomeItem homeItemWithDict:workDict];
+            [tempArray addObject:homeItem];
+        }
+        self.worksList = tempArray;
+        [self.tableView reloadData];
+        self.pageNumber += 1;
+    } failure:nil];
+}
+
+- (void)loadMoreWorksData {
+    NSString *pageNumber = [NSString stringWithFormat:@"%ld",self.pageNumber];
+    [[ONENetworkTool sharedInstance] requestAuthorWorksListDataWithAuthorId:self.author.user_id pageNumber:pageNumber success:^(NSArray *dataArray) {
+        if (dataArray.count != 0) {
+            NSMutableArray *tempArray = [self.worksList mutableCopy];
+            for (NSDictionary *workDict in dataArray) {
+                ONEHomeItem *homeItem = [ONEHomeItem homeItemWithDict:workDict];
+                [tempArray addObject:homeItem];
+            }
+            self.worksList = tempArray;
+            [self.tableView reloadData];
+            self.pageNumber += 1;
+            [self.tableView.mj_footer endRefreshing];
+        } else {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+    } failure:nil];
 }
 
 #pragma mark - 事件响应
@@ -40,4 +103,31 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.worksList.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ONEHomeItem *item = self.worksList[indexPath.row];
+    
+    NSString *reuseIdentifier;
+    // 根据模型类型创建对应的cell
+    switch (item.type) {
+        case ONEHomeItemTypeRadio:
+        {
+            reuseIdentifier = OneHomeRadioCellID;
+        }
+            break;
+        default:
+        {
+            reuseIdentifier = OneHomeCellID;
+        }
+            break;
+    }
+    ONEHomeBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.viewModel = [ONEHomeViewModel viewModelWithItem:item];
+    
+    return cell;
+}
 @end

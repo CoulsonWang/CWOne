@@ -40,7 +40,7 @@
 - (UIImageView *)shadowView {
     if (!_shadowView) {
         UIImageView *shadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navigationBarShadowImage"]];
-        shadowView.frame = CGRectMake(0, 44, CWScreenW, 5);
+        shadowView.frame = CGRectMake(0, 44, CWScreenW, 10);
         shadowView.hidden = YES;
         [self addSubview:shadowView];
         _shadowView = shadowView;
