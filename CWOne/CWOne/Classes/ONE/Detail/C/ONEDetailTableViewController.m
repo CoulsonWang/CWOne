@@ -148,6 +148,9 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.onScreen = NO;
+    [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorGray];
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)dealloc {

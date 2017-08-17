@@ -16,6 +16,7 @@
 #import "ONEHomeViewModel.h"
 #import <MJRefresh.h>
 #import "ONEAuthorHeaderInfoView.h"
+#import "ONEDetailViewController.h"
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
@@ -29,6 +30,8 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 @property (assign, nonatomic) NSInteger pageNumber;
 
 @property (strong, nonatomic) ONEAuthorHeaderInfoView *headerView;
+
+@property (assign, nonatomic, getter=isOnScreen) BOOL onScreen;
 
 @end
 
@@ -56,13 +59,16 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    self.onScreen = YES;
     [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+    [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:YES];
     [self scrollViewDidScroll:self.tableView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.onScreen = NO;
+    [[ONENavigationBarTool sharedInstance] changeAlphaOfBackgroundAndShadow:1.0];
     [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:NO];
 }
 
@@ -82,8 +88,6 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (void)setUpNavigationBar {
-    [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:YES];
-    
     self.title = self.author.user_name;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
@@ -158,7 +162,11 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 }
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
     
+    detailVC.homeItem = self.worksList[indexPath.row];
+    
+    [self.navigationController showViewController:detailVC sender:nil];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return self.headerView;
@@ -174,8 +182,9 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     } else {
         self.title = nil;
     }
-    
-    CGFloat alpha = offsetY/kTitleHiddenSpace;
-    [[ONENavigationBarTool sharedInstance] changeAlphaOfBackgroundAndShadow:alpha];
+    if (self.isOnScreen) {
+        CGFloat alpha = offsetY/kTitleHiddenSpace;
+        [[ONENavigationBarTool sharedInstance] changeAlphaOfBackgroundAndShadow:alpha];
+    }
 }
 @end
