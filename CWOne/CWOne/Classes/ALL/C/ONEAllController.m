@@ -22,6 +22,7 @@
 #import "ONEDetailViewController.h"
 #import "ONEHomeItem.h"
 #import "ONENavigationBarTool.h"
+#import <SafariServices/SafariServices.h>
 
 #define kBannerRatio 229/384.0
 #define kCategoryNavigationRatio 242/381.0
@@ -30,7 +31,7 @@
 
 static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
-@interface ONEAllController () <CWCarouselViewDelegate, ONEAllCategoryNavigationViewDelegate>
+@interface ONEAllController () <CWCarouselViewDelegate, ONEAllCategoryNavigationViewDelegate, ONEAllEveryOneAskEveryOneViewDelegate>
 
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *stickSpecialList;
 @property (strong, nonatomic) NSArray<ONESpecialItem *> *normalSpecialList;
@@ -58,6 +59,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (ONEAllEveryOneAskEveryOneView *)everyOneAskEveryOneView {
     if (!_everyOneAskEveryOneView) {
         ONEAllEveryOneAskEveryOneView *everyOneView = [[ONEAllEveryOneAskEveryOneView alloc] initWithFrame:CGRectMake(0, 0, CWScreenW, CWScreenW * kEveryOneAskEveryOneRatio)];
+        everyOneView.delegate = self;
         _everyOneAskEveryOneView = everyOneView;
     }
     return _everyOneAskEveryOneView;
@@ -219,6 +221,12 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
         NSLog(@"%@",error);
     }];
 }
+#pragma mark - 私有方法
+- (void)pushToDetailVCWithSpecialItem:(ONESpecialItem *)specialItem {
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+    detailVC.homeItem = [ONEHomeItem homeItemWithSpecialItem:specialItem];
+    [self.navigationController showViewController:detailVC sender:nil];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -291,15 +299,18 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     } else {
         specialItem = self.normalSpecialList[indexPath.row];
     }
-    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
-    
-    detailVC.homeItem = [ONEHomeItem homeItemWithSpecialItem:specialItem];
-    
-    [self.navigationController showViewController:detailVC sender:nil];
+    [self pushToDetailVCWithSpecialItem:specialItem];
 }
 #pragma mark - CWCarouselViewDelegate
 - (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {
-
+    ONESpecialItem *specialItem = self.bannerSpecialList[index];
+    if (specialItem.link_url != nil && specialItem.category != 11) {
+        NSURL *adURL = [NSURL URLWithString:specialItem.link_url];
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:adURL];
+        [self presentViewController:safariVC animated:YES completion:nil];
+    } else {
+        [self pushToDetailVCWithSpecialItem:specialItem];
+    }
 }
 #pragma mark - ONEAllCategoryNavigationViewDelegate
 - (void)categoryNavigationView:(ONEAllCategoryNavigationView *)categoryNavigationView didClickButtonWithCategoryIndex:(NSInteger)categoryIndex {
@@ -307,5 +318,9 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     searchListVC.categoryIndex = categoryIndex;
     searchListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController showViewController:searchListVC sender:nil];
+}
+#pragma mark - ONEAllEveryOneAskEveryOneViewDelegate
+- (void)everyOneAskEveryOneView:(ONEAllEveryOneAskEveryOneView *)everyOneAskEveryOneView didClickTopicWithSpecialItem:(ONESpecialItem *)specialItem {
+    [self pushToDetailVCWithSpecialItem:specialItem];
 }
 @end

@@ -88,6 +88,8 @@ static NSString *const cellID = @"ONEAllEveryOneAskEveryOneCell";
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // 跳转
+    ONESpecialItem *specialItem = self.specialList[indexPath.item];
+    [self.delegate everyOneAskEveryOneView:self didClickTopicWithSpecialItem:specialItem];
 }
 
 @end

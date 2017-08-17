@@ -144,8 +144,9 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     // 手动调用一次滚动，确保进入时nav的状态正确
     [self scrollViewDidScroll:self.tableView];
 }
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     self.onScreen = NO;
 }
 
