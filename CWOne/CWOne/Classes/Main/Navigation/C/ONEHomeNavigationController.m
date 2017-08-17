@@ -9,7 +9,7 @@
 #import "ONEHomeNavigationController.h"
 #import "ONENavigationBar.h"
 
-@interface ONEHomeNavigationController ()
+@interface ONEHomeNavigationController () <UINavigationControllerDelegate>
 
 @end
 
@@ -19,6 +19,12 @@
     [super viewDidLoad];
     
     [self setUpNavigationBar];
+    
+    __weak ONEHomeNavigationController *weakSelf = self;
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.interactivePopGestureRecognizer.delegate = (id)weakSelf;
+        self.delegate = weakSelf;
+    }
 }
 
 - (void)setUpNavigationBar {
@@ -26,5 +32,33 @@
     [self setValue:navBar forKeyPath:@"navigationBar"];
 }
 
+#pragma mark - UINavigationControllerDelegate
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && animated == YES) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+    [super pushViewController:viewController animated:animated];
+}
+- (NSArray<UIViewController *> *)popToRootViewControllerAnimated:(BOOL)animated {
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && animated == YES) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+    return [super popToRootViewControllerAnimated:animated];
+}
+- (NSArray<UIViewController *> *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)] && animated == YES) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+    }
+    return [super popToViewController:viewController animated:animated];
+}
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        if (navigationController.childViewControllers.count == 1) {
+            self.interactivePopGestureRecognizer.enabled = NO;
+        } else {
+            self.interactivePopGestureRecognizer.enabled = YES;
+        }
+    }
+}
 
 @end

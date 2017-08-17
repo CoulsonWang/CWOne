@@ -51,6 +51,8 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    
     [self setUpNavigationBar];
     
     [self setUpWebView];
