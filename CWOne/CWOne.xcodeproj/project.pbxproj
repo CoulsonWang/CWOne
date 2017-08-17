@@ -129,6 +129,10 @@
 		B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740131F32EF19009025FD /* ONERadioItem.m */; };
 		B9A7401A1F3334B7009025FD /* UILabel+CWLineSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */; };
 		B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */; };
+		B9B11CBF1F45E0FA007E9BFB /* ONEUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B11CBD1F45E0FA007E9BFB /* ONEUserViewController.m */; };
+		B9B11CC31F45E302007E9BFB /* ONEUserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B11CC21F45E302007E9BFB /* ONEUserHeaderView.m */; };
+		B9B11CC51F45E312007E9BFB /* ONEUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B11CC41F45E312007E9BFB /* ONEUserHeaderView.xib */; };
+		B9B11CC81F45EE3F007E9BFB /* ONEUserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B11CC71F45EE3F007E9BFB /* ONEUserInfoItem.m */; };
 		B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822531F37399D002F6961 /* ONEEssayItem.m */; };
 		B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822561F373E93002F6961 /* ONECommentItem.m */; };
 		B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822591F374602002F6961 /* ONEDetailCommentCell.m */; };
@@ -391,6 +395,13 @@
 		B9A740191F3334B7009025FD /* UILabel+CWLineSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CWLineSpacing.m"; sourceTree = "<group>"; };
 		B9A7401B1F33496A009025FD /* CALayer+CWAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CWAnimation.h"; sourceTree = "<group>"; };
 		B9A7401C1F33496A009025FD /* CALayer+CWAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CWAnimation.m"; sourceTree = "<group>"; };
+		B9B11CBC1F45E0FA007E9BFB /* ONEUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEUserViewController.h; sourceTree = "<group>"; };
+		B9B11CBD1F45E0FA007E9BFB /* ONEUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEUserViewController.m; sourceTree = "<group>"; };
+		B9B11CC11F45E302007E9BFB /* ONEUserHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEUserHeaderView.h; sourceTree = "<group>"; };
+		B9B11CC21F45E302007E9BFB /* ONEUserHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEUserHeaderView.m; sourceTree = "<group>"; };
+		B9B11CC41F45E312007E9BFB /* ONEUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEUserHeaderView.xib; sourceTree = "<group>"; };
+		B9B11CC61F45EE3F007E9BFB /* ONEUserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEUserInfoItem.h; sourceTree = "<group>"; };
+		B9B11CC71F45EE3F007E9BFB /* ONEUserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEUserInfoItem.m; sourceTree = "<group>"; };
 		B9B822521F37399D002F6961 /* ONEEssayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEEssayItem.h; sourceTree = "<group>"; };
 		B9B822531F37399D002F6961 /* ONEEssayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEEssayItem.m; sourceTree = "<group>"; };
 		B9B822551F373E93002F6961 /* ONECommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECommentItem.h; sourceTree = "<group>"; };
@@ -1150,6 +1161,8 @@
 		B95F22F61F407F0F004FC239 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				B9B11CBC1F45E0FA007E9BFB /* ONEUserViewController.h */,
+				B9B11CBD1F45E0FA007E9BFB /* ONEUserViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1157,6 +1170,8 @@
 		B95F22F71F407F0F004FC239 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				B9B11CC61F45EE3F007E9BFB /* ONEUserInfoItem.h */,
+				B9B11CC71F45EE3F007E9BFB /* ONEUserInfoItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1164,6 +1179,9 @@
 		B95F22F81F407F0F004FC239 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B9B11CC11F45E302007E9BFB /* ONEUserHeaderView.h */,
+				B9B11CC21F45E302007E9BFB /* ONEUserHeaderView.m */,
+				B9B11CC41F45E312007E9BFB /* ONEUserHeaderView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1477,6 +1495,7 @@
 				B95F235A1F44054C004FC239 /* ONEHomeAdvertisementCell.xib in Resources */,
 				B9E0010B1F397B1F00A7A609 /* ONEDetailSectionHeaderView.xib in Resources */,
 				B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */,
+				B9B11CC51F45E312007E9BFB /* ONEUserHeaderView.xib in Resources */,
 				B9242DE91F3F52C10039AE0E /* ONEHomeCell.xib in Resources */,
 				B9E000FB1F38746200A7A609 /* loading_gray@2x.gif in Resources */,
 				B95F23731F441CEF004FC239 /* ONEAllHotAuthorView.xib in Resources */,
@@ -1661,6 +1680,7 @@
 				B9242DE11F3F52C10039AE0E /* ONEHomeHeaderView.m in Sources */,
 				B9242D861F3F3A240039AE0E /* ONELoginViewController.m in Sources */,
 				B9242DDB1F3F52C10039AE0E /* ONEHomeMenuItem.m in Sources */,
+				B9B11CBF1F45E0FA007E9BFB /* ONEUserViewController.m in Sources */,
 				B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */,
 				B9242DD61F3F52C10039AE0E /* ONEHomeFeedHeaderView.m in Sources */,
 				B95F238E1F4492C2004FC239 /* ONESearchAllListTitleButton.m in Sources */,
@@ -1703,9 +1723,11 @@
 				B9321F271F305AD70052752B /* AppDelegate.m in Sources */,
 				B9242DEA1F3F52C10039AE0E /* ONEHomeRadioCell.m in Sources */,
 				B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */,
+				B9B11CC31F45E302007E9BFB /* ONEUserHeaderView.m in Sources */,
 				B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */,
 				B9E001051F38CE2600A7A609 /* ONEDetailRelatedCell.m in Sources */,
 				B9E001091F397B0F00A7A609 /* ONEDetailSectionHeaderView.m in Sources */,
+				B9B11CC81F45EE3F007E9BFB /* ONEUserInfoItem.m in Sources */,
 				B9A7401D1F33496A009025FD /* CALayer+CWAnimation.m in Sources */,
 				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,
 				B95F23801F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m in Sources */,

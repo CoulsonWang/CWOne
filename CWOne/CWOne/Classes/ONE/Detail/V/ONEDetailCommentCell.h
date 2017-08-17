@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class ONECommentItem;
+@class ONEUserItem;
 
 @interface ONEDetailCommentCell : UITableViewCell
 
@@ -17,5 +18,7 @@
 @property (strong, nonatomic) ONECommentItem *commentItem;
 
 @property (strong, nonatomic) UIColor *fontColor;
+
+@property (copy, nonatomic) void(^userButtonClickOperation)(ONEUserItem *);
 
 @end

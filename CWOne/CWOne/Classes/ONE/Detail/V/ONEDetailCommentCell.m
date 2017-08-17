@@ -65,6 +65,7 @@
     self.quoteBackgroundView.layer.borderColor = [UIColor colorWithWhite:230/255.0 alpha:1.0].CGColor;
 }
 
+#pragma mark - setter方法
 - (void)setCommentItem:(ONECommentItem *)commentItem {
     _commentItem = commentItem;
     
@@ -126,6 +127,7 @@
         [self.likeButton setTitleColor:fontColor forState:UIControlStateNormal];
     }
 }
+#pragma mark - 事件响应
 - (IBAction)replyButtonClick:(UIButton *)sender {
     if ([[ONELoginTool sharedInstance] isLogin]) {
         // 已登录，处理评论逻辑
@@ -137,9 +139,7 @@
 
 - (IBAction)likeButtonClick:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    
     self.like = sender.isSelected;
-    
     if (sender.isSelected) {
         // 修改点赞数字文本
         NSString *count = [NSString stringWithFormat:@"%ld",[self.likeButton titleForState:UIControlStateNormal].integerValue + 1];
@@ -156,7 +156,11 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:ONECommentUnpraiseNotification object:nil userInfo:@{ ONECommentIdKey : self.commentItem.commentID }];
     }
-    
+}
+- (IBAction)userButtonClick:(UIButton *)sender {
+    if (self.userButtonClickOperation) {
+        self.userButtonClickOperation(self.commentItem.userItem);
+    }
 }
 
 

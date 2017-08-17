@@ -20,6 +20,8 @@
 #import "ONEDetailSectionHeaderView.h"
 #import "ONEDetailTableHeaderView.h"
 #import "ONEAuthorInfoController.h"
+#import "ONEHomeNavigationController.h"
+#import "ONEUserViewController.h"
 
 #define kNavTitleChangeValue 64.0
 #define kSectionHeaderViewHeight 60.0
@@ -300,6 +302,14 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         cell.typeName = [NSString getTypeStrWithType:self.type];
         cell.commentItem = commentItem;
         cell.fontColor = self.fontColor;
+        
+        __weak typeof(self) weakSelf = self;
+        cell.userButtonClickOperation = ^(ONEUserItem *user) {
+            ONEUserViewController *userVC = [[ONEUserViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            userVC.userItem = commentItem.userItem;
+            ONEHomeNavigationController *navVC = [[ONEHomeNavigationController alloc] initWithRootViewController:userVC];
+            [weakSelf presentViewController:navVC animated:YES completion:nil];
+        };
         return cell;
     }
 }
