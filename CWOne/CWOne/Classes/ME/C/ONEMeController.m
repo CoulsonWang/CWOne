@@ -11,6 +11,7 @@
 #import "ONENavigationBarTool.h"
 #import "UIImage+CWColorAndStretch.h"
 #import "ONESettingTableViewController.h"
+#import "ONENavigationBarTool.h"
 
 @interface ONEMeController ()
 
@@ -31,13 +32,12 @@
     [super viewWillAppear:animated];
     // 状态栏动画
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+    [[ONENavigationBarTool sharedInstance] changeNavigationBarToLucencyMode];
+    [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];
     [[ONENavigationBarTool sharedInstance] hideStatusBarWithAnimated:NO];
     [[ONENavigationBarTool sharedInstance] resumeStatusBarWithAnimated:YES];
-    // 修改导航条
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
-
 
 - (IBAction)coverButtonClick:(UIButton *)sender {
     [self showLoginView];

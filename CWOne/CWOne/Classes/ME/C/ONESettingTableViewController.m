@@ -11,6 +11,7 @@
 #import "UIImage+Render.h"
 #import "ONENetworkTool.h"
 #import <UIImageView+WebCache.h>
+#import "ONENavigationBarTool.h"
 
 @interface ONESettingTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *recAppCell;
@@ -26,9 +27,6 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithOriginalRenderMode:@"back_dark"] style:UIBarButtonItemStylePlain target:self action:@selector(popVC)];
     self.title = @"设置";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
     
     [[ONENetworkTool sharedInstance] requestRecAppListSuccess:^(NSDictionary *dataDict) {
         NSURL *imageURL = [NSURL URLWithString:dataDict[@"app_icon_url"]];
@@ -36,6 +34,11 @@
         self.recAppCell.textLabel.text = dataDict[@"app_name"];
         self.recAppCell.detailTextLabel.text = dataDict[@"app_describe"];
     } failure:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
 }
 
 - (void)popVC {
