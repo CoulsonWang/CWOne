@@ -16,6 +16,7 @@
 #import <MJRefresh.h>
 #import "ONENavigationBarTool.h"
 #import "ONEFeedsDetailViewController.h"
+#import "ONEAuthorInfoController.h"
 
 #define kTitleScrollViewHeight 38.0
 #define kCellHeight 60
@@ -70,7 +71,7 @@ static NSString *const searchResultCellId = @"searchResultCellId";
 - (UIActivityIndicatorView *)indicator {
     if (!_indicator) {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        indicator.center = CGPointMake(self.view.width * 0.5, (self.view.height-kNavigationBarHeight) * 0.5);
+        indicator.center = CGPointMake(self.view.width * 0.5, (self.view.height+kNavigationBarHeight) * 0.5);
         indicator.hidesWhenStopped = YES;
         [self.view addSubview:indicator];
         _indicator = indicator;
@@ -298,7 +299,13 @@ static NSString *const searchResultCellId = @"searchResultCellId";
         feedsVC.item_id = self.resultList[indexPath.row].content_id;
         [self.navigationController showViewController:feedsVC sender:nil];
         
+    } else if (self.selectedButton.tag == 5) {
+        ONEAuthorInfoController *authorVC = [[ONEAuthorInfoController alloc] initWithStyle:UITableViewStyleGrouped];
+        NSInteger author_id = self.resultList[indexPath.row].content_id;
+        authorVC.author_id = author_id;
+        [self.navigationController showViewController:authorVC sender:nil];
     } else {
+        
         ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
         
         ONESearchResultItem *resultItem = self.resultList[indexPath.row];

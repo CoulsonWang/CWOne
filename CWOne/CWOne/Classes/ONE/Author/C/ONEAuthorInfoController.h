@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) ONEUserItem *author;
 
+@property (assign, nonatomic) NSInteger author_id;
+
 @end

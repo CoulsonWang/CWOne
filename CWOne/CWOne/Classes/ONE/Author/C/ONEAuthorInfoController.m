@@ -50,11 +50,18 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUpNavigationBar];
-    
     [self setUpTableView];
     
-    [self loadData];
+    if (!self.author) {
+        [self loadAuthorInfoData];
+    }
+    [self setUpNavigationBar];
+    
+}
+- (void)setAuthor:(ONEUserItem *)author {
+    _author = author;
+    self.headerView.author = author;
+    [self loadWorksData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,14 +95,19 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (void)setUpNavigationBar {
-    self.title = self.author.user_name;
-    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
+- (void)loadAuthorInfoData {
+    NSString *authorID = [NSString stringWithFormat:@"%ld",self.author_id];
+    [[ONENetworkTool sharedInstance] requestAuthorInfoDataWithAuthorId:authorID success:^(NSDictionary *dataDict) {
+        ONEUserItem *author = [ONEUserItem userItemWithDict:dataDict];
+        self.author = author;
+    } failure:nil];
+}
 
-- (void)loadData {
+- (void)loadWorksData {
     // 加载作者作品信息
     [[ONENetworkTool sharedInstance] requestAuthorWorksListDataWithAuthorId:self.author.user_id pageNumber:0 success:^(NSArray *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
