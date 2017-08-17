@@ -406,7 +406,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     }
 }
 - (void)detailTableHeaderViewDidClickAuthorButton:(ONEDetailTableHeaderView *)detailTableHeaderView {
-    ONEAuthorInfoController *authorVC = [[ONEAuthorInfoController alloc] init];
+    ONEAuthorInfoController *authorVC = [[ONEAuthorInfoController alloc] initWithStyle:UITableViewStyleGrouped];
     authorVC.author = self.essayItem.author;
     [self.parentViewController.navigationController pushViewController:authorVC animated:YES];
 }

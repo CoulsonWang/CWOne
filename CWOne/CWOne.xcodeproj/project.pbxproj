@@ -107,6 +107,8 @@
 		B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */; };
 		B95F23991F456664004FC239 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23981F456664004FC239 /* UIColor+Hex.m */; };
 		B95F239C1F457B04004FC239 /* UIButton+CWColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F239B1F457B04004FC239 /* UIButton+CWColor.m */; };
+		B95F239F1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F239E1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.m */; };
+		B95F23A11F45BA51004FC239 /* ONEAuthorHeaderInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23A01F45BA51004FC239 /* ONEAuthorHeaderInfoView.xib */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -350,6 +352,9 @@
 		B95F23981F456664004FC239 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		B95F239A1F457B04004FC239 /* UIButton+CWColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CWColor.h"; sourceTree = "<group>"; };
 		B95F239B1F457B04004FC239 /* UIButton+CWColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CWColor.m"; sourceTree = "<group>"; };
+		B95F239D1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEAuthorHeaderInfoView.h; sourceTree = "<group>"; };
+		B95F239E1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEAuthorHeaderInfoView.m; sourceTree = "<group>"; };
+		B95F23A01F45BA51004FC239 /* ONEAuthorHeaderInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEAuthorHeaderInfoView.xib; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -1125,6 +1130,9 @@
 		B95F22F41F407F0F004FC239 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				B95F239D1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.h */,
+				B95F239E1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.m */,
+				B95F23A01F45BA51004FC239 /* ONEAuthorHeaderInfoView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1450,6 +1458,7 @@
 				B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */,
 				B98A5A8E1F3AD47A009FCCBC /* ONEDetailMovieInfoController.xib in Resources */,
 				B95F23411F4190BD004FC239 /* ONESearchResultCell.xib in Resources */,
+				B95F23A11F45BA51004FC239 /* ONEAuthorHeaderInfoView.xib in Resources */,
 				B90C3A3A1F305FE0004E64D9 /* ONELaunchController.xib in Resources */,
 				B9242DDD1F3F52C10039AE0E /* ONEHomeCatalogueCell.xib in Resources */,
 				B9321ECC1F3058CA0052752B /* Assets.xcassets in Resources */,
@@ -1681,6 +1690,7 @@
 				B90C3A5E1F308059004E64D9 /* UIImage+CWColorAndStretch.m in Sources */,
 				B95F234A1F42DD05004FC239 /* ONESearchAllListViewController.m in Sources */,
 				B9242DF31F3F58250039AE0E /* ONEPhotoPickerViewButton.m in Sources */,
+				B95F239F1F45B9DB004FC239 /* ONEAuthorHeaderInfoView.m in Sources */,
 				B95F23591F44054C004FC239 /* ONEHomeAdvertisementCell.m in Sources */,
 				B95F23711F441CE6004FC239 /* ONEAllHotAuthorView.m in Sources */,
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,

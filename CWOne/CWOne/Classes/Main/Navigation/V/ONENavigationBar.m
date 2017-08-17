@@ -143,6 +143,11 @@
     self.shadowView.hidden = !visible;
 }
 
+- (void)changeAlphaOfBackgroundAndShadow:(CGFloat)alpha {
+    self.navBarBackgroundView.alpha = alpha;
+    self.shadowView.alpha = alpha;
+}
+
 #pragma mark - 私有方法
 - (void)changeAlphaOfStatusBar:(CGFloat)alpha {
     UIApplication *app = [UIApplication sharedApplication];

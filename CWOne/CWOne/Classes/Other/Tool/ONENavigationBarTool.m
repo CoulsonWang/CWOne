@@ -116,6 +116,11 @@ static ONENavigationBarTool *_instance;
     [self.currentNavigationBar changeShadowViewVisible:visible];
 }
 
+/// 修改导航条背景和阴影的alpha值
+- (void)changeAlphaOfBackgroundAndShadow:(CGFloat)alpha {
+    [self.currentNavigationBar changeAlphaOfBackgroundAndShadow:alpha];
+}
+
 // 修改statusBar的方法，不需要用到currentVC
 - (void)hideStatusBarWithAnimated:(BOOL)animated {
     NSTimeInterval duration = animated ? 0.5 : 0;

@@ -15,9 +15,12 @@
 #import "ONEHomeRadioCell.h"
 #import "ONEHomeViewModel.h"
 #import <MJRefresh.h>
+#import "ONEAuthorHeaderInfoView.h"
 
 static NSString *const OneHomeCellID = @"OneHomeCellID";
 static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
+
+#define kTitleHiddenSpace 100.0
 
 @interface ONEAuthorInfoController ()
 
@@ -25,9 +28,21 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
 
 @property (assign, nonatomic) NSInteger pageNumber;
 
+@property (strong, nonatomic) ONEAuthorHeaderInfoView *headerView;
+
 @end
 
 @implementation ONEAuthorInfoController
+
+#pragma mark - 懒加载
+- (ONEAuthorHeaderInfoView *)headerView {
+    if (!_headerView) {
+        ONEAuthorHeaderInfoView *headerView = [ONEAuthorHeaderInfoView authorHeaderInfoView];
+        headerView.author = self.author;
+        _headerView = headerView;
+    }
+    return _headerView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +58,12 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     [super viewWillAppear:animated];
     
     [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
+    [self scrollViewDidScroll:self.tableView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:NO];
 }
 
 - (void)setUpTableView {
@@ -54,6 +75,11 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     self.tableView.backgroundColor = ONEBackgroundColor;
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreWorksData)];
+    
+    self.tableView.estimatedSectionHeaderHeight = 300;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 - (void)setUpNavigationBar {
     [[ONENavigationBarTool sharedInstance] changeShadowViewVisible:YES];
@@ -129,5 +155,27 @@ static NSString *const OneHomeRadioCellID = @"OneHomeRadioCellID";
     cell.viewModel = [ONEHomeViewModel viewModelWithItem:item];
     
     return cell;
+}
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.headerView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY >= kTitleHiddenSpace) {
+        self.title = self.author.user_name;
+    } else {
+        self.title = nil;
+    }
+    
+    CGFloat alpha = offsetY/kTitleHiddenSpace;
+    [[ONENavigationBarTool sharedInstance] changeAlphaOfBackgroundAndShadow:alpha];
 }
 @end

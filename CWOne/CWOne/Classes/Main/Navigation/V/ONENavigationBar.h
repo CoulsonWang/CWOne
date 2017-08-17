@@ -44,4 +44,7 @@
 /// 显示或隐藏阴影
 - (void)changeShadowViewVisible:(BOOL)visible;
 
+/// 修改导航条背景和阴影的alpha值
+- (void)changeAlphaOfBackgroundAndShadow:(CGFloat)alpha;
+
 @end

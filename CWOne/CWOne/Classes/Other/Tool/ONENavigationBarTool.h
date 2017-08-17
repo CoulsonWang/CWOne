@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 
 // 用于修改HomeNavigationBar的方法
 
+/// 根据滚动距离调整顶部视图的状态
 - (void)updateTitleViewWithOffset:(CGFloat)offset;
 
 /// 确定title的状态
@@ -59,6 +60,9 @@ typedef enum : NSUInteger {
 
 /// 显示或隐藏阴影
 - (void)changeShadowViewVisible:(BOOL)visible;
+
+/// 修改导航条背景和阴影的alpha值
+- (void)changeAlphaOfBackgroundAndShadow:(CGFloat)alpha;
 
 /* ********************************************* 修改状态栏 ********************************************* */
 /// 隐藏状态栏
