@@ -59,4 +59,12 @@
     self.userLabel.text = userInfoItem.user_name;
 }
 
+- (void)updateBackgroundViewHeightWithOffsetY:(CGFloat)offsetY {
+    CGFloat newHeight = self.height - offsetY;
+    [self.backgroundImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(newHeight));
+    }];
+    [self layoutIfNeeded];
+}
+
 @end

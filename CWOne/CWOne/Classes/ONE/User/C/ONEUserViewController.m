@@ -105,8 +105,7 @@ static NSString *const cellID = @"ONEUserCollectionViewCellID";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.font = [UIFont systemFontOfSize:13.0 weight:-0.3];
-        cell.imageView.width = 15;
-        cell.imageView.height = 15;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     if (indexPath.section == 0) {
@@ -132,5 +131,10 @@ static NSString *const cellID = @"ONEUserCollectionViewCellID";
     } else {
         return 0;
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    [self.userHeaderView updateBackgroundViewHeightWithOffsetY:offsetY];
 }
 @end

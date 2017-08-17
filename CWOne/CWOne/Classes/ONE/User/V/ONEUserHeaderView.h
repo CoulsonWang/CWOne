@@ -16,4 +16,6 @@
 
 + (instancetype)userHeaderView;
 
+- (void)updateBackgroundViewHeightWithOffsetY:(CGFloat)offsetY;
+
 @end
