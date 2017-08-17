@@ -18,6 +18,7 @@
 #define kWebViewMinusHeight 150.0
 #define kMovieInfoHeaderHeight 500.0
 #define kMusicInfoHeaderHeight 516.0
+#define kTopicHeaderPlusHeight 40.0
 #define kCoverViewOriginHeight 225.0
 #define kMusicAnimationDuration 0.5
 
@@ -222,6 +223,9 @@
             break;
         case ONEHomeItemTypeMovie:
             plusHeight = kMovieInfoHeaderHeight;
+            break;
+        case ONEHomeItemTypeTopic:
+            plusHeight = kTopicHeaderPlusHeight;
             break;
         default:
             plusHeight = 0;

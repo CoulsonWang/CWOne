@@ -26,7 +26,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIView *normalSeperatorView;
+
 @property (weak, nonatomic) IBOutlet UIView *lastHotCommentSeperatorView;
+@property (weak, nonatomic) IBOutlet UILabel *lastHotCommentLabel;
+@property (weak, nonatomic) IBOutlet UIView *leftSeperatorView;
+@property (weak, nonatomic) IBOutlet UIView *rightSeperatorView;
 
 /// 点赞按钮距离底部的距离，决定底部的空间
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
@@ -82,6 +86,19 @@
     self.normalSeperatorView.hidden = lastHotComment;
     self.lastHotCommentSeperatorView.hidden = !lastHotComment;
     self.bottomSpaceConstraint.constant = lastHotComment ? kLargeBottomConstraint : kSmallBottomConstraint;
+}
+
+- (void)setFontColor:(UIColor *)fontColor {
+    _fontColor = fontColor;
+    if (fontColor != nil) {
+        self.userNameLabel.textColor = fontColor;
+        self.postTimeLabel.textColor = fontColor;
+        self.contentLabel.textColor = fontColor;
+        self.normalSeperatorView.hidden = YES;
+        self.lastHotCommentLabel.textColor = fontColor;
+        self.leftSeperatorView.backgroundColor = fontColor;
+        self.rightSeperatorView.backgroundColor = fontColor;
+    }
 }
 - (IBAction)replyButtonClick:(UIButton *)sender {
     if ([[ONELoginTool sharedInstance] isLogin]) {

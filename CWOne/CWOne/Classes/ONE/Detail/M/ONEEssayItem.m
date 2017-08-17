@@ -8,6 +8,7 @@
 
 #import "ONEEssayItem.h"
 #import "ONEUserItem.h"
+#import "UIColor+Hex.h"
 
 @implementation ONEEssayItem
 
@@ -38,6 +39,10 @@
     
     // 影视属性
     item.movieTitle = item.title;
+    
+    // 专题属性
+    item.backgroundColor = [UIColor colorWithHexString:item.bg_color];
+    item.fontColor = [UIColor colorWithHexString:item.font_color];
     
     return item;
 }

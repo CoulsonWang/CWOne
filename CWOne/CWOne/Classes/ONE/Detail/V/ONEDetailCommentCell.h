@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) ONECommentItem *commentItem;
 
+@property (strong, nonatomic) UIColor *fontColor;
+
 @end

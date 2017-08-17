@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString *content_id;
 @property (assign, nonatomic) BOOL is_stick;
 @property (strong, nonatomic) NSArray *serial_list;
+@property (strong, nonatomic) NSString *font_color;
+@property (strong, nonatomic) NSString *bg_color;
 
 + (instancetype)specialItemWithDict:(NSDictionary *)dict;
 

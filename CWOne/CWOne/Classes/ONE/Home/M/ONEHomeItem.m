@@ -11,6 +11,8 @@
 #import "ONEUserItem.h"
 #import "NSString+CWTranslate.h"
 #import "ONEHomeWeatherItem.h"
+#import "ONESpecialItem.h"
+#import "UIColor+Hex.h"
 
 @implementation ONEHomeItem
 
@@ -57,6 +59,19 @@
     homeItem.type = [homeItem.category getType];
     homeItem.typeName = [NSString getCategoryStringWithCategoryInteger:homeItem.category.integerValue];
     
+    return homeItem;
+}
+
++ (instancetype)homeItemWithSpecialItem:(ONESpecialItem *)specialItem {
+    ONEHomeItem *homeItem = [[ONEHomeItem alloc] init];
+    
+    homeItem.title = specialItem.title;
+    homeItem.category = [NSString stringWithFormat:@"%ld",specialItem.category];
+    homeItem.item_id = specialItem.content_id;
+    homeItem.serial_list = specialItem.serial_list;
+    
+    homeItem.type = [homeItem.category getType];
+    homeItem.typeName = [NSString getCategoryStringWithCategoryInteger:homeItem.category.integerValue];
     return homeItem;
 }
 

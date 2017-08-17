@@ -95,8 +95,9 @@
 #pragma mark - 设置UI
 - (void)setUpNavigationBar {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_default"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarBackButtonClick)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"collect_gray"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
-    
+    if (self.homeItem.type != ONEHomeItemTypeTopic) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"collect_gray"] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBarCollectButtonClick)];
+    }
     // 设置控制器标题
     self.title = self.homeItem.typeName;
 }
@@ -139,6 +140,7 @@
 
 - (void)setUpBottomToolView {
     ONEDetailBottomToolView *toolView = [ONEDetailBottomToolView detailBottomToolView];
+    toolView.backgroundColor = [UIColor whiteColor];
     toolView.autoresizingMask = UIViewAutoresizingNone;
     toolView.frame = CGRectMake(0, CWScreenH - kBottomToolViewHeight, CWScreenW, kBottomToolViewHeight);
     [self.view addSubview:toolView];

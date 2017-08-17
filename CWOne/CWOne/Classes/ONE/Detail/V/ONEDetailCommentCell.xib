@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -114,6 +115,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Wwg-2s-Wfl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1TF-id-yyV"/>
                     <constraint firstItem="wmA-Qa-5aI" firstAttribute="centerY" secondItem="5f0-n0-7Pd" secondAttribute="centerY" id="4UN-Lx-Gpg"/>
@@ -138,14 +140,18 @@
                     <constraint firstItem="EqA-MY-yxW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wMA-is-tSd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bottomSpaceConstraint" destination="AtP-CU-Com" id="4f4-IL-e6w"/>
                 <outlet property="contentLabel" destination="b8A-X8-jEy" id="3md-SV-nEv"/>
                 <outlet property="iconView" destination="5f0-n0-7Pd" id="KlB-NX-dbq"/>
+                <outlet property="lastHotCommentLabel" destination="q1l-6z-ds1" id="KoA-OV-knJ"/>
                 <outlet property="lastHotCommentSeperatorView" destination="Wwg-2s-Wfl" id="Snq-7w-PRM"/>
+                <outlet property="leftSeperatorView" destination="AMy-mM-VNf" id="8NN-l3-F5v"/>
                 <outlet property="likeButton" destination="3P6-pk-Vwb" id="gWW-bw-ES2"/>
                 <outlet property="normalSeperatorView" destination="EqA-MY-yxW" id="NXL-ka-YE2"/>
                 <outlet property="postTimeLabel" destination="Gl2-VK-VDD" id="HVh-HR-n1C"/>
+                <outlet property="rightSeperatorView" destination="gjQ-6v-zui" id="kaE-ia-2Lr"/>
                 <outlet property="userNameLabel" destination="wmA-Qa-5aI" id="GZd-4o-ltO"/>
             </connections>
             <point key="canvasLocation" x="8" y="59.5"/>

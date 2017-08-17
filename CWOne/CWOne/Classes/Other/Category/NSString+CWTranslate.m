@@ -67,6 +67,8 @@
             return @"广告";
         case 8:
             return @"电台";
+        case 11:
+            return @"专题";
         default:
             return nil;
     }
@@ -93,6 +95,8 @@
             return @"advertisement";
         case 8:
             return @"radio";
+        case 11:
+            return @"topic";
         default:
             return nil;
     }
@@ -123,6 +127,8 @@
             return ONEHomeItemTypeAdvertisement;
         case 8:
             return ONEHomeItemTypeRadio;
+        case 11:
+            return ONEHomeItemTypeTopic;
         default:
             return ONEHomeItemTypeUnknown;
     }
@@ -154,6 +160,9 @@
             break;
         case ONEHomeItemTypeRadio:
             categoryNum = 8;
+            break;
+        case ONEHomeItemTypeTopic:
+            categoryNum = 11;
             break;
         default:
             break;

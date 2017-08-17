@@ -94,6 +94,14 @@
 
 + (instancetype)essayItemWithDict:(NSDictionary *)dict;
 
+/* ********************************************* 专题详情页内容 ********************************************* */
+
+@property (strong, nonatomic) NSString *bg_color;
+@property (strong, nonatomic) NSString *font_color;
+
+@property (strong, nonatomic) UIColor *backgroundColor;
+@property (strong, nonatomic) UIColor *fontColor;
+
 // 加载电影数据
 - (void)setMovieStroyDateWithDetailDict:(NSDictionary *)dict;
 

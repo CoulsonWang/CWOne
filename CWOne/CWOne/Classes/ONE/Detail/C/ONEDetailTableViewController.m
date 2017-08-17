@@ -42,6 +42,8 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 
 @property (assign, nonatomic, getter=isOnScreen) BOOL onScreen;
 
+@property (strong, nonatomic) UIColor *backgroundColor;
+@property (strong, nonatomic) UIColor *fontColor;
 @end
 
 @implementation ONEDetailTableViewController
@@ -67,6 +69,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     return _tableHeaderView;
 }
 
+#pragma mark - setter方法
 - (void)setItemId:(NSString *)itemId {
     _itemId = itemId;
     
@@ -81,6 +84,9 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     _essayItem = essayItem;
     
     self.tableHeaderView.essayItem = essayItem;
+    
+    self.backgroundColor = essayItem.backgroundColor;
+    self.fontColor = essayItem.fontColor;
     
     NSString *htmlStr;
     switch (self.type) {
@@ -108,7 +114,18 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         }
     }
 }
-
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    _backgroundColor = backgroundColor;
+    if (backgroundColor != nil) {
+        self.tableView.backgroundColor = backgroundColor;
+    }
+}
+- (void)setFontColor:(UIColor *)fontColor {
+    _fontColor = fontColor;
+    if (fontColor != nil) {
+        [self.tableView reloadData];
+    }
+}
 #pragma mark - view的生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -144,7 +161,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio) {
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio || self.type == ONEHomeItemTypeTopic) {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     } else {
         self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, 0, 0);
@@ -195,6 +212,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 }
 
 - (void)loadRelatedData {
+    if (self.type == ONEHomeItemTypeTopic) { return; }
     NSString *typeName = [NSString getTypeStrWithType:self.type];
     [[ONENetworkTool sharedInstance] requestRelatedListDataOfType:typeName withItemId:self.itemId success:^(NSArray<NSDictionary *> *dataArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
@@ -276,6 +294,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
         ONECommentItem *commentItem = self.commentList[indexPath.row];
         cell.typeName = [NSString getTypeStrWithType:self.type];
         cell.commentItem = commentItem;
+        cell.fontColor = self.fontColor;
         return cell;
     }
 }
@@ -331,7 +350,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
     CGFloat offsetY = scrollView.contentOffset.y;
     
     // 处理导航条样式
-    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio) {
+    if (self.type == ONEHomeItemTypeMusic || self.type == ONEHomeItemTypeMovie || self.type == ONEHomeItemTypeRadio ||self.type == ONEHomeItemTypeTopic) {
         if (offsetY <= kLucencyModeSpace) {
             if (!self.isOnScreen) { return; }
             [[ONENavigationBarTool sharedInstance] changeNavigationBarTintColor:ONENavigationBarTintColorWhite];

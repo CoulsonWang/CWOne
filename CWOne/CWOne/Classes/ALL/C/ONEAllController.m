@@ -19,6 +19,9 @@
 #import "ONEAllEveryOneAskEveryOneView.h"
 #import <MJRefresh.h>
 #import "ONESearchAllListViewController.h"
+#import "ONEDetailViewController.h"
+#import "ONEHomeItem.h"
+#import "ONENavigationBarTool.h"
 
 #define kBannerRatio 229/384.0
 #define kCategoryNavigationRatio 242/381.0
@@ -75,6 +78,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 #pragma mark - 初始化
@@ -277,6 +281,20 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
     } else {
         return CWScreenW * kEveryOneAskEveryOneRatio + ONEAllSeperatorViewHeight;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ONESpecialItem *specialItem;
+    if (indexPath.section == 0) {
+        specialItem = self.stickSpecialList[indexPath.row];
+    } else {
+        specialItem = self.normalSpecialList[indexPath.row];
+    }
+    ONEDetailViewController *detailVC = [[ONEDetailViewController alloc] init];
+    
+    detailVC.homeItem = [ONEHomeItem homeItemWithSpecialItem:specialItem];
+    
+    [self.navigationController showViewController:detailVC sender:nil];
 }
 #pragma mark - CWCarouselViewDelegate
 - (void)carouselView:(CWCarouselView *)carouselView didClickImageOnIndex:(NSUInteger)index {

@@ -17,12 +17,14 @@ typedef enum : NSUInteger {
     ONEHomeItemTypeMovie,
     ONEHomeItemTypeAdvertisement,
     ONEHomeItemTypeRadio,
+    ONEHomeItemTypeTopic,
     ONEHomeItemTypeUnknown,
 } ONEHomeItemType;
 
 @class ONEUserItem;
 @class ONESearchResultItem;
 @class ONEHomeWeatherItem;
+@class ONESpecialItem;
 
 @interface ONEHomeItem : NSObject
 
@@ -31,6 +33,9 @@ typedef enum : NSUInteger {
 
 // 通过搜索结果创建
 + (instancetype)homeItemWithSearchResultItem:(ONESearchResultItem *)searchResultItem;
+
+// 通过专题模型创建
++ (instancetype)homeItemWithSpecialItem:(ONESpecialItem *)specialItem;
 
 /* *********************************** 原始属性 *********************************** */
 
@@ -98,5 +103,6 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSString *typeName;
 
 @property (strong, nonatomic) ONEHomeWeatherItem *weather;
+
 
 @end

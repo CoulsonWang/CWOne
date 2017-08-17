@@ -105,6 +105,7 @@
 		B95F23911F44985D004FC239 /* ONECategoryChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23901F44985D004FC239 /* ONECategoryChooserView.m */; };
 		B95F23951F449A31004FC239 /* ONECategoryChooserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */; };
 		B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */; };
+		B95F23991F456664004FC239 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23981F456664004FC239 /* UIColor+Hex.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -344,6 +345,8 @@
 		B95F23921F449A31004FC239 /* ONECategoryChooserViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECategoryChooserViewCell.h; sourceTree = "<group>"; };
 		B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONECategoryChooserViewCell.m; sourceTree = "<group>"; };
 		B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONECategoryChooserViewCell.xib; sourceTree = "<group>"; };
+		B95F23971F456664004FC239 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		B95F23981F456664004FC239 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -1017,6 +1020,8 @@
 				B900E6F61F3C7364006D1466 /* UITextView+CWLineSpacing.m */,
 				B95F23861F4446EE004FC239 /* UIImageView+ONEAddTag.h */,
 				B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */,
+				B95F23971F456664004FC239 /* UIColor+Hex.h */,
+				B95F23981F456664004FC239 /* UIColor+Hex.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1637,6 +1642,7 @@
 				B9D133C61F3C1FC6006471F9 /* ONEHomeCoverTransitionTool.m in Sources */,
 				B9242DD51F3F52C10039AE0E /* ONEHomeFeedDatePickerView.m in Sources */,
 				B9242DD31F3F52C10039AE0E /* ONEHomeFeedCell.m in Sources */,
+				B95F23991F456664004FC239 /* UIColor+Hex.m in Sources */,
 				B95F23881F4446EE004FC239 /* UIImageView+ONEAddTag.m in Sources */,
 				B9242DE11F3F52C10039AE0E /* ONEHomeHeaderView.m in Sources */,
 				B9242D861F3F3A240039AE0E /* ONELoginViewController.m in Sources */,
