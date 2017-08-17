@@ -15,6 +15,7 @@
 #import "NSString+CWTranslate.h"
 #import "ONEEssayItem.h"
 #import "ONEPersistentTool.h"
+#import "UIButton+CWColor.h"
 
 #define kAnimateDuration 0.4
 
@@ -49,6 +50,10 @@
     [self.likeButton setImage:[UIImage imageNamed:@"liked_red"] forState:UIControlStateSelected];
 }
 
+- (void)changeTintColor:(UIColor *)tintColor {
+    [self.likeButton changeImageColor:tintColor];
+    self.likeCountLabel.textColor = tintColor;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     

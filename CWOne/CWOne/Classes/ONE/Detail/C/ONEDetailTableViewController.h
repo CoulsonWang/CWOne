@@ -15,6 +15,7 @@
 @protocol ONEDetailTableViewControllerDelegate <NSObject>
 
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseAndCommentCountWithEssayItem:(ONEEssayItem *)essayItem;
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewBackgroundColor:(UIColor *)backgroundColor fontColor:(UIColor *)fontColor;
 
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC;
 

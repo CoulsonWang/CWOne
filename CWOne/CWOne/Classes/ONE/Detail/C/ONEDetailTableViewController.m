@@ -123,6 +123,7 @@ static NSString *const ONEDetailRelatedCellID = @"ONEDetailRelatedCellID";
 - (void)setFontColor:(UIColor *)fontColor {
     _fontColor = fontColor;
     if (fontColor != nil) {
+        [self.delegate detailTableVC:self updateToolViewBackgroundColor:self.backgroundColor fontColor:fontColor];
         [self.tableView reloadData];
     }
 }

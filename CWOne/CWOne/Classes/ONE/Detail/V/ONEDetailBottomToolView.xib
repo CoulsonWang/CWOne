@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,6 +57,7 @@
             <connections>
                 <outlet property="commentButton" destination="RDv-Ck-dmM" id="FtX-3L-2Qi"/>
                 <outlet property="shareButton" destination="Ds1-rm-beT" id="s2E-mS-7Cf"/>
+                <outlet property="writeCommentButton" destination="Kur-OC-60W" id="YyL-6d-INf"/>
             </connections>
             <point key="canvasLocation" x="49" y="-251"/>
         </view>

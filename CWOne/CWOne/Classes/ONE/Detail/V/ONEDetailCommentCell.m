@@ -15,6 +15,7 @@
 #import "ONENetworkTool.h"
 #import "ONELoginTool.h"
 #import "ONEPersistentTool.h"
+#import "UIButton+CWColor.h"
 
 #define kLargeBottomConstraint 30.0
 #define kSmallBottomConstraint 15.0
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIView *normalSeperatorView;
 
@@ -98,6 +100,9 @@
         self.lastHotCommentLabel.textColor = fontColor;
         self.leftSeperatorView.backgroundColor = fontColor;
         self.rightSeperatorView.backgroundColor = fontColor;
+        [self.commentButton changeImageColor:fontColor];
+        [self.likeButton changeImageColor:fontColor];
+        [self.likeButton setTitleColor:fontColor forState:UIControlStateNormal];
     }
 }
 - (IBAction)replyButtonClick:(UIButton *)sender {

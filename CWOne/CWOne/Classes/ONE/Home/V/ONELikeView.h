@@ -25,4 +25,6 @@
 
 - (void)changeButtonImageToLargeOne;
 
+- (void)changeTintColor:(UIColor *)tintColor;
+
 @end

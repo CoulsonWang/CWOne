@@ -106,6 +106,7 @@
 		B95F23951F449A31004FC239 /* ONECategoryChooserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23931F449A31004FC239 /* ONECategoryChooserViewCell.m */; };
 		B95F23961F449A31004FC239 /* ONECategoryChooserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */; };
 		B95F23991F456664004FC239 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F23981F456664004FC239 /* UIColor+Hex.m */; };
+		B95F239C1F457B04004FC239 /* UIButton+CWColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F239B1F457B04004FC239 /* UIButton+CWColor.m */; };
 		B973FC291F361ED400161989 /* ONEDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC281F361ED400161989 /* ONEDetailViewController.m */; };
 		B973FC2C1F361EE700161989 /* ONEDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2B1F361EE700161989 /* ONEDetailTableViewController.m */; };
 		B973FC2F1F36FBAF00161989 /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = B973FC2E1F36FBAF00161989 /* UIImage+Render.m */; };
@@ -347,6 +348,8 @@
 		B95F23941F449A31004FC239 /* ONECategoryChooserViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONECategoryChooserViewCell.xib; sourceTree = "<group>"; };
 		B95F23971F456664004FC239 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		B95F23981F456664004FC239 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		B95F239A1F457B04004FC239 /* UIButton+CWColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CWColor.h"; sourceTree = "<group>"; };
+		B95F239B1F457B04004FC239 /* UIButton+CWColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CWColor.m"; sourceTree = "<group>"; };
 		B973FC271F361ED400161989 /* ONEDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailViewController.h; sourceTree = "<group>"; };
 		B973FC281F361ED400161989 /* ONEDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEDetailViewController.m; sourceTree = "<group>"; };
 		B973FC2A1F361EE700161989 /* ONEDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEDetailTableViewController.h; sourceTree = "<group>"; };
@@ -1022,6 +1025,8 @@
 				B95F23871F4446EE004FC239 /* UIImageView+ONEAddTag.m */,
 				B95F23971F456664004FC239 /* UIColor+Hex.h */,
 				B95F23981F456664004FC239 /* UIColor+Hex.m */,
+				B95F239A1F457B04004FC239 /* UIButton+CWColor.h */,
+				B95F239B1F457B04004FC239 /* UIButton+CWColor.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1695,6 +1700,7 @@
 				B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */,
 				B95F23801F443AC7004FC239 /* ONEAllEveryOneAskEveryOneView.m in Sources */,
 				B9A740141F32EF19009025FD /* ONERadioItem.m in Sources */,
+				B95F239C1F457B04004FC239 /* UIButton+CWColor.m in Sources */,
 				B95F23771F441FAF004FC239 /* ONEAllHotAuthorCell.m in Sources */,
 				B9242DD01F3F52C10039AE0E /* ONEHomeFeedsViewController.m in Sources */,
 				B9242DE71F3F52C10039AE0E /* ONEHomeBaseCell.m in Sources */,

@@ -260,7 +260,10 @@
 - (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewPraiseAndCommentCountWithEssayItem:(ONEEssayItem *)essayItem {
     self.toolView.essayItem = essayItem;
 }
-
+- (void)detailTableVC:(ONEDetailTableViewController *)detailTableVC updateToolViewBackgroundColor:(UIColor *)backgroundColor fontColor:(UIColor *)fontColor {
+    self.toolView.backgroundColor = backgroundColor;
+    self.toolView.tintColor = fontColor;
+}
 - (void)detailTableVCDidFinishLoadData:(ONEDetailTableViewController *)detailTableVC {
     self.tableView.hidden = NO;
     self.loadingImageView.hidden = YES;

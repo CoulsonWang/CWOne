@@ -143,6 +143,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bottomSpaceConstraint" destination="AtP-CU-Com" id="4f4-IL-e6w"/>
+                <outlet property="commentButton" destination="xAE-7U-3Ak" id="mHc-WE-czE"/>
                 <outlet property="contentLabel" destination="b8A-X8-jEy" id="3md-SV-nEv"/>
                 <outlet property="iconView" destination="5f0-n0-7Pd" id="KlB-NX-dbq"/>
                 <outlet property="lastHotCommentLabel" destination="q1l-6z-ds1" id="KoA-OV-knJ"/>

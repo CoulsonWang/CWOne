@@ -79,6 +79,7 @@ static NSString *const cellID = @"ONEAllSpecialTableViewCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[ONENavigationBarTool sharedInstance] updateCurrentViewController:self];
+    [[ONENavigationBarTool sharedInstance] resumeNavigationBar];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 #pragma mark - 初始化

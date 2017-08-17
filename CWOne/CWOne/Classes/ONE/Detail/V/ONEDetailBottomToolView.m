@@ -12,11 +12,13 @@
 #import "ONELoginTool.h"
 #import "ONEShareTool.h"
 #import "ONEEssayItem.h"
+#import "UIButton+CWColor.h"
 
 @interface ONEDetailBottomToolView ()
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) ONELikeView *likeView;
+@property (weak, nonatomic) IBOutlet UIButton *writeCommentButton;
 
 @end
 
@@ -50,6 +52,13 @@
     
     self.likeView.essayItem = essayItem;
     [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",essayItem.commentnum] forState:UIControlStateNormal];
+}
+- (void)setTintColor:(UIColor *)tintColor {
+    [super setTintColor:tintColor];
+    [self.shareButton changeImageColor:tintColor];
+    [self.commentButton changeImageColor:tintColor];
+    [self.commentButton setTitleColor:tintColor forState:UIControlStateNormal];
+    [self.likeView changeTintColor:tintColor];
 }
 
 - (IBAction)writeCommentButtonClick:(UIButton *)sender {
