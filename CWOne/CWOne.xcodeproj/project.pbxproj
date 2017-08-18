@@ -22,7 +22,6 @@
 		B90C3A651F30831C004E64D9 /* ONEHomeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A641F30831C004E64D9 /* ONEHomeNavigationController.m */; };
 		B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */; };
 		B90C3A6A1F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */; };
-		B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */; };
 		B9242D711F3F2F0B0039AE0E /* ONELoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D701F3F2F0B0039AE0E /* ONELoginTool.m */; };
 		B9242D7E1F3F393E0039AE0E /* ONEShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D7D1F3F393E0039AE0E /* ONEShareTool.m */; };
 		B9242D861F3F3A240039AE0E /* ONELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9242D821F3F3A240039AE0E /* ONELoginViewController.m */; };
@@ -133,6 +132,7 @@
 		B9B11CC31F45E302007E9BFB /* ONEUserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B11CC21F45E302007E9BFB /* ONEUserHeaderView.m */; };
 		B9B11CC51F45E312007E9BFB /* ONEUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B11CC41F45E312007E9BFB /* ONEUserHeaderView.xib */; };
 		B9B11CC81F45EE3F007E9BFB /* ONEUserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B11CC71F45EE3F007E9BFB /* ONEUserInfoItem.m */; };
+		B9B11CF31F46B3DC007E9BFB /* ONENetworkTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B11CF21F46B3DC007E9BFB /* ONENetworkTool.a */; };
 		B9B822541F37399D002F6961 /* ONEEssayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822531F37399D002F6961 /* ONEEssayItem.m */; };
 		B9B822571F373E93002F6961 /* ONECommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822561F373E93002F6961 /* ONECommentItem.m */; };
 		B9B8225B1F374602002F6961 /* ONEDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B822591F374602002F6961 /* ONEDetailCommentCell.m */; };
@@ -202,8 +202,6 @@
 		B90C3A661F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEHomeNavigationBarTitleView.h; sourceTree = "<group>"; };
 		B90C3A671F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEHomeNavigationBarTitleView.m; sourceTree = "<group>"; };
 		B90C3A691F308A66004E64D9 /* ONEHomeNavigationBarTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEHomeNavigationBarTitleView.xib; sourceTree = "<group>"; };
-		B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONENetworkTool.h; sourceTree = "<group>"; };
-		B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONENetworkTool.m; sourceTree = "<group>"; };
 		B9242D6F1F3F2F0B0039AE0E /* ONELoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONELoginTool.h; sourceTree = "<group>"; };
 		B9242D701F3F2F0B0039AE0E /* ONELoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONELoginTool.m; sourceTree = "<group>"; };
 		B9242D7C1F3F393E0039AE0E /* ONEShareTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEShareTool.h; sourceTree = "<group>"; };
@@ -402,6 +400,8 @@
 		B9B11CC41F45E312007E9BFB /* ONEUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONEUserHeaderView.xib; sourceTree = "<group>"; };
 		B9B11CC61F45EE3F007E9BFB /* ONEUserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEUserInfoItem.h; sourceTree = "<group>"; };
 		B9B11CC71F45EE3F007E9BFB /* ONEUserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEUserInfoItem.m; sourceTree = "<group>"; };
+		B9B11CED1F46B13B007E9BFB /* ONENetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ONENetworkTool.h; sourceTree = "<group>"; };
+		B9B11CF21F46B3DC007E9BFB /* ONENetworkTool.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ONENetworkTool.a; sourceTree = "<group>"; };
 		B9B822521F37399D002F6961 /* ONEEssayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONEEssayItem.h; sourceTree = "<group>"; };
 		B9B822531F37399D002F6961 /* ONEEssayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONEEssayItem.m; sourceTree = "<group>"; };
 		B9B822551F373E93002F6961 /* ONECommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONECommentItem.h; sourceTree = "<group>"; };
@@ -443,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA1E15E6511676B4268D543 /* libPods-CWOne.a in Frameworks */,
+				B9B11CF31F46B3DC007E9BFB /* ONENetworkTool.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,6 +1060,7 @@
 		B9321F221F305AD70052752B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B9B11CEC1F46B131007E9BFB /* ONENetworkTool */,
 				B95F23651F44189F004FC239 /* CWCarouselView */,
 				B98A5A7C1F39BD0C009FCCBC /* CWCalendarLabel */,
 			);
@@ -1070,8 +1072,6 @@
 			children = (
 				B953EAFB1F402DF000DDC478 /* Persistent */,
 				B9242D7B1F3F39200039AE0E /* Model */,
-				B90C3A6B1F309500004E64D9 /* ONENetworkTool.h */,
-				B90C3A6C1F309500004E64D9 /* ONENetworkTool.m */,
 				B9A7400F1F32EE4B009025FD /* ONERadioTool.h */,
 				B9A740101F32EE4B009025FD /* ONERadioTool.m */,
 				B93A7D6B1F347A6A00FF86E9 /* ONEDateTool.h */,
@@ -1254,6 +1254,15 @@
 				B98A5A7E1F39BD0C009FCCBC /* CWCalendarLabel.m */,
 			);
 			path = CWCalendarLabel;
+			sourceTree = "<group>";
+		};
+		B9B11CEC1F46B131007E9BFB /* ONENetworkTool */ = {
+			isa = PBXGroup;
+			children = (
+				B9B11CED1F46B13B007E9BFB /* ONENetworkTool.h */,
+				B9B11CF21F46B3DC007E9BFB /* ONENetworkTool.a */,
+			);
+			path = ONENetworkTool;
 			sourceTree = "<group>";
 		};
 		B9B828D11F361A0F008BB163 /* Detail */ = {
@@ -1716,7 +1725,6 @@
 				B90C3A681F308A4F004E64D9 /* ONEHomeNavigationBarTitleView.m in Sources */,
 				B900E6F71F3C7364006D1466 /* UITextView+CWLineSpacing.m in Sources */,
 				B9B822621F3754BC002F6961 /* ONENavigationBarTool.m in Sources */,
-				B90C3A6D1F309500004E64D9 /* ONENetworkTool.m in Sources */,
 				B98A5A7F1F39BD0C009FCCBC /* CWCalendarLabel.m in Sources */,
 				B9242DE81F3F52C10039AE0E /* ONEHomeCell.m in Sources */,
 				B9242DEC1F3F52C10039AE0E /* ONELikeView.m in Sources */,
@@ -1926,6 +1934,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CWOne/Classes/Other/Lib/ONENetworkTool",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1942,6 +1954,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/CWOne/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CWOne/Classes/Other/Lib/ONENetworkTool",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Personal.YYWang.CWOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
