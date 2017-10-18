@@ -27,6 +27,7 @@
 
 @implementation ONENavigationBar
 
+#pragma mark - 懒加载
 - (ONEHomeNavigationBarTitleView *)homeTitleView {
     if (!_homeTitleView) {
         ONEHomeNavigationBarTitleView *homeTitleView = [ONEHomeNavigationBarTitleView homeNavTitleView];
@@ -48,6 +49,7 @@
     return _shadowView;
 }
 
+#pragma mark - 初始化
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -69,8 +71,9 @@
     UIImageView *underlineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, CWScreenW, 0.5)];
     underlineImageView.image = underlineImage;
     [backgroundView addSubview:underlineImageView];
-    [self setValue:backgroundView forKeyPath:@"_customBackgroundView"];
+//    [self setValue:backgroundView forKeyPath:@"_customBackgroundView"];
     self.navBarBackgroundView = backgroundView;
+    
 }
 
 #pragma mark - 对外公有方法

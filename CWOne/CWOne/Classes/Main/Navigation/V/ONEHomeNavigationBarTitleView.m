@@ -132,7 +132,6 @@
 - (void)updateBackButtonVisible:(BOOL)isHidden {
     self.backToTodayButton.hidden = isHidden;
 }
-
 - (void)updateDateStringWithDateString:(NSString *)dateString {
     self.textView.dateString = dateString;
 }
