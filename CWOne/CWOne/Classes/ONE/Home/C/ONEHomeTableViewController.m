@@ -85,7 +85,8 @@ static NSString *const OneHomeAdCellID = @"OneHomeAdCellID";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = ONEBackgroundColor;
-    self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, kTabBarHeight, 0);
+//    self.tableView.contentInset = UIEdgeInsetsMake(kNavigationBarHeight, 0, kTabBarHeight, 0);
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 设置下拉刷新控件
